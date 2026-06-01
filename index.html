@@ -9,10 +9,15 @@
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
     />
     <link
-      href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700;800;900&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
       rel="stylesheet"
     />
     <style>
+      body {
+        font-family: "Inter", Arial, sans-serif;
+        background: #fff;
+        color: #333;
+      }
       .nav-link-item {
         position: relative;
         opacity: 0.82;
@@ -40,13 +45,8 @@
       }
     </style>
   </head>
-  <body
-    style="
-      font-family: &quot;Be Vietnam Pro&quot;, Arial, sans-serif;
-      background: #f5f5f5;
-      color: #333;
-    "
-  >
+  <body>
+    <!-- ===== HEADER ===== -->
     <header class="bg-white shadow-sm">
       <div
         class="d-flex align-items-center justify-content-between gap-2 px-4 py-3"
@@ -62,19 +62,20 @@
             type="text"
             placeholder="Tìm kiếm..."
             class="form-control rounded-pill"
+            style="background: #ececed; border: 1px solid #ececed"
           />
         </div>
         <div class="d-flex align-items-center gap-2 flex-shrink-0">
           <button
             class="btn fw-bold text-white border-0 rounded-3 text-nowrap d-none d-md-inline-flex align-items-center px-3 py-2"
-            style="background: #217335"
+            style="background: #237a37"
           >
             ĐĂNG KÝ TƯ VẤN
           </button>
           <a
             href="tel:0961106466"
             class="btn fw-bold text-white text-decoration-none border-0 rounded-3 text-nowrap d-inline-flex align-items-center px-3 py-2"
-            style="background: #d0021b"
+            style="background: #dc3545"
           >
             <img
               src="img/Rectangle 77.png"
@@ -84,7 +85,7 @@
           </a>
         </div>
       </div>
-      <nav style="background: #217335; overflow-x: auto; scrollbar-width: none">
+      <nav style="background: #237a37; overflow-x: auto; scrollbar-width: none">
         <ul
           class="list-unstyled m-0 d-flex align-items-stretch justify-content-center"
           style="
@@ -155,397 +156,581 @@
     </header>
 
     <main>
-      <img src="img/course5.png" alt="Banner Jellyfish" class="w-100 d-block" />
+      <!-- ===== HERO BANNER ===== -->
+      <img
+        src="img/hero-banner.png"
+        alt="Hệ tăng tốc căn mốc JLPT - Jellyfish Vietnam"
+        class="w-100 d-block"
+      />
 
-      <section class="mx-3 my-4 py-4 rounded-3" style="background: #eaeaea">
-        <div class="row row-cols-2 row-cols-md-4 g-3 text-center px-3">
-          <div class="col">
-            <img src="img/images3.png" alt="anh" />
-            <div class="fw-bold" style="color: #217335; font-size: 28px">
-              500
+      <!-- ===== THỐNG KÊ ===== -->
+      <!-- Figma: container w=1432px, h=310px, rounded, bg=rgba(198,199,200,.5) -->
+      <!-- Icons: w=72px, h=83px | Numbers: 32px #237a37 | Text: 18px Semi Bold -->
+      <section class="py-4 px-3 px-md-4">
+        <div
+          class="rounded-3 py-5"
+          style="background: rgba(198, 199, 200, 0.5)"
+        >
+          <div
+            class="row row-cols-2 row-cols-md-4 g-4 text-center px-3 px-md-5"
+          >
+            <div class="col">
+              <img
+                src="img/stat-icon1.png"
+                alt=""
+                class="d-block mx-auto mb-2"
+                style="height: 83px; width: 72px; object-fit: contain"
+              />
+              <div
+                class="fw-semibold mb-2"
+                style="color: #237a37; font-size: 32px"
+              >
+                500
+              </div>
+              <p class="fw-semibold mb-0" style="font-size: 18px">
+                Là số lượng học viên hàng tháng của Trung tâm Jellyfish Vietnam
+                trên khắp cả nước.
+              </p>
             </div>
-            <p class="small mb-0">
-              Là số lượng học viên hàng tháng của Trung tâm Jellyfish Vietnam
-              trên khắp cả nước.
-            </p>
-          </div>
-          <div class="col">
-            <img src="img/images4.png" alt="anh" />
-            <div class="fw-bold" style="color: #217335; font-size: 28px">
-              60
+            <div class="col">
+              <img
+                src="img/stat-icon2.png"
+                alt=""
+                class="d-block mx-auto mb-2"
+                style="height: 83px; width: 72px; object-fit: contain"
+              />
+              <div
+                class="fw-semibold mb-2"
+                style="color: #237a37; font-size: 32px"
+              >
+                60
+              </div>
+              <p class="fw-semibold mb-0" style="font-size: 18px">
+                Là số lớp mở hàng tháng bao gồm lớp online và offline tại tất cả
+                các chi nhánh.
+              </p>
             </div>
-            <p class="small mb-0">
-              Là số lớp mở hàng tháng bao gồm lớp online và offline tại tất cả
-              các chi nhánh.
-            </p>
-          </div>
-          <div class="col">
-            <img src="img/images5.png" alt="anh" />
-            <div class="fw-bold" style="color: #217335; font-size: 28px">
-              20
+            <div class="col">
+              <img
+                src="img/stat-icon3.png"
+                alt=""
+                class="d-block mx-auto mb-2"
+                style="height: 83px; width: 72px; object-fit: contain"
+              />
+              <div
+                class="fw-semibold mb-2"
+                style="color: #237a37; font-size: 32px"
+              >
+                20
+              </div>
+              <p class="fw-semibold mb-0" style="font-size: 18px">
+                Là số lượng doanh nghiệp & trường học đã, đang sử dụng dịch vụ
+                đào tạo của Jellyfish.
+              </p>
             </div>
-            <p class="small mb-0">
-              Là số lượng doanh nghiệp & trường học đã, đang sử dụng dịch vụ đào
-              tạo của Jellyfish.
-            </p>
-          </div>
-          <div class="col">
-            <img src="img/images6.png" alt="anh" />
-            <div class="fw-bold" style="color: #217335; font-size: 28px">
-              150
+            <div class="col">
+              <img
+                src="img/stat-icon4.png"
+                alt=""
+                class="d-block mx-auto mb-2"
+                style="height: 83px; width: 72px; object-fit: contain"
+              />
+              <div
+                class="fw-semibold mb-2"
+                style="color: #237a37; font-size: 32px"
+              >
+                150
+              </div>
+              <p class="fw-semibold mb-0" style="font-size: 18px">
+                Là số lượng giáo viên và nhân viên của trung tâm Nhật ngữ
+                Jellyfish Vietnam.
+              </p>
             </div>
-            <p class="small mb-0">
-              Là số lượng giáo viên và nhân viên của trung tâm Nhật ngữ
-              Jellyfish Vietnam.
-            </p>
           </div>
         </div>
       </section>
 
+      <!-- CTA 1 — Figma: px=20 py=16 font=28px bold #237a37 rounded-8 -->
       <div class="text-center my-4">
         <a
           href="#"
-          class="fw-bold text-white text-decoration-none rounded-3 d-inline-block"
-          style="background: #217335; padding: 13px 28px"
+          class="fw-bold text-white text-decoration-none d-inline-block"
+          style="
+            background: #237a37;
+            padding: 16px 20px;
+            font-size: 28px;
+            border-radius: 8px;
+          "
           >Đăng ký nhận tư vấn</a
         >
       </div>
 
+      <!-- ===== KHÓA HỌC ===== -->
+      <!-- Figma: 4 cards 288×432px each, gap 24px → max-width:1224px + g-4 = exact match -->
       <section class="py-5 bg-white text-center px-3">
-        <h2 class="fw-bold mb-4">Khóa học tiếng Nhật từ cơ bản đến nâng cao</h2>
-        <div class="container" style="max-width: 960px">
+        <h2 class="fw-bold mb-4" style="font-size: 28px">
+          Khóa học tiếng Nhật từ cơ bản đến nâng cao
+        </h2>
+        <div class="container" style="max-width: 1224px">
           <div class="row row-cols-2 row-cols-md-4 g-4">
             <div class="col">
-              <div class="card border-0 shadow-sm h-100">
-                <img src="img/course1.png" class="card-img-top" alt="Khóa N5" />
-                <div class="card-body pb-3">
-                  <h5 class="fw-bold mb-1">Khóa N5</h5>
-                  <p class="text-muted small mb-0">Tiếng Nhật cơ bản</p>
-                </div>
-              </div>
+              <img
+                src="img/course-n5.png"
+                class="img-fluid w-100"
+                alt="Khóa N5"
+              />
             </div>
             <div class="col">
-              <div class="card border-0 shadow-sm h-100">
-                <img src="img/course2.jpg" class="card-img-top" alt="Khóa N4" />
-                <div class="card-body pb-3">
-                  <h5 class="fw-bold mb-1">Khóa N4</h5>
-                  <p class="text-muted small mb-0">Trình độ sơ cấp</p>
-                </div>
-              </div>
+              <img
+                src="img/course-n4.png"
+                class="img-fluid w-100"
+                alt="Khóa N4"
+              />
             </div>
             <div class="col">
-              <div class="card border-0 shadow-sm h-100">
-                <img src="img/course3.jpg" class="card-img-top" alt="Khóa N3" />
-                <div class="card-body pb-3">
-                  <h5 class="fw-bold mb-1">Khóa N3</h5>
-                  <p class="text-muted small mb-0">Trung cấp</p>
-                </div>
-              </div>
+              <img
+                src="img/course-n3.png"
+                class="img-fluid w-100"
+                alt="Khóa N3"
+              />
             </div>
             <div class="col">
-              <div class="card border-0 shadow-sm h-100">
-                <img src="img/course4.jpg" class="card-img-top" alt="Khóa N2" />
-                <div class="card-body pb-3">
-                  <h5 class="fw-bold mb-1">Khóa N2</h5>
-                  <p class="text-muted small mb-0">Nâng cao</p>
-                </div>
-              </div>
+              <img
+                src="img/course-n2.png"
+                class="img-fluid w-100"
+                alt="Khóa N2"
+              />
             </div>
           </div>
         </div>
       </section>
 
+      <!-- CTA 2 -->
       <div class="text-center my-4">
         <a
           href="#"
-          class="fw-bold text-white text-decoration-none rounded-3 d-inline-block"
-          style="background: #217335; padding: 13px 28px"
+          class="fw-bold text-white text-decoration-none d-inline-block"
+          style="
+            background: #237a37;
+            padding: 16px 20px;
+            font-size: 28px;
+            border-radius: 8px;
+          "
           >Nhận tư vấn miễn phí</a
         >
       </div>
 
-      <section class="py-5" style="background: #f2f2f2">
-        <div class="container" style="max-width: 1200px">
+      <!-- ===== SÁCH ===== -->
+      <!-- Figma: white bg, left text w=346px, books 183×265px in 3×2 grid -->
+      <section class="py-5">
+        <div class="container" style="max-width: 1224px">
           <div class="row g-4 align-items-center">
-            <div class="col-12 col-md-4 text-center">
-              <h2 class="fs-5 fw-semibold" style="color: #444">
-                Bộ sách tiếng Nhật dành cho người<br />mới học đến học chuyên
-                sâu
+            <div class="col-12 col-md-3">
+              <h2 class="fw-semibold" style="color: #41464b; font-size: 20px">
+                Bộ sách tiếng Nhật dành cho người mới học đến học chuyên sâu
               </h2>
             </div>
-            <div class="col-12 col-md-8">
-              <div class="row row-cols-2 row-cols-sm-3 g-3 text-center">
+            <div class="col-12 col-md-9">
+              <div class="row row-cols-3 g-3">
                 <div class="col">
                   <img
-                    src="img/course6.png"
-                    style="width: 130px"
-                    class="img-fluid"
+                    src="img/book-cover.png"
+                    class="img-fluid w-100"
+                    alt=""
                   />
-                  <p class="small mt-2 mb-0">Luyện thi năng lực Tiếng Nhật</p>
-                  <b class="small">ĐỌC HIỂU</b>
                 </div>
                 <div class="col">
                   <img
-                    src="img/course6.png"
-                    style="width: 130px"
-                    class="img-fluid"
+                    src="img/book-cover.png"
+                    class="img-fluid w-100"
+                    alt=""
                   />
-                  <p class="small mt-2 mb-0">Luyện thi năng lực Tiếng Nhật</p>
-                  <b class="small">TỪ VỰNG</b>
                 </div>
                 <div class="col">
                   <img
-                    src="img/course6.png"
-                    style="width: 130px"
-                    class="img-fluid"
+                    src="img/book-cover.png"
+                    class="img-fluid w-100"
+                    alt=""
                   />
-                  <p class="small mt-2 mb-0">Luyện thi năng lực Tiếng Nhật</p>
-                  <b class="small">NGỮ PHÁP</b>
                 </div>
                 <div class="col">
                   <img
-                    src="img/course6.png"
-                    style="width: 130px"
-                    class="img-fluid"
+                    src="img/book-cover.png"
+                    class="img-fluid w-100"
+                    alt=""
                   />
-                  <p class="small mt-2 mb-0">Luyện thi năng lực Tiếng Nhật</p>
-                  <b class="small">NGHE HIỂU</b>
                 </div>
                 <div class="col">
                   <img
-                    src="img/course6.png"
-                    style="width: 130px"
-                    class="img-fluid"
+                    src="img/book-cover.png"
+                    class="img-fluid w-100"
+                    alt=""
                   />
-                  <p class="small mt-2 mb-0">Luyện thi năng lực Tiếng Nhật</p>
-                  <b class="small">KANJI</b>
                 </div>
                 <div class="col">
                   <img
-                    src="img/course6.png"
-                    style="width: 130px"
-                    class="img-fluid"
+                    src="img/book-cover.png"
+                    class="img-fluid w-100"
+                    alt=""
                   />
-                  <p class="small mt-2 mb-0">Luyện thi năng lực Tiếng Nhật</p>
-                  <b class="small">LUYỆN ĐỀ</b>
                 </div>
               </div>
             </div>
           </div>
-          <div class="text-center mt-4">
-            <a
-              href="#"
-              class="fw-bold text-white text-decoration-none rounded-3 d-inline-block"
-              style="background: #217335; padding: 13px 28px"
-              >Xem tất cả giáo trình</a
-            >
-          </div>
         </div>
       </section>
 
-      <section class="py-5 px-3" style="background: #f5f5f5">
-        <div class="container" style="max-width: 1200px">
-          <h2 class="text-center fw-bold mb-4">
+      <!-- CTA 3 -->
+      <div class="text-center my-4">
+        <a
+          href="giaotrinh.html"
+          class="fw-bold text-white text-decoration-none d-inline-block"
+          style="
+            background: #237a37;
+            padding: 16px 20px;
+            font-size: 28px;
+            border-radius: 8px;
+          "
+          >Xem tất cả giáo trình</a
+        >
+      </div>
+
+      <!-- ===== GIẢNG VIÊN ===== -->
+      <!-- Figma: white bg, 2 cards each 600px wide, 546px tall — col-md-6 at 1224px + g-4 = 600px ✓ -->
+      <!-- Photo: w=156px h=239px | Text: 16px -->
+      <section class="py-5">
+        <div class="container" style="max-width: 1224px">
+          <h2 class="text-center fw-bold mb-5" style="font-size: 28px">
             Đội ngũ giảng viên - chuyên gia tại Jellyfish
           </h2>
           <div class="row g-4">
             <div class="col-12 col-md-6">
-              <div class="p-4 h-100" style="background: #dcdcdc">
-                <div class="d-flex gap-3">
+              <div class="p-4 h-100" style="background: #d9d9d9">
+                <p
+                  class="text-center mb-3"
+                  style="font-size: 16px; font-weight: 500"
+                >
+                  Jellyfish Teacher
+                </p>
+                <div class="d-flex gap-3 mb-3">
                   <img
                     src="img/course7.png"
                     class="flex-shrink-0"
-                    style="width: 120px; height: 150px; object-fit: cover"
-                    alt="Korekawa"
+                    style="width: 156px; height: 239px; object-fit: cover"
+                    alt="Korekawa sensei"
                   />
                   <div>
-                    <p class="mb-1 small"><b>Giáo viên:</b> Korekawa sensei</p>
-                    <p class="mb-1 small">
-                      <b>Trình độ:</b> Đã tốt nghiệp trường Kaisei University
+                    <p class="mb-2" style="font-size: 16px">
+                      <span class="fw-semibold" style="color: #237a37"
+                        >Giáo viên:</span
+                      >
+                      Korekawa sensei
                     </p>
-                    <p class="mb-1 small">
-                      <b>Kinh nghiệm:</b> Thành thạo tiếng Nhật và tiếng Anh
+                    <p class="mb-2" style="font-size: 16px">
+                      <span class="fw-semibold" style="color: #237a37"
+                        >Trình độ:</span
+                      >
+                      Đã tốt nghiệp trường Kaisei University
                     </p>
-                    <p class="small mt-2">
-                      Cô Korekawa luôn cố gắng hết mình để giúp học viên qua
-                      những ví dụ siêu thực tế và đáng yêu.
+                    <p class="mb-2" style="font-size: 16px">
+                      <span class="fw-semibold" style="color: #237a37"
+                        >Kinh nghiệm:</span
+                      >
+                      Thành thạo tiếng Nhật và tiếng Anh
                     </p>
                   </div>
                 </div>
+                <p class="mb-3" style="font-size: 16px">
+                  Nhận xét về Korekawa sensei: Cô Korekawa dịu dàng, cô luôn cố
+                  gắng hết mình để giúp chúng em bằng những ví dụ siêu thực tế
+                  và đáng yêu. Cô còn bổ sung cho chúng em rất nhiều kiến thức
+                  về văn hóa Nhật và tiếng Nhật.
+                </p>
                 <div
-                  class="rounded-3 mt-3 p-3 text-white"
-                  style="background: #2e7d32"
+                  class="p-3 rounded-3 text-white mb-3"
+                  style="background: #237a37; font-size: 16px"
                 >
                   "Cô Korekawa dịu dàng, luôn cố gắng hết mình để giúp chúng em
-                  bằng những ví dụ siêu thực tế và đáng yêu. Chúng em yêu quý cô
-                  Korekawa lắm."
+                  bằng những ví dụ siêu thực tế và đáng yêu. Cô còn bổ sung cho
+                  chúng em rất nhiều kiến thức về văn hóa Nhật và tiếng Nhật.
+                  Chúng em yêu quý cô Korekawa lắm."
                 </div>
-                <p class="mt-2 mb-0" style="color: #2e7d32">#Korekawa sensei</p>
+                <p class="fw-bold mb-0" style="color: #237a37; font-size: 16px">
+                  #Korekawa sensei
+                </p>
               </div>
             </div>
             <div class="col-12 col-md-6">
-              <div class="p-4 h-100" style="background: #dcdcdc">
-                <div class="d-flex gap-3">
+              <div class="p-4 h-100" style="background: #d9d9d9">
+                <p
+                  class="text-center mb-3"
+                  style="font-size: 16px; font-weight: 500"
+                >
+                  Jellyfish Teacher
+                </p>
+                <div class="d-flex gap-3 mb-3">
                   <img
                     src="img/course7.png"
                     class="flex-shrink-0"
-                    style="width: 120px; height: 150px; object-fit: cover"
-                    alt="Tanaka"
+                    style="width: 156px; height: 239px; object-fit: cover"
+                    alt="Korekawa sensei"
                   />
                   <div>
-                    <p class="mb-1 small"><b>Giáo viên:</b> Tanaka sensei</p>
-                    <p class="mb-1 small">
-                      <b>Trình độ:</b> Đã tốt nghiệp trường Osaka University
+                    <p class="mb-2" style="font-size: 16px">
+                      <span class="fw-semibold" style="color: #237a37"
+                        >Giáo viên:</span
+                      >
+                      Korekawa sensei
                     </p>
-                    <p class="mb-1 small">
-                      <b>Kinh nghiệm:</b> Hơn 10 năm giảng dạy tiếng Nhật
+                    <p class="mb-2" style="font-size: 16px">
+                      <span class="fw-semibold" style="color: #237a37"
+                        >Trình độ:</span
+                      >
+                      Đã tốt nghiệp trường Kaisei University
                     </p>
-                    <p class="small mt-2">
-                      Thầy Tanaka luôn nhiệt tình, tận tâm trong từng buổi học.
-                      Phương pháp giảng dạy sinh động giúp học viên tiếp thu
-                      nhanh.
+                    <p class="mb-2" style="font-size: 16px">
+                      <span class="fw-semibold" style="color: #237a37"
+                        >Kinh nghiệm:</span
+                      >
+                      Thành thạo tiếng Nhật và tiếng Anh
                     </p>
                   </div>
                 </div>
+                <p class="mb-3" style="font-size: 16px">
+                  Nhận xét về Korekawa sensei: Cô Korekawa dịu dàng, cô luôn cố
+                  gắng hết mình để giúp chúng em bằng những ví dụ siêu thực tế
+                  và đáng yêu. Cô còn bổ sung cho chúng em rất nhiều kiến thức
+                  về văn hóa Nhật và tiếng Nhật.
+                </p>
                 <div
-                  class="rounded-3 mt-3 p-3 text-white"
-                  style="background: #2e7d32"
+                  class="p-3 rounded-3 text-white mb-3"
+                  style="background: #237a37; font-size: 16px"
                 >
-                  "Thầy Tanaka rất tận tâm và nhiệt tình. Nhờ thầy mà chúng em
-                  tiến bộ rất nhiều. Cảm ơn thầy rất nhiều!"
+                  "Cô Korekawa dịu dàng, luôn cố gắng hết mình để giúp chúng em
+                  bằng những ví dụ siêu thực tế và đáng yêu. Cô còn bổ sung cho
+                  chúng em rất nhiều kiến thức về văn hóa Nhật và tiếng Nhật.
+                  Chúng em yêu quý cô Korekawa lắm."
                 </div>
-                <p class="mt-2 mb-0" style="color: #2e7d32">#Tanaka sensei</p>
+                <p class="fw-bold mb-0" style="color: #237a37; font-size: 16px">
+                  #Korekawa sensei
+                </p>
               </div>
             </div>
           </div>
         </div>
       </section>
 
+      <!-- ===== HỌC VIÊN NÓI GÌ ===== -->
+      <!-- Figma: 3 cards 392×446px — col-md-3 in 1224px + g-4 = 392px ✓ -->
       <section class="py-5 px-3">
-        <div class="container" style="max-width: 1200px">
-          <h2 class="text-center fw-bold mb-4">
+        <div class="container" style="max-width: 1224px">
+          <h2 class="text-center fw-bold mb-4" style="font-size: 28px">
             Học viên nói gì về Jellyfish?
           </h2>
-          <img src="img/course11.png" class="w-100" alt="Học viên review" />
+          <div class="row row-cols-1 row-cols-md-3 g-4">
+            <div class="col">
+              <img
+                src="img/student1.png"
+                class="img-fluid w-100"
+                alt="Học viên 1"
+              />
+            </div>
+            <div class="col">
+              <img
+                src="img/student2.png"
+                class="img-fluid w-100"
+                alt="Học viên 2"
+              />
+            </div>
+            <div class="col">
+              <img
+                src="img/student3.png"
+                class="img-fluid w-100"
+                alt="Học viên 3"
+              />
+            </div>
+          </div>
         </div>
       </section>
 
-      <section class="py-5 text-center bg-white">
-        <h2 class="fw-bold mb-2">Bản tin Jellyfish</h2>
-        <p class="text-muted mb-4">
+      <!-- ===== BẢN TIN ===== -->
+      <!-- Figma: 6 photos 392×392px — g-4 at 1224px = 392px ✓, subtitle 20px -->
+      <section class="py-5 text-center">
+        <h2 class="fw-bold mb-2" style="font-size: 28px">Bản tin Jellyfish</h2>
+        <p class="mb-4 fw-semibold" style="color: #41464b; font-size: 20px">
           Chia sẻ những hoạt động nổi bật, hình ảnh, khoảnh khắc đáng nhớ của
           học viên Jellyfish Việt Nam.
         </p>
-        <div class="container" style="max-width: 1200px">
-          <div class="row row-cols-1 row-cols-md-3 g-3">
+        <div class="container" style="max-width: 1224px">
+          <div class="row row-cols-1 row-cols-md-3 g-4">
             <div class="col">
               <img
-                src="img/course12.png"
+                src="img/gallery-photo.png"
                 class="w-100"
-                style="height: 250px; object-fit: cover"
+                style="height: 392px; object-fit: cover"
                 alt=""
               />
             </div>
             <div class="col">
               <img
-                src="img/course12.png"
+                src="img/gallery-photo.png"
                 class="w-100"
-                style="height: 250px; object-fit: cover"
+                style="height: 392px; object-fit: cover"
                 alt=""
               />
             </div>
             <div class="col">
               <img
-                src="img/course12.png"
+                src="img/gallery-photo.png"
                 class="w-100"
-                style="height: 250px; object-fit: cover"
+                style="height: 392px; object-fit: cover"
                 alt=""
               />
             </div>
             <div class="col">
               <img
-                src="img/course12.png"
+                src="img/gallery-photo.png"
                 class="w-100"
-                style="height: 250px; object-fit: cover"
+                style="height: 392px; object-fit: cover"
                 alt=""
               />
             </div>
             <div class="col">
               <img
-                src="img/course12.png"
+                src="img/gallery-photo.png"
                 class="w-100"
-                style="height: 250px; object-fit: cover"
+                style="height: 392px; object-fit: cover"
                 alt=""
               />
             </div>
             <div class="col">
               <img
-                src="img/course12.png"
+                src="img/gallery-photo.png"
                 class="w-100"
-                style="height: 250px; object-fit: cover"
+                style="height: 392px; object-fit: cover"
                 alt=""
               />
             </div>
           </div>
         </div>
-        <button
-          class="btn fw-bold text-white border-0 rounded-3 mt-4"
-          style="background: #217335; padding: 13px 28px"
+        <a
+          href="#"
+          class="fw-bold text-white text-decoration-none d-inline-block mt-4"
+          style="
+            background: #237a37;
+            padding: 16px 20px;
+            font-size: 28px;
+            border-radius: 8px;
+          "
+          >Đăng ký học ngay</a
         >
-          Đăng ký học ngay
-        </button>
       </section>
 
-      <section class="py-5 text-center" style="background: #f2f2f2">
-        <h2 class="fw-bold">Kiến thức hữu ích</h2>
-        <p class="text-muted mt-2 mb-4">
-          Cung cấp những kinh nghiệm, bí kíp học tiếng Nhật từ sơ cấp đến cao
-          cấp.
-        </p>
-        <div class="container" style="max-width: 1200px">
+      <!-- ===== KIẾN THỨC HỮU ÍCH ===== -->
+      <!-- Figma: bg #d9d9d9, cards 392×592px, image h=313.6px, all text 20px Semi Bold -->
+      <section class="py-5" style="background: #d9d9d9">
+        <div class="container" style="max-width: 1224px">
+          <h2 class="text-center fw-bold mb-2" style="font-size: 28px">
+            Kiến thức hữu ích
+          </h2>
+          <p
+            class="text-center mb-4 fw-semibold"
+            style="color: #41464b; font-size: 20px"
+          >
+            Cung cấp những kinh nghiệm, bí kíp học tiếng Nhật từ sơ cấp đến cao
+            cấp.
+          </p>
           <div class="row row-cols-1 row-cols-md-3 g-4">
             <div class="col">
-              <div class="card border-0 text-start h-100">
-                <img src="img/course13.png" class="card-img-top" alt="" />
-                <div class="card-body">
-                  <p class="fw-semibold mb-2">
+              <div class="bg-white overflow-hidden h-100">
+                <img
+                  src="img/knowledge-thumb.png"
+                  class="w-100"
+                  style="height: 314px; object-fit: cover"
+                  alt=""
+                />
+                <div class="p-3">
+                  <h5
+                    class="fw-semibold text-center mb-2"
+                    style="font-size: 20px"
+                  >
                     LƯỢNG TỪ – CÁCH ĐẾM SỐ LƯỢNG TRONG TIẾNG NHẬT
-                  </p>
-                  <p class="small text-muted">
+                  </h5>
+                  <p
+                    class="fw-semibold"
+                    style="color: #565e64; font-size: 20px"
+                  >
                     Cũng giống với tiếng Việt, tiếng Nhật cũng tồn tại cách nói
                     liên quan đến số lượng (Còn được gọi là lượng từ).
                   </p>
-                  <span class="text-muted small">20/12/2022</span>
+                  <p
+                    class="fw-semibold mb-0"
+                    style="color: #565e64; font-size: 20px"
+                  >
+                    20/12/2022
+                  </p>
                 </div>
               </div>
             </div>
             <div class="col">
-              <div class="card border-0 text-start h-100">
-                <img src="img/course13.png" class="card-img-top" alt="" />
-                <div class="card-body">
-                  <p class="fw-semibold mb-2">
+              <div class="bg-white overflow-hidden h-100">
+                <img
+                  src="img/knowledge-thumb.png"
+                  class="w-100"
+                  style="height: 314px; object-fit: cover"
+                  alt=""
+                />
+                <div class="p-3">
+                  <h5
+                    class="fw-semibold text-center mb-2"
+                    style="font-size: 20px"
+                  >
                     ĐỘNG TỪ – CÁCH CHIA ĐỘNG TỪ TRONG TIẾNG NHẬT
-                  </p>
-                  <p class="small text-muted">
+                  </h5>
+                  <p
+                    class="fw-semibold"
+                    style="color: #565e64; font-size: 20px"
+                  >
                     Động từ trong tiếng Nhật được chia thành 3 nhóm chính, mỗi
                     nhóm có cách chia khác nhau.
                   </p>
-                  <span class="text-muted small">15/01/2023</span>
+                  <p
+                    class="fw-semibold mb-0"
+                    style="color: #565e64; font-size: 20px"
+                  >
+                    15/01/2023
+                  </p>
                 </div>
               </div>
             </div>
             <div class="col">
-              <div class="card border-0 text-start h-100">
-                <img src="img/course13.png" class="card-img-top" alt="" />
-                <div class="card-body">
-                  <p class="fw-semibold mb-2">
+              <div class="bg-white overflow-hidden h-100">
+                <img
+                  src="img/knowledge-thumb.png"
+                  class="w-100"
+                  style="height: 314px; object-fit: cover"
+                  alt=""
+                />
+                <div class="p-3">
+                  <h5
+                    class="fw-semibold text-center mb-2"
+                    style="font-size: 20px"
+                  >
                     NGỮ PHÁP N3 – NHỮNG MẪU CÂU QUAN TRỌNG CẦN NẮM
-                  </p>
-                  <p class="small text-muted">
+                  </h5>
+                  <p
+                    class="fw-semibold"
+                    style="color: #565e64; font-size: 20px"
+                  >
                     Tổng hợp các mẫu ngữ pháp quan trọng ở cấp độ N3 giúp bạn tự
                     tin hơn trong kỳ thi.
                   </p>
-                  <span class="text-muted small">10/02/2023</span>
+                  <p
+                    class="fw-semibold mb-0"
+                    style="color: #565e64; font-size: 20px"
+                  >
+                    10/02/2023
+                  </p>
                 </div>
               </div>
             </div>
@@ -553,63 +738,112 @@
         </div>
       </section>
 
-      <section class="py-5" style="background: #f4f4f4">
-        <div class="container" style="max-width: 1200px">
-          <div class="row g-4 align-items-center">
-            <div class="col-md-5 d-none d-md-block">
-              <img src="img/course14.png" class="img-fluid" alt="Đăng ký" />
+      <!-- ===== ĐĂNG KÝ ===== -->
+      <!-- Figma: left image 496×496px, form labels+inputs 20px, button 28px -->
+      <section class="py-5">
+        <div class="container" style="max-width: 1224px">
+          <div class="row g-4 align-items-start">
+            <div class="col-12 col-md-5">
+              <img
+                src="img/hero-banner-sm.png"
+                class="img-fluid w-100 rounded-3"
+                alt="Đăng ký học Jellyfish"
+              />
             </div>
             <div class="col-12 col-md-7">
-              <h2 class="fw-bold mb-3">Đăng ký học tiếng Nhật tại Jellyfish</h2>
+              <h2 class="fw-bold mb-4 text-center" style="font-size: 28px">
+                Đăng ký học tiếng Nhật tại Jellyfish
+              </h2>
               <form>
-                <div class="mb-2">
-                  <label class="form-label fw-medium">Họ và tên bạn *</label
-                  ><input
+                <div class="mb-3">
+                  <label
+                    class="form-label fw-semibold"
+                    style="font-size: 20px; color: #141619"
+                    >Họ và tên bạn <span style="color: #dc3545">*</span></label
+                  >
+                  <input
                     type="text"
                     class="form-control"
                     placeholder="Nguyễn Văn A"
-                  />
-                </div>
-                <div class="mb-2">
-                  <label class="form-label fw-medium"
-                    >Số điện thoại của bạn *</label
-                  ><input
-                    type="tel"
-                    class="form-control"
-                    placeholder="0912 345 678"
-                  />
-                </div>
-                <div class="mb-2">
-                  <label class="form-label fw-medium"
-                    >Email bạn hay sử dụng *</label
-                  ><input
-                    type="email"
-                    class="form-control"
-                    placeholder="example@email.com"
+                    style="
+                      border: 1px solid #899197;
+                      border-radius: 8px;
+                      font-size: 20px;
+                    "
                   />
                 </div>
                 <div class="mb-3">
-                  <label class="form-label fw-medium"
-                    >Vui lòng chọn khóa học để được tư vấn *</label
+                  <label
+                    class="form-label fw-semibold"
+                    style="font-size: 20px; color: #141619"
+                    >Số điện thoại của bạn
+                    <span style="color: #dc3545">*</span></label
                   >
-                  <select class="form-select">
+                  <input
+                    type="tel"
+                    class="form-control"
+                    placeholder="0912 345 678"
+                    style="
+                      border: 1px solid #899197;
+                      border-radius: 8px;
+                      font-size: 20px;
+                    "
+                  />
+                </div>
+                <div class="mb-3">
+                  <label
+                    class="form-label fw-semibold"
+                    style="font-size: 20px; color: #141619"
+                    >Email bạn hay sử dụng
+                    <span style="color: #dc3545">*</span></label
+                  >
+                  <input
+                    type="email"
+                    class="form-control"
+                    placeholder="example@email.com"
+                    style="
+                      border: 1px solid #899197;
+                      border-radius: 8px;
+                      font-size: 20px;
+                    "
+                  />
+                </div>
+                <div class="mb-4">
+                  <label
+                    class="form-label fw-semibold"
+                    style="font-size: 20px; color: #141619"
+                    >Vui lòng chọn khóa học để được tư vấn
+                    <span style="color: #dc3545">*</span></label
+                  >
+                  <select
+                    class="form-select"
+                    style="
+                      border: 1px solid #899197;
+                      border-radius: 8px;
+                      font-size: 20px;
+                    "
+                  >
                     <option>Khóa N5</option>
                     <option>Khóa N4</option>
                     <option>Khóa N3</option>
                     <option>Khóa N2</option>
                   </select>
                 </div>
-                <button
-                  type="submit"
-                  class="btn fw-bold text-white border-0 rounded-3 w-100"
-                  style="
-                    background: #217335;
-                    padding: 13px 28px;
-                    max-width: 280px;
-                  "
-                >
-                  Nhận tư vấn miễn phí
-                </button>
+                <div class="text-center">
+                  <button
+                    type="submit"
+                    class="btn fw-bold text-white border-0 w-100"
+                    style="
+                      background: #237a37;
+                      padding: 16px 20px;
+                      font-size: 28px;
+                      border-radius: 8px;
+                      max-width: 496px;
+                    "
+                  >
+                    Nhận tư vấn miễn phí
+                  </button>
+                </div>
               </form>
             </div>
           </div>
@@ -617,21 +851,23 @@
       </section>
     </main>
 
-    <footer
-      class="py-5 text-white"
-      style="background: #0f0a1e; font-size: 14px"
-    >
-      <div class="container" style="max-width: 1200px">
+    <!-- ===== FOOTER ===== -->
+    <!-- Figma: bg #110c22, logo 172×56px, tagline Extra Bold 16px, icons 24×24px -->
+    <footer class="py-5" style="background: #110c22">
+      <div class="container" style="max-width: 1224px">
         <div
           class="d-flex justify-content-between align-items-start flex-wrap gap-3 mb-3"
         >
           <div>
             <img
-              src="img/Logofooter.png"
+              src="img/logo-jf.svg"
               alt="Jellyfish Vietnam"
-              style="height: 50px"
+              style="height: 56px; width: 172px; object-fit: contain"
             />
-            <p class="small mt-1 mb-0 text-uppercase" style="color: #aaa">
+            <p
+              class="mt-2 mb-0 text-white"
+              style="font-size: 16px; font-weight: 800"
+            >
               Expand your horizons
             </p>
           </div>
@@ -640,246 +876,252 @@
               <li>
                 <a
                   href="index.html"
-                  class="text-white text-decoration-none fw-bold"
+                  class="text-white text-decoration-none fw-semibold"
+                  style="font-size: 18px"
                   >Trang chủ</a
                 >
               </li>
               <li>
                 <a
                   href="vejely.html"
-                  class="text-white text-decoration-none fw-bold"
+                  class="text-white text-decoration-none fw-semibold"
+                  style="font-size: 18px"
                   >Về Jellyfish</a
                 >
               </li>
               <li>
                 <a
                   href="khoahoc.html"
-                  class="text-white text-decoration-none fw-bold"
+                  class="text-white text-decoration-none fw-semibold"
+                  style="font-size: 18px"
                   >Khóa học</a
                 >
               </li>
               <li>
                 <a
                   href="giaotrinh.html"
-                  class="text-white text-decoration-none fw-bold"
+                  class="text-white text-decoration-none fw-semibold"
+                  style="font-size: 18px"
                   >Giáo trình</a
                 >
               </li>
               <li>
                 <a
                   href="kienthuc.html"
-                  class="text-white text-decoration-none fw-bold"
+                  class="text-white text-decoration-none fw-semibold"
+                  style="font-size: 18px"
                   >Kiến thức hữu ích</a
                 >
               </li>
             </ul>
           </nav>
         </div>
-        <hr style="border-color: rgba(255, 255, 255, 0.12)" />
+        <hr style="border-color: #2e293d" />
         <div class="row g-4 py-2">
           <div class="col-12 col-md-4">
-            <h5 class="fw-bold mb-3">JELLYFISH JAPAN</h5>
+            <h5 class="fw-semibold mb-3 text-white" style="font-size: 18px">
+              JELLYFISH JAPAN
+            </h5>
             <p
-              class="d-flex align-items-start gap-2 mb-2"
-              style="color: #ccc; line-height: 1.6"
+              class="d-flex align-items-start gap-3 mb-3"
+              style="color: #b3b1b8; font-size: 16px; line-height: 24px"
             >
               <img
                 src="img/diachiicon.png"
                 alt=""
                 style="
-                  width: 16px;
+                  width: 24px;
+                  height: 24px;
                   flex-shrink: 0;
-                  margin-top: 3px;
+                  margin-top: 2px;
                   object-fit: contain;
                 "
               />4F Westhill Building, Nishigotanda 2-24-4, Shinagawa, Tokyo,
               Japan
             </p>
             <p
-              class="d-flex align-items-start gap-2 mb-2"
-              style="color: #ccc; line-height: 1.6"
+              class="d-flex align-items-start gap-3 mb-3"
+              style="color: #b3b1b8; font-size: 16px; line-height: 24px"
             >
               <img
                 src="img/linkicon.png"
                 alt=""
                 style="
-                  width: 16px;
+                  width: 24px;
+                  height: 24px;
                   flex-shrink: 0;
-                  margin-top: 3px;
+                  margin-top: 2px;
                   object-fit: contain;
                 "
               />https://jellyfish-g.co.jp
             </p>
             <p
-              class="d-flex align-items-start gap-2 mb-2"
-              style="color: #ccc; line-height: 1.6"
+              class="d-flex align-items-start gap-3 mb-3"
+              style="color: #b3b1b8; font-size: 16px; line-height: 24px"
             >
               <img
                 src="img/mailicon.png"
                 alt=""
                 style="
-                  width: 16px;
+                  width: 24px;
+                  height: 24px;
                   flex-shrink: 0;
-                  margin-top: 3px;
+                  margin-top: 2px;
                   object-fit: contain;
                 "
               />job_info@jellyfish-g.co.jp
             </p>
             <p
-              class="d-flex align-items-start gap-2 mb-2"
-              style="color: #ccc; line-height: 1.6"
+              class="d-flex align-items-start gap-3 mb-0"
+              style="color: #b3b1b8; font-size: 16px; line-height: 24px"
             >
               <img
                 src="img/callicon.png"
                 alt=""
                 style="
-                  width: 16px;
+                  width: 24px;
+                  height: 24px;
                   flex-shrink: 0;
-                  margin-top: 3px;
+                  margin-top: 2px;
                   object-fit: contain;
                 "
               />03-5437-0135
             </p>
           </div>
           <div class="col-12 col-md-4">
-            <h5 class="fw-bold mb-3">JELLYFISH VIỆT NAM</h5>
+            <h5 class="fw-semibold mb-3 text-white" style="font-size: 18px">
+              JELLYFISH VIỆT NAM
+            </h5>
             <p
-              class="d-flex align-items-start gap-2 mb-2"
-              style="color: #ccc; line-height: 1.6"
+              class="d-flex align-items-start gap-3 mb-3"
+              style="color: #b3b1b8; font-size: 16px; line-height: 24px"
             >
               <img
                 src="img/diachiicon.png"
                 alt=""
                 style="
-                  width: 16px;
+                  width: 24px;
+                  height: 24px;
                   flex-shrink: 0;
-                  margin-top: 3px;
+                  margin-top: 2px;
                   object-fit: contain;
                 "
               />Tầng 13, CMC Tower, 11 Duy Tân, P. Dịch Vọng Hậu, Q. Cầu Giấy,
               TP. Hà Nội
             </p>
             <p
-              class="d-flex align-items-start gap-2 mb-2"
-              style="color: #ccc; line-height: 1.6"
+              class="d-flex align-items-start gap-3 mb-3"
+              style="color: #b3b1b8; font-size: 16px; line-height: 24px"
             >
               <img
                 src="img/linkicon.png"
                 alt=""
                 style="
-                  width: 16px;
+                  width: 24px;
+                  height: 24px;
                   flex-shrink: 0;
-                  margin-top: 3px;
+                  margin-top: 2px;
                   object-fit: contain;
                 "
               />https://jellyfish-vn.com
             </p>
             <p
-              class="d-flex align-items-start gap-2 mb-2"
-              style="color: #ccc; line-height: 1.6"
+              class="d-flex align-items-start gap-3 mb-3"
+              style="color: #b3b1b8; font-size: 16px; line-height: 24px"
             >
               <img
                 src="img/mailicon.png"
                 alt=""
                 style="
-                  width: 16px;
+                  width: 24px;
+                  height: 24px;
                   flex-shrink: 0;
-                  margin-top: 3px;
+                  margin-top: 2px;
                   object-fit: contain;
                 "
               />admin@jellyfish-vn.com
             </p>
             <p
-              class="d-flex align-items-start gap-2 mb-2"
-              style="color: #ccc; line-height: 1.6"
+              class="d-flex align-items-start gap-3 mb-0"
+              style="color: #b3b1b8; font-size: 16px; line-height: 24px"
             >
               <img
                 src="img/callicon.png"
                 alt=""
                 style="
-                  width: 16px;
+                  width: 24px;
+                  height: 24px;
                   flex-shrink: 0;
-                  margin-top: 3px;
+                  margin-top: 2px;
                   object-fit: contain;
                 "
               />0243.7955.846
             </p>
           </div>
           <div class="col-12 col-md-4">
-            <h5 class="fw-bold mb-3">CHI NHÁNH HẢI PHÒNG</h5>
+            <h5 class="fw-semibold mb-3 text-white" style="font-size: 18px">
+              CHI NHÁNH HẢI PHÒNG
+            </h5>
             <p
-              class="d-flex align-items-start gap-2 mb-2"
-              style="color: #ccc; line-height: 1.6"
+              class="d-flex align-items-start gap-3 mb-3"
+              style="color: #b3b1b8; font-size: 16px; line-height: 24px"
             >
               <img
                 src="img/diachiicon.png"
                 alt=""
                 style="
-                  width: 16px;
+                  width: 24px;
+                  height: 24px;
                   flex-shrink: 0;
-                  margin-top: 3px;
+                  margin-top: 2px;
                   object-fit: contain;
                 "
               />Tầng 3, CMC Tower, tòa nhà Sholega, 275 Lạch Tray, Ngô Quyền,
               TP. Hải Phòng
             </p>
             <p
-              class="d-flex align-items-start gap-2 mb-2"
-              style="color: #ccc; line-height: 1.6"
+              class="d-flex align-items-start gap-3 mb-0"
+              style="color: #b3b1b8; font-size: 16px; line-height: 24px"
             >
               <img
                 src="img/callicon.png"
                 alt=""
                 style="
-                  width: 16px;
+                  width: 24px;
+                  height: 24px;
                   flex-shrink: 0;
-                  margin-top: 3px;
+                  margin-top: 2px;
                   object-fit: contain;
                 "
               />0969.895.759
             </p>
           </div>
         </div>
-        <hr style="border-color: rgba(255, 255, 255, 0.12)" />
+        <hr style="border-color: #2e293d" />
         <div
           class="d-flex justify-content-between align-items-center flex-wrap gap-3"
         >
-          <p class="mb-0 small" style="color: #666">
+          <p class="mb-0" style="color: #b3b1b8; font-size: 16px">
             © 2023 Jellyfish. All rights reserved.
           </p>
-          <div class="d-flex gap-3">
+          <div class="d-flex gap-3 align-items-center">
             <a href="#"
               ><img
                 src="img/yticon.png"
                 alt="YouTube"
-                style="
-                  width: 24px;
-                  height: 24px;
-                  opacity: 0.7;
-                  object-fit: contain;
-                "
+                style="width: 24px; height: 24px; object-fit: contain"
             /></a>
             <a href="#"
               ><img
                 src="img/igicons.png"
                 alt="Instagram"
-                style="
-                  width: 24px;
-                  height: 24px;
-                  opacity: 0.7;
-                  object-fit: contain;
-                "
+                style="width: 24px; height: 24px; object-fit: contain"
             /></a>
             <a href="#"
               ><img
                 src="img/fbicons.png"
                 alt="Facebook"
-                style="
-                  width: 24px;
-                  height: 24px;
-                  opacity: 0.7;
-                  object-fit: contain;
-                "
+                style="width: 24px; height: 24px; object-fit: contain"
             /></a>
           </div>
         </div>
