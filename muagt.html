@@ -1,0 +1,432 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Jellyfish Vietnam - Trọn bộ giáo trình N5</title>
+    <link rel="stylesheet" href="style.css" />
+    <style>
+      /* Fix content-wrapper conflict (2 định nghĩa trong style.css) */
+      main.content-wrapper {
+        max-width: 1200px !important;
+        margin: 30px auto !important;
+        padding: 0 20px !important;
+        display: flex !important;
+        gap: 30px !important;
+        align-items: flex-start !important;
+      }
+
+      @media (max-width: 768px) {
+        /* Toàn bộ main xếp dọc */
+        main.content-wrapper {
+          flex-direction: column !important;
+          padding: 0 12px !important;
+          gap: 20px !important;
+          margin: 16px auto !important;
+        }
+
+        /* Tiêu đề sản phẩm nằm TRÊN, full width */
+        .product-detail-top {
+          flex-direction: row !important;
+          gap: 14px !important;
+          align-items: flex-start !important;
+        }
+
+        /* Tiêu đề h1 kéo ra ngoài product-detail-top — hiển thị trước */
+        .product-title {
+          display: block;
+          font-size: 18px;
+          font-weight: 800;
+          margin: 0 0 12px;
+          order: -1;
+        }
+
+        /* Ảnh bên trái, nhỏ gọn */
+        .detail-image-box {
+          flex: 0 0 160px !important;
+          width: 160px !important;
+        }
+
+        .detail-image-box img {
+          width: 160px !important;
+          height: auto !important;
+          border-radius: 10px !important;
+          margin: 0 !important;
+        }
+
+        /* Info bên phải */
+        .detail-info-box {
+          flex: 1 !important;
+          min-width: 0 !important;
+        }
+
+        .detail-info-box .product-title {
+          font-size: 14px !important;
+          margin: 4px 0 8px !important;
+        }
+
+        .detail-info-box .category {
+          font-size: 12px !important;
+          margin-bottom: 4px !important;
+        }
+
+        .detail-price {
+          margin-bottom: 8px;
+        }
+
+        .old-price {
+          font-size: 12px !important;
+        }
+
+        .current-price {
+          font-size: 16px !important;
+        }
+
+        .quantity-box {
+          margin: 10px 0 !important;
+        }
+
+        .btn-add-cart-large {
+          width: 100% !important;
+          padding: 10px !important;
+          font-size: 13px !important;
+          border-radius: 8px !important;
+        }
+
+        /* Mô tả */
+        .product-description h2 {
+          font-size: 15px;
+          font-weight: 800;
+          margin: 20px 0 10px;
+        }
+
+        .desc-item h3 {
+          font-size: 14px;
+        }
+
+        .desc-item p,
+        .description-final {
+          font-size: 13px;
+          line-height: 1.7;
+        }
+
+        /* Sản phẩm tương tự: 2 cột */
+        .section-title {
+          font-size: 17px;
+          font-weight: 800;
+          margin: 20px 0 12px;
+        }
+
+        .related-grid {
+          display: grid !important;
+          grid-template-columns: 1fr 1fr !important;
+          gap: 14px !important;
+        }
+
+        .related-grid .product-item {
+          width: 100% !important;
+          background: #fff !important;
+          border-radius: 12px !important;
+          padding: 10px !important;
+          box-shadow: 0 1px 6px rgba(0, 0, 0, 0.07) !important;
+        }
+
+        .related-grid .product-image img {
+          height: 150px !important;
+          border-radius: 10px !important;
+        }
+
+        .related-grid .product-item h3 {
+          font-size: 13px !important;
+          margin: 8px 0 4px !important;
+        }
+
+        .related-grid .category {
+          font-size: 11px !important;
+          margin-top: 8px !important;
+        }
+
+        .related-grid .current-price {
+          font-size: 14px !important;
+        }
+
+        .related-grid .old-price {
+          font-size: 12px !important;
+        }
+
+        .related-grid .btn-add-cart {
+          width: 100% !important;
+          padding: 8px !important;
+          font-size: 12px !important;
+          text-align: center !important;
+          margin-top: 8px !important;
+        }
+
+        /* Sidebar full width xuống dưới */
+        .sidebar {
+          width: 100% !important;
+          max-width: 100% !important;
+        }
+      }
+    </style>
+    <script>
+      // Trên mobile: chuyển h1.product-title ra trước .product-detail-top
+      function fixMobileLayout() {
+        if (window.innerWidth <= 768) {
+          var title = document.querySelector(".detail-info-box .product-title");
+          var detailTop = document.querySelector(".product-detail-top");
+          if (title && detailTop && detailTop.parentNode) {
+            detailTop.parentNode.insertBefore(title, detailTop);
+          }
+        }
+      }
+      document.addEventListener("DOMContentLoaded", fixMobileLayout);
+    </script>
+  </head>
+  <body>
+    <header class="main-header">
+      <div class="container top-bar">
+        <img src="img/logo.png" alt="MaiaTech" class="logo" />
+        <div class="search-box">
+          <input type="text" placeholder="Tìm kiếm..." />
+        </div>
+        <div class="header-buttons">
+          <button class="btn-consult">ĐĂNG KÝ TƯ VẤN</button>
+          <a href="tel:0961106466" class="phone">
+            <img
+              src="img/Rectangle 77.png"
+              alt="Phone Icon"
+              class="phone-icon"
+            />
+            096.110.6466
+          </a>
+        </div>
+      </div>
+
+      <nav class="main-nav">
+        <div class="container">
+          <ul>
+            <li><a href="index.html">Trang chủ</a></li>
+            <li><a href="vejely.html">Về Jellyfish Việt Nam</a></li>
+            <li><a href="khoahoc.html">Khóa học</a></li>
+            <li><a href="lichkhaigiang.html">Lịch khai giảng</a></li>
+            <li><a href="giaotrinh.html" class="active">Giáo trình</a></li>
+            <li><a href="kienthuc.html">Kiến thức hữu ích</a></li>
+            <li><a href="#">Tin tức</a></li>
+          </ul>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container content-wrapper">
+      <section class="product-detail-section">
+        <div class="product-detail-top">
+          <div class="detail-image-box">
+            <img src="img/chonbogt.jpg" alt="Trọn bộ giáo trình N5" />
+          </div>
+
+          <div class="detail-info-box">
+            <p class="category">
+              <img src="img/bookmark.png" alt="" /> Giáo trình N5
+            </p>
+            <h1 class="product-title">Trọn bộ giáo trình N5 (5 quyển)</h1>
+
+            <div class="detail-price">
+              <span class="old-price">375.000đ</span>
+              <span class="current-price">250.000đ</span>
+            </div>
+
+            <div class="quantity-box">
+              <button class="minus">-</button>
+              <input type="text" value="1" />
+              <button class="plus">+</button>
+            </div>
+
+            <button class="btn-add-cart-large">Thêm vào giỏ hàng</button>
+          </div>
+        </div>
+
+        <div class="product-description">
+          <h2>Bộ giáo trình Minna no nihongo Trình độ N5 gồm:</h2>
+
+          <div class="desc-list">
+            <div class="desc-item">
+              <h3>1. Shokyuu Đọc hiểu</h3>
+              <p>
+                Sách luyện đọc hiểu tương ứng với giáo trình Minna no Nihongo.
+              </p>
+            </div>
+
+            <div class="desc-item">
+              <h3>2. Choukai Nghe hiểu</h3>
+              <p>
+                Các bài nghe phù hợp với trình độ sơ cấp, có kèm theo lời thoại
+                cho các bài nghe ở cuối sách.
+              </p>
+            </div>
+
+            <div class="desc-item">
+              <h3>3. Hyoujun Bài tập</h3>
+              <p>
+                Bài tập phong phú và đa dạng.Mỗi bài ngữ pháp sẽ có phần luyện
+                tập tương ứng, và có thêm phần tổng hợp chung.
+              </p>
+            </div>
+
+            <div class="desc-item">
+              <h3>4. Bản dịch</h3>
+              <p>
+                Từ vựng: Liệt kê các từ mới liên quan đến nội dung và chủ đề của
+                bài học.Phần dịch: Dịch các phần mẫu câu, ví dụ và hội thoại
+                trong quyển chính sang tiếng Việt.Giải thích ngữ pháp: giải
+                thích cấu trúc, cách sử dụng của các mẫu ngữ pháp có trong bài,
+                kèm ví dụ chi tiết, dễ hiểu.
+              </p>
+            </div>
+
+            <div class="desc-item">
+              <h3>5. N5 Quyển chính</h3>
+              <p>
+                Tóm tắt cấu trúc, hội thoại và bài tập tổng hợp kiến thức N5.
+              </p>
+            </div>
+          </div>
+
+          <p class="description-final">
+            Bộ giáo trình Minna no nihongo Trình độ N5 là bộ sách tiếng Nhật cần
+            thiết dành cho các bạn đã hoàn thành xong 2 bảng chữ cái Hiragana,
+            Katakana và muốn học tiếng Nhật lâu dài. Tất cả các bài tập trong
+            sách đều đi kèm đáp án, do đó đây là bộ sách hiệu quả giúp bạn tự
+            học tại nhà.
+          </p>
+        </div>
+
+        <div class="related-products">
+          <h2 class="section-title">Sản phẩm tương tự</h2>
+          <div class="product-grid related-grid">
+            <div class="product-item">
+              <div class="product-image">
+                <img src="img/sachbandich.jpg" alt="" />
+              </div>
+              <p class="category">
+                <img src="img/bookmark.png" alt="" /> Giáo trình N5
+              </p>
+              <h3>N5 – Bản dịch và giải thích ngữ pháp</h3>
+              <div class="price">
+                <span class="old-price">75.000đ</span>
+                <span class="current-price">52.000đ</span>
+              </div>
+              <button class="btn-add-cart">Thêm vào giỏ hàng</button>
+            </div>
+
+            <div class="product-item">
+              <div class="product-image">
+                <img src="img/baitap.jpg" alt="" />
+              </div>
+              <p class="category">
+                <img src="img/bookmark.png" alt="" /> Giáo trình N5
+              </p>
+              <h3>N5 – Hyoujun Bài tập</h3>
+              <div class="price">
+                <span class="old-price">40.000đ</span>
+                <span class="current-price">34.000đ</span>
+              </div>
+              <button class="btn-add-cart">Thêm vào giỏ hàng</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <aside class="sidebar">
+        <div class="best-sellers">
+          <h3>SÁCH BÁN CHẠY</h3>
+          <ol class="book-list">
+            <li>25 BÀI NGHE HIỂU SƠ CẤP - TẬP 1</li>
+            <li>BẢN DỊCH & GIẢI THÍCH NGỮ PHÁP 1</li>
+            <li>BẢN DỊCH & GIẢI THÍCH NGỮ PHÁP 2</li>
+            <li>NHẬT NGỮ SƠ CẤP - BÀI TẬP Q I</li>
+            <li>25 BÀI NGHE HIỂU SƠ CẤP - TẬP 2</li>
+          </ol>
+        </div>
+        <div class="sidebar-banner">
+          <img src="img/banner.jpg" alt="Banner" />
+        </div>
+      </aside>
+    </main>
+
+    <footer class="main-footer">
+      <div class="container">
+        <div class="footer-top">
+          <div class="footer-logo">
+            <img src="img/Logofooter.png" alt="Jellyfish Vietnam" />
+            <p>Expand your horizons</p>
+          </div>
+          <nav class="footer-nav">
+            <ul>
+              <li><a href="trangchinh.html">Trang chủ</a></li>
+              <li><a href="vejely.html">Về Jellyfish</a></li>
+              <li><a href="#">Khóa học</a></li>
+              <li><a href="giaotrinh.html">Giáo trình</a></li>
+              <li><a href="kienthuc.html">Kiến thức hữu ích</a></li>
+            </ul>
+          </nav>
+        </div>
+
+        <hr class="footer-divider" />
+
+        <div class="footer-content">
+          <div class="footer-column">
+            <h4>JELLYFISH JAPAN</h4>
+            <p>
+              <img src="img/diachiicon.png" alt="Địa chỉ" /> 4F Westhill
+              Building, Nishigotanda 2-24-4, Shinagawa, Tokyo, Japan
+            </p>
+            <p>
+              <img src="img/linkicon.png" alt="Website" />
+              https://jellyfish-g.co.jp
+            </p>
+            <p>
+              <img src="img/mailicon.png" alt="Email" />
+              job_info@jellyfish-g.co.jp
+            </p>
+            <p><img src="img/callicon.png" alt="Điện thoại" /> 03-5437-0135</p>
+          </div>
+          <div class="footer-column">
+            <h4>JELLYFISH VIỆT NAM</h4>
+            <p>
+              <img src="img/diachiicon.png" alt="Địa chỉ" /> Tầng 13, CMC Tower,
+              11 Duy Tân, P. Dịch Vọng Hậu, Q. Cầu Giấy, TP. Hà Nội
+            </p>
+            <p>
+              <img src="img/linkicon.png" alt="Website" />
+              https://jellyfish-vn.com
+            </p>
+            <p>
+              <img src="img/mailicon.png" alt="Email" /> admin@jellyfish-vn.com
+            </p>
+            <p><img src="img/callicon.png" alt="Điện thoại" /> 0243.7955.846</p>
+          </div>
+          <div class="footer-column">
+            <h4>CHI NHÁNH HẢI PHÒNG</h4>
+            <p>
+              <img src="img/diachiicon.png" alt="Địa chỉ" /> Tầng 3, CMC Tower,
+              tòa nhà Sholega, 275 Lạch Tray, Ngô Quyền, TP. Hải Phòng
+            </p>
+            <p><img src="img/callicon.png" alt="Điện thoại" /> 0969.895.759</p>
+          </div>
+        </div>
+
+        <hr class="footer-divider" />
+
+        <div class="footer-bottom">
+          <p>© 2023 Jellyfish. All rights reserved.</p>
+          <div class="social-links">
+            <a href="#"><img src="img/yticon.png" alt="YouTube" /></a>
+            <a href="#"><img src="img/igicons.png" alt="Instagram" /></a>
+            <a href="#"><img src="img/fbicons.png" alt="Facebook" /></a>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
