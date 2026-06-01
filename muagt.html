@@ -4,429 +4,718 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Jellyfish Vietnam - Trọn bộ giáo trình N5</title>
-    <link rel="stylesheet" href="style.css" />
-    <style>
-      /* Fix content-wrapper conflict (2 định nghĩa trong style.css) */
-      main.content-wrapper {
-        max-width: 1200px !important;
-        margin: 30px auto !important;
-        padding: 0 20px !important;
-        display: flex !important;
-        gap: 30px !important;
-        align-items: flex-start !important;
-      }
-
-      @media (max-width: 768px) {
-        /* Toàn bộ main xếp dọc */
-        main.content-wrapper {
-          flex-direction: column !important;
-          padding: 0 12px !important;
-          gap: 20px !important;
-          margin: 16px auto !important;
-        }
-
-        /* Tiêu đề sản phẩm nằm TRÊN, full width */
-        .product-detail-top {
-          flex-direction: row !important;
-          gap: 14px !important;
-          align-items: flex-start !important;
-        }
-
-        /* Tiêu đề h1 kéo ra ngoài product-detail-top — hiển thị trước */
-        .product-title {
-          display: block;
-          font-size: 18px;
-          font-weight: 800;
-          margin: 0 0 12px;
-          order: -1;
-        }
-
-        /* Ảnh bên trái, nhỏ gọn */
-        .detail-image-box {
-          flex: 0 0 160px !important;
-          width: 160px !important;
-        }
-
-        .detail-image-box img {
-          width: 160px !important;
-          height: auto !important;
-          border-radius: 10px !important;
-          margin: 0 !important;
-        }
-
-        /* Info bên phải */
-        .detail-info-box {
-          flex: 1 !important;
-          min-width: 0 !important;
-        }
-
-        .detail-info-box .product-title {
-          font-size: 14px !important;
-          margin: 4px 0 8px !important;
-        }
-
-        .detail-info-box .category {
-          font-size: 12px !important;
-          margin-bottom: 4px !important;
-        }
-
-        .detail-price {
-          margin-bottom: 8px;
-        }
-
-        .old-price {
-          font-size: 12px !important;
-        }
-
-        .current-price {
-          font-size: 16px !important;
-        }
-
-        .quantity-box {
-          margin: 10px 0 !important;
-        }
-
-        .btn-add-cart-large {
-          width: 100% !important;
-          padding: 10px !important;
-          font-size: 13px !important;
-          border-radius: 8px !important;
-        }
-
-        /* Mô tả */
-        .product-description h2 {
-          font-size: 15px;
-          font-weight: 800;
-          margin: 20px 0 10px;
-        }
-
-        .desc-item h3 {
-          font-size: 14px;
-        }
-
-        .desc-item p,
-        .description-final {
-          font-size: 13px;
-          line-height: 1.7;
-        }
-
-        /* Sản phẩm tương tự: 2 cột */
-        .section-title {
-          font-size: 17px;
-          font-weight: 800;
-          margin: 20px 0 12px;
-        }
-
-        .related-grid {
-          display: grid !important;
-          grid-template-columns: 1fr 1fr !important;
-          gap: 14px !important;
-        }
-
-        .related-grid .product-item {
-          width: 100% !important;
-          background: #fff !important;
-          border-radius: 12px !important;
-          padding: 10px !important;
-          box-shadow: 0 1px 6px rgba(0, 0, 0, 0.07) !important;
-        }
-
-        .related-grid .product-image img {
-          height: 150px !important;
-          border-radius: 10px !important;
-        }
-
-        .related-grid .product-item h3 {
-          font-size: 13px !important;
-          margin: 8px 0 4px !important;
-        }
-
-        .related-grid .category {
-          font-size: 11px !important;
-          margin-top: 8px !important;
-        }
-
-        .related-grid .current-price {
-          font-size: 14px !important;
-        }
-
-        .related-grid .old-price {
-          font-size: 12px !important;
-        }
-
-        .related-grid .btn-add-cart {
-          width: 100% !important;
-          padding: 8px !important;
-          font-size: 12px !important;
-          text-align: center !important;
-          margin-top: 8px !important;
-        }
-
-        /* Sidebar full width xuống dưới */
-        .sidebar {
-          width: 100% !important;
-          max-width: 100% !important;
-        }
-      }
-    </style>
-    <script>
-      // Trên mobile: chuyển h1.product-title ra trước .product-detail-top
-      function fixMobileLayout() {
-        if (window.innerWidth <= 768) {
-          var title = document.querySelector(".detail-info-box .product-title");
-          var detailTop = document.querySelector(".product-detail-top");
-          if (title && detailTop && detailTop.parentNode) {
-            detailTop.parentNode.insertBefore(title, detailTop);
-          }
-        }
-      }
-      document.addEventListener("DOMContentLoaded", fixMobileLayout);
-    </script>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
   </head>
-  <body>
-    <header class="main-header">
-      <div class="container top-bar">
-        <img src="img/logo.png" alt="MaiaTech" class="logo" />
-        <div class="search-box">
-          <input type="text" placeholder="Tìm kiếm..." />
+  <body
+    style="
+      font-family: &quot;Be Vietnam Pro&quot;, Arial, sans-serif;
+      background: #f5f5f5;
+      color: #333;
+    "
+  >
+    <header class="bg-white shadow-sm">
+      <div
+        class="d-flex align-items-center justify-content-between gap-2 px-4 py-3"
+      >
+        <img
+          src="img/logo.png"
+          alt="Jellyfish Vietnam"
+          class="d-block"
+          style="height: 55px; width: auto; object-fit: contain"
+        />
+        <div class="d-none d-sm-flex flex-grow-1 mx-2">
+          <input
+            type="text"
+            placeholder="Tìm kiếm..."
+            class="form-control rounded-pill"
+          />
         </div>
-        <div class="header-buttons">
-          <button class="btn-consult">ĐĂNG KÝ TƯ VẤN</button>
-          <a href="tel:0961106466" class="phone">
-            <img
+        <div class="d-flex align-items-center gap-2 flex-shrink-0">
+          <button
+            class="btn fw-bold text-white border-0 rounded-3 text-nowrap d-none d-md-inline-flex align-items-center px-3 py-2"
+            style="background: #217335"
+          >
+            ĐĂNG KÝ TƯ VẤN
+          </button>
+          <a
+            href="tel:0961106466"
+            class="btn fw-bold text-white text-decoration-none border-0 rounded-3 text-nowrap d-inline-flex align-items-center px-3 py-2"
+            style="background: #d0021b"
+            ><img
               src="img/Rectangle 77.png"
-              alt="Phone Icon"
-              class="phone-icon"
-            />
-            096.110.6466
-          </a>
+              alt=""
+              style="width: 16px; margin-right: 6px"
+            />096.110.6466</a
+          >
         </div>
       </div>
-
-      <nav class="main-nav">
-        <div class="container">
-          <ul>
-            <li><a href="index.html">Trang chủ</a></li>
-            <li><a href="vejely.html">Về Jellyfish Việt Nam</a></li>
-            <li><a href="khoahoc.html">Khóa học</a></li>
-            <li><a href="lichkhaigiang.html">Lịch khai giảng</a></li>
-            <li><a href="giaotrinh.html" class="active">Giáo trình</a></li>
-            <li><a href="kienthuc.html">Kiến thức hữu ích</a></li>
-            <li><a href="#">Tin tức</a></li>
-          </ul>
-        </div>
+      <nav style="background: #217335; overflow-x: auto; scrollbar-width: none">
+        <ul
+          class="list-unstyled m-0 d-flex align-items-stretch"
+          style="
+            padding: 0 16px;
+            width: max-content;
+            min-width: 100%;
+            min-height: 52px;
+          "
+        >
+          <li class="d-flex">
+            <a
+              href="index.html"
+              class="text-white text-decoration-none d-flex align-items-center text-nowrap px-3"
+              style="font-size: 15px; border-bottom: 3px solid transparent"
+              >Trang chủ</a
+            >
+          </li>
+          <li class="d-flex">
+            <a
+              href="vejely.html"
+              class="text-white text-decoration-none d-flex align-items-center text-nowrap px-3"
+              style="font-size: 15px; border-bottom: 3px solid transparent"
+              >Về Jellyfish Việt Nam</a
+            >
+          </li>
+          <li class="d-flex">
+            <a
+              href="khoahoc.html"
+              class="text-white text-decoration-none d-flex align-items-center text-nowrap px-3"
+              style="font-size: 15px; border-bottom: 3px solid transparent"
+              >Khóa học</a
+            >
+          </li>
+          <li class="d-flex">
+            <a
+              href="lichkhaigiang.html"
+              class="text-white text-decoration-none d-flex align-items-center text-nowrap px-3"
+              style="font-size: 15px; border-bottom: 3px solid transparent"
+              >Lịch khai giảng</a
+            >
+          </li>
+          <li class="d-flex">
+            <a
+              href="giaotrinh.html"
+              class="text-white text-decoration-none d-flex align-items-center text-nowrap px-3"
+              style="font-size: 15px; border-bottom: 3px solid #fff"
+              >Giáo trình</a
+            >
+          </li>
+          <li class="d-flex">
+            <a
+              href="kienthuc.html"
+              class="text-white text-decoration-none d-flex align-items-center text-nowrap px-3"
+              style="font-size: 15px; border-bottom: 3px solid transparent"
+              >Kiến thức hữu ích</a
+            >
+          </li>
+          <li class="d-flex">
+            <a
+              href="#"
+              class="text-white text-decoration-none d-flex align-items-center text-nowrap px-3"
+              style="font-size: 15px; border-bottom: 3px solid transparent"
+              >Tin tức</a
+            >
+          </li>
+        </ul>
       </nav>
     </header>
 
-    <main class="container content-wrapper">
-      <section class="product-detail-section">
-        <div class="product-detail-top">
-          <div class="detail-image-box">
-            <img src="img/chonbogt.jpg" alt="Trọn bộ giáo trình N5" />
+    <div class="container py-4" style="max-width: 1200px">
+      <div class="row g-4">
+        <div class="col-12 col-lg-9">
+          <div class="d-flex gap-3 gap-md-4 mb-4 flex-wrap flex-sm-nowrap">
+            <div class="flex-shrink-0" style="max-width: 220px">
+              <img
+                src="img/chonbogt.jpg"
+                alt="Trọn bộ giáo trình N5"
+                class="img-fluid rounded-3"
+                style="background: #f9f9f9"
+              />
+            </div>
+            <div class="flex-grow-1 min-w-0">
+              <p
+                class="d-flex align-items-center gap-2 mb-1"
+                style="font-size: 13px; color: #555"
+              >
+                <img src="img/bookmark.png" alt="" style="width: 14px" />Giáo
+                trình N5
+              </p>
+              <h1 class="fw-bold mb-3" style="font-size: 22px">
+                Trọn bộ giáo trình N5 (5 quyển)
+              </h1>
+              <div class="mb-3">
+                <span class="text-muted text-decoration-line-through me-2"
+                  >375.000đ</span
+                >
+                <span class="fw-bold" style="color: #e74c3c; font-size: 20px"
+                  >250.000đ</span
+                >
+              </div>
+              <div
+                class="d-inline-flex border rounded mb-3"
+                style="overflow: hidden"
+              >
+                <button
+                  class="minus border-0 bg-transparent"
+                  style="
+                    width: 35px;
+                    height: 35px;
+                    font-size: 18px;
+                    cursor: pointer;
+                  "
+                >
+                  -
+                </button>
+                <input
+                  type="text"
+                  value="1"
+                  class="border-0 text-center"
+                  style="
+                    width: 40px;
+                    border-left: 1px solid #ddd;
+                    border-right: 1px solid #ddd;
+                    outline: none;
+                  "
+                />
+                <button
+                  class="plus border-0 bg-transparent"
+                  style="
+                    width: 35px;
+                    height: 35px;
+                    font-size: 18px;
+                    cursor: pointer;
+                  "
+                >
+                  +
+                </button>
+              </div>
+              <button
+                class="btn w-100 fw-bold text-white border-0 rounded-3 d-block"
+                style="background: #217335; padding: 11px 28px; font-size: 15px"
+              >
+                Thêm vào giỏ hàng
+              </button>
+            </div>
           </div>
 
-          <div class="detail-info-box">
-            <p class="category">
-              <img src="img/bookmark.png" alt="" /> Giáo trình N5
-            </p>
-            <h1 class="product-title">Trọn bộ giáo trình N5 (5 quyển)</h1>
-
-            <div class="detail-price">
-              <span class="old-price">375.000đ</span>
-              <span class="current-price">250.000đ</span>
-            </div>
-
-            <div class="quantity-box">
-              <button class="minus">-</button>
-              <input type="text" value="1" />
-              <button class="plus">+</button>
-            </div>
-
-            <button class="btn-add-cart-large">Thêm vào giỏ hàng</button>
-          </div>
-        </div>
-
-        <div class="product-description">
-          <h2>Bộ giáo trình Minna no nihongo Trình độ N5 gồm:</h2>
-
-          <div class="desc-list">
-            <div class="desc-item">
-              <h3>1. Shokyuu Đọc hiểu</h3>
-              <p>
+          <div class="border-top pt-3">
+            <h2 class="fw-bold mb-3" style="font-size: 18px">
+              Bộ giáo trình Minna no nihongo Trình độ N5 gồm:
+            </h2>
+            <div class="mb-3">
+              <h3 class="mb-1" style="color: #1a5cff; font-size: 16px">
+                1. Shokyuu Đọc hiểu
+              </h3>
+              <p style="margin-bottom: 14px; color: #444; font-size: 14px">
                 Sách luyện đọc hiểu tương ứng với giáo trình Minna no Nihongo.
               </p>
             </div>
-
-            <div class="desc-item">
-              <h3>2. Choukai Nghe hiểu</h3>
-              <p>
+            <div class="mb-3">
+              <h3 class="mb-1" style="color: #1a5cff; font-size: 16px">
+                2. Choukai Nghe hiểu
+              </h3>
+              <p style="margin-bottom: 14px; color: #444; font-size: 14px">
                 Các bài nghe phù hợp với trình độ sơ cấp, có kèm theo lời thoại
                 cho các bài nghe ở cuối sách.
               </p>
             </div>
-
-            <div class="desc-item">
-              <h3>3. Hyoujun Bài tập</h3>
-              <p>
-                Bài tập phong phú và đa dạng.Mỗi bài ngữ pháp sẽ có phần luyện
+            <div class="mb-3">
+              <h3 class="mb-1" style="color: #1a5cff; font-size: 16px">
+                3. Hyoujun Bài tập
+              </h3>
+              <p style="margin-bottom: 14px; color: #444; font-size: 14px">
+                Bài tập phong phú và đa dạng. Mỗi bài ngữ pháp sẽ có phần luyện
                 tập tương ứng, và có thêm phần tổng hợp chung.
               </p>
             </div>
-
-            <div class="desc-item">
-              <h3>4. Bản dịch</h3>
-              <p>
-                Từ vựng: Liệt kê các từ mới liên quan đến nội dung và chủ đề của
-                bài học.Phần dịch: Dịch các phần mẫu câu, ví dụ và hội thoại
-                trong quyển chính sang tiếng Việt.Giải thích ngữ pháp: giải
-                thích cấu trúc, cách sử dụng của các mẫu ngữ pháp có trong bài,
-                kèm ví dụ chi tiết, dễ hiểu.
+            <div class="mb-3">
+              <h3 class="mb-1" style="color: #1a5cff; font-size: 16px">
+                4. Bản dịch
+              </h3>
+              <p style="margin-bottom: 14px; color: #444; font-size: 14px">
+                Từ vựng, phần dịch các mẫu câu, ví dụ và hội thoại sang tiếng
+                Việt. Giải thích ngữ pháp chi tiết, dễ hiểu.
               </p>
             </div>
-
-            <div class="desc-item">
-              <h3>5. N5 Quyển chính</h3>
-              <p>
+            <div class="mb-3">
+              <h3 class="mb-1" style="color: #1a5cff; font-size: 16px">
+                5. N5 Quyển chính
+              </h3>
+              <p style="margin-bottom: 14px; color: #444; font-size: 14px">
                 Tóm tắt cấu trúc, hội thoại và bài tập tổng hợp kiến thức N5.
               </p>
             </div>
+            <p class="small mt-3" style="color: #444; line-height: 1.8">
+              Bộ giáo trình Minna no nihongo Trình độ N5 là bộ sách tiếng Nhật
+              cần thiết dành cho các bạn đã hoàn thành xong 2 bảng chữ cái
+              Hiragana, Katakana và muốn học tiếng Nhật lâu dài. Tất cả các bài
+              tập trong sách đều đi kèm đáp án, do đó đây là bộ sách hiệu quả
+              giúp bạn tự học tại nhà.
+            </p>
           </div>
 
-          <p class="description-final">
-            Bộ giáo trình Minna no nihongo Trình độ N5 là bộ sách tiếng Nhật cần
-            thiết dành cho các bạn đã hoàn thành xong 2 bảng chữ cái Hiragana,
-            Katakana và muốn học tiếng Nhật lâu dài. Tất cả các bài tập trong
-            sách đều đi kèm đáp án, do đó đây là bộ sách hiệu quả giúp bạn tự
-            học tại nhà.
-          </p>
-        </div>
-
-        <div class="related-products">
-          <h2 class="section-title">Sản phẩm tương tự</h2>
-          <div class="product-grid related-grid">
-            <div class="product-item">
-              <div class="product-image">
-                <img src="img/sachbandich.jpg" alt="" />
+          <div class="mt-4 pt-3 border-top">
+            <h2 class="fw-bold mb-3" style="font-size: 18px">
+              Sản phẩm tương tự
+            </h2>
+            <div class="row row-cols-2 g-3">
+              <div class="col">
+                <div class="card border rounded-3 p-2 h-100">
+                  <img
+                    src="img/sachbandich.jpg"
+                    class="card-img-top rounded-2"
+                    style="height: 200px; object-fit: cover"
+                    alt=""
+                  />
+                  <div class="card-body px-1 pb-1">
+                    <p
+                      class="d-flex align-items-center gap-2 small mt-2 mb-1"
+                      style="font-size: 13px; color: #555"
+                    >
+                      <img
+                        src="img/bookmark.png"
+                        alt=""
+                        style="width: 14px"
+                      />Giáo trình N5
+                    </p>
+                    <h6 class="fw-bold small">
+                      N5 – Bản dịch và giải thích ngữ pháp
+                    </h6>
+                    <div>
+                      <span
+                        class="text-muted text-decoration-line-through me-1"
+                        style="font-size: 13px"
+                        >75.000đ</span
+                      ><span class="fw-bold" style="color: #e74c3c"
+                        >52.000đ</span
+                      >
+                    </div>
+                    <button
+                      class="btn w-100 fw-semibold text-white border-0 mt-2"
+                      style="
+                        background: #217335;
+                        padding: 8px 12px;
+                        border-radius: 5px;
+                        font-size: 13px;
+                      "
+                    >
+                      Thêm vào giỏ hàng
+                    </button>
+                  </div>
+                </div>
               </div>
-              <p class="category">
-                <img src="img/bookmark.png" alt="" /> Giáo trình N5
-              </p>
-              <h3>N5 – Bản dịch và giải thích ngữ pháp</h3>
-              <div class="price">
-                <span class="old-price">75.000đ</span>
-                <span class="current-price">52.000đ</span>
+              <div class="col">
+                <div class="card border rounded-3 p-2 h-100">
+                  <img
+                    src="img/baitap.jpg"
+                    class="card-img-top rounded-2"
+                    style="height: 200px; object-fit: cover"
+                    alt=""
+                  />
+                  <div class="card-body px-1 pb-1">
+                    <p
+                      class="d-flex align-items-center gap-2 small mt-2 mb-1"
+                      style="font-size: 13px; color: #555"
+                    >
+                      <img
+                        src="img/bookmark.png"
+                        alt=""
+                        style="width: 14px"
+                      />Giáo trình N5
+                    </p>
+                    <h6 class="fw-bold small">N5 – Hyoujun Bài tập</h6>
+                    <div>
+                      <span
+                        class="text-muted text-decoration-line-through me-1"
+                        style="font-size: 13px"
+                        >40.000đ</span
+                      ><span class="fw-bold" style="color: #e74c3c"
+                        >34.000đ</span
+                      >
+                    </div>
+                    <button
+                      class="btn w-100 fw-semibold text-white border-0 mt-2"
+                      style="
+                        background: #217335;
+                        padding: 8px 12px;
+                        border-radius: 5px;
+                        font-size: 13px;
+                      "
+                    >
+                      Thêm vào giỏ hàng
+                    </button>
+                  </div>
+                </div>
               </div>
-              <button class="btn-add-cart">Thêm vào giỏ hàng</button>
             </div>
-
-            <div class="product-item">
-              <div class="product-image">
-                <img src="img/baitap.jpg" alt="" />
-              </div>
-              <p class="category">
-                <img src="img/bookmark.png" alt="" /> Giáo trình N5
-              </p>
-              <h3>N5 – Hyoujun Bài tập</h3>
-              <div class="price">
-                <span class="old-price">40.000đ</span>
-                <span class="current-price">34.000đ</span>
-              </div>
-              <button class="btn-add-cart">Thêm vào giỏ hàng</button>
-            </div>
           </div>
         </div>
-      </section>
 
-      <aside class="sidebar">
-        <div class="best-sellers">
-          <h3>SÁCH BÁN CHẠY</h3>
-          <ol class="book-list">
-            <li>25 BÀI NGHE HIỂU SƠ CẤP - TẬP 1</li>
-            <li>BẢN DỊCH & GIẢI THÍCH NGỮ PHÁP 1</li>
-            <li>BẢN DỊCH & GIẢI THÍCH NGỮ PHÁP 2</li>
-            <li>NHẬT NGỮ SƠ CẤP - BÀI TẬP Q I</li>
-            <li>25 BÀI NGHE HIỂU SƠ CẤP - TẬP 2</li>
-          </ol>
-        </div>
-        <div class="sidebar-banner">
-          <img src="img/banner.jpg" alt="Banner" />
-        </div>
-      </aside>
-    </main>
-
-    <footer class="main-footer">
-      <div class="container">
-        <div class="footer-top">
-          <div class="footer-logo">
-            <img src="img/Logofooter.png" alt="Jellyfish Vietnam" />
-            <p>Expand your horizons</p>
+        <div class="col-12 col-lg-3">
+          <div class="border rounded-4 p-4 mb-4 bg-white">
+            <h6 class="fw-bold text-uppercase mb-3">SÁCH BÁN CHẠY</h6>
+            <ul class="list-unstyled m-0">
+              <li
+                class="d-flex align-items-start mb-3 fw-semibold"
+                style="font-size: 14px; cursor: pointer; color: #333"
+              >
+                <span
+                  class="d-flex justify-content-center align-items-center rounded-circle flex-shrink-0 me-2 text-white"
+                  style="
+                    background: #217335;
+                    min-width: 28px;
+                    width: 28px;
+                    height: 28px;
+                    font-size: 13px;
+                  "
+                  >1</span
+                >25 BÀI NGHE HIỂU SƠ CẤP - TẬP 1
+              </li>
+              <li
+                class="d-flex align-items-start mb-3 fw-semibold"
+                style="font-size: 14px; cursor: pointer; color: #333"
+              >
+                <span
+                  class="d-flex justify-content-center align-items-center rounded-circle flex-shrink-0 me-2 text-white"
+                  style="
+                    background: #217335;
+                    min-width: 28px;
+                    width: 28px;
+                    height: 28px;
+                    font-size: 13px;
+                  "
+                  >2</span
+                >BẢN DỊCH & GIẢI THÍCH NGỮ PHÁP 1
+              </li>
+              <li
+                class="d-flex align-items-start mb-3 fw-semibold"
+                style="font-size: 14px; cursor: pointer; color: #333"
+              >
+                <span
+                  class="d-flex justify-content-center align-items-center rounded-circle flex-shrink-0 me-2 text-white"
+                  style="
+                    background: #217335;
+                    min-width: 28px;
+                    width: 28px;
+                    height: 28px;
+                    font-size: 13px;
+                  "
+                  >3</span
+                >BẢN DỊCH & GIẢI THÍCH NGỮ PHÁP 2
+              </li>
+              <li
+                class="d-flex align-items-start mb-3 fw-semibold"
+                style="font-size: 14px; cursor: pointer; color: #333"
+              >
+                <span
+                  class="d-flex justify-content-center align-items-center rounded-circle flex-shrink-0 me-2 text-white"
+                  style="
+                    background: #217335;
+                    min-width: 28px;
+                    width: 28px;
+                    height: 28px;
+                    font-size: 13px;
+                  "
+                  >4</span
+                >NHẬT NGỮ SƠ CẤP - BÀI TẬP Q I
+              </li>
+              <li
+                class="d-flex align-items-start mb-0 fw-semibold"
+                style="font-size: 14px; cursor: pointer; color: #333"
+              >
+                <span
+                  class="d-flex justify-content-center align-items-center rounded-circle flex-shrink-0 me-2 text-white"
+                  style="
+                    background: #217335;
+                    min-width: 28px;
+                    width: 28px;
+                    height: 28px;
+                    font-size: 13px;
+                  "
+                  >5</span
+                >25 BÀI NGHE HIỂU SƠ CẤP - TẬP 2
+              </li>
+            </ul>
           </div>
-          <nav class="footer-nav">
-            <ul>
-              <li><a href="trangchinh.html">Trang chủ</a></li>
-              <li><a href="vejely.html">Về Jellyfish</a></li>
-              <li><a href="#">Khóa học</a></li>
-              <li><a href="giaotrinh.html">Giáo trình</a></li>
-              <li><a href="kienthuc.html">Kiến thức hữu ích</a></li>
+          <img src="img/banner.jpg" class="img-fluid rounded-3" alt="Banner" />
+        </div>
+      </div>
+    </div>
+
+    <footer
+      class="py-5 text-white"
+      style="background: #0f0a1e; font-size: 14px"
+    >
+      <div class="container" style="max-width: 1200px">
+        <div
+          class="d-flex justify-content-between align-items-start flex-wrap gap-3 mb-3"
+        >
+          <div>
+            <img
+              src="img/Logofooter.png"
+              alt="Jellyfish Vietnam"
+              style="height: 50px"
+            />
+            <p class="small mt-1 mb-0 text-uppercase" style="color: #aaa">
+              Expand your horizons
+            </p>
+          </div>
+          <nav>
+            <ul class="list-unstyled d-flex flex-wrap gap-3 mb-0">
+              <li>
+                <a
+                  href="index.html"
+                  class="text-white text-decoration-none fw-bold"
+                  >Trang chủ</a
+                >
+              </li>
+              <li>
+                <a
+                  href="vejely.html"
+                  class="text-white text-decoration-none fw-bold"
+                  >Về Jellyfish</a
+                >
+              </li>
+              <li>
+                <a
+                  href="khoahoc.html"
+                  class="text-white text-decoration-none fw-bold"
+                  >Khóa học</a
+                >
+              </li>
+              <li>
+                <a
+                  href="giaotrinh.html"
+                  class="text-white text-decoration-none fw-bold"
+                  >Giáo trình</a
+                >
+              </li>
+              <li>
+                <a
+                  href="kienthuc.html"
+                  class="text-white text-decoration-none fw-bold"
+                  >Kiến thức hữu ích</a
+                >
+              </li>
             </ul>
           </nav>
         </div>
-
-        <hr class="footer-divider" />
-
-        <div class="footer-content">
-          <div class="footer-column">
-            <h4>JELLYFISH JAPAN</h4>
-            <p>
-              <img src="img/diachiicon.png" alt="Địa chỉ" /> 4F Westhill
-              Building, Nishigotanda 2-24-4, Shinagawa, Tokyo, Japan
+        <hr style="border-color: rgba(255, 255, 255, 0.12)" />
+        <div class="row g-4 py-2">
+          <div class="col-12 col-md-4">
+            <h5 class="fw-bold mb-3">JELLYFISH JAPAN</h5>
+            <p
+              class="d-flex align-items-start gap-2 mb-2"
+              style="color: #ccc; line-height: 1.6"
+            >
+              <img
+                src="img/diachiicon.png"
+                alt=""
+                style="
+                  width: 16px;
+                  flex-shrink: 0;
+                  margin-top: 3px;
+                  object-fit: contain;
+                "
+              />4F Westhill Building, Nishigotanda 2-24-4, Shinagawa, Tokyo,
+              Japan
             </p>
-            <p>
-              <img src="img/linkicon.png" alt="Website" />
-              https://jellyfish-g.co.jp
+            <p
+              class="d-flex align-items-start gap-2 mb-2"
+              style="color: #ccc; line-height: 1.6"
+            >
+              <img
+                src="img/linkicon.png"
+                alt=""
+                style="
+                  width: 16px;
+                  flex-shrink: 0;
+                  margin-top: 3px;
+                  object-fit: contain;
+                "
+              />https://jellyfish-g.co.jp
             </p>
-            <p>
-              <img src="img/mailicon.png" alt="Email" />
-              job_info@jellyfish-g.co.jp
+            <p
+              class="d-flex align-items-start gap-2 mb-2"
+              style="color: #ccc; line-height: 1.6"
+            >
+              <img
+                src="img/mailicon.png"
+                alt=""
+                style="
+                  width: 16px;
+                  flex-shrink: 0;
+                  margin-top: 3px;
+                  object-fit: contain;
+                "
+              />job_info@jellyfish-g.co.jp
             </p>
-            <p><img src="img/callicon.png" alt="Điện thoại" /> 03-5437-0135</p>
+            <p
+              class="d-flex align-items-start gap-2 mb-2"
+              style="color: #ccc; line-height: 1.6"
+            >
+              <img
+                src="img/callicon.png"
+                alt=""
+                style="
+                  width: 16px;
+                  flex-shrink: 0;
+                  margin-top: 3px;
+                  object-fit: contain;
+                "
+              />03-5437-0135
+            </p>
           </div>
-          <div class="footer-column">
-            <h4>JELLYFISH VIỆT NAM</h4>
-            <p>
-              <img src="img/diachiicon.png" alt="Địa chỉ" /> Tầng 13, CMC Tower,
-              11 Duy Tân, P. Dịch Vọng Hậu, Q. Cầu Giấy, TP. Hà Nội
+          <div class="col-12 col-md-4">
+            <h5 class="fw-bold mb-3">JELLYFISH VIỆT NAM</h5>
+            <p
+              class="d-flex align-items-start gap-2 mb-2"
+              style="color: #ccc; line-height: 1.6"
+            >
+              <img
+                src="img/diachiicon.png"
+                alt=""
+                style="
+                  width: 16px;
+                  flex-shrink: 0;
+                  margin-top: 3px;
+                  object-fit: contain;
+                "
+              />Tầng 13, CMC Tower, 11 Duy Tân, P. Dịch Vọng Hậu, Q. Cầu Giấy,
+              TP. Hà Nội
             </p>
-            <p>
-              <img src="img/linkicon.png" alt="Website" />
-              https://jellyfish-vn.com
+            <p
+              class="d-flex align-items-start gap-2 mb-2"
+              style="color: #ccc; line-height: 1.6"
+            >
+              <img
+                src="img/linkicon.png"
+                alt=""
+                style="
+                  width: 16px;
+                  flex-shrink: 0;
+                  margin-top: 3px;
+                  object-fit: contain;
+                "
+              />https://jellyfish-vn.com
             </p>
-            <p>
-              <img src="img/mailicon.png" alt="Email" /> admin@jellyfish-vn.com
+            <p
+              class="d-flex align-items-start gap-2 mb-2"
+              style="color: #ccc; line-height: 1.6"
+            >
+              <img
+                src="img/mailicon.png"
+                alt=""
+                style="
+                  width: 16px;
+                  flex-shrink: 0;
+                  margin-top: 3px;
+                  object-fit: contain;
+                "
+              />admin@jellyfish-vn.com
             </p>
-            <p><img src="img/callicon.png" alt="Điện thoại" /> 0243.7955.846</p>
+            <p
+              class="d-flex align-items-start gap-2 mb-2"
+              style="color: #ccc; line-height: 1.6"
+            >
+              <img
+                src="img/callicon.png"
+                alt=""
+                style="
+                  width: 16px;
+                  flex-shrink: 0;
+                  margin-top: 3px;
+                  object-fit: contain;
+                "
+              />0243.7955.846
+            </p>
           </div>
-          <div class="footer-column">
-            <h4>CHI NHÁNH HẢI PHÒNG</h4>
-            <p>
-              <img src="img/diachiicon.png" alt="Địa chỉ" /> Tầng 3, CMC Tower,
-              tòa nhà Sholega, 275 Lạch Tray, Ngô Quyền, TP. Hải Phòng
+          <div class="col-12 col-md-4">
+            <h5 class="fw-bold mb-3">CHI NHÁNH HẢI PHÒNG</h5>
+            <p
+              class="d-flex align-items-start gap-2 mb-2"
+              style="color: #ccc; line-height: 1.6"
+            >
+              <img
+                src="img/diachiicon.png"
+                alt=""
+                style="
+                  width: 16px;
+                  flex-shrink: 0;
+                  margin-top: 3px;
+                  object-fit: contain;
+                "
+              />Tầng 3, CMC Tower, tòa nhà Sholega, 275 Lạch Tray, Ngô Quyền,
+              TP. Hải Phòng
             </p>
-            <p><img src="img/callicon.png" alt="Điện thoại" /> 0969.895.759</p>
+            <p
+              class="d-flex align-items-start gap-2 mb-2"
+              style="color: #ccc; line-height: 1.6"
+            >
+              <img
+                src="img/callicon.png"
+                alt=""
+                style="
+                  width: 16px;
+                  flex-shrink: 0;
+                  margin-top: 3px;
+                  object-fit: contain;
+                "
+              />0969.895.759
+            </p>
           </div>
         </div>
-
-        <hr class="footer-divider" />
-
-        <div class="footer-bottom">
-          <p>© 2023 Jellyfish. All rights reserved.</p>
-          <div class="social-links">
-            <a href="#"><img src="img/yticon.png" alt="YouTube" /></a>
-            <a href="#"><img src="img/igicons.png" alt="Instagram" /></a>
-            <a href="#"><img src="img/fbicons.png" alt="Facebook" /></a>
+        <hr style="border-color: rgba(255, 255, 255, 0.12)" />
+        <div
+          class="d-flex justify-content-between align-items-center flex-wrap gap-3"
+        >
+          <p class="mb-0 small" style="color: #666">
+            © 2023 Jellyfish. All rights reserved.
+          </p>
+          <div class="d-flex gap-3">
+            <a href="#"
+              ><img
+                src="img/yticon.png"
+                alt="YouTube"
+                style="
+                  width: 24px;
+                  height: 24px;
+                  opacity: 0.7;
+                  object-fit: contain;
+                "
+            /></a>
+            <a href="#"
+              ><img
+                src="img/igicons.png"
+                alt="Instagram"
+                style="
+                  width: 24px;
+                  height: 24px;
+                  opacity: 0.7;
+                  object-fit: contain;
+                "
+            /></a>
+            <a href="#"
+              ><img
+                src="img/fbicons.png"
+                alt="Facebook"
+                style="
+                  width: 24px;
+                  height: 24px;
+                  opacity: 0.7;
+                  object-fit: contain;
+                "
+            /></a>
           </div>
         </div>
       </div>
     </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
   </body>
 </html>

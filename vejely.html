@@ -4,58 +4,137 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Jellyfish Vietnam - Về Jellyfish Việt Nam</title>
-    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
   </head>
-
-  <body>
-    <!-- HEADER -->
-    <header class="main-header">
-      <div class="container top-bar">
-        <img src="img/logo.png" alt="MaiaTech" class="logo" />
-        <div class="search-box">
-          <input type="text" placeholder="Tìm kiếm..." />
+  <body
+    style="
+      font-family: &quot;Be Vietnam Pro&quot;, Arial, sans-serif;
+      background: #f5f5f5;
+      color: #333;
+    "
+  >
+    <header class="bg-white shadow-sm">
+      <div
+        class="d-flex align-items-center justify-content-between gap-2 px-4 py-3"
+      >
+        <img
+          src="img/logo.png"
+          alt="Jellyfish Vietnam"
+          class="d-block"
+          style="height: 55px; width: auto; object-fit: contain"
+        />
+        <div class="d-none d-sm-flex flex-grow-1 mx-2">
+          <input
+            type="text"
+            placeholder="Tìm kiếm..."
+            class="form-control rounded-pill"
+          />
         </div>
-        <div class="header-buttons">
-          <button class="btn-consult">ĐĂNG KÝ TƯ VẤN</button>
-          <a href="tel:0961106466" class="phone">
+        <div class="d-flex align-items-center gap-2 flex-shrink-0">
+          <button
+            class="btn fw-bold text-white border-0 rounded-3 text-nowrap d-none d-md-inline-flex align-items-center px-3 py-2"
+            style="background: #217335"
+          >
+            ĐĂNG KÝ TƯ VẤN
+          </button>
+          <a
+            href="tel:0961106466"
+            class="btn fw-bold text-white text-decoration-none border-0 rounded-3 text-nowrap d-inline-flex align-items-center px-3 py-2"
+            style="background: #d0021b"
+          >
             <img
               src="img/Rectangle 77.png"
-              alt="Phone Icon"
-              class="phone-icon"
-            />
-            096.110.6466
+              alt=""
+              style="width: 16px; margin-right: 6px"
+            />096.110.6466
           </a>
         </div>
       </div>
-
-      <nav class="main-nav">
-        <div class="container">
-          <ul>
-            <li><a href="index.html">Trang chủ</a></li>
-            <li>
-              <a href="vejely.html" class="active">Về Jellyfish Việt Nam</a>
-            </li>
-            <li><a href="khoahoc.html">Khóa học</a></li>
-            <li><a href="lichkhaigiang.html">Lịch khai giảng</a></li>
-            <li><a href="giaotrinh.html">Giáo trình</a></li>
-            <li><a href="kienthuc.html">Kiến thức hữu ích</a></li>
-            <li><a href="#">Tin tức</a></li>
-          </ul>
-        </div>
+      <nav style="background: #217335; overflow-x: auto; scrollbar-width: none">
+        <ul
+          class="list-unstyled m-0 d-flex align-items-stretch"
+          style="
+            padding: 0 16px;
+            width: max-content;
+            min-width: 100%;
+            min-height: 52px;
+          "
+        >
+          <li class="d-flex">
+            <a
+              href="index.html"
+              class="text-white text-decoration-none d-flex align-items-center text-nowrap px-3"
+              style="font-size: 15px; border-bottom: 3px solid transparent"
+              >Trang chủ</a
+            >
+          </li>
+          <li class="d-flex">
+            <a
+              href="vejely.html"
+              class="text-white text-decoration-none d-flex align-items-center text-nowrap px-3"
+              style="font-size: 15px; border-bottom: 3px solid #fff"
+              >Về Jellyfish Việt Nam</a
+            >
+          </li>
+          <li class="d-flex">
+            <a
+              href="khoahoc.html"
+              class="text-white text-decoration-none d-flex align-items-center text-nowrap px-3"
+              style="font-size: 15px; border-bottom: 3px solid transparent"
+              >Khóa học</a
+            >
+          </li>
+          <li class="d-flex">
+            <a
+              href="lichkhaigiang.html"
+              class="text-white text-decoration-none d-flex align-items-center text-nowrap px-3"
+              style="font-size: 15px; border-bottom: 3px solid transparent"
+              >Lịch khai giảng</a
+            >
+          </li>
+          <li class="d-flex">
+            <a
+              href="giaotrinh.html"
+              class="text-white text-decoration-none d-flex align-items-center text-nowrap px-3"
+              style="font-size: 15px; border-bottom: 3px solid transparent"
+              >Giáo trình</a
+            >
+          </li>
+          <li class="d-flex">
+            <a
+              href="kienthuc.html"
+              class="text-white text-decoration-none d-flex align-items-center text-nowrap px-3"
+              style="font-size: 15px; border-bottom: 3px solid transparent"
+              >Kiến thức hữu ích</a
+            >
+          </li>
+          <li class="d-flex">
+            <a
+              href="#"
+              class="text-white text-decoration-none d-flex align-items-center text-nowrap px-3"
+              style="font-size: 15px; border-bottom: 3px solid transparent"
+              >Tin tức</a
+            >
+          </li>
+        </ul>
       </nav>
     </header>
 
     <main>
-      <!-- BANNER -->
-      <section class="vejely-banner">
-        <img src="img/images2.png" alt="Banner Jellyfish" />
-      </section>
+      <img src="img/images2.png" alt="Banner Jellyfish" class="w-100 d-block" />
 
-      <!-- GIỚI THIỆU JELLYFISH -->
-      <section class="about-jellyfish">
-        <div class="container-text">
-          <h2>JELLYFISH LÀ GÌ?</h2>
-
+      <section class="py-5 bg-white">
+        <div class="container" style="max-width: 1100px">
+          <h2 class="mb-3 fw-bold" style="color: #217335; font-size: 26px">
+            JELLYFISH LÀ GÌ?
+          </h2>
           <p>
             Jellyfish Việt Nam - trực thuộc tập đoàn Jellyfish Nhật Bản, hoạt
             động trong lĩnh vực:
@@ -72,11 +151,9 @@
           <p>
             - Tư vấn du học và cung cấp các dịch vụ hỗ trợ du học sinh: hoàn
             thiện hồ sơ xin COE, visa du học, giới thiệu việc làm sau khi hoàn
-            thành chương trình học; tư vấn giải pháp phát triển và kết nối nhân
-            sự chất lượng cao cho các doanh nghiệp trong và ngoài nước.
+            thành chương trình học.
           </p>
-
-          <h3>Ý nghĩa của Jellyfish:</h3>
+          <h3 class="fw-bold mt-4 mb-2">Ý nghĩa của Jellyfish:</h3>
           <p>
             Jellyfish dịch sang tiếng Việt có nghĩa là "Con Sứa", đặc điểm điển
             hình:
@@ -100,12 +177,13 @@
             truyền cảm hứng và trở thành cầu nối cho hàng nghìn tài năng trẻ
             Việt Nam đến với những cơ hội học tập và làm việc tốt hơn.
           </p>
-
-          <h2 class="title-green">
+          <h2
+            class="fw-bold"
+            style="color: #217335; font-size: 22px; margin-top: 40px"
+          >
             TẦM NHÌN – SỨ MỆNH – PHƯƠNG CHÂM HOẠT ĐỘNG CỦA JELLYFISH VIỆT NAM
           </h2>
-
-          <h3>1. Tầm nhìn</h3>
+          <h3 class="fw-bold mt-4 mb-2">1. Tầm nhìn</h3>
           <p>
             - Trở thành doanh nghiệp dẫn đầu trong cung ứng giải pháp phát triển
             nhân sự toàn diện, có chiều sâu, thích ứng tốt với sự thay đổi đa
@@ -115,8 +193,7 @@
             - Tiên phong đồng hành cùng người Việt trẻ trong hành trình nâng tầm
             vị thế trên thị trường nhân sự quốc tế.
           </p>
-
-          <h3>2. Sứ mệnh</h3>
+          <h3 class="fw-bold mt-4 mb-2">2. Sứ mệnh</h3>
           <p>
             - Cam kết luôn cập nhật xu hướng giáo dục và nhu cầu nhân sự toàn
             cầu.
@@ -132,87 +209,108 @@
         </div>
       </section>
 
-      <!-- PHƯƠNG CHÂM -->
-      <section class="jellyfish-phuongcham">
-        <div class="container-text">
-          <h3>3. Phương châm hoạt động</h3>
+      <section class="py-4 bg-white">
+        <div class="container" style="max-width: 1100px">
+          <h3 class="fw-bold mb-2">3. Phương châm hoạt động</h3>
           <p><i>True people – True value: Con người thực – Giá trị thực.</i></p>
           <p>
             Là doanh nghiệp Nhật Bản, Jellyfish luôn chú trọng xây dựng và phát
             triển dịch vụ hướng tới những giá trị thiết thực nhất cho khách
-            hàng. Giá trị dịch vụ mà Jellyfish cung cấp thể hiện qua chính chất
-            lượng của những thế hệ người Việt trẻ được chúng tôi đào tạo, dẫn
-            dắt và định hướng.
+            hàng.
           </p>
           <p>
             Không hoa mỹ, không cầu kỳ, tập trung nỗ lực giúp thế hệ trẻ Việt
             Nam trở nên tự tin, năng động và hội nhập – Đó là phương châm hoạt
             động không bao giờ thay đổi của Jellyfish Việt Nam.
           </p>
-
-          <h3>4. Slogan</h3>
+          <h3 class="fw-bold mt-4 mb-2">4. Slogan</h3>
           <p><i>Expand your horizons – Hãy mở rộng tầm nhìn của bạn.</i></p>
           <p>
             Bước ra thế giới, trải nghiệm nhiều hơn và học hỏi nhiều hơn – Đó là
             nhu cầu chính đáng và là điều mà các bạn trẻ nên làm...
           </p>
-
-          <h2 class="title-green">
+          <h2
+            class="fw-bold"
+            style="color: #217335; font-size: 20px; margin-top: 40px"
+          >
             JELLYFISH – NƠI NHỮNG THÀNH TỰU LÀ ĐỘNG LỰC ĐỂ TIẾP TỤC DUY TRÌ CỐ
             GẮNG
           </h2>
-          <p>
+          <p class="mt-3">
             Phương châm hoạt động của Jellyfish là Con người thực – Giá trị
             thực...
           </p>
         </div>
 
-        <!-- KHUNG THỐNG KÊ -->
-        <div class="achievement-box">
-          <div class="achievement-item">
-            <div class="icon">
-              <img src="img/images3.png"Icon nhân viên" />
+        <div
+          class="container mt-4 py-4 px-4 rounded-3"
+          style="max-width: 1100px; background: #e5e5e5"
+        >
+          <div class="row row-cols-2 row-cols-md-4 g-4 text-center">
+            <div class="col">
+              <img
+                src="img/images3.png"
+                alt=""
+                style="width: 55px; height: 55px; object-fit: contain"
+                class="mb-2"
+              />
+              <div class="fw-bold" style="color: #217335; font-size: 26px">
+                150
+              </div>
+              <p class="small">
+                Là số lượng nhân viên Jellyfish Việt Nam, luôn sẵn sàng hỗ trợ
+                học viên thực hiện ước mơ của mình.
+              </p>
             </div>
-            <h3>150</h3>
-            <p>
-              Là số lượng nhân viên Jellyfish Việt Nam, luôn sẵn sàng hỗ trợ học
-              viên thực hiện ước mơ của mình.
-            </p>
-          </div>
-          <div class="achievement-item">
-            <div class="icon">
-              <img src="img/images4.png" alt="Icon đối tác" />
+            <div class="col">
+              <img
+                src="img/images4.png"
+                alt=""
+                style="width: 55px; height: 55px; object-fit: contain"
+                class="mb-2"
+              />
+              <div class="fw-bold" style="color: #217335; font-size: 26px">
+                250
+              </div>
+              <p class="small">
+                Là số lượng đối tác trường học, doanh nghiệp tại Việt Nam đã và
+                đang sử dụng dịch vụ đào tạo của Jellyfish.
+              </p>
             </div>
-            <h3>250</h3>
-            <p>
-              Là số lượng đối tác trường học, doanh nghiệp tại Việt Nam đã và
-              đang sử dụng dịch vụ đào tạo, kết nối nhân sự của Jellyfish Việt
-              Nam.
-            </p>
-          </div>
-          <div class="achievement-item">
-            <div class="icon">
-              <img src="img/images5.png" alt="Icon ứng viên" />
+            <div class="col">
+              <img
+                src="img/images5.png"
+                alt=""
+                style="width: 55px; height: 55px; object-fit: contain"
+                class="mb-2"
+              />
+              <div class="fw-bold" style="color: #217335; font-size: 26px">
+                500
+              </div>
+              <p class="small">
+                Là số lượng ứng viên hàng năm Jellyfish hỗ trợ kết nối thành
+                công đến các doanh nghiệp nước ngoài.
+              </p>
             </div>
-            <h3>500</h3>
-            <p>
-              Là số lượng ứng viên hàng năm Jellyfish hỗ trợ kết nối thành công
-              đến các doanh nghiệp nước ngoài tại Việt Nam và Nhật Bản.
-            </p>
-          </div>
-          <div class="achievement-item">
-            <div class="icon">
-              <img src="img/images6.png"Icon du học sinh" />
+            <div class="col">
+              <img
+                src="img/images6.png"
+                alt=""
+                style="width: 55px; height: 55px; object-fit: contain"
+                class="mb-2"
+              />
+              <div class="fw-bold" style="color: #217335; font-size: 26px">
+                1200
+              </div>
+              <p class="small">
+                Là số du học sinh trung bình hàng năm Jellyfish đào tạo, chắp
+                cánh cho ước mơ du học và làm việc quốc tế.
+              </p>
             </div>
-            <h3>1200</h3>
-            <p>
-              Là số du học sinh trung bình hàng năm Jellyfish đào tạo, chắp cánh
-              cho ước mơ du học và làm việc ở môi trường quốc tế.
-            </p>
           </div>
         </div>
 
-        <div class="container-text">
+        <div class="container mt-4" style="max-width: 1100px">
           <p>
             Lấy CHẤT LƯỢNG là kim chỉ nam cho mọi hoạt động, chúng tôi luôn cải
             tiến phương pháp đào tạo...
@@ -221,8 +319,10 @@
             Hy vọng những nỗ lực của chúng tôi sẽ giúp bạn tạo một cơ sở tốt để
             tự tin thực hiện ước mơ của chính mình!
           </p>
-
-          <h2 class="title-green">
+          <h2
+            class="fw-bold"
+            style="color: #217335; font-size: 18px; margin-top: 40px"
+          >
             HÃY ĐẾN JELLYFISH ĐỂ TRẢI NGHIỆM NHỮNG DỊCH VỤ CHẤT LƯỢNG VÀ MỞ RỘNG
             GIỚI HẠN CỦA CHÍNH BẠN!
           </h2>
@@ -230,81 +330,274 @@
       </section>
     </main>
 
-    <!-- FOOTER -->
-    <footer class="main-footer">
-      <div class="container">
-        <div class="footer-top">
-          <div class="footer-logo">
-            <img src="img/Logofooter.png" alt="Jellyfish Vietnam" />
-            <p>Expand your horizons</p>
+    <footer
+      class="py-5 text-white"
+      style="background: #0f0a1e; font-size: 14px"
+    >
+      <div class="container" style="max-width: 1200px">
+        <div
+          class="d-flex justify-content-between align-items-start flex-wrap gap-3 mb-3"
+        >
+          <div>
+            <img
+              src="img/Logofooter.png"
+              alt="Jellyfish Vietnam"
+              style="height: 50px"
+            />
+            <p class="small mt-1 mb-0 text-uppercase" style="color: #aaa">
+              Expand your horizons
+            </p>
           </div>
-          <nav class="footer-nav">
-            <ul>
-              <li><a href="trangchinh.html">Trang chủ</a></li>
-              <li><a href="vejely.html">Về Jellyfish</a></li>
-              <li><a href="#">Khóa học</a></li>
-              <li><a href="giaotrinh.html">Giáo trình</a></li>
-              <li><a href="kienthuc.html">Kiến thức hữu ích</a></li>
+          <nav>
+            <ul class="list-unstyled d-flex flex-wrap gap-3 mb-0">
+              <li>
+                <a
+                  href="index.html"
+                  class="text-white text-decoration-none fw-bold"
+                  >Trang chủ</a
+                >
+              </li>
+              <li>
+                <a
+                  href="vejely.html"
+                  class="text-white text-decoration-none fw-bold"
+                  >Về Jellyfish</a
+                >
+              </li>
+              <li>
+                <a
+                  href="khoahoc.html"
+                  class="text-white text-decoration-none fw-bold"
+                  >Khóa học</a
+                >
+              </li>
+              <li>
+                <a
+                  href="giaotrinh.html"
+                  class="text-white text-decoration-none fw-bold"
+                  >Giáo trình</a
+                >
+              </li>
+              <li>
+                <a
+                  href="kienthuc.html"
+                  class="text-white text-decoration-none fw-bold"
+                  >Kiến thức hữu ích</a
+                >
+              </li>
             </ul>
           </nav>
         </div>
-
-        <hr class="footer-divider" />
-
-        <div class="footer-content">
-          <div class="footer-column">
-            <h4>JELLYFISH JAPAN</h4>
-            <p>
-              <img src="img/diachiicon.png" alt="Địa chỉ" /> 4F Westhill
-              Building, Nishigotanda 2-24-4, Shinagawa, Tokyo, Japan
+        <hr style="border-color: rgba(255, 255, 255, 0.12)" />
+        <div class="row g-4 py-2">
+          <div class="col-12 col-md-4">
+            <h5 class="fw-bold mb-3">JELLYFISH JAPAN</h5>
+            <p
+              class="d-flex align-items-start gap-2 mb-2"
+              style="color: #ccc; line-height: 1.6"
+            >
+              <img
+                src="img/diachiicon.png"
+                alt=""
+                style="
+                  width: 16px;
+                  flex-shrink: 0;
+                  margin-top: 3px;
+                  object-fit: contain;
+                "
+              />4F Westhill Building, Nishigotanda 2-24-4, Shinagawa, Tokyo,
+              Japan
             </p>
-            <p>
-              <img src="img/linkicon.png" alt="Website" />
-              https://jellyfish-g.co.jp
+            <p
+              class="d-flex align-items-start gap-2 mb-2"
+              style="color: #ccc; line-height: 1.6"
+            >
+              <img
+                src="img/linkicon.png"
+                alt=""
+                style="
+                  width: 16px;
+                  flex-shrink: 0;
+                  margin-top: 3px;
+                  object-fit: contain;
+                "
+              />https://jellyfish-g.co.jp
             </p>
-            <p>
-              <img src="img/mailicon.png" alt="Email" />
-              job_info@jellyfish-g.co.jp
+            <p
+              class="d-flex align-items-start gap-2 mb-2"
+              style="color: #ccc; line-height: 1.6"
+            >
+              <img
+                src="img/mailicon.png"
+                alt=""
+                style="
+                  width: 16px;
+                  flex-shrink: 0;
+                  margin-top: 3px;
+                  object-fit: contain;
+                "
+              />job_info@jellyfish-g.co.jp
             </p>
-            <p><img src="img/callicon.png" alt="Điện thoại" /> 03-5437-0135</p>
+            <p
+              class="d-flex align-items-start gap-2 mb-2"
+              style="color: #ccc; line-height: 1.6"
+            >
+              <img
+                src="img/callicon.png"
+                alt=""
+                style="
+                  width: 16px;
+                  flex-shrink: 0;
+                  margin-top: 3px;
+                  object-fit: contain;
+                "
+              />03-5437-0135
+            </p>
           </div>
-          <div class="footer-column">
-            <h4>JELLYFISH VIỆT NAM</h4>
-            <p>
-              <img src="img/diachiicon.png" alt="Địa chỉ" /> Tầng 13, CMC Tower,
-              11 Duy Tân, P. Dịch Vọng Hậu, Q. Cầu Giấy, TP. Hà Nội
+          <div class="col-12 col-md-4">
+            <h5 class="fw-bold mb-3">JELLYFISH VIỆT NAM</h5>
+            <p
+              class="d-flex align-items-start gap-2 mb-2"
+              style="color: #ccc; line-height: 1.6"
+            >
+              <img
+                src="img/diachiicon.png"
+                alt=""
+                style="
+                  width: 16px;
+                  flex-shrink: 0;
+                  margin-top: 3px;
+                  object-fit: contain;
+                "
+              />Tầng 13, CMC Tower, 11 Duy Tân, P. Dịch Vọng Hậu, Q. Cầu Giấy,
+              TP. Hà Nội
             </p>
-            <p>
-              <img src="img/linkicon.png" alt="Website" />
-              https://jellyfish-vn.com
+            <p
+              class="d-flex align-items-start gap-2 mb-2"
+              style="color: #ccc; line-height: 1.6"
+            >
+              <img
+                src="img/linkicon.png"
+                alt=""
+                style="
+                  width: 16px;
+                  flex-shrink: 0;
+                  margin-top: 3px;
+                  object-fit: contain;
+                "
+              />https://jellyfish-vn.com
             </p>
-            <p>
-              <img src="img/mailicon.png" alt="Email" /> admin@jellyfish-vn.com
+            <p
+              class="d-flex align-items-start gap-2 mb-2"
+              style="color: #ccc; line-height: 1.6"
+            >
+              <img
+                src="img/mailicon.png"
+                alt=""
+                style="
+                  width: 16px;
+                  flex-shrink: 0;
+                  margin-top: 3px;
+                  object-fit: contain;
+                "
+              />admin@jellyfish-vn.com
             </p>
-            <p><img src="img/callicon.png" alt="Điện thoại" /> 0243.7955.846</p>
+            <p
+              class="d-flex align-items-start gap-2 mb-2"
+              style="color: #ccc; line-height: 1.6"
+            >
+              <img
+                src="img/callicon.png"
+                alt=""
+                style="
+                  width: 16px;
+                  flex-shrink: 0;
+                  margin-top: 3px;
+                  object-fit: contain;
+                "
+              />0243.7955.846
+            </p>
           </div>
-          <div class="footer-column">
-            <h4>CHI NHÁNH HẢI PHÒNG</h4>
-            <p>
-              <img src="img/diachiicon.png" alt="Địa chỉ" /> Tầng 3, CMC Tower,
-              tòa nhà Sholega, 275 Lạch Tray, Ngô Quyền, TP. Hải Phòng
+          <div class="col-12 col-md-4">
+            <h5 class="fw-bold mb-3">CHI NHÁNH HẢI PHÒNG</h5>
+            <p
+              class="d-flex align-items-start gap-2 mb-2"
+              style="color: #ccc; line-height: 1.6"
+            >
+              <img
+                src="img/diachiicon.png"
+                alt=""
+                style="
+                  width: 16px;
+                  flex-shrink: 0;
+                  margin-top: 3px;
+                  object-fit: contain;
+                "
+              />Tầng 3, CMC Tower, tòa nhà Sholega, 275 Lạch Tray, Ngô Quyền,
+              TP. Hải Phòng
             </p>
-            <p><img src="img/callicon.png" alt="Điện thoại" /> 0969.895.759</p>
+            <p
+              class="d-flex align-items-start gap-2 mb-2"
+              style="color: #ccc; line-height: 1.6"
+            >
+              <img
+                src="img/callicon.png"
+                alt=""
+                style="
+                  width: 16px;
+                  flex-shrink: 0;
+                  margin-top: 3px;
+                  object-fit: contain;
+                "
+              />0969.895.759
+            </p>
           </div>
         </div>
-
-        <hr class="footer-divider" />
-
-        <div class="footer-bottom">
-          <p>© 2023 Jellyfish. All rights reserved.</p>
-          <div class="social-links">
-            <a href="#"><img src="img/yticon.png" alt="YouTube" /></a>
-            <a href="#"><img src="img/igicons.png" alt="Instagram" /></a>
-            <a href="#"><img src="img/fbicons.png" alt="Facebook" /></a>
+        <hr style="border-color: rgba(255, 255, 255, 0.12)" />
+        <div
+          class="d-flex justify-content-between align-items-center flex-wrap gap-3"
+        >
+          <p class="mb-0 small" style="color: #666">
+            © 2023 Jellyfish. All rights reserved.
+          </p>
+          <div class="d-flex gap-3">
+            <a href="#"
+              ><img
+                src="img/yticon.png"
+                alt="YouTube"
+                style="
+                  width: 24px;
+                  height: 24px;
+                  opacity: 0.7;
+                  object-fit: contain;
+                "
+            /></a>
+            <a href="#"
+              ><img
+                src="img/igicons.png"
+                alt="Instagram"
+                style="
+                  width: 24px;
+                  height: 24px;
+                  opacity: 0.7;
+                  object-fit: contain;
+                "
+            /></a>
+            <a href="#"
+              ><img
+                src="img/fbicons.png"
+                alt="Facebook"
+                style="
+                  width: 24px;
+                  height: 24px;
+                  opacity: 0.7;
+                  object-fit: contain;
+                "
+            /></a>
           </div>
         </div>
       </div>
     </footer>
-    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
   </body>
 </html>
