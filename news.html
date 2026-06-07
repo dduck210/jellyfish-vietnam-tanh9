@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="vi">
+<html lang="vi" style="scroll-behavior: smooth">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -941,6 +941,38 @@
         align-items: center;
         gap: 8px;
       }
+      /* ANIMATIONS */
+      @keyframes heroFadeUp {
+        from { opacity: 0; transform: translateY(24px); }
+        to   { opacity: 1; transform: none; }
+      }
+      .hero-anim { animation: heroFadeUp 0.7s ease both; }
+      .hero-anim.d1 { animation-delay: 0.1s; }
+      .hero-anim.d2 { animation-delay: 0.25s; }
+      .hero-anim.d3 { animation-delay: 0.4s; }
+      .news-hero::after {
+        content: "";
+        position: absolute;
+        bottom: -60px;
+        left: -40px;
+        width: 260px;
+        height: 260px;
+        background: rgba(255, 255, 255, 0.04);
+        border-radius: 50%;
+      }
+      .fade-up {
+        opacity: 0;
+        transform: translateY(28px);
+        transition: opacity 0.6s ease, transform 0.6s ease;
+      }
+      .fade-up.visible {
+        opacity: 1;
+        transform: none;
+      }
+      .fade-up.d1 { transition-delay: 0.1s; }
+      .fade-up.d2 { transition-delay: 0.2s; }
+      .fade-up.d3 { transition-delay: 0.3s; }
+      .fade-up.d4 { transition-delay: 0.4s; }
     </style>
   </head>
   <body>
@@ -1378,10 +1410,19 @@
           class="container"
           style="max-width: 1224px; position: relative; z-index: 1"
         >
+          <nav aria-label="breadcrumb" class="hero-anim d1" style="margin-bottom: 16px;">
+            <ol class="breadcrumb justify-content-center mb-0" style="font-size: 13px; opacity: 0.8;">
+              <li class="breadcrumb-item"><a href="index.html" class="text-white text-decoration-none">Trang chủ</a></li>
+              <li class="breadcrumb-item active text-white">Tin tức</li>
+            </ol>
+          </nav>
           <div
+            class="hero-anim d2"
             style="
               display: inline-block;
               background: rgba(255, 255, 255, 0.15);
+              border: 1px solid rgba(255, 255, 255, 0.3);
+              backdrop-filter: blur(8px);
               border-radius: 20px;
               padding: 4px 16px;
               font-size: 12px;
@@ -1393,19 +1434,19 @@
             TIN TỨC &amp; SỰ KIỆN
           </div>
           <h1
-            class="fw-bold mb-2"
+            class="fw-bold mb-2 hero-anim d3"
             style="font-size: 40px; letter-spacing: -0.5px"
           >
             Tin tức Jellyfish Vietnam
           </h1>
-          <p style="font-size: 17px; opacity: 0.88; margin-bottom: 0">
+          <p class="hero-anim" style="font-size: 17px; opacity: 0.88; margin-bottom: 0; animation-delay: 0.55s;">
             Cập nhật những tin tức mới nhất về hoạt động, sự kiện và ưu đãi
           </p>
         </div>
       </section>
 
       <!-- STATS -->
-      <div class="stats-strip">
+      <div class="stats-strip fade-up">
         <div
           class="container d-flex align-items-stretch"
           style="max-width: 1224px; padding: 0"
@@ -1452,7 +1493,7 @@
         <div class="container" style="max-width: 1224px">
           <div class="row g-4">
             <div class="col-12 col-lg-7">
-              <div class="section-title mb-4">🔥 Tin nổi bật</div>
+              <div class="section-title mb-4 fade-up">🔥 Tin nổi bật</div>
               <div class="news-featured" onclick="openArticle(0)">
                 <div class="hot-badge">HOT</div>
                 <img
@@ -1486,7 +1527,7 @@
               </div>
             </div>
             <div class="col-12 col-lg-5">
-              <div class="section-title mb-4">📈 Đọc nhiều nhất</div>
+              <div class="section-title mb-4 fade-up d1">📈 Đọc nhiều nhất</div>
               <div
                 class="bg-white rounded-3 border overflow-hidden"
                 id="topReadList"
@@ -1500,7 +1541,7 @@
       <section class="py-5">
         <div class="container" style="max-width: 1224px">
           <div
-            class="d-flex align-items-center justify-content-between mb-4 flex-wrap gap-2"
+            class="d-flex align-items-center justify-content-between mb-4 flex-wrap gap-2 fade-up"
           >
             <div class="section-title">📰 Tất cả tin tức</div>
             <span
@@ -1542,7 +1583,7 @@
       <!-- NEWSLETTER -->
       <section class="py-5 bg-white">
         <div class="container" style="max-width: 1224px">
-          <div class="newsletter-section">
+          <div class="newsletter-section fade-up">
             <div class="row align-items-center g-4">
               <div class="col-12 col-md-6">
                 <div style="font-size: 28px; margin-bottom: 8px">📬</div>
@@ -1600,16 +1641,16 @@
         style="background: linear-gradient(135deg, #237a37, #1b6530)"
       >
         <div class="container" style="max-width: 640px">
-          <h2 class="fw-bold text-white mb-2" style="font-size: 30px">
+          <h2 class="fw-bold text-white mb-2 fade-up" style="font-size: 30px">
             Sẵn sàng bắt đầu hành trình tiếng Nhật?
           </h2>
-          <p class="text-white mb-4" style="opacity: 0.85; font-size: 16px">
+          <p class="text-white mb-4 fade-up d1" style="opacity: 0.85; font-size: 16px">
             Đội ngũ tư vấn Jellyfish Vietnam luôn sẵn sàng hỗ trợ bạn chọn lộ
             trình phù hợp nhất.
           </p>
           <button
             onclick="openRegModal()"
-            class="btn fw-bold px-5 py-3"
+            class="btn fw-bold px-5 py-3 fade-up d2"
             style="
               background: #fff;
               color: #237a37;
@@ -2412,6 +2453,16 @@
           closeRegModal();
         }
       });
+
+      const _fuObserver = new IntersectionObserver((entries) => {
+        entries.forEach(e => {
+          if (e.isIntersecting) {
+            e.target.classList.add('visible');
+            _fuObserver.unobserve(e.target);
+          }
+        });
+      }, { threshold: 0, rootMargin: '0px 0px -40px 0px' });
+      document.querySelectorAll('.fade-up').forEach(el => _fuObserver.observe(el));
 
       initTicker();
       initCats();
