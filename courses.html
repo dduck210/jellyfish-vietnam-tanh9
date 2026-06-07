@@ -125,6 +125,7 @@
             placeholder="Tìm kiếm..."
             class="form-control rounded-pill"
             style="background: #ececed; border: 1px solid #ececed"
+            onkeydown="if(event.key==='Enter'&&this.value.trim()){window.location.href='blog.html'}"
           />
         </div>
         <div class="d-flex align-items-center gap-2 flex-shrink-0">
@@ -364,7 +365,7 @@
               style="font-size: 14px; line-height: 1.7"
             >
               <span class="position-absolute" style="left: 0">-</span>Xem chi
-              tiết lịch khai giảng tại đây: LỊCH KHAI GIẢNG CÁC LỚP TIẾNG NHẬT.
+              tiết lịch khai giảng tại đây: <a href="schedule.html" style="color:#1a5cff;font-weight:600;">LỊCH KHAI GIẢNG CÁC LỚP TIẾNG NHẬT</a>.
             </li>
           </ul>
 
@@ -482,89 +483,39 @@
           <div class="border rounded-4 p-4 mb-4 bg-white">
             <h6 class="fw-bold text-uppercase mb-3">BÀI ĐĂNG GẦN ĐÂY</h6>
             <ul class="list-unstyled m-0">
-              <li
-                class="d-flex align-items-start mb-3 fw-semibold"
-                style="font-size: 14px; cursor: pointer; color: #333"
-              >
-                <span
-                  class="d-flex justify-content-center align-items-center rounded-circle flex-shrink-0 me-2 text-white"
-                  style="
-                    background: #217335;
-                    min-width: 28px;
-                    width: 28px;
-                    height: 28px;
-                    font-size: 13px;
-                  "
-                  >1</span
-                >Từ vựng tiếng Nhật chủ đề mùa đông
+              <li class="d-flex align-items-start mb-3 fw-semibold">
+                <a href="blog.html" class="d-flex align-items-start text-decoration-none" style="font-size:14px;color:#333;">
+                  <span class="d-flex justify-content-center align-items-center rounded-circle flex-shrink-0 me-2 text-white" style="background:#217335;min-width:28px;width:28px;height:28px;font-size:13px;">1</span>
+                  Từ vựng tiếng Nhật chủ đề mùa đông
+                </a>
               </li>
-              <li
-                class="d-flex align-items-start mb-3 fw-semibold"
-                style="font-size: 14px; cursor: pointer; color: #333"
-              >
-                <span
-                  class="d-flex justify-content-center align-items-center rounded-circle flex-shrink-0 me-2 text-white"
-                  style="
-                    background: #217335;
-                    min-width: 28px;
-                    width: 28px;
-                    height: 28px;
-                    font-size: 13px;
-                  "
-                  >2</span
-                >Từ vựng tiếng Nhật chủ đề Giáng sinh
+              <li class="d-flex align-items-start mb-3 fw-semibold">
+                <a href="blog.html" class="d-flex align-items-start text-decoration-none" style="font-size:14px;color:#333;">
+                  <span class="d-flex justify-content-center align-items-center rounded-circle flex-shrink-0 me-2 text-white" style="background:#217335;min-width:28px;width:28px;height:28px;font-size:13px;">2</span>
+                  Từ vựng tiếng Nhật chủ đề Giáng sinh
+                </a>
               </li>
-              <li
-                class="d-flex align-items-start mb-3 fw-semibold"
-                style="font-size: 14px; cursor: pointer; color: #333"
-              >
-                <span
-                  class="d-flex justify-content-center align-items-center rounded-circle flex-shrink-0 me-2 text-white"
-                  style="
-                    background: #217335;
-                    min-width: 28px;
-                    width: 28px;
-                    height: 28px;
-                    font-size: 13px;
-                  "
-                  >3</span
-                >Những mẫu câu giao tiếp tiếng Nhật phổ biến trong lớp học
+              <li class="d-flex align-items-start mb-3 fw-semibold">
+                <a href="blog.html" class="d-flex align-items-start text-decoration-none" style="font-size:14px;color:#333;">
+                  <span class="d-flex justify-content-center align-items-center rounded-circle flex-shrink-0 me-2 text-white" style="background:#217335;min-width:28px;width:28px;height:28px;font-size:13px;">3</span>
+                  Những mẫu câu giao tiếp tiếng Nhật phổ biến trong lớp học
+                </a>
               </li>
-              <li
-                class="d-flex align-items-start mb-3 fw-semibold"
-                style="font-size: 14px; cursor: pointer; color: #333"
-              >
-                <span
-                  class="d-flex justify-content-center align-items-center rounded-circle flex-shrink-0 me-2 text-white"
-                  style="
-                    background: #217335;
-                    min-width: 28px;
-                    width: 28px;
-                    height: 28px;
-                    font-size: 13px;
-                  "
-                  >4</span
-                >Khóa học – Luyện thi N2 cấp tốc cam kết đầu ra tại Jellyfish
+              <li class="d-flex align-items-start mb-3 fw-semibold">
+                <a href="blog.html" class="d-flex align-items-start text-decoration-none" style="font-size:14px;color:#333;">
+                  <span class="d-flex justify-content-center align-items-center rounded-circle flex-shrink-0 me-2 text-white" style="background:#217335;min-width:28px;width:28px;height:28px;font-size:13px;">4</span>
+                  Khóa học – Luyện thi N2 cấp tốc cam kết đầu ra tại Jellyfish
+                </a>
               </li>
-              <li
-                class="d-flex align-items-start mb-0 fw-semibold"
-                style="font-size: 14px; cursor: pointer; color: #333"
-              >
-                <span
-                  class="d-flex justify-content-center align-items-center rounded-circle flex-shrink-0 me-2 text-white"
-                  style="
-                    background: #217335;
-                    min-width: 28px;
-                    width: 28px;
-                    height: 28px;
-                    font-size: 13px;
-                  "
-                  >5</span
-                >Cuộc thi "Nét bút tri ân" Mừng ngày nhà giáo Việt Nam
+              <li class="d-flex align-items-start mb-0 fw-semibold">
+                <a href="news.html" class="d-flex align-items-start text-decoration-none" style="font-size:14px;color:#333;">
+                  <span class="d-flex justify-content-center align-items-center rounded-circle flex-shrink-0 me-2 text-white" style="background:#217335;min-width:28px;width:28px;height:28px;font-size:13px;">5</span>
+                  Cuộc thi "Nét bút tri ân" Mừng ngày nhà giáo Việt Nam
+                </a>
               </li>
             </ul>
           </div>
-          <img src="img/banner.jpg" class="img-fluid rounded-3" alt="Banner" />
+          <a href="courses.html"><img src="img/banner.jpg" class="img-fluid rounded-3" alt="Banner" /></a>
         </div>
       </div>
     </div>
@@ -578,11 +529,11 @@
           class="d-flex justify-content-between align-items-start flex-wrap gap-3 mb-3"
         >
           <div>
-            <img
+            <a href="index.html"><img
               src="img/Logofooter.png"
               alt="Jellyfish Vietnam"
               style="height: 50px"
-            />
+            /></a>
             <p class="small mt-1 mb-0 text-uppercase" style="color: #aaa">
               Expand your horizons
             </p>
@@ -800,38 +751,14 @@
             © 2023 Jellyfish. All rights reserved.
           </p>
           <div class="d-flex gap-3">
-            <a href="#"
-              ><img
-                src="img/yticon.png"
-                alt="YouTube"
-                style="
-                  width: 24px;
-                  height: 24px;
-                  opacity: 0.7;
-                  object-fit: contain;
-                "
+            <a href="https://www.youtube.com/@JellyfishVietnam" target="_blank" rel="noopener"
+              ><img src="img/yticon.png" alt="YouTube" style="width:24px;height:24px;opacity:0.7;object-fit:contain;"
             /></a>
-            <a href="#"
-              ><img
-                src="img/igicons.png"
-                alt="Instagram"
-                style="
-                  width: 24px;
-                  height: 24px;
-                  opacity: 0.7;
-                  object-fit: contain;
-                "
+            <a href="https://www.instagram.com/jellyfish.vietnam" target="_blank" rel="noopener"
+              ><img src="img/igicons.png" alt="Instagram" style="width:24px;height:24px;opacity:0.7;object-fit:contain;"
             /></a>
-            <a href="#"
-              ><img
-                src="img/fbicons.png"
-                alt="Facebook"
-                style="
-                  width: 24px;
-                  height: 24px;
-                  opacity: 0.7;
-                  object-fit: contain;
-                "
+            <a href="https://www.facebook.com/jellyfish.vn" target="_blank" rel="noopener"
+              ><img src="img/fbicons.png" alt="Facebook" style="width:24px;height:24px;opacity:0.7;object-fit:contain;"
             /></a>
           </div>
         </div>
