@@ -219,7 +219,7 @@
           <h2 id="modalTitle"></h2>
           <div class="article-meta-row">
             <span class="article-meta-item">
-              <img src="img/knowledge-thumb.png" style="width:28px;height:28px;border-radius:50%;object-fit:cover;" alt="" />
+              <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
               <span id="modalAuthor"></span>
             </span>
             <span class="article-meta-item">
@@ -342,7 +342,7 @@
               <div class="section-title mb-4">🔥 Tin nổi bật</div>
               <div class="news-featured" onclick="openArticle(0)">
                 <div class="hot-badge">HOT</div>
-                <img id="featuredImg" src="img/gallery-photo.png" alt="" />
+                <img id="featuredImg" src="https://jellyfish-vn.com/wp-content/uploads/2026/03/IMG_2812-1-1024x683.jpg" alt="" />
                 <div class="news-featured-overlay">
                   <span class="news-tag" id="featuredTag" style="background:#f0c040;color:#1a1a1a;"></span>
                   <h3 id="featuredTitle"></h3>
@@ -465,79 +465,79 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
     <script>
     const ARTICLES = [
-      { id:0, cat:'Sự kiện', featured:true, img:'img/gallery-photo.png',
+      { id:0, cat:'Sự kiện', featured:true, img:'https://jellyfish-vn.com/wp-content/uploads/2026/03/IMG_2812-1-1024x683.jpg',
         title:'Jellyfish Vietnam khai trương chi nhánh mới tại TP. Hồ Chí Minh',
         date:'05/06/2026', readTime:'5 phút đọc', views:3847, author:'Ban Truyền thông',
         tags:['Chi nhánh mới','TP.HCM','Mở rộng'],
         summary:'Đánh dấu bước phát triển lớn, Jellyfish Vietnam chính thức mở rộng hoạt động tại TP.HCM với cơ sở vật chất hiện đại và đội ngũ giáo viên chất lượng cao.',
         content:`<p>Ngày 05/06/2026, Jellyfish Vietnam chính thức khai trương chi nhánh tại TP. Hồ Chí Minh, tầng 8, tòa nhà Vietcombank Tower, đường Công trường Mê Linh, Quận 1. Đây là bước tiến chiến lược quan trọng trong lộ trình mở rộng quy mô hoạt động toàn quốc.</p><h4>Cơ sở vật chất hiện đại</h4><p>Chi nhánh được đầu tư với tổng diện tích hơn 800m², gồm 12 phòng học trang bị màn hình tương tác, hệ thống âm thanh chuẩn Nhật Bản, phòng luyện nghe chuyên biệt và thư viện hơn 2.000 đầu sách tiếng Nhật.</p><h4>Đội ngũ giáo viên chất lượng cao</h4><p>Chi nhánh quy tụ 15 giáo viên, trong đó có 6 giáo viên bản ngữ đến từ các trường đại học hàng đầu tại Tokyo, Osaka và Kyoto.</p><ul><li>Lớp học offline tại chi nhánh: sáng – chiều – tối</li><li>Lớp học online kết hợp: linh hoạt theo lịch học viên</li><li>Tư vấn lộ trình học 1-1 hoàn toàn miễn phí</li><li>Ưu đãi khai trương: giảm 20% học phí cho 100 học viên đầu tiên</li></ul>` },
-      { id:1, cat:'Học bổng', img:'img/gallery-photo.png',
+      { id:1, cat:'Học bổng', img:'https://jellyfish-vn.com/wp-content/uploads/2025/07/Webinar-Chien-thuat-san-hoc-bong-toan-phan-cung-dai-hoc-Kyoto-1-1024x768.jpg',
         title:'Chương trình học bổng JLPT 2026 – Cơ hội vàng cho học viên xuất sắc',
         date:'01/06/2026', readTime:'3 phút đọc', views:2134, author:'Phòng Học vụ',
         tags:['Học bổng','JLPT','2026'],
         summary:'Jellyfish Vietnam công bố chương trình học bổng JLPT 2026 với tổng giá trị lên đến 500 triệu đồng, dành cho học viên đạt kết quả xuất sắc trong kỳ thi JLPT tháng 7.',
         content:`<p>Jellyfish Vietnam chính thức công bố Chương trình Học bổng JLPT 2026 với tổng giá trị học bổng lên đến <strong>500 triệu đồng</strong>.</p><h4>Cơ cấu học bổng</h4><ul><li>Học bổng N1: Miễn 100% học phí cho 5 học viên điểm cao nhất</li><li>Học bổng N2: Giảm 70% học phí cho 10 học viên xuất sắc nhất</li><li>Học bổng N3: Giảm 50% học phí cho 15 học viên</li><li>Học bổng Tiềm năng: Giảm 30% cho học viên có tiến bộ vượt bậc nhất</li></ul><h4>Điều kiện tham gia</h4><p>Học viên đang theo học tại Jellyfish Vietnam, tham dự kỳ thi JLPT tháng 7/2026 và đạt điểm từ 100/180 trở lên (N3, N2) hoặc 110/180 trở lên (N1).</p>` },
-      { id:2, cat:'Khai giảng', img:'img/gallery-photo.png',
+      { id:2, cat:'Khai giảng', img:'https://jellyfish-vn.com/wp-content/uploads/2025/09/Hoc-sinh-Viet-Nam-do-Kyoto-iUP-2025-1024x1024.png',
         title:'Khai giảng lớp N3 tháng 7/2026 – Đăng ký ngay hôm nay!',
         date:'28/05/2026', readTime:'2 phút đọc', views:1623, author:'Phòng Tuyển sinh',
         tags:['N3','Khai giảng','Tháng 7'],
         summary:'Lớp tiếng Nhật N3 tháng 7/2026 chính thức mở đăng ký với nhiều ưu đãi hấp dẫn. Số lượng chỉ 20 học viên/lớp, đăng ký sớm để giữ chỗ.',
         content:`<p>Jellyfish Vietnam thông báo khai giảng lớp Tiếng Nhật N3 vào ngày <strong>07/07/2026</strong>.</p><h4>Thông tin khóa học</h4><ul><li>Khai giảng: 07/07/2026</li><li>Thời lượng: 6 tháng (180 giờ học)</li><li>Lịch học: Thứ 2–4–6 (19:00–21:00) hoặc Thứ 7–CN (8:00–12:00)</li><li>Học phí: 5.800.000 đồng (ưu đãi sớm: 4.900.000 đồng)</li><li>Sĩ số: Tối đa 20 học viên/lớp</li></ul><h4>Ưu đãi đăng ký sớm</h4><p>Đăng ký trước ngày 20/06/2026 sẽ được giảm ngay <strong>900.000 đồng</strong>, tặng kèm bộ tài liệu ôn thi N3 chính hãng và 3 buổi luyện đề miễn phí với giáo viên bản ngữ.</p>` },
-      { id:3, cat:'Hoạt động', img:'img/gallery-photo.png',
+      { id:3, cat:'Hoạt động', img:'https://jellyfish-vn.com/wp-content/uploads/2026/01/web-1-1024x768.jpg',
         title:'Ngày hội văn hóa Nhật Bản 2026 – Trải nghiệm không thể bỏ lỡ',
         date:'20/05/2026', readTime:'4 phút đọc', views:2941, author:'Ban Truyền thông',
         tags:['Văn hóa','Lễ hội','Nhật Bản'],
         summary:'Ngày hội văn hóa Nhật Bản thường niên của Jellyfish Vietnam quy tụ hơn 500 học viên và khách tham quan, mang đến những trải nghiệm văn hóa xứ Phù Tang đặc sắc.',
         content:`<p>Ngày 18/05/2026, Jellyfish Vietnam đã tổ chức thành công "Ngày hội Văn hóa Nhật Bản 2026" tại Trung tâm Hội nghị Quốc gia, Hà Nội.</p><h4>Các hoạt động nổi bật</h4><ul><li>Biểu diễn trà đạo (茶道) do nghệ nhân từ Kyoto trình bày</li><li>Workshop Origami và thư pháp Nhật Bản</li><li>Trải nghiệm mặc Yukata, Kimono và chụp ảnh kỷ niệm</li><li>Thi hát Karaoke tiếng Nhật với giải thưởng hấp dẫn</li><li>Gian hàng ẩm thực Nhật Bản: Takoyaki, Ramen, Matcha</li></ul>` },
-      { id:4, cat:'Sự kiện', img:'img/gallery-photo.png',
+      { id:4, cat:'Sự kiện', img:'https://jellyfish-vn.com/wp-content/uploads/2026/01/Jellyfish-vietnam-1-1024x512.png',
         title:'Giao lưu văn hóa Nhật – Việt: Kết nối trái tim, mở rộng tương lai',
         date:'10/06/2026', readTime:'4 phút đọc', views:2412, author:'Ban Truyền thông',
         tags:['Giao lưu','Văn hóa','Quốc tế'],
         summary:'Chương trình giao lưu văn hóa đặc sắc giữa học viên Jellyfish và các bạn sinh viên Nhật Bản diễn ra thành công tốt đẹp tại Hà Nội.',
         content:`<p>Ngày 08/06/2026, chương trình "Giao lưu văn hóa Nhật – Việt" do Jellyfish Vietnam phối hợp cùng Đại sứ quán Nhật Bản tổ chức đã diễn ra tại Hà Nội. Hơn 200 học viên từ các lớp N3, N2 và N1 đã có cơ hội gặp gỡ 50 sinh viên đến từ Tokyo và Osaka.</p><h4>Hoạt động giao lưu</h4><ul><li>Tranh luận song ngữ về chủ đề văn hóa và xã hội</li><li>Thi đấu trò chơi truyền thống Nhật Bản</li><li>Trình diễn nghệ thuật Taiko (trống Nhật Bản)</li><li>Tặng quà lưu niệm và kết bạn pen-pal quốc tế</li></ul>` },
-      { id:5, cat:'Học bổng', img:'img/gallery-photo.png',
+      { id:5, cat:'Học bổng', img:'https://jellyfish-vn.com/wp-content/uploads/2025/06/grdr-2025-06-01-185519.056-1-1024x683.jpg',
         title:'Jellyfish Vietnam trao 20 suất học bổng cho học viên xuất sắc',
         date:'08/06/2026', readTime:'3 phút đọc', views:1821, author:'Phòng Học vụ',
         tags:['Học bổng','Trao thưởng','Kỷ niệm'],
         summary:'Nhân dịp kỷ niệm thành lập, Jellyfish Vietnam trao tặng học bổng trị giá lên đến 50% học phí cho những học viên đạt thành tích cao nhất năm học 2025–2026.',
         content:`<p>Trong buổi lễ kỷ niệm 8 năm thành lập (2018–2026), Jellyfish Vietnam trao học bổng cho 20 học viên xuất sắc nhất. Tổng giá trị hơn 160 triệu đồng.</p><h4>Danh sách học bổng</h4><ul><li>5 học bổng toàn phần (100% học phí) cho học viên đạt N1</li><li>8 học bổng 50% học phí cho học viên đạt N2 xuất sắc</li><li>7 học bổng khuyến học 30% cho học viên tiến bộ nhất</li></ul>` },
-      { id:6, cat:'Khai giảng', img:'img/gallery-photo.png',
+      { id:6, cat:'Khai giảng', img:'https://jellyfish-vn.com/wp-content/uploads/2025/10/online-seminar-Study-in-Japan-with-the-E-Track-Program-%E2%80%93-The-First-Step-Toward-Global-Integration.png',
         title:'Lớp N2 tháng 7 chính thức mở đăng ký – Số lượng có hạn!',
         date:'05/06/2026', readTime:'2 phút đọc', views:1445, author:'Phòng Tuyển sinh',
         tags:['N2','Khai giảng','Ưu đãi'],
         summary:'Lớp học N2 chuyên sâu sắp khai giảng với giáo viên bản ngữ và giáo trình mới nhất. Đăng ký sớm để nhận ưu đãi đặc biệt.',
         content:`<p>Jellyfish Vietnam thông báo khai giảng lớp Tiếng Nhật N2 vào ngày <strong>15/07/2026</strong>.</p><h4>Điểm khác biệt của khóa N2 Jellyfish</h4><ul><li>100% giáo viên bản ngữ, tốt nghiệp sư phạm tại Nhật Bản</li><li>Giáo trình độc quyền "Jellyfish N2 Master"</li><li>10 buổi luyện đề JLPT thực chiến</li><li>Nhóm hỗ trợ 24/7 trên Zalo/Line</li></ul><p><strong>Học phí ưu đãi:</strong> 7.200.000 đồng (giá gốc 8.500.000 đồng). Áp dụng cho 30 học viên đầu tiên trước ngày 30/06/2026.</p>` },
-      { id:7, cat:'Hoạt động', img:'img/gallery-photo.png',
+      { id:7, cat:'Hoạt động', img:'https://jellyfish-vn.com/wp-content/uploads/2025/07/Signing-Ceremony-of-Strategic-Cooperation-between-Jellyfish-Vietnam-JSC-and-New-B-JSC-1024x686.jpeg',
         title:'Học viên Jellyfish tham quan doanh nghiệp Nhật Bản tại Hà Nội',
         date:'01/06/2026', readTime:'3 phút đọc', views:1102, author:'Ban Học vụ',
         tags:['Tham quan','Doanh nghiệp','Thực tế'],
         summary:'Chuyến tham quan thực tế tại các doanh nghiệp Nhật Bản giúp học viên trải nghiệm môi trường làm việc và nâng cao kỹ năng tiếng Nhật trong thực tiễn.',
         content:`<p>Ngày 30/05/2026, Jellyfish Vietnam tổ chức chuyến tham quan tại 3 doanh nghiệp Nhật Bản tại Khu công nghiệp Thăng Long: Canon Vietnam, Panasonic Vietnam và Sumitomo Electric.</p><h4>Lợi ích từ chương trình</h4><ul><li>Tiếp xúc trực tiếp với môi trường làm việc văn hóa Nhật Bản</li><li>Thực hành tiếng Nhật trong các tình huống kinh doanh thực tế</li><li>Gặp gỡ và phỏng vấn thử với HR người Nhật</li><li>Tìm hiểu cơ hội thực tập và việc làm tại doanh nghiệp FDI Nhật Bản</li></ul>` },
-      { id:8, cat:'Thông báo', img:'img/gallery-photo.png',
+      { id:8, cat:'Thông báo', img:'https://jellyfish-vn.com/wp-content/uploads/2025/05/1-1-1024x683.png',
         title:'Jellyfish Vietnam ra mắt ứng dụng học tiếng Nhật trên điện thoại',
         date:'25/05/2026', readTime:'3 phút đọc', views:3219, author:'Ban Công nghệ',
         tags:['App','Công nghệ','Học online'],
         summary:'Ứng dụng học tập mới với hơn 5.000 bài tập tương tác, flashcard thông minh và lộ trình học cá nhân hóa giúp bạn tiến bộ nhanh hơn.',
         content:`<p>Sau 18 tháng nghiên cứu và phát triển, Jellyfish Vietnam chính thức ra mắt ứng dụng di động <strong>"Jellyfish Learn"</strong> trên cả iOS và Android.</p><h4>Tính năng nổi bật</h4><ul><li>Hơn <strong>5.000 bài tập tương tác</strong> theo cấu trúc đề thi JLPT chính thức</li><li>Hệ thống Flashcard thông minh với thuật toán SRS</li><li>AI phân tích điểm yếu và đề xuất lộ trình học cá nhân hóa</li><li>Luyện nghe với giọng đọc bản ngữ chuẩn xác</li><li>Mini game học từ vựng và ngữ pháp theo dạng gamification</li></ul><p>Ứng dụng hiện <strong>miễn phí hoàn toàn</strong> cho tất cả học viên đang theo học tại Jellyfish Vietnam.</p>` },
-      { id:9, cat:'Sự kiện', img:'img/gallery-photo.png',
+      { id:9, cat:'Sự kiện', img:'https://jellyfish-vn.com/wp-content/uploads/2025/05/hoi-thao-hoc-bong-quy-fast-retailing-1-1024x768.jpg',
         title:'Hội thảo "Cơ hội việc làm tại Nhật Bản 2026" – Miễn phí tham dự',
         date:'18/05/2026', readTime:'3 phút đọc', views:4134, author:'Ban Tư vấn',
         tags:['Hội thảo','Việc làm','Nhật Bản'],
         summary:'Buổi hội thảo chia sẻ về thị trường lao động Nhật Bản, yêu cầu tuyển dụng và các kỹ năng cần có để làm việc thành công tại xứ sở hoa anh đào.',
         content:`<p>Ngày 25/05/2026, Jellyfish Vietnam phối hợp cùng JETRO tổ chức hội thảo "Cơ hội việc làm tại Nhật Bản 2026" tại khách sạn Melia Hà Nội. Sự kiện thu hút hơn 300 bạn trẻ tham dự.</p><h4>Nội dung hội thảo</h4><ul><li>Tổng quan thị trường lao động Nhật Bản 2026</li><li>Yêu cầu tuyển dụng thực tế từ các công ty Nhật Bản hàng đầu</li><li>Kinh nghiệm từ người Việt đang làm việc thành công tại Nhật</li><li>Các chương trình visa và quy trình xin việc tại Nhật Bản</li></ul><p>Điểm nhấn: phiên "Job Fair" mini với 8 doanh nghiệp Nhật Bản phỏng vấn trực tiếp. Kết quả, 12 học viên Jellyfish Vietnam đã nhận lời mời thử việc ngay tại sự kiện.</p>` },
-      { id:10, cat:'Thông báo', img:'img/gallery-photo.png',
+      { id:10, cat:'Thông báo', img:'https://jellyfish-vn.com/wp-content/uploads/2025/11/chuong-trinh-hoi-thao-online-cua-Dai-hoc-Kyoto-1.jpg',
         title:'Thông báo lịch nghỉ lễ Quốc khánh 2/9/2026 và lịch học bù',
         date:'15/05/2026', readTime:'2 phút đọc', views:891, author:'Phòng Hành chính',
         tags:['Lịch nghỉ','Quốc khánh','Học bù'],
         summary:'Jellyfish Vietnam thông báo lịch nghỉ lễ Quốc khánh 2/9/2026 và kế hoạch học bù cho toàn bộ học viên tại các cơ sở.',
         content:`<p>Thực hiện quy định Nhà nước về nghỉ lễ Quốc khánh 2/9, Jellyfish Vietnam xin thông báo lịch nghỉ và học bù cho tất cả học viên tại Hà Nội, TP.HCM và Hải Phòng.</p><h4>Lịch nghỉ lễ</h4><ul><li>Nghỉ lễ: Thứ 3, ngày 02/09/2026</li><li>Các lớp ngày Thứ 3 sẽ được dời sang cuối tuần</li></ul><h4>Lịch học bù</h4><ul><li>Thứ 7, 05/09/2026: 8:00–10:00 (lớp sáng Thứ 3)</li><li>Chủ nhật, 06/09/2026: 14:00–16:00 (lớp chiều Thứ 3)</li><li>Thứ 7, 05/09/2026: 19:30–21:30 (lớp tối Thứ 3)</li></ul><p>Mọi thắc mắc liên hệ hotline: <strong>096.110.6466</strong>.</p>` },
-      { id:11, cat:'Sự kiện', img:'img/gallery-photo.png',
+      { id:11, cat:'Sự kiện', img:'https://jellyfish-vn.com/wp-content/uploads/2025/06/Jellyfish-Vietnam-1024x778.png',
         title:'Jellyfish Vietnam được vinh danh "Trung tâm Nhật ngữ uy tín nhất 2026"',
         date:'10/05/2026', readTime:'3 phút đọc', views:5623, author:'Ban Truyền thông',
         tags:['Giải thưởng','Uy tín','2026'],
         summary:'Jellyfish Vietnam vinh dự nhận giải thưởng "Trung tâm Nhật ngữ uy tín nhất Việt Nam 2026" – năm thứ 3 liên tiếp – do Hiệp hội Giáo dục Tư thục Việt Nam trao tặng.',
         content:`<p>Tối ngày 08/05/2026, Jellyfish Vietnam vinh dự nhận giải thưởng <strong>"Trung tâm Nhật ngữ uy tín nhất Việt Nam 2026"</strong> – năm thứ 3 liên tiếp.</p><h4>Tiêu chí đánh giá</h4><ul><li>Tỷ lệ học viên đạt JLPT: 92% (cao nhất ngành)</li><li>Chỉ số hài lòng học viên: 4.8/5 sao (khảo sát 2.400 học viên)</li><li>Đội ngũ giáo viên đạt chuẩn quốc tế 100%</li><li>Cam kết hoàn tiền nếu không đạt JLPT sau 1 lần thi</li></ul>` },
-      { id:12, cat:'Khai giảng', img:'img/gallery-photo.png',
+      { id:12, cat:'Khai giảng', img:'https://jellyfish-vn.com/wp-content/uploads/2026/01/Fast-Retailing-Information-Sessions-2026-Eng-ver.png',
         title:'Mở thêm lớp N5 dành cho người hoàn toàn mới bắt đầu học tiếng Nhật',
         date:'05/05/2026', readTime:'2 phút đọc', views:2234, author:'Phòng Tuyển sinh',
         tags:['N5','Cơ bản','Người mới'],
@@ -645,7 +645,7 @@
             </div>
             <div class="card-body">
               <div class="author-row">
-                <img class="author-avatar" src="img/knowledge-thumb.png" alt="" />
+                <svg width="14" height="14" fill="none" stroke="#555" stroke-width="2" viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
                 <span class="author-name">${a.author}</span>
               </div>
               <h5>${q?hl(a.title,q):a.title}</h5>
