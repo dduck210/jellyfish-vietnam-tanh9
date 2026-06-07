@@ -328,7 +328,7 @@
             luyện thi dành cho mọi trình độ N5, N4, N3, N2.
           </p>
 
-          <div class="mb-3 rounded-3 overflow-hidden fade-up">
+          <div class="mb-3 rounded-3 overflow-hidden">
             <img
               src="img/tiengnhat.png"
               alt="Khóa học luyện thi JLPT tại Jellyfish"
@@ -337,7 +337,7 @@
           </div>
 
           <h3
-            class="fw-bold fade-up d1"
+            class="fw-bold"
             style="font-size: 16px; color: #1a5cff; margin: 24px 0 10px"
           >
             1. Nội dung khóa học
@@ -389,7 +389,7 @@
           </ul>
 
           <h3
-            class="fw-bold fade-up d1"
+            class="fw-bold"
             style="font-size: 16px; color: #1a5cff; margin: 24px 0 10px"
           >
             2. Thời lượng, học phí và lịch khai giảng
@@ -413,7 +413,7 @@
           </ul>
 
           <h3
-            class="fw-bold fade-up d1"
+            class="fw-bold"
             style="font-size: 16px; color: #1a5cff; margin: 24px 0 10px"
           >
             3. Tại sao nên đăng ký khóa học – luyện thi cấp tốc tại Jellyfish
@@ -473,7 +473,7 @@
           </ul>
 
           <h3
-            class="fw-bold fade-up d1"
+            class="fw-bold"
             style="font-size: 16px; color: #1a5cff; margin: 24px 0 10px"
           >
             4. Những lợi ích khi có chứng chỉ JLPT
@@ -866,8 +866,10 @@
       document.querySelectorAll('.fade-up').forEach(el=>fadeObs.observe(el));
 
       // === BACK TO TOP ===
-      const btt=document.getElementById('backToTop');
-      window.addEventListener('scroll',()=>btt.classList.toggle('show',window.scrollY>300));
+      window.addEventListener('scroll',()=>{
+        const btt=document.getElementById('backToTop');
+        if(btt) btt.classList.toggle('show',window.scrollY>300);
+      });
     </script>
 
     <!-- BACK TO TOP -->
