@@ -164,7 +164,7 @@
         background: #f8f9fa;
         aspect-ratio: 3/4;
       }
-      .book-card.featured .book-card-img-wrap { aspect-ratio: 16/9; }
+      .book-card-img-wrap a { display: block; width: 100%; height: 100%; }
       .book-card-img-wrap img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.45s ease; }
       .book-card:hover .book-card-img-wrap img { transform: scale(1.07); }
       .book-badge {
@@ -365,11 +365,11 @@
 
         <!-- Level tabs -->
         <div class="level-tabs fade-up">
-          <button class="level-tab-btn active" id="btn-N5" onclick="showLevel('N5')">N5 — Sơ cấp</button>
-          <button class="level-tab-btn" id="btn-N4" onclick="showLevel('N4')">N4 — Sơ trung cấp</button>
-          <button class="level-tab-btn" id="btn-N3" onclick="showLevel('N3')">N3 — Trung cấp</button>
-          <button class="level-tab-btn" id="btn-N2" onclick="showLevel('N2')">N2 — Trung cao cấp</button>
-          <button class="level-tab-btn" id="btn-N1" onclick="showLevel('N1')">N1 — Cao cấp</button>
+          <button class="level-tab-btn active" id="btn-N5" onclick="showLevel('N5')">N5<span class="d-none d-md-inline"> — Sơ cấp</span></button>
+          <button class="level-tab-btn" id="btn-N4" onclick="showLevel('N4')">N4<span class="d-none d-md-inline"> — Sơ trung cấp</span></button>
+          <button class="level-tab-btn" id="btn-N3" onclick="showLevel('N3')">N3<span class="d-none d-md-inline"> — Trung cấp</span></button>
+          <button class="level-tab-btn" id="btn-N2" onclick="showLevel('N2')">N2<span class="d-none d-md-inline"> — Trung cao cấp</span></button>
+          <button class="level-tab-btn" id="btn-N1" onclick="showLevel('N1')">N1<span class="d-none d-md-inline"> — Cao cấp</span></button>
         </div>
 
         <div class="row g-4">
@@ -390,7 +390,7 @@
                 </select>
               </div>
 
-              <div class="row row-cols-1 row-cols-sm-2 row-cols-xl-3 g-4">
+              <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4">
                 <!-- Card 1 -->
                 <div class="col fade-up d1">
                   <div class="book-card">
@@ -569,6 +569,7 @@
 
           <!-- ===== SIDEBAR ===== -->
           <div class="col-12 col-lg-3">
+          <div style="position:sticky;top:24px">
 
             <!-- CTA card -->
             <div class="sidebar-cta-card fade-up">
@@ -609,6 +610,7 @@
               </a>
             </div>
 
+          </div><!-- /sticky wrapper -->
           </div>
         </div>
       </div>
