@@ -1,521 +1,879 @@
-﻿<!doctype html>
+<!doctype html>
 <html lang="vi">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Jellyfish Vietnam - Về Jellyfish Việt Nam</title>
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
-    />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
-      rel="stylesheet"
-    />
-    <style>
-      body {
-        font-family: "Inter", Arial, sans-serif;
-      }
-      .nav-link-item {
-        position: relative;
-        opacity: 0.82;
-        transition: opacity 0.25s;
-      }
-      .nav-link-item::after {
-        content: "";
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        width: 100%;
-        height: 3px;
-        background: #fff;
-        transform: scaleX(0);
-        transform-origin: center;
-        transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-      }
-      .nav-link-item:hover,
-      .nav-link-item.nav-active {
-        opacity: 1;
-      }
-      .nav-link-item:hover::after,
-      .nav-link-item.nav-active::after {
-        transform: scaleX(1);
-      }
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jellyfish Vietnam - Về Jellyfish Việt Nam</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    :root { --green: #237a37; --dark: #110c22; }
+    body { font-family: "Inter", Arial, sans-serif; background: #f5f5f5; color: #333; }
 
-      /* ===== HAMBURGER & MOBILE MENU ===== */
-      .hamburger-btn {
-        display: none;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        gap: 5px;
-        width: 40px;
-        height: 40px;
-        background: none;
-        border: none;
-        cursor: pointer;
-        padding: 4px;
-        flex-shrink: 0;
-      }
-      .hamburger-btn span {
-        display: block;
-        width: 26px;
-        height: 3px;
-        background: #237a37;
-        border-radius: 2px;
-        transition: all 0.3s ease;
-      }
+    .nav-link-item { position: relative; opacity: 0.82; transition: opacity 0.25s; }
+    .nav-link-item::after { content: ""; position: absolute; bottom: 0; left: 0; width: 100%; height: 3px; background: #fff; transform: scaleX(0); transform-origin: center; transition: transform 0.3s cubic-bezier(0.4,0,0.2,1); }
+    .nav-link-item:hover, .nav-link-item.nav-active { opacity: 1; }
+    .nav-link-item:hover::after, .nav-link-item.nav-active::after { transform: scaleX(1); }
 
-      /* Mobile overlay menu */
-      .mobile-menu-overlay {
-        display: none;
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: rgba(0, 0, 0, 0.45);
-        z-index: 1040;
-      }
-      .mobile-menu-overlay.open {
-        display: block;
-      }
-      .mobile-menu-drawer {
-        position: fixed;
-        top: 0;
-        right: -280px;
-        width: 280px;
-        height: 100%;
-        background: #fff;
-        z-index: 1050;
-        transition: right 0.3s ease;
-        overflow-y: auto;
-        box-shadow: -4px 0 20px rgba(0, 0, 0, 0.15);
-      }
-      .mobile-menu-drawer.open {
-        right: 0;
-      }
-      .mobile-menu-header {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding: 16px 20px;
-        background: #fff;
-        border-bottom: 1px solid #e9ecef;
-      }
-      .mobile-menu-close {
-        background: none;
-        border: none;
-        color: #333;
-        font-size: 28px;
-        line-height: 1;
-        cursor: pointer;
-        padding: 0;
-      }
-      .mobile-menu-nav a {
-        display: block;
-        padding: 14px 20px;
-        color: #333;
-        text-decoration: none;
-        font-size: 15px;
-        font-weight: 500;
-        border-bottom: 1px solid #f0f0f0;
-        transition:
-          background 0.2s,
-          color 0.2s;
-      }
-      .mobile-menu-nav a:hover,
-      .mobile-menu-nav a.nav-active {
-        background: #f0f8f1;
-        color: #237a37;
-      }
-      .mobile-menu-footer {
-        padding: 20px;
-        display: flex;
-        flex-direction: column;
-        gap: 10px;
-      }
+    .hamburger-btn { display: none; flex-direction: column; justify-content: center; align-items: center; gap: 5px; width: 40px; height: 40px; background: none; border: none; cursor: pointer; padding: 4px; flex-shrink: 0; }
+    .hamburger-btn span { display: block; width: 26px; height: 3px; background: #237a37; border-radius: 2px; transition: all 0.3s ease; }
 
-      @media (max-width: 767px) {
-        .hamburger-btn {
-          display: flex;
-        }
-        /* Ẩn thanh nav ngang trên mobile */
-        header nav {
-          display: none !important;
-        }
-        /* Ẩn search bar & nút ĐĂNG KÝ TƯ VẤN trên mobile — chỉ giữ SĐT */
-        .search-bar-wrap {
-          display: none !important;
-        }
-      }
-    </style>
-  </head>
-  <body style="background: #f5f5f5; color: #333">
-    <header class="bg-white shadow-sm">
-      <div
-        class="d-flex align-items-center justify-content-between gap-2 px-4 py-3"
-      >
-        <img
-          src="img/logo.png"
-          alt="Jellyfish Vietnam"
-          class="d-block"
-          style="height: 55px; width: auto; object-fit: contain"
-        />
-        <div class="d-none d-sm-flex flex-grow-1 mx-2 search-bar-wrap">
-          <input
-            type="text"
-            placeholder="Tìm kiếm..."
-            class="form-control rounded-pill"
-            style="background: #ececed; border: 1px solid #ececed"
-          />
-        </div>
-        <div class="d-flex align-items-center gap-2 flex-shrink-0">
-          <button
-            class="btn fw-bold text-white border-0 rounded-3 text-nowrap d-none d-md-inline-flex align-items-center px-3 py-2"
-            style="background: #237a37"
-          >
-            ĐĂNG KÝ TƯ VẤN
-          </button>
-          <a
-            href="tel:0961106466"
-            class="btn fw-bold text-white text-decoration-none border-0 rounded-3 text-nowrap d-none d-md-inline-flex align-items-center px-3 py-2"
-            style="background: #dc3545"
-          >
-            <img
-              src="img/Rectangle 77.png"
-              alt=""
-              style="width: 16px; margin-right: 6px"
-            />096.110.6466
-          </a>
-          <!-- Hamburger button: chỉ hiện trên mobile -->
-          <button class="hamburger-btn" id="hamburgerBtn" aria-label="Mở menu">
-            <span></span>
-            <span></span>
-            <span></span>
-          </button>
-        </div>
+    .mobile-menu-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,.45); z-index: 1040; }
+    .mobile-menu-overlay.open { display: block; }
+    .mobile-menu-drawer { position: fixed; top: 0; right: -280px; width: 280px; height: 100%; background: #fff; z-index: 1050; transition: right 0.3s ease; overflow-y: auto; box-shadow: -4px 0 20px rgba(0,0,0,.15); }
+    .mobile-menu-drawer.open { right: 0; }
+    .mobile-menu-header { display: flex; align-items: center; justify-content: space-between; padding: 16px 20px; background: #fff; border-bottom: 1px solid #e9ecef; }
+    .mobile-menu-close { background: none; border: none; color: #333; font-size: 28px; line-height: 1; cursor: pointer; padding: 0; }
+    .mobile-menu-nav a { display: block; padding: 14px 20px; color: #333; text-decoration: none; font-size: 15px; font-weight: 500; border-bottom: 1px solid #f0f0f0; transition: background .2s, color .2s; }
+    .mobile-menu-nav a:hover, .mobile-menu-nav a.nav-active { background: #f0f8f1; color: #237a37; }
+    .mobile-menu-footer { padding: 20px; display: flex; flex-direction: column; gap: 10px; }
+
+    @media (max-width: 767px) {
+      .hamburger-btn { display: flex; }
+      header nav { display: none !important; }
+      .search-bar-wrap { display: none !important; }
+      .hero-about { min-height: 320px; }
+      .timeline::before { left: 20px; }
+      .timeline-item:nth-child(odd) .timeline-content,
+      .timeline-item:nth-child(even) .timeline-content { margin-left: 44px; margin-right: 0; width: calc(100% - 44px); }
+      .timeline-dot { left: 20px; top: 22px; }
+    }
+
+    /* HERO */
+    .hero-about { position: relative; min-height: 480px; background: url('https://jellyfish-vn.com/wp-content/uploads/2025/03/DSC00070-1024x681.jpg') center/cover no-repeat; display: flex; align-items: center; }
+    .hero-about::before { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(10,10,22,0.78) 0%, rgba(17,12,34,0.6) 50%, rgba(35,122,55,0.45) 100%); }
+    .hero-about-content { position: relative; z-index: 1; }
+    .hero-badge { display: inline-block; background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.3); color: #fff; font-size: 12px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; padding: 5px 14px; border-radius: 50px; backdrop-filter: blur(4px); margin-bottom: 14px; }
+    .hero-about h1 { font-size: clamp(26px, 5vw, 50px); font-weight: 900; color: #fff; line-height: 1.15; text-shadow: 0 2px 12px rgba(0,0,0,.3); margin-bottom: 14px; }
+    .hero-sub { font-size: 15px; color: rgba(255,255,255,0.88); line-height: 1.75; max-width: 540px; margin-bottom: 26px; }
+    .hero-scroll { position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%); z-index: 1; color: rgba(255,255,255,0.55); font-size: 12px; display: flex; flex-direction: column; align-items: center; gap: 4px; animation: bounce 2s infinite; }
+    @keyframes bounce { 0%,100%{transform:translateX(-50%) translateY(0)} 50%{transform:translateX(-50%) translateY(8px)} }
+
+    /* STATS STRIP */
+    .stats-strip { background: var(--green); }
+    .stats-strip-item { padding: 18px 28px; display: flex; align-items: center; gap: 14px; border-right: 1px solid rgba(255,255,255,0.2); }
+    .stats-strip-item:last-child { border-right: none; }
+    .stats-strip-number { font-size: 26px; font-weight: 800; color: #fff; line-height: 1; }
+    .stats-strip-label { font-size: 12px; color: rgba(255,255,255,0.85); line-height: 1.4; }
+
+    /* FADE UP */
+    .fade-up { opacity: 0; transform: translateY(30px); transition: opacity 0.6s ease, transform 0.6s ease; }
+    .fade-up.visible { opacity: 1; transform: none; }
+    .fade-up.d1 { transition-delay: 0.1s; }
+    .fade-up.d2 { transition-delay: 0.2s; }
+    .fade-up.d3 { transition-delay: 0.3s; }
+    .fade-up.d4 { transition-delay: 0.4s; }
+
+    /* SECTION HELPERS */
+    .section-label { display: inline-block; color: var(--green); font-size: 11px; font-weight: 700; letter-spacing: 2.5px; text-transform: uppercase; padding: 4px 12px; background: rgba(35,122,55,0.1); border-radius: 50px; margin-bottom: 10px; }
+    .section-title { font-size: clamp(20px, 3.5vw, 32px); font-weight: 800; color: #111; line-height: 1.22; margin-bottom: 10px; }
+    .section-divider { width: 44px; height: 4px; background: var(--green); border-radius: 2px; margin-bottom: 22px; }
+
+    /* ACTIVITY CARDS */
+    .activity-card { background: #fff; border-radius: 16px; padding: 28px 24px; height: 100%; border: 1.5px solid #eee; transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s; }
+    .activity-card:hover { transform: translateY(-6px); box-shadow: 0 20px 48px rgba(35,122,55,0.13); border-color: var(--green); }
+    .activity-card .icon-wrap { width: 56px; height: 56px; background: rgba(35,122,55,0.1); border-radius: 13px; display: flex; align-items: center; justify-content: center; margin-bottom: 18px; transition: background 0.3s; }
+    .activity-card:hover .icon-wrap { background: rgba(35,122,55,0.2); }
+    .activity-card h4 { font-size: 16px; font-weight: 700; color: #111; margin-bottom: 10px; }
+    .activity-card p { font-size: 14px; color: #555; line-height: 1.75; margin: 0; }
+
+    /* MEANING CARDS */
+    .meaning-card { background: linear-gradient(135deg,#f8fffe,#f0f9f2); border-radius: 16px; padding: 28px 22px; height: 100%; border: 1.5px solid #d8efe0; transition: transform 0.3s, box-shadow 0.3s; text-align: center; }
+    .meaning-card:hover { transform: translateY(-5px); box-shadow: 0 16px 40px rgba(35,122,55,0.12); }
+    .meaning-emoji { font-size: 38px; margin-bottom: 14px; }
+    .meaning-card h4 { font-size: 15px; font-weight: 700; color: var(--green); margin-bottom: 8px; }
+    .meaning-card p { font-size: 13.5px; color: #555; line-height: 1.7; margin: 0; }
+
+    /* VMV TABS */
+    .vmv-tabs { display: flex; border-bottom: 2px solid #e9ecef; margin-bottom: 28px; }
+    .vmv-tab { flex: 1; text-align: center; padding: 12px 8px; font-size: 14px; font-weight: 600; color: #777; cursor: pointer; background: none; border: none; border-bottom: 3px solid transparent; margin-bottom: -2px; transition: color 0.25s, border-color 0.25s; }
+    .vmv-tab.active { color: var(--green); border-bottom-color: var(--green); }
+    .vmv-panel { display: none; }
+    .vmv-panel.active { display: block; animation: fadeIn 0.3s ease; }
+    @keyframes fadeIn { from{opacity:0;transform:translateY(8px)} to{opacity:1;transform:none} }
+    .vmv-item { display: flex; align-items: flex-start; gap: 14px; padding: 18px 0; border-bottom: 1px solid #f0f0f0; }
+    .vmv-item:last-child { border-bottom: none; }
+    .vmv-item-icon { width: 42px; height: 42px; background: rgba(35,122,55,0.1); border-radius: 11px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .vmv-item p { font-size: 14.5px; color: #444; line-height: 1.8; margin: 0; }
+
+    /* BIG STATS */
+    .stat-big-card { text-align: center; padding: 32px 16px; }
+    .stat-big-number { font-size: 46px; font-weight: 900; color: var(--green); line-height: 1; margin-bottom: 8px; }
+    .stat-big-label { font-size: 14px; font-weight: 600; color: #444; line-height: 1.5; }
+
+    /* QUALITY BADGES */
+    .quality-badge { display: flex; align-items: center; gap: 12px; background: #fff; border-radius: 12px; padding: 14px 18px; box-shadow: 0 3px 14px rgba(0,0,0,0.06); margin-bottom: 12px; font-size: 14px; font-weight: 600; color: #333; }
+    .quality-badge .badge-icon { width: 36px; height: 36px; background: rgba(35,122,55,0.1); border-radius: 8px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+
+    /* TIMELINE */
+    .timeline { position: relative; }
+    .timeline::before { content:''; position:absolute; left:50%; top:0; bottom:0; width:2px; background:#e0efe3; transform:translateX(-50%); }
+    .timeline-item { display:block; margin-bottom:36px; position:relative; }
+    .timeline-spacer { display:none; }
+    /* Odd items (1,3,5): content on RIGHT side */
+    .timeline-item:nth-child(odd) .timeline-content { margin-left:calc(50% + 36px); margin-right:0; }
+    /* Even items (2,4): content on LEFT side */
+    .timeline-item:nth-child(even) .timeline-content { margin-left:0; margin-right:calc(50% + 36px); }
+    .timeline-content { width:calc(50% - 36px); background:#fff; border-radius:14px; padding:22px; box-shadow:0 4px 18px rgba(0,0,0,0.07); border:1.5px solid #eee; transition:box-shadow 0.3s; }
+    .timeline-content:hover { box-shadow:0 8px 30px rgba(35,122,55,0.12); }
+    .timeline-dot { position:absolute; left:50%; top:22px; transform:translateX(-50%); width:15px; height:15px; background:var(--green); border-radius:50%; border:3px solid #fff; box-shadow:0 0 0 3px rgba(35,122,55,0.25); z-index:1; }
+    .timeline-year { font-size:12px; font-weight:700; color:var(--green); margin-bottom:5px; letter-spacing:1px; }
+    .timeline-title { font-size:15px; font-weight:700; color:#111; margin-bottom:7px; }
+    .timeline-desc { font-size:13.5px; color:#666; line-height:1.7; margin:0; }
+
+    /* TESTIMONIALS */
+    .testimonial-card { background:#fff; border-radius:16px; padding:26px; height:100%; border:1.5px solid #eee; transition:transform 0.3s, box-shadow 0.3s; }
+    .testimonial-card:hover { transform:translateY(-4px); box-shadow:0 16px 40px rgba(35,122,55,0.1); }
+    .quote-icon { font-size:44px; color:rgba(35,122,55,0.15); line-height:1; margin-bottom:10px; font-family:serif; }
+    .star-row { color:#f59e0b; font-size:13px; margin-bottom:10px; }
+    .testimonial-card p { font-size:14px; color:#444; line-height:1.8; font-style:italic; margin-bottom:18px; }
+    .testimonial-author { display:flex; align-items:center; gap:10px; }
+    .testimonial-avatar { width:40px; height:40px; border-radius:50%; background:rgba(35,122,55,0.12); display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+    .testimonial-name { font-size:13px; font-weight:700; color:#111; }
+    .testimonial-role { font-size:12px; color:#888; }
+
+    /* COURSE CARDS */
+    .course-card-img-wrap { overflow:hidden; border-radius:12px; position:relative; display:block; text-decoration:none; }
+    .course-card-img-wrap img { transition:transform 0.4s ease; width:100%; display:block; }
+    .course-card-img-wrap:hover img { transform:scale(1.06); }
+    .course-overlay { position:absolute; inset:0; background:rgba(35,122,55,0); display:flex; align-items:flex-end; justify-content:center; padding-bottom:12px; transition:background 0.3s; border-radius:12px; }
+    .course-card-img-wrap:hover .course-overlay { background:rgba(35,122,55,0.18); }
+    .course-see-btn { background:var(--green); color:#fff; font-size:12px; font-weight:600; padding:5px 14px; border-radius:50px; opacity:0; transform:translateY(8px); transition:opacity 0.3s, transform 0.3s; }
+    .course-card-img-wrap:hover .course-see-btn { opacity:1; transform:none; }
+
+    /* CTA */
+    .cta-section { background:linear-gradient(135deg,var(--green) 0%,#1a5c2a 100%); }
+
+    /* MODAL */
+    .modal-header { background:var(--green); }
+    .form-control:focus { border-color:var(--green); box-shadow:0 0 0 3px rgba(35,122,55,0.15); }
+    .tag-pill { display:inline-block; padding:5px 13px; border:1.5px solid #ddd; border-radius:50px; font-size:12.5px; cursor:pointer; transition:all 0.2s; }
+    .tag-pill.selected { background:#237a37; color:#fff; border-color:#237a37; }
+
+    /* BACK TO TOP */
+    .back-to-top { position:fixed; bottom:26px; right:22px; width:44px; height:44px; background:var(--green); color:#fff; border:none; border-radius:50%; display:flex; align-items:center; justify-content:center; cursor:pointer; box-shadow:0 4px 16px rgba(35,122,55,0.35); opacity:0; transform:translateY(12px); transition:opacity 0.3s, transform 0.3s; z-index:999; }
+    .back-to-top.show { opacity:1; transform:none; }
+    .back-to-top:hover { background:#1a5c2a; }
+
+    .toast-success { background:var(--green); color:#fff; border:none; }
+
+    /* PARTNER STRIP */
+    .partner-strip { background: #fff; border-top: 1px solid #eee; border-bottom: 1px solid #eee; overflow: hidden; }
+    .partner-track { display: flex; gap: 0; animation: scrollPartner 28s linear infinite; width: max-content; }
+    .partner-track:hover { animation-play-state: paused; }
+    .partner-item { display: flex; align-items: center; gap: 10px; padding: 18px 40px; white-space: nowrap; font-size: 15px; font-weight: 700; color: #333; border-right: 1px solid #f0f0f0; transition: color 0.2s; }
+    .partner-item:hover { color: var(--green); }
+    .partner-dot { width: 8px; height: 8px; background: var(--green); border-radius: 50%; flex-shrink: 0; }
+    @keyframes scrollPartner { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+    /* HERO ANIMATE */
+    .hero-text-animate { animation: heroFadeUp 0.9s ease both; }
+    .hero-text-animate.d1 { animation-delay: 0.2s; }
+    .hero-text-animate.d2 { animation-delay: 0.4s; }
+    .hero-text-animate.d3 { animation-delay: 0.6s; }
+    @keyframes heroFadeUp { from { opacity:0; transform: translateY(24px); } to { opacity:1; transform: none; } }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="bg-white shadow-sm">
+    <div class="d-flex align-items-center justify-content-between gap-2 px-4 py-3">
+      <img src="img/logo.png" alt="Jellyfish Vietnam" class="d-block" style="height:55px;width:auto;object-fit:contain;" />
+      <div class="d-none d-sm-flex flex-grow-1 mx-2 search-bar-wrap">
+        <input type="text" placeholder="Tìm kiếm..." class="form-control rounded-pill" style="background:#ececed;border:1px solid #ececed;" />
       </div>
-      <nav style="background: #237a37; overflow-x: auto; scrollbar-width: none">
-        <ul
-          class="list-unstyled m-0 d-flex align-items-stretch justify-content-center"
-          style="
-            padding: 0 16px;
-            width: max-content;
-            min-width: 100%;
-            min-height: 52px;
-          "
-        >
-          <li class="d-flex">
-            <a
-              href="index.html"
-              class="nav-link-item text-white text-decoration-none d-flex align-items-center text-nowrap px-3"
-              style="font-size: 15px"
-              >Trang chủ</a
-            >
-          </li>
-          <li class="d-flex">
-            <a
-              href="about.html"
-              class="nav-link-item nav-active text-white text-decoration-none d-flex align-items-center text-nowrap px-3"
-              style="font-size: 15px"
-              >Về Jellyfish Việt Nam</a
-            >
-          </li>
-          <li class="d-flex">
-            <a
-              href="courses.html"
-              class="nav-link-item text-white text-decoration-none d-flex align-items-center text-nowrap px-3"
-              style="font-size: 15px"
-              >Khóa học</a
-            >
-          </li>
-          <li class="d-flex">
-            <a
-              href="schedule.html"
-              class="nav-link-item text-white text-decoration-none d-flex align-items-center text-nowrap px-3"
-              style="font-size: 15px"
-              >Lịch khai giảng</a
-            >
-          </li>
-          <li class="d-flex">
-            <a
-              href="curriculum.html"
-              class="nav-link-item text-white text-decoration-none d-flex align-items-center text-nowrap px-3"
-              style="font-size: 15px"
-              >Giáo trình</a
-            >
-          </li>
-          <li class="d-flex">
-            <a
-              href="blog.html"
-              class="nav-link-item text-white text-decoration-none d-flex align-items-center text-nowrap px-3"
-              style="font-size: 15px"
-              >Kiến thức hữu ích</a
-            >
-          </li>
-          <li class="d-flex">
-            <a
-              href="news.html"
-              class="nav-link-item text-white text-decoration-none d-flex align-items-center text-nowrap px-3"
-              style="font-size: 15px"
-              >Tin tức</a
-            >
-          </li>
-        </ul>
-      </nav>
-    </header>
-
-    <!-- ===== MOBILE MENU OVERLAY ===== -->
-    <div class="mobile-menu-overlay" id="menuOverlay"></div>
-    <div class="mobile-menu-drawer" id="menuDrawer">
-      <div class="mobile-menu-header">
-        <img
-          src="img/logo.png"
-          alt="Jellyfish Vietnam"
-          style="height: 38px;"
-        />
-        <button
-          class="mobile-menu-close"
-          id="menuCloseBtn"
-          aria-label="Đóng menu"
-        >
-          &#x2715;
+      <div class="d-flex align-items-center gap-2 flex-shrink-0">
+        <button class="btn fw-bold text-white border-0 rounded-3 text-nowrap d-none d-md-inline-flex align-items-center px-3 py-2" style="background:#237a37;" data-bs-toggle="modal" data-bs-target="#regModal">ĐĂNG KÝ TƯ VẤN</button>
+        <a href="tel:0961106466" class="btn fw-bold text-white text-decoration-none border-0 rounded-3 text-nowrap d-none d-md-inline-flex align-items-center px-3 py-2" style="background:#dc3545;">
+          <img src="img/Rectangle 77.png" alt="" style="width:16px;margin-right:6px;" />096.110.6466
+        </a>
+        <button class="hamburger-btn" id="hamburgerBtn" aria-label="Mở menu">
+          <span></span><span></span><span></span>
         </button>
       </div>
-      <nav class="mobile-menu-nav">
-        <a href="index.html">Trang chủ</a>
-        <a href="about.html" class="nav-active">Về Jellyfish Việt Nam</a>
-        <a href="courses.html">Khóa học</a>
-        <a href="schedule.html">Lịch khai giảng</a>
-        <a href="curriculum.html">Giáo trình</a>
-        <a href="blog.html">Kiến thức hữu ích</a>
-        <a href="news.html">Tin tức</a>
-      </nav>
-      <div class="mobile-menu-footer">
-        <a
-          href="#"
-          class="btn fw-bold text-white border-0 rounded-3 text-center py-2"
-          style="background: #237a37; font-size: 15px"
-          >ĐĂNG KÝ TƯ VẤN</a
-        >
-        <a
-          href="tel:0961106466"
-          class="btn fw-bold text-white border-0 rounded-3 text-center py-2"
-          style="background: #dc3545; font-size: 15px"
-          >📞 096.110.6466</a
-        >
+    </div>
+    <nav style="background:#237a37;overflow-x:auto;scrollbar-width:none;">
+      <ul class="list-unstyled m-0 d-flex align-items-stretch justify-content-center" style="padding:0 16px;width:max-content;min-width:100%;min-height:52px;">
+        <li class="d-flex"><a href="index.html" class="nav-link-item text-white text-decoration-none d-flex align-items-center text-nowrap px-3" style="font-size:15px;">Trang chủ</a></li>
+        <li class="d-flex"><a href="about.html" class="nav-link-item nav-active text-white text-decoration-none d-flex align-items-center text-nowrap px-3" style="font-size:15px;">Về Jellyfish Việt Nam</a></li>
+        <li class="d-flex"><a href="courses.html" class="nav-link-item text-white text-decoration-none d-flex align-items-center text-nowrap px-3" style="font-size:15px;">Khóa học</a></li>
+        <li class="d-flex"><a href="schedule.html" class="nav-link-item text-white text-decoration-none d-flex align-items-center text-nowrap px-3" style="font-size:15px;">Lịch khai giảng</a></li>
+        <li class="d-flex"><a href="curriculum.html" class="nav-link-item text-white text-decoration-none d-flex align-items-center text-nowrap px-3" style="font-size:15px;">Giáo trình</a></li>
+        <li class="d-flex"><a href="blog.html" class="nav-link-item text-white text-decoration-none d-flex align-items-center text-nowrap px-3" style="font-size:15px;">Kiến thức hữu ích</a></li>
+        <li class="d-flex"><a href="news.html" class="nav-link-item text-white text-decoration-none d-flex align-items-center text-nowrap px-3" style="font-size:15px;">Tin tức</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- MOBILE MENU -->
+  <div class="mobile-menu-overlay" id="menuOverlay"></div>
+  <div class="mobile-menu-drawer" id="menuDrawer">
+    <div class="mobile-menu-header">
+      <img src="img/logo.png" alt="Jellyfish Vietnam" style="height:38px;" />
+      <button class="mobile-menu-close" id="menuCloseBtn" aria-label="Đóng menu">&#x2715;</button>
+    </div>
+    <nav class="mobile-menu-nav">
+      <a href="index.html">Trang chủ</a>
+      <a href="about.html" class="nav-active">Về Jellyfish Việt Nam</a>
+      <a href="courses.html">Khóa học</a>
+      <a href="schedule.html">Lịch khai giảng</a>
+      <a href="curriculum.html">Giáo trình</a>
+      <a href="blog.html">Kiến thức hữu ích</a>
+      <a href="news.html">Tin tức</a>
+    </nav>
+    <div class="mobile-menu-footer">
+      <a href="#" class="btn fw-bold text-white border-0 rounded-3 text-center py-2" style="background:#237a37;font-size:15px;" data-bs-toggle="modal" data-bs-target="#regModal">ĐĂNG KÝ TƯ VẤN</a>
+      <a href="tel:0961106466" class="btn fw-bold text-white border-0 rounded-3 text-center py-2" style="background:#dc3545;font-size:15px;">096.110.6466</a>
+    </div>
+  </div>
+
+  <main>
+
+    <!-- HERO -->
+    <section class="hero-about">
+      <div class="container hero-about-content py-5">
+        <span class="hero-badge hero-text-animate">Về chúng tôi</span>
+        <h1 class="hero-text-animate d1">Jellyfish Việt Nam<br /><span style="color:#a8e6b8;">Mở rộng tầm nhìn của bạn</span></h1>
+        <p class="hero-sub hero-text-animate d2">Trực thuộc tập đoàn Jellyfish Nhật Bản — đơn vị tiên phong đào tạo ngôn ngữ, tư vấn du học và kết nối nhân sự Việt–Nhật trong hơn 15 năm.</p>
+        <div class="d-flex flex-wrap gap-3 hero-text-animate d3">
+          <button class="btn btn-light fw-bold px-4 py-2 rounded-3" style="color:#237a37;" data-bs-toggle="modal" data-bs-target="#regModal">Đăng ký tư vấn miễn phí</button>
+          <a href="#about-section" class="btn fw-semibold px-4 py-2 rounded-3 scroll-anchor" style="background:rgba(255,255,255,0.15);color:#fff;border:1.5px solid rgba(255,255,255,0.4);backdrop-filter:blur(4px);">Tìm hiểu thêm</a>
+        </div>
+      </div>
+      <div class="hero-scroll">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+        <span>Cuộn xuống</span>
+      </div>
+    </section>
+
+    <!-- STATS STRIP -->
+    <div class="stats-strip">
+      <div class="container-fluid px-0">
+        <div class="d-flex flex-wrap justify-content-center">
+          <div class="stats-strip-item"><div><div class="stats-strip-number">10,000+</div><div class="stats-strip-label">Học viên đã đào tạo</div></div></div>
+          <div class="stats-strip-item"><div><div class="stats-strip-number">15+</div><div class="stats-strip-label">Năm kinh nghiệm</div></div></div>
+          <div class="stats-strip-item"><div><div class="stats-strip-number">250+</div><div class="stats-strip-label">Đối tác trường & doanh nghiệp</div></div></div>
+          <div class="stats-strip-item"><div><div class="stats-strip-number">1,200</div><div class="stats-strip-label">Du học sinh mỗi năm</div></div></div>
+        </div>
       </div>
     </div>
 
-    <main>
+    <!-- PARTNER STRIP -->
+    <div class="partner-strip py-1">
+      <div class="partner-track" id="partnerTrack">
+        <div class="partner-item"><span class="partner-dot"></span>Đại học Kyoto</div>
+        <div class="partner-item"><span class="partner-dot"></span>Đại học Keio</div>
+        <div class="partner-item"><span class="partner-dot"></span>Đại học Hosei</div>
+        <div class="partner-item"><span class="partner-dot"></span>Fast Retailing (UNIQLO)</div>
+        <div class="partner-item"><span class="partner-dot"></span>Tập đoàn FPT</div>
+        <div class="partner-item"><span class="partner-dot"></span>Đại học Waseda</div>
+        <div class="partner-item"><span class="partner-dot"></span>Đại học Osaka</div>
+        <div class="partner-item"><span class="partner-dot"></span>Honda Vietnam</div>
+        <div class="partner-item"><span class="partner-dot"></span>Đại học Ritsumeikan</div>
+        <div class="partner-item"><span class="partner-dot"></span>Panasonic Vietnam</div>
+        <!-- Duplicate for seamless loop -->
+        <div class="partner-item"><span class="partner-dot"></span>Đại học Kyoto</div>
+        <div class="partner-item"><span class="partner-dot"></span>Đại học Keio</div>
+        <div class="partner-item"><span class="partner-dot"></span>Đại học Hosei</div>
+        <div class="partner-item"><span class="partner-dot"></span>Fast Retailing (UNIQLO)</div>
+        <div class="partner-item"><span class="partner-dot"></span>Tập đoàn FPT</div>
+        <div class="partner-item"><span class="partner-dot"></span>Đại học Waseda</div>
+        <div class="partner-item"><span class="partner-dot"></span>Đại học Osaka</div>
+        <div class="partner-item"><span class="partner-dot"></span>Honda Vietnam</div>
+        <div class="partner-item"><span class="partner-dot"></span>Đại học Ritsumeikan</div>
+        <div class="partner-item"><span class="partner-dot"></span>Panasonic Vietnam</div>
+      </div>
+    </div>
 
-      <!-- ===== HERO BANNER ===== -->
-      <img src="img/images2.png" alt="Expand your horizons - Jellyfish Vietnam" class="w-100 d-block" />
-
-      <!-- ===== NỘI DUNG BÀI VIẾT ===== -->
-      <section class="py-5 bg-white">
-        <div class="container" style="max-width: 1224px;">
-
-          <h2 class="fw-bold mb-3" style="color: #237a37; font-size: 28px;">JELLYFISH LÀ GÌ?</h2>
-
-          <p style="font-size: 16px; line-height: 1.8; color: #333;">
-            Jellyfish Việt Nam - trực thuộc tập đoàn Jellyfish Nhật Bản, hoạt động trong lĩnh vực:
-          </p>
-          <p style="font-size: 16px; line-height: 1.8; color: #333;">
-            - Đào tạo ngôn ngữ và văn hoá Nhật Bản: Bất kỳ cấp độ, tập trung phát triển đồng đều các kỹ năng, đặc biệt kỹ năng giao tiếp trong môi trường học tập và làm việc.
-          </p>
-          <p style="font-size: 16px; line-height: 1.8; color: #333;">
-            - Đào tạo tiếng Việt từ cơ bản đến nâng cao cho người nước ngoài có mục tiêu sống, học tập, làm việc lâu dài tại Việt Nam.
-          </p>
-          <p style="font-size: 16px; line-height: 1.8; color: #333;">
-            - Tư vấn du học và cung cấp các dịch vụ hỗ trợ du học sinh: hoàn thiện hồ sơ xin COE, visa du học, giới thiệu việc làm sau khi hoàn thành chương trình học.
-          </p>
-
-          <h3 class="fw-bold mt-4 mb-2" style="font-size: 18px; color: #333;">Ý nghĩa của Jellyfish:</h3>
-          <p style="font-size: 16px; line-height: 1.8; color: #333;">Jellyfish dịch sang tiếng Việt có nghĩa là "Con Sứa", đặc điểm điển hình:</p>
-          <p style="font-size: 16px; line-height: 1.8; color: #333;">- Một loài động vật biển: Nhật Bản - đất nước của biển</p>
-          <p style="font-size: 16px; line-height: 1.8; color: #333;">- Không có xương, thân trong suốt: Sự tinh khiết, sự chân thành và sự thật</p>
-          <p style="font-size: 16px; line-height: 1.8; color: #333;">- Sống theo đàn, di cư, sinh sản nhanh: Tinh thần gắn kết vì sự phát triển xuyên quốc gia</p>
-          <p style="font-size: 16px; line-height: 1.8; color: #333;">
-            Những đặc điểm điển hình của "Jellyfish – Sứa" chính là cơ sở tiên đề cho mọi hoạt động phát triển của chúng tôi.
-            Sau 15 năm phát triển, bằng tâm huyết, sự chia sẻ và thấu hiểu sâu sắc, tập đoàn Jellyfish nói chung, Jellyfish Việt Nam nói riêng đã truyền cảm hứng và trở thành cầu nối cho hàng nghìn tài năng trẻ Việt Nam đến với những cơ hội học tập và làm việc tốt hơn.
-          </p>
-
-          <h2 class="fw-bold mb-3" style="color: #237a37; font-size: 22px; margin-top: 40px;">TẦM NHÌN – SỨ MỆNH – PHƯƠNG CHÂM HOẠT ĐỘNG CỦA JELLYFISH VIỆT NAM</h2>
-
-          <h3 class="fw-bold mt-4 mb-2" style="font-size: 18px;">1. Tầm nhìn</h3>
-          <p style="font-size: 16px; line-height: 1.8; color: #333;">
-            - Trở thành doanh nghiệp dẫn đầu trong cung ứng giải pháp phát triển nhân sự toàn diện, có chiều sâu, thích ứng tốt với sự thay đổi đa chiều, không ngừng nghỉ của thế giới.
-          </p>
-          <p style="font-size: 16px; line-height: 1.8; color: #333;">
-            - Tiên phong đồng hành cùng người Việt trẻ trong hành trình nâng tầm vị thế trên thị trường nhân sự quốc tế.
-          </p>
-
-          <h3 class="fw-bold mt-4 mb-2" style="font-size: 18px;">2. Sứ mệnh</h3>
-          <p style="font-size: 16px; line-height: 1.8; color: #333;">- Cam kết luôn cập nhật xu hướng giáo dục và nhu cầu nhân sự toàn cầu.</p>
-          <p style="font-size: 16px; line-height: 1.8; color: #333;">- Luôn nỗ lực nghiên cứu, tạo nên các chương trình đào tạo, phát triển nhân sự đón đầu xu hướng.</p>
-          <p style="font-size: 16px; line-height: 1.8; color: #333;">
-            Các dịch vụ của Jellyfish Việt Nam tạo nên một vòng tròn khép kín, mang đến cho khách hàng giải pháp phát triển toàn diện, từ khâu đào tạo các thế hệ học viên chất lượng; tư vấn chọn trường, chọn ngành, chọn quốc gia du học phù hợp; đến khâu định hướng, kết nối cơ hội việc làm tại các doanh nghiệp hàng đầu Việt Nam và Nhật Bản. Với những giá trị này, Jellyfish Việt Nam hy vọng sẽ trở thành sự lựa chọn đáng tin cậy nhất của tất cả các bạn trẻ Việt Nam mang trong mình đầy ước mơ và hoài bão.
-          </p>
-
-          <h3 class="fw-bold mt-4 mb-2" style="font-size: 18px;">3. Phương châm hoạt động</h3>
-          <p style="font-size: 16px; line-height: 1.8; color: #333;"><i>True people – True value: Con người thực – Giá trị thực.</i></p>
-          <p style="font-size: 16px; line-height: 1.8; color: #333;">
-            Là doanh nghiệp Nhật Bản, Jellyfish luôn chú trọng xây dựng và phát triển dịch vụ hướng tới những giá trị thiết thực nhất cho khách hàng. Giá trị dịch vụ mà Jellyfish cung cấp thể hiện qua chính chất lượng của những thế hệ người Việt trẻ được chúng tôi đào tạo, dẫn dắt và định hướng. Không hoa mỹ, không cầu kỳ, tập trung nỗ lực giúp thế hệ trẻ Việt Nam trở nên tự tin, năng động và hội nhập – Đó là phương châm hoạt động không bao giờ thay đổi của Jellyfish Việt Nam.
-          </p>
-
-          <h3 class="fw-bold mt-4 mb-2" style="font-size: 18px;">4. Slogan</h3>
-          <p style="font-size: 16px; line-height: 1.8; color: #333;"><i>Expand your horizons – Hãy mở rộng tầm nhìn của bạn.</i></p>
-          <p style="font-size: 16px; line-height: 1.8; color: #333;">
-            Bước ra thế giới, trải nghiệm nhiều hơn và học hỏi nhiều hơn – Đó là nhu cầu chính đáng và là điều mà các bạn trẻ nên làm. Bằng cách cung cấp các trải nghiệm giáo dục và cơ hội việc làm mới, Jellyfish mong muốn mang đến các cơ hội tự hoàn thiện chính mình cho các tài năng Việt; sẵn sàng đồng hành cùng các bạn trong cuộc hành trình chinh phục tri thức, khám phá giới hạn và mở rộng tầm nhìn của chính mình.
-          </p>
-
-          <h2 class="fw-bold mb-3" style="color: #237a37; font-size: 20px; margin-top: 40px;">JELLYFISH – NƠI NHỮNG THÀNH TỰU LÀ ĐỘNG LỰC ĐỂ TIẾP TỤC DUY TRÌ CỐ GẮNG</h2>
-          <p style="font-size: 16px; line-height: 1.8; color: #333;">
-            Phương châm hoạt động của Jellyfish là Con người thực – Giá trị thực. Bởi vậy, thành công của khách hàng chính là nguồn động lực lớn lao để chúng tôi tiếp tục cố gắng và ngày càng hoàn thiện. Cùng điểm lại những con số minh chứng cho sự nỗ lực không ngừng nghỉ của toàn thể đội ngũ nhân viên Jellyfish Việt Nam:
-          </p>
-        </div>
-      </section>
-
-      <!-- ===== THÀNH TỰU (Stats) ===== -->
-      <!-- Figma: rounded gray bg, icons 83×72px, số 32px #237a37, text 18px semi-bold -->
-      <section class="py-4 px-3 px-md-4">
-        <div class="rounded-3 py-5" style="background: rgba(198,199,200,0.5);">
-          <div class="row row-cols-2 row-cols-md-4 g-4 text-center px-3 px-md-5">
-            <div class="col">
-              <img src="img/stat-icon1.png" alt="" class="d-block mx-auto mb-2" style="height: 83px; width: 72px; object-fit: contain;" />
-              <div class="fw-semibold mb-2" style="color: #237a37; font-size: 32px;">150</div>
-              <p class="fw-semibold mb-0" style="font-size: 18px;">Là số lượng nhân viên Jellyfish Việt Nam, luôn sẵn sàng hỗ trợ học viên thực hiện ước mơ của mình.</p>
-            </div>
-            <div class="col">
-              <img src="img/stat-icon2.png" alt="" class="d-block mx-auto mb-2" style="height: 83px; width: 72px; object-fit: contain;" />
-              <div class="fw-semibold mb-2" style="color: #237a37; font-size: 32px;">250</div>
-              <p class="fw-semibold mb-0" style="font-size: 18px;">Là số lượng đối tác trường học, doanh nghiệp tại Việt Nam đã và đang sử dụng dịch vụ đào tạo, kết nối nhân sự của Jellyfish Việt Nam.</p>
-            </div>
-            <div class="col">
-              <img src="img/stat-icon3.png" alt="" class="d-block mx-auto mb-2" style="height: 83px; width: 72px; object-fit: contain;" />
-              <div class="fw-semibold mb-2" style="color: #237a37; font-size: 32px;">500</div>
-              <p class="fw-semibold mb-0" style="font-size: 18px;">Là số lượng ứng viên hàng năm Jellyfish hỗ trợ, kết nối thành công đến các doanh nghiệp nước ngoài tại Việt Nam và Nhật Bản.</p>
-            </div>
-            <div class="col">
-              <img src="img/stat-icon4.png" alt="" class="d-block mx-auto mb-2" style="height: 83px; width: 72px; object-fit: contain;" />
-              <div class="fw-semibold mb-2" style="color: #237a37; font-size: 32px;">1200</div>
-              <p class="fw-semibold mb-0" style="font-size: 18px;">Là số du học sinh trung bình hàng năm Jellyfish đào tạo, chắp cánh cho ước mơ du học và làm việc ở môi trường quốc tế.</p>
+    <!-- JELLYFISH LÀ GÌ -->
+    <section class="py-5 bg-white" id="about-section">
+      <div class="container" style="max-width:1224px;">
+        <div class="row g-5 align-items-center mb-5">
+          <div class="col-12 col-lg-5 fade-up">
+            <span class="section-label">Giới thiệu</span>
+            <h2 class="section-title">Jellyfish Việt Nam là gì?</h2>
+            <div class="section-divider"></div>
+            <p style="font-size:15.5px;line-height:1.85;color:#555;">
+              Jellyfish Việt Nam trực thuộc <strong style="color:#237a37;">Tập đoàn Jellyfish Nhật Bản</strong>, hoạt động đa lĩnh vực trong việc kết nối, đào tạo và phát triển nhân sự Việt–Nhật. Sau 15 năm phát triển, bằng tâm huyết và sự thấu hiểu sâu sắc, chúng tôi đã trở thành cầu nối vững chắc cho hàng nghìn tài năng trẻ Việt Nam chinh phục thị trường quốc tế.
+            </p>
+            <div class="mt-3 rounded-4 overflow-hidden fade-up d1" style="box-shadow:0 8px 28px rgba(0,0,0,0.12);">
+              <img src="https://jellyfish-vn.com/wp-content/uploads/2025/03/Hoi-thao-du-hoc-Nhat-Ban-Jellyfish-Viet-Nam-1-1024x681.jpg" alt="Hội thảo du học Nhật Bản - Jellyfish Vietnam" class="w-100 d-block" style="object-fit:cover;max-height:220px;" />
             </div>
           </div>
-        </div>
-      </section>
-
-      <!-- ===== YELLOW HIGHLIGHT SECTION ===== -->
-      <section class="py-5" style="background: #fff9c4;">
-        <div class="container" style="max-width: 1224px;">
-          <p style="font-size: 16px; line-height: 1.8; color: #333;">
-            Lấy <strong>CHẤT LƯỢNG</strong> là kim chỉ nam cho mọi hoạt động, chúng tôi luôn cải tiến phương pháp đào tạo, cập nhật giáo trình và nâng cao chất lượng đội ngũ giảng viên để mang lại trải nghiệm học tập tốt nhất cho từng học viên.
-          </p>
-          <p style="font-size: 16px; line-height: 1.8; color: #333;">
-            Hy vọng những nỗ lực của chúng tôi sẽ giúp bạn tạo một cơ sở tốt để tự tin thực hiện ước mơ của chính mình!
-          </p>
-          <h2 class="fw-bold mt-3 mb-0" style="color: #237a37; font-size: 20px;">
-            HÃY ĐẾN JELLYFISH ĐỂ TRẢI NGHIỆM NHỮNG DỊCH VỤ CHẤT LƯỢNG VÀ MỞ RỘNG GIỚI HẠN CỦA CHÍNH BẠN!
-          </h2>
-        </div>
-      </section>
-
-      <!-- ===== PROMO + KHÓA HỌC ===== -->
-      <section class="py-5 bg-white">
-        <div class="container" style="max-width: 1224px;">
-          <div class="row g-4 align-items-center">
-            <div class="col-12 col-md-5">
-              <img src="img/hero-banner-sm.png" class="img-fluid w-100 rounded-3" alt="Jellyfish Vietnam" />
-            </div>
-            <div class="col-12 col-md-7">
-              <div class="row row-cols-2 g-3">
-                <div class="col"><img src="img/course-n5.png" class="img-fluid w-100" alt="Khóa N5" /></div>
-                <div class="col"><img src="img/course-n4.png" class="img-fluid w-100" alt="Khóa N4" /></div>
-                <div class="col"><img src="img/course-n3.png" class="img-fluid w-100" alt="Khóa N3" /></div>
-                <div class="col"><img src="img/course-n2.png" class="img-fluid w-100" alt="Khóa N2" /></div>
+          <div class="col-12 col-lg-7">
+            <div class="row g-3">
+              <div class="col-12 col-sm-4 fade-up d1">
+                <div class="activity-card">
+                  <div class="icon-wrap">
+                    <svg width="26" height="26" fill="none" stroke="#237a37" stroke-width="2" viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4 12.5-12.5z"/></svg>
+                  </div>
+                  <h4>Đào tạo Nhật ngữ</h4>
+                  <p>Từ N5 đến N1, tập trung 4 kỹ năng và giao tiếp thực tế trong môi trường quốc tế.</p>
+                </div>
+              </div>
+              <div class="col-12 col-sm-4 fade-up d2">
+                <div class="activity-card">
+                  <div class="icon-wrap">
+                    <svg width="26" height="26" fill="none" stroke="#237a37" stroke-width="2" viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                  </div>
+                  <h4>Đào tạo tiếng Việt</h4>
+                  <p>Chương trình tiếng Việt từ cơ bản đến nâng cao cho người nước ngoài tại Việt Nam.</p>
+                </div>
+              </div>
+              <div class="col-12 col-sm-4 fade-up d3">
+                <div class="activity-card">
+                  <div class="icon-wrap">
+                    <svg width="26" height="26" fill="none" stroke="#237a37" stroke-width="2" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.41 2 2 0 0 1 3.6 1.24h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.96a16 16 0 0 0 6 6l.96-.96a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 21.76 16z"/></svg>
+                  </div>
+                  <h4>Tư vấn du học</h4>
+                  <p>Hỗ trợ toàn diện COE, visa, chọn trường đến kết nối việc làm sau tốt nghiệp.</p>
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </section>
 
-    </main>
-
-    <!-- ===== FOOTER ===== -->
-    <footer class="py-5" style="background: #110c22;">
-      <div class="container" style="max-width: 1224px;">
-        <div class="d-flex justify-content-between align-items-start flex-wrap gap-3 mb-3">
-          <div>
-            <img src="img/logo-jf.svg" alt="Jellyfish Vietnam" style="height: 56px; width: 172px; object-fit: contain;" />
-            <p class="mt-2 mb-0 text-white" style="font-size: 16px; font-weight: 800;">Expand your horizons</p>
-          </div>
-          <nav>
-            <ul class="list-unstyled d-flex flex-wrap gap-3 mb-0">
-              <li><a href="index.html" class="text-white text-decoration-none fw-semibold" style="font-size: 18px;">Trang chủ</a></li>
-              <li><a href="about.html" class="text-white text-decoration-none fw-semibold" style="font-size: 18px;">Về Jellyfish</a></li>
-              <li><a href="courses.html" class="text-white text-decoration-none fw-semibold" style="font-size: 18px;">Khóa học</a></li>
-              <li><a href="curriculum.html" class="text-white text-decoration-none fw-semibold" style="font-size: 18px;">Giáo trình</a></li>
-              <li><a href="blog.html" class="text-white text-decoration-none fw-semibold" style="font-size: 18px;">Kiến thức hữu ích</a></li>
-            </ul>
-          </nav>
+        <!-- MEANING -->
+        <div class="text-center fade-up">
+          <span class="section-label">Ý nghĩa tên gọi</span>
+          <h2 class="section-title">Con Sứa — Biểu tượng của chúng tôi</h2>
+          <div class="section-divider mx-auto"></div>
         </div>
-        <hr style="border-color: #2e293d;" />
-        <div class="row g-4 py-2">
-          <div class="col-12 col-md-4">
-            <h5 class="fw-semibold mb-3 text-white" style="font-size: 18px;">JELLYFISH JAPAN</h5>
-            <p class="d-flex align-items-start gap-3 mb-3" style="color: #b3b1b8; font-size: 16px; line-height: 24px;"><img src="img/diachiicon.png" alt="" style="width: 24px; height: 24px; flex-shrink: 0; margin-top: 2px; object-fit: contain;" />4F Westhill Building, Nishigotanda 2-24-4, Shinagawa, Tokyo, Japan</p>
-            <p class="d-flex align-items-start gap-3 mb-3" style="color: #b3b1b8; font-size: 16px; line-height: 24px;"><img src="img/linkicon.png" alt="" style="width: 24px; height: 24px; flex-shrink: 0; margin-top: 2px; object-fit: contain;" />https://jellyfish-g.co.jp</p>
-            <p class="d-flex align-items-start gap-3 mb-3" style="color: #b3b1b8; font-size: 16px; line-height: 24px;"><img src="img/mailicon.png" alt="" style="width: 24px; height: 24px; flex-shrink: 0; margin-top: 2px; object-fit: contain;" />job_info@jellyfish-g.co.jp</p>
-            <p class="d-flex align-items-start gap-3 mb-0" style="color: #b3b1b8; font-size: 16px; line-height: 24px;"><img src="img/callicon.png" alt="" style="width: 24px; height: 24px; flex-shrink: 0; margin-top: 2px; object-fit: contain;" />03-5437-0135</p>
+        <div class="row g-4 mt-1">
+          <div class="col-12 col-md-4 fade-up d1">
+            <div class="meaning-card">
+              <div class="meaning-emoji">🌊</div>
+              <h4>Loài của biển cả</h4>
+              <p>Jellyfish – Sứa biển – đại diện cho tinh thần của Nhật Bản, đất nước của biển, của khát vọng vươn xa.</p>
+            </div>
           </div>
-          <div class="col-12 col-md-4">
-            <h5 class="fw-semibold mb-3 text-white" style="font-size: 18px;">JELLYFISH VIỆT NAM</h5>
-            <p class="d-flex align-items-start gap-3 mb-3" style="color: #b3b1b8; font-size: 16px; line-height: 24px;"><img src="img/diachiicon.png" alt="" style="width: 24px; height: 24px; flex-shrink: 0; margin-top: 2px; object-fit: contain;" />Tầng 13, CMC Tower, 11 Duy Tân, P. Dịch Vọng Hậu, Q. Cầu Giấy, TP. Hà Nội</p>
-            <p class="d-flex align-items-start gap-3 mb-3" style="color: #b3b1b8; font-size: 16px; line-height: 24px;"><img src="img/linkicon.png" alt="" style="width: 24px; height: 24px; flex-shrink: 0; margin-top: 2px; object-fit: contain;" />https://jellyfish-vn.com</p>
-            <p class="d-flex align-items-start gap-3 mb-3" style="color: #b3b1b8; font-size: 16px; line-height: 24px;"><img src="img/mailicon.png" alt="" style="width: 24px; height: 24px; flex-shrink: 0; margin-top: 2px; object-fit: contain;" />admin@jellyfish-vn.com</p>
-            <p class="d-flex align-items-start gap-3 mb-0" style="color: #b3b1b8; font-size: 16px; line-height: 24px;"><img src="img/callicon.png" alt="" style="width: 24px; height: 24px; flex-shrink: 0; margin-top: 2px; object-fit: contain;" />0243.7955.846</p>
+          <div class="col-12 col-md-4 fade-up d2">
+            <div class="meaning-card">
+              <div class="meaning-emoji">💎</div>
+              <h4>Trong suốt & Chân thành</h4>
+              <p>Thân trong suốt của sứa tượng trưng cho sự tinh khiết, chân thành và cam kết với những giá trị thực.</p>
+            </div>
           </div>
-          <div class="col-12 col-md-4">
-            <h5 class="fw-semibold mb-3 text-white" style="font-size: 18px;">CHI NHÁNH HẢI PHÒNG</h5>
-            <p class="d-flex align-items-start gap-3 mb-3" style="color: #b3b1b8; font-size: 16px; line-height: 24px;"><img src="img/diachiicon.png" alt="" style="width: 24px; height: 24px; flex-shrink: 0; margin-top: 2px; object-fit: contain;" />Tầng 3, CMC Tower, tòa nhà Sholega, 275 Lạch Tray, Ngô Quyền, TP. Hải Phòng</p>
-            <p class="d-flex align-items-start gap-3 mb-0" style="color: #b3b1b8; font-size: 16px; line-height: 24px;"><img src="img/callicon.png" alt="" style="width: 24px; height: 24px; flex-shrink: 0; margin-top: 2px; object-fit: contain;" />0969.895.759</p>
-          </div>
-        </div>
-        <hr style="border-color: #2e293d;" />
-        <div class="d-flex justify-content-between align-items-center flex-wrap gap-3">
-          <p class="mb-0" style="color: #b3b1b8; font-size: 16px;">© 2023 Jellyfish. All rights reserved.</p>
-          <div class="d-flex gap-3 align-items-center">
-            <a href="#"><img src="img/yticon.png" alt="YouTube" style="width: 24px; height: 24px; object-fit: contain;" /></a>
-            <a href="#"><img src="img/igicons.png" alt="Instagram" style="width: 24px; height: 24px; object-fit: contain;" /></a>
-            <a href="#"><img src="img/fbicons.png" alt="Facebook" style="width: 24px; height: 24px; object-fit: contain;" /></a>
+          <div class="col-12 col-md-4 fade-up d3">
+            <div class="meaning-card">
+              <div class="meaning-emoji">🤝</div>
+              <h4>Gắn kết xuyên quốc gia</h4>
+              <p>Sứa sống theo đàn, di cư và lan rộng – tinh thần kết nối và phát triển không biên giới.</p>
+            </div>
           </div>
         </div>
       </div>
-    </footer>
+    </section>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
-    <script>
-      const hamburgerBtn = document.getElementById("hamburgerBtn");
-      const menuDrawer = document.getElementById("menuDrawer");
-      const menuOverlay = document.getElementById("menuOverlay");
-      const menuCloseBtn = document.getElementById("menuCloseBtn");
+    <!-- TẦM NHÌN / SỨ MỆNH / PHƯƠNG CHÂM -->
+    <section class="py-5" style="background:#f8f9fa;">
+      <div class="container" style="max-width:1224px;">
+        <div class="text-center mb-4 fade-up">
+          <span class="section-label">Triết lý hoạt động</span>
+          <h2 class="section-title">Tầm nhìn – Sứ mệnh – Giá trị</h2>
+          <div class="section-divider mx-auto"></div>
+        </div>
+        <div class="col-12 col-lg-9 mx-auto fade-up d1">
+          <div class="vmv-tabs">
+            <button class="vmv-tab active" onclick="switchTab(this,'tab-tamnhin')">Tầm nhìn</button>
+            <button class="vmv-tab" onclick="switchTab(this,'tab-sumenh')">Sứ mệnh</button>
+            <button class="vmv-tab" onclick="switchTab(this,'tab-phuongcham')">Phương châm</button>
+            <button class="vmv-tab" onclick="switchTab(this,'tab-slogan')">Slogan</button>
+          </div>
 
-      function openMenu() {
-        menuDrawer.classList.add("open");
-        menuOverlay.classList.add("open");
-        document.body.style.overflow = "hidden";
-      }
-      function closeMenu() {
-        menuDrawer.classList.remove("open");
-        menuOverlay.classList.remove("open");
-        document.body.style.overflow = "";
-      }
+          <div id="tab-tamnhin" class="vmv-panel active">
+            <div class="vmv-item">
+              <div class="vmv-item-icon"><svg width="20" height="20" fill="none" stroke="#237a37" stroke-width="2" viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></div>
+              <p>Trở thành doanh nghiệp <strong>dẫn đầu</strong> trong cung ứng giải pháp phát triển nhân sự toàn diện, thích ứng tốt với sự thay đổi đa chiều không ngừng của thế giới.</p>
+            </div>
+            <div class="vmv-item">
+              <div class="vmv-item-icon"><svg width="20" height="20" fill="none" stroke="#237a37" stroke-width="2" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
+              <p>Tiên phong đồng hành cùng người Việt trẻ trong hành trình <strong>nâng tầm vị thế</strong> trên thị trường nhân sự quốc tế.</p>
+            </div>
+          </div>
 
-      hamburgerBtn.addEventListener("click", openMenu);
-      menuCloseBtn.addEventListener("click", closeMenu);
-      menuOverlay.addEventListener("click", closeMenu);
-    </script>
-  </body>
+          <div id="tab-sumenh" class="vmv-panel">
+            <div class="vmv-item">
+              <div class="vmv-item-icon"><svg width="20" height="20" fill="none" stroke="#237a37" stroke-width="2" viewBox="0 0 24 24"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></div>
+              <p>Cam kết luôn <strong>cập nhật xu hướng</strong> giáo dục và nhu cầu nhân sự toàn cầu để mang lại chương trình đào tạo đón đầu.</p>
+            </div>
+            <div class="vmv-item">
+              <div class="vmv-item-icon"><svg width="20" height="20" fill="none" stroke="#237a37" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg></div>
+              <p>Tạo nên <strong>vòng tròn dịch vụ khép kín</strong> — từ đào tạo, tư vấn du học đến kết nối việc làm tại Việt Nam và Nhật Bản.</p>
+            </div>
+            <div class="vmv-item">
+              <div class="vmv-item-icon"><svg width="20" height="20" fill="none" stroke="#237a37" stroke-width="2" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+              <p>Trở thành <strong>sự lựa chọn đáng tin cậy nhất</strong> của tất cả bạn trẻ Việt Nam mang trong mình đầy ước mơ và hoài bão.</p>
+            </div>
+          </div>
+
+          <div id="tab-phuongcham" class="vmv-panel">
+            <div class="text-center py-4">
+              <div style="font-size:56px;margin-bottom:14px;">🎯</div>
+              <h3 style="font-size:26px;font-weight:900;color:#237a37;margin-bottom:6px;">True People – True Value</h3>
+              <p style="font-size:17px;color:#666;font-style:italic;margin-bottom:20px;">Con người thực – Giá trị thực</p>
+              <p style="font-size:14.5px;color:#444;line-height:1.85;max-width:540px;margin:0 auto;">Là doanh nghiệp Nhật Bản, Jellyfish luôn chú trọng những giá trị thiết thực nhất. Không hoa mỹ, không cầu kỳ — tập trung nỗ lực giúp thế hệ trẻ Việt Nam trở nên <strong>tự tin, năng động và hội nhập</strong>.</p>
+            </div>
+          </div>
+
+          <div id="tab-slogan" class="vmv-panel">
+            <div class="text-center py-4">
+              <div style="font-size:56px;margin-bottom:14px;">🌏</div>
+              <h3 style="font-size:26px;font-weight:900;color:#237a37;margin-bottom:6px;">Expand Your Horizons</h3>
+              <p style="font-size:17px;color:#666;font-style:italic;margin-bottom:20px;">Hãy mở rộng tầm nhìn của bạn</p>
+              <p style="font-size:14.5px;color:#444;line-height:1.85;max-width:540px;margin:0 auto;">Bước ra thế giới, trải nghiệm và học hỏi nhiều hơn. Jellyfish mong muốn mang đến các cơ hội tự hoàn thiện cho tài năng Việt, <strong>sẵn sàng đồng hành</strong> trong cuộc hành trình chinh phục tri thức.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ANIMATED STATS -->
+    <section class="py-5" style="background:rgba(198,199,200,0.4);">
+      <div class="container" style="max-width:1224px;">
+        <div class="text-center mb-5 fade-up">
+          <span class="section-label">Thành tựu</span>
+          <h2 class="section-title">Những con số nói lên tất cả</h2>
+          <div class="section-divider mx-auto"></div>
+        </div>
+        <div class="row row-cols-2 row-cols-md-4 g-0">
+          <div class="col fade-up d1">
+            <div class="stat-big-card">
+              <img src="img/stat-icon1.png" alt="" style="height:70px;width:58px;object-fit:contain;margin-bottom:14px;" />
+              <div class="stat-big-number" data-target="150" data-suffix="">0</div>
+              <div class="stat-big-label">Nhân viên luôn sẵn sàng hỗ trợ học viên</div>
+            </div>
+          </div>
+          <div class="col fade-up d2">
+            <div class="stat-big-card">
+              <img src="img/stat-icon2.png" alt="" style="height:70px;width:58px;object-fit:contain;margin-bottom:14px;" />
+              <div class="stat-big-number" data-target="250" data-suffix="+">0</div>
+              <div class="stat-big-label">Đối tác trường học & doanh nghiệp</div>
+            </div>
+          </div>
+          <div class="col fade-up d3">
+            <div class="stat-big-card">
+              <img src="img/stat-icon3.png" alt="" style="height:70px;width:58px;object-fit:contain;margin-bottom:14px;" />
+              <div class="stat-big-number" data-target="500" data-suffix="+">0</div>
+              <div class="stat-big-label">Ứng viên kết nối thành công mỗi năm</div>
+            </div>
+          </div>
+          <div class="col fade-up d4">
+            <div class="stat-big-card">
+              <img src="img/stat-icon4.png" alt="" style="height:70px;width:58px;object-fit:contain;margin-bottom:14px;" />
+              <div class="stat-big-number" data-target="1200" data-suffix="">0</div>
+              <div class="stat-big-label">Du học sinh được chắp cánh mỗi năm</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- YELLOW SECTION -->
+    <section class="py-5" style="background:linear-gradient(135deg,#fffde7,#fff9c4);">
+      <div class="container" style="max-width:1224px;">
+        <div class="row g-5 align-items-center">
+          <div class="col-12 col-lg-6 fade-up">
+            <span class="section-label">Cam kết chất lượng</span>
+            <h2 class="section-title mt-2">Chất lượng là kim chỉ nam</h2>
+            <div class="section-divider"></div>
+            <p style="font-size:15.5px;line-height:1.85;color:#444;margin-bottom:26px;">Lấy <strong>CHẤT LƯỢNG</strong> làm cốt lõi, chúng tôi không ngừng cải tiến phương pháp đào tạo, cập nhật giáo trình và nâng cao chất lượng đội ngũ giảng viên — mang lại trải nghiệm học tập tốt nhất cho từng học viên.</p>
+            <button class="btn fw-bold px-4 py-2 rounded-3 text-white" style="background:#237a37;" data-bs-toggle="modal" data-bs-target="#regModal">Đến Jellyfish ngay hôm nay →</button>
+          </div>
+          <div class="col-12 col-lg-6 fade-up d2">
+            <div class="rounded-4 overflow-hidden mb-4" style="box-shadow:0 8px 28px rgba(0,0,0,0.1);">
+              <img src="https://jellyfish-vn.com/wp-content/uploads/2025/04/Gian-hang-Jellyfish-tai-THPT-Viet-Duc-1-1024x682.jpg" alt="Gian hàng Jellyfish tại ngày hội tuyển sinh" class="w-100 d-block" style="object-fit:cover;max-height:200px;" />
+            </div>
+            <div class="quality-badge">
+              <div class="badge-icon"><svg width="18" height="18" fill="none" stroke="#237a37" stroke-width="2" viewBox="0 0 24 24"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></div>
+              Giáo trình cập nhật theo chuẩn JLPT mới nhất
+            </div>
+            <div class="quality-badge">
+              <div class="badge-icon"><svg width="18" height="18" fill="none" stroke="#237a37" stroke-width="2" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+              Đội ngũ giáo viên người Nhật và Việt giàu kinh nghiệm
+            </div>
+            <div class="quality-badge">
+              <div class="badge-icon"><svg width="18" height="18" fill="none" stroke="#237a37" stroke-width="2" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
+              92% học viên đậu JLPT trong lần thi đầu tiên
+            </div>
+            <div class="quality-badge">
+              <div class="badge-icon"><svg width="18" height="18" fill="none" stroke="#237a37" stroke-width="2" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.41 2 2 0 0 1 3.6 1.24h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.96a16 16 0 0 0 6 6l.96-.96a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 21.76 16z"/></svg></div>
+              Hỗ trợ học viên 24/7 qua hotline và Zalo
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TIMELINE -->
+    <section class="py-5 bg-white">
+      <div class="container" style="max-width:1224px;">
+        <div class="text-center mb-5 fade-up">
+          <span class="section-label">Lịch sử phát triển</span>
+          <h2 class="section-title">Hành trình 15+ năm của Jellyfish</h2>
+          <div class="section-divider mx-auto"></div>
+        </div>
+        <div class="timeline">
+          <div class="timeline-item fade-up">
+            <div class="timeline-content">
+              <div class="timeline-year">2009</div>
+              <div class="timeline-title">Tập đoàn Jellyfish thành lập tại Nhật Bản</div>
+              <p class="timeline-desc">Jellyfish Group ra đời tại Tokyo với sứ mệnh kết nối nhân tài châu Á và doanh nghiệp Nhật Bản, bắt đầu xây dựng hệ sinh thái giáo dục quốc tế.</p>
+            </div>
+            <div class="timeline-dot"></div>
+            <div class="timeline-spacer"></div>
+          </div>
+          <div class="timeline-item fade-up d1">
+            <div class="timeline-spacer"></div>
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+              <div class="timeline-year">2015</div>
+              <div class="timeline-title">Jellyfish Việt Nam chính thức ra đời</div>
+              <p class="timeline-desc">Chi nhánh Việt Nam khai trương tại Hà Nội, mở ra cơ hội du học Nhật Bản cho thế hệ trẻ với các chương trình đào tạo tiếng Nhật chuyên sâu.</p>
+            </div>
+          </div>
+          <div class="timeline-item fade-up d2">
+            <div class="timeline-content">
+              <div class="timeline-year">2019</div>
+              <div class="timeline-title">Mở rộng — Chi nhánh Hải Phòng</div>
+              <p class="timeline-desc">Đáp ứng nhu cầu học tiếng Nhật tại miền Bắc, Jellyfish khai trương chi nhánh Hải Phòng, mang dịch vụ chất lượng đến gần hơn với học viên.</p>
+            </div>
+            <div class="timeline-dot"></div>
+            <div class="timeline-spacer"></div>
+          </div>
+          <div class="timeline-item fade-up d3">
+            <div class="timeline-spacer"></div>
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+              <div class="timeline-year">2023</div>
+              <div class="timeline-title">10,000+ học viên được đào tạo</div>
+              <p class="timeline-desc">Cột mốc lịch sử: hơn 10,000 học viên đã được Jellyfish đồng hành, 92% đậu JLPT và hàng nghìn bạn thành công tại Nhật Bản.</p>
+            </div>
+          </div>
+          <div class="timeline-item fade-up d4">
+            <div class="timeline-content">
+              <div class="timeline-year">2026</div>
+              <div class="timeline-title">Khai trương chi nhánh TP. Hồ Chí Minh</div>
+              <p class="timeline-desc">Jellyfish tiếp tục mở rộng vào phía Nam, mang hệ sinh thái đào tạo và tư vấn du học đẳng cấp đến trung tâm kinh tế lớn nhất Việt Nam.</p>
+            </div>
+            <div class="timeline-dot"></div>
+            <div class="timeline-spacer"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TESTIMONIALS -->
+    <section class="py-5" style="background:#f8f9fa;">
+      <div class="container" style="max-width:1224px;">
+        <div class="text-center mb-5 fade-up">
+          <span class="section-label">Học viên chia sẻ</span>
+          <h2 class="section-title">Những câu chuyện thành công</h2>
+          <div class="section-divider mx-auto"></div>
+        </div>
+        <div class="row g-4">
+          <div class="col-12 col-md-4 fade-up d1">
+            <div class="testimonial-card">
+              <div class="quote-icon">"</div>
+              <div class="star-row">★★★★★</div>
+              <p>Nhờ Jellyfish tôi đã đậu JLPT N2 chỉ sau 8 tháng. Giáo viên nhiệt tình, giáo trình thực tế và sát với đề thi. Hiện tôi đang làm việc tại Tokyo với mức lương mơ ước!</p>
+              <div class="testimonial-author">
+                <div class="testimonial-avatar"><svg width="20" height="20" fill="none" stroke="#237a37" stroke-width="2" viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
+                <div><div class="testimonial-name">Nguyễn Minh Tuấn</div><div class="testimonial-role">Kỹ sư IT tại Tokyo • Cựu học viên N2</div></div>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-md-4 fade-up d2">
+            <div class="testimonial-card">
+              <div class="quote-icon">"</div>
+              <div class="star-row">★★★★★</div>
+              <p>Tư vấn du học của Jellyfish hỗ trợ tôi từng bước từ chọn trường, làm hồ sơ đến phỏng vấn. Giờ tôi đang học tại Đại học Kyoto và rất hài lòng với quyết định của mình.</p>
+              <div class="testimonial-author">
+                <div class="testimonial-avatar"><svg width="20" height="20" fill="none" stroke="#237a37" stroke-width="2" viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
+                <div><div class="testimonial-name">Trần Thị Lan Anh</div><div class="testimonial-role">Du học sinh Đại học Kyoto</div></div>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-md-4 fade-up d3">
+            <div class="testimonial-card">
+              <div class="quote-icon">"</div>
+              <div class="star-row">★★★★★</div>
+              <p>Chương trình N3 của Jellyfish giúp tôi vừa học tiếng Nhật vừa hiểu văn hóa làm việc Nhật Bản. Đây là lợi thế lớn giúp tôi thành công tại doanh nghiệp Nhật ở Hà Nội.</p>
+              <div class="testimonial-author">
+                <div class="testimonial-avatar"><svg width="20" height="20" fill="none" stroke="#237a37" stroke-width="2" viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
+                <div><div class="testimonial-name">Lê Quang Hùng</div><div class="testimonial-role">Nhân viên kinh doanh tại FPT Software</div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- COURSES -->
+    <section class="py-5 bg-white">
+      <div class="container" style="max-width:1224px;">
+        <div class="row g-5 align-items-center">
+          <div class="col-12 col-lg-4 fade-up">
+            <span class="section-label">Chương trình học</span>
+            <h2 class="section-title">Khóa học phù hợp mọi trình độ</h2>
+            <div class="section-divider"></div>
+            <p style="font-size:14.5px;color:#555;line-height:1.8;margin-bottom:22px;">Từ N5 cho người mới bắt đầu đến N1 nâng cao — Jellyfish có chương trình phù hợp với mọi mục tiêu của bạn.</p>
+            <a href="courses.html" class="btn fw-bold px-4 py-2 rounded-3 text-white" style="background:#237a37;">Xem tất cả khóa học →</a>
+          </div>
+          <div class="col-12 col-lg-8 fade-up d2">
+            <div class="row row-cols-2 g-3">
+              <div class="col"><a href="courses.html" class="course-card-img-wrap"><img src="img/course-n5.png" alt="Khóa N5" /><div class="course-overlay"><span class="course-see-btn">Xem chi tiết</span></div></a></div>
+              <div class="col"><a href="courses.html" class="course-card-img-wrap"><img src="img/course-n4.png" alt="Khóa N4" /><div class="course-overlay"><span class="course-see-btn">Xem chi tiết</span></div></a></div>
+              <div class="col"><a href="courses.html" class="course-card-img-wrap"><img src="img/course-n3.png" alt="Khóa N3" /><div class="course-overlay"><span class="course-see-btn">Xem chi tiết</span></div></a></div>
+              <div class="col"><a href="courses.html" class="course-card-img-wrap"><img src="img/course-n2.png" alt="Khóa N2" /><div class="course-overlay"><span class="course-see-btn">Xem chi tiết</span></div></a></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TEAM / HOẠT ĐỘNG -->
+    <section class="py-5 bg-white">
+      <div class="container" style="max-width:1224px;">
+        <div class="text-center mb-5 fade-up">
+          <span class="section-label">Đội ngũ & Hoạt động</span>
+          <h2 class="section-title">Jellyfish — Nơi làm việc truyền cảm hứng</h2>
+          <div class="section-divider mx-auto"></div>
+        </div>
+        <div class="row g-4">
+          <div class="col-12 col-md-7 fade-up d1">
+            <div class="rounded-4 overflow-hidden h-100" style="box-shadow:0 6px 24px rgba(0,0,0,0.1);min-height:260px;">
+              <img src="https://jellyfish-vn.com/wp-content/uploads/2025/03/DSC00070-1024x681.jpg" alt="Jellyfish Vietnam tại FPTU Career Fair 2025" class="w-100 h-100 d-block" style="object-fit:cover;" />
+            </div>
+          </div>
+          <div class="col-12 col-md-5 fade-up d2">
+            <div class="rounded-4 overflow-hidden" style="box-shadow:0 6px 24px rgba(0,0,0,0.1);margin-bottom:16px;">
+              <img src="https://jellyfish-vn.com/wp-content/uploads/2025/06/Jellyfish-Vietnam-1024x778.png" alt="Đội ngũ Jellyfish Vietnam" class="w-100 d-block" style="object-fit:cover;max-height:200px;" />
+            </div>
+            <div class="p-4 rounded-4" style="background:linear-gradient(135deg,#f0f9f2,#e8f5eb);border:1.5px solid #d0ecda;">
+              <h5 class="fw-bold mb-2" style="color:#237a37;font-size:16px;">Văn hóa doanh nghiệp</h5>
+              <p style="font-size:14px;color:#555;line-height:1.75;margin:0;">Tại Jellyfish, mỗi thành viên không chỉ là nhân viên — mà là người đồng hành trong sứ mệnh chắp cánh ước mơ du học cho thế hệ trẻ Việt Nam.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-section py-5">
+      <div class="container" style="max-width:1224px;">
+        <div class="text-center text-white py-3">
+          <h2 class="fw-bold mb-3" style="font-size:clamp(20px,4vw,34px);">Sẵn sàng mở rộng tầm nhìn của bạn?</h2>
+          <p style="font-size:16px;opacity:.88;max-width:520px;margin:0 auto 28px;">Hãy để Jellyfish đồng hành cùng bạn trên hành trình chinh phục Nhật Bản — hoàn toàn miễn phí tư vấn lần đầu.</p>
+          <div class="d-flex flex-wrap gap-3 justify-content-center">
+            <button class="btn btn-light fw-bold px-5 py-3 rounded-3" style="color:#237a37;font-size:15px;" data-bs-toggle="modal" data-bs-target="#regModal">Đăng ký tư vấn ngay</button>
+            <a href="tel:0961106466" class="btn fw-bold px-5 py-3 rounded-3" style="background:rgba(255,255,255,0.15);color:#fff;border:1.5px solid rgba(255,255,255,0.4);font-size:15px;">096.110.6466</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="py-5" style="background:#110c22;">
+    <div class="container" style="max-width:1224px;">
+      <div class="d-flex justify-content-between align-items-start flex-wrap gap-3 mb-3">
+        <div>
+          <img src="img/logo-jf.svg" alt="Jellyfish Vietnam" style="height:56px;width:172px;object-fit:contain;" />
+          <p class="mt-2 mb-0 text-white" style="font-size:16px;font-weight:800;">Expand your horizons</p>
+        </div>
+        <nav>
+          <ul class="list-unstyled d-flex flex-wrap gap-3 mb-0">
+            <li><a href="index.html" class="text-white text-decoration-none fw-semibold" style="font-size:17px;">Trang chủ</a></li>
+            <li><a href="about.html" class="text-white text-decoration-none fw-semibold" style="font-size:17px;">Về Jellyfish</a></li>
+            <li><a href="courses.html" class="text-white text-decoration-none fw-semibold" style="font-size:17px;">Khóa học</a></li>
+            <li><a href="curriculum.html" class="text-white text-decoration-none fw-semibold" style="font-size:17px;">Giáo trình</a></li>
+            <li><a href="blog.html" class="text-white text-decoration-none fw-semibold" style="font-size:17px;">Kiến thức hữu ích</a></li>
+          </ul>
+        </nav>
+      </div>
+      <hr style="border-color:#2e293d;" />
+      <div class="row g-4 py-2">
+        <div class="col-12 col-md-4">
+          <h5 class="fw-semibold mb-3 text-white" style="font-size:17px;">JELLYFISH JAPAN</h5>
+          <p class="d-flex align-items-start gap-3 mb-3" style="color:#b3b1b8;font-size:15px;line-height:24px;"><img src="img/diachiicon.png" alt="" style="width:22px;height:22px;flex-shrink:0;margin-top:2px;object-fit:contain;" />4F Westhill Building, Nishigotanda 2-24-4, Shinagawa, Tokyo, Japan</p>
+          <p class="d-flex align-items-start gap-3 mb-3" style="color:#b3b1b8;font-size:15px;line-height:24px;"><img src="img/linkicon.png" alt="" style="width:22px;height:22px;flex-shrink:0;margin-top:2px;object-fit:contain;" />https://jellyfish-g.co.jp</p>
+          <p class="d-flex align-items-start gap-3 mb-3" style="color:#b3b1b8;font-size:15px;line-height:24px;"><img src="img/mailicon.png" alt="" style="width:22px;height:22px;flex-shrink:0;margin-top:2px;object-fit:contain;" />job_info@jellyfish-g.co.jp</p>
+          <p class="d-flex align-items-start gap-3 mb-0" style="color:#b3b1b8;font-size:15px;line-height:24px;"><img src="img/callicon.png" alt="" style="width:22px;height:22px;flex-shrink:0;margin-top:2px;object-fit:contain;" />03-5437-0135</p>
+        </div>
+        <div class="col-12 col-md-4">
+          <h5 class="fw-semibold mb-3 text-white" style="font-size:17px;">JELLYFISH VIỆT NAM</h5>
+          <p class="d-flex align-items-start gap-3 mb-3" style="color:#b3b1b8;font-size:15px;line-height:24px;"><img src="img/diachiicon.png" alt="" style="width:22px;height:22px;flex-shrink:0;margin-top:2px;object-fit:contain;" />Tầng 13, CMC Tower, 11 Duy Tân, P. Dịch Vọng Hậu, Q. Cầu Giấy, TP. Hà Nội</p>
+          <p class="d-flex align-items-start gap-3 mb-3" style="color:#b3b1b8;font-size:15px;line-height:24px;"><img src="img/linkicon.png" alt="" style="width:22px;height:22px;flex-shrink:0;margin-top:2px;object-fit:contain;" />https://jellyfish-vn.com</p>
+          <p class="d-flex align-items-start gap-3 mb-3" style="color:#b3b1b8;font-size:15px;line-height:24px;"><img src="img/mailicon.png" alt="" style="width:22px;height:22px;flex-shrink:0;margin-top:2px;object-fit:contain;" />admin@jellyfish-vn.com</p>
+          <p class="d-flex align-items-start gap-3 mb-0" style="color:#b3b1b8;font-size:15px;line-height:24px;"><img src="img/callicon.png" alt="" style="width:22px;height:22px;flex-shrink:0;margin-top:2px;object-fit:contain;" />0243.7955.846</p>
+        </div>
+        <div class="col-12 col-md-4">
+          <h5 class="fw-semibold mb-3 text-white" style="font-size:17px;">CHI NHÁNH HẢI PHÒNG</h5>
+          <p class="d-flex align-items-start gap-3 mb-3" style="color:#b3b1b8;font-size:15px;line-height:24px;"><img src="img/diachiicon.png" alt="" style="width:22px;height:22px;flex-shrink:0;margin-top:2px;object-fit:contain;" />Tầng 3, tòa nhà Sholega, 275 Lạch Tray, Ngô Quyền, TP. Hải Phòng</p>
+          <p class="d-flex align-items-start gap-3 mb-0" style="color:#b3b1b8;font-size:15px;line-height:24px;"><img src="img/callicon.png" alt="" style="width:22px;height:22px;flex-shrink:0;margin-top:2px;object-fit:contain;" />0969.895.759</p>
+        </div>
+      </div>
+      <hr style="border-color:#2e293d;" />
+      <div class="d-flex justify-content-between align-items-center flex-wrap gap-3">
+        <p class="mb-0" style="color:#b3b1b8;font-size:15px;">© 2023 Jellyfish. All rights reserved.</p>
+        <div class="d-flex gap-3 align-items-center">
+          <a href="#"><img src="img/yticon.png" alt="YouTube" style="width:22px;height:22px;object-fit:contain;" /></a>
+          <a href="#"><img src="img/igicons.png" alt="Instagram" style="width:22px;height:22px;object-fit:contain;" /></a>
+          <a href="#"><img src="img/fbicons.png" alt="Facebook" style="width:22px;height:22px;object-fit:contain;" /></a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- REGISTRATION MODAL -->
+  <div class="modal fade" id="regModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content border-0 rounded-4 overflow-hidden">
+        <div class="modal-header border-0 pb-0">
+          <div class="pt-1">
+            <h5 class="modal-title text-white fw-bold" style="font-size:19px;">Đăng ký tư vấn miễn phí</h5>
+            <p class="text-white mb-0" style="font-size:13px;opacity:.85;">Chúng tôi sẽ liên hệ trong vòng 24 giờ</p>
+          </div>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body px-4 py-4">
+          <form id="regForm" novalidate>
+            <div class="form-floating mb-3">
+              <input type="text" class="form-control rounded-3" id="regName" placeholder="Họ và tên" required />
+              <label for="regName">Họ và tên *</label>
+            </div>
+            <div class="form-floating mb-3">
+              <input type="tel" class="form-control rounded-3" id="regPhone" placeholder="Số điện thoại" required />
+              <label for="regPhone">Số điện thoại *</label>
+            </div>
+            <div class="form-floating mb-3">
+              <input type="email" class="form-control rounded-3" id="regEmail" placeholder="Email" />
+              <label for="regEmail">Email (tuỳ chọn)</label>
+            </div>
+            <div class="mb-3">
+              <div class="fw-semibold mb-2" style="font-size:13.5px;">Bạn quan tâm đến</div>
+              <div class="d-flex flex-wrap gap-2">
+                <label class="interest-tag"><input type="checkbox" class="d-none" /><span class="tag-pill">Tiếng Nhật N5-N4</span></label>
+                <label class="interest-tag"><input type="checkbox" class="d-none" /><span class="tag-pill">Tiếng Nhật N3-N2</span></label>
+                <label class="interest-tag"><input type="checkbox" class="d-none" /><span class="tag-pill">Du học Nhật Bản</span></label>
+                <label class="interest-tag"><input type="checkbox" class="d-none" /><span class="tag-pill">Việc làm Nhật Bản</span></label>
+              </div>
+            </div>
+            <button type="submit" class="btn w-100 fw-bold py-3 rounded-3 text-white" style="background:#237a37;font-size:15px;">Gửi đăng ký</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- BACK TO TOP -->
+  <button class="back-to-top" id="backToTop" title="Lên đầu trang">
+    <svg width="18" height="18" fill="none" stroke="#fff" stroke-width="2.5" viewBox="0 0 24 24"><path d="M18 15l-6-6-6 6"/></svg>
+  </button>
+
+  <!-- TOAST -->
+  <div class="position-fixed bottom-0 end-0 p-3" style="z-index:9999;">
+    <div id="successToast" class="toast align-items-center toast-success border-0 rounded-3" role="alert">
+      <div class="d-flex">
+        <div class="toast-body fw-semibold">Đăng ký thành công! Chúng tôi sẽ liên hệ sớm.</div>
+        <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"></button>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    // HAMBURGER
+    const hamburgerBtn = document.getElementById("hamburgerBtn");
+    const menuDrawer = document.getElementById("menuDrawer");
+    const menuOverlay = document.getElementById("menuOverlay");
+    const menuCloseBtn = document.getElementById("menuCloseBtn");
+    function openMenu(){ menuDrawer.classList.add("open"); menuOverlay.classList.add("open"); document.body.style.overflow="hidden"; }
+    function closeMenu(){ menuDrawer.classList.remove("open"); menuOverlay.classList.remove("open"); document.body.style.overflow=""; }
+    hamburgerBtn.addEventListener("click", openMenu);
+    menuCloseBtn.addEventListener("click", closeMenu);
+    menuOverlay.addEventListener("click", closeMenu);
+
+    // BACK TO TOP
+    const btt = document.getElementById('backToTop');
+    window.addEventListener('scroll', () => btt.classList.toggle('show', window.scrollY > 400));
+    btt.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+    // SMOOTH ANCHOR
+    document.querySelector('.scroll-anchor').addEventListener('click', function(e){
+      e.preventDefault();
+      document.getElementById('about-section').scrollIntoView({ behavior: 'smooth' });
+    });
+
+    // INTERSECTION OBSERVER — fade-up
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('visible'); io.unobserve(e.target); } });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.fade-up').forEach(el => io.observe(el));
+
+    // COUNT-UP
+    const countIO = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if(!e.isIntersecting) return;
+        const el = e.target;
+        const target = parseInt(el.dataset.target);
+        const suffix = el.dataset.suffix || '';
+        const dur = 1800;
+        const t0 = performance.now();
+        (function step(now){
+          const p = Math.min((now - t0) / dur, 1);
+          const v = Math.floor((1 - Math.pow(1-p, 3)) * target);
+          el.textContent = v.toLocaleString('vi') + suffix;
+          if(p < 1) requestAnimationFrame(step);
+        })(t0);
+        countIO.unobserve(el);
+      });
+    }, { threshold: 0.5 });
+    document.querySelectorAll('[data-target]').forEach(el => countIO.observe(el));
+
+    // VMV TABS
+    function switchTab(btn, panelId){
+      document.querySelectorAll('.vmv-tab').forEach(t => t.classList.remove('active'));
+      document.querySelectorAll('.vmv-panel').forEach(p => p.classList.remove('active'));
+      btn.classList.add('active');
+      document.getElementById(panelId).classList.add('active');
+    }
+
+    // INTEREST TAGS
+    document.querySelectorAll('.interest-tag input').forEach(cb => {
+      cb.addEventListener('change', function(){
+        this.nextElementSibling.classList.toggle('selected', this.checked);
+      });
+    });
+
+    // TESTIMONIAL HIGHLIGHT ROTATION
+    const testimonialCards = document.querySelectorAll('.testimonial-card');
+    let tIdx = 0;
+    function highlightTestimonial(){
+      testimonialCards.forEach((c,i) => {
+        c.style.boxShadow = i === tIdx ? '0 16px 40px rgba(35,122,55,0.18)' : '';
+        c.style.transform = i === tIdx ? 'translateY(-6px)' : '';
+        c.style.borderColor = i === tIdx ? '#237a37' : '#eee';
+      });
+      tIdx = (tIdx + 1) % testimonialCards.length;
+    }
+    highlightTestimonial();
+    setInterval(highlightTestimonial, 4000);
+
+    // REGISTRATION FORM
+    document.getElementById('regForm').addEventListener('submit', function(e){
+      e.preventDefault();
+      const name = document.getElementById('regName').value.trim();
+      const phone = document.getElementById('regPhone').value.trim();
+      if(!name || !phone){ alert('Vui lòng điền họ tên và số điện thoại.'); return; }
+      bootstrap.Modal.getInstance(document.getElementById('regModal')).hide();
+      this.reset();
+      document.querySelectorAll('.tag-pill').forEach(p => p.classList.remove('selected'));
+      new bootstrap.Toast(document.getElementById('successToast'), { delay: 4000 }).show();
+    });
+  </script>
+</body>
 </html>
