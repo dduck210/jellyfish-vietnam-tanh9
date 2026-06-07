@@ -2203,9 +2203,9 @@
         document.getElementById("regModal").classList.remove("open");
         document.body.style.overflow = "";
       }
-      document
-        .getElementById("regModal")
-        .addEventListener("click", function (e) {
+      const regModalEl = document.getElementById("regModal");
+      if (regModalEl)
+        regModalEl.addEventListener("click", function (e) {
           if (e.target === this) closeRegModal();
         });
       function submitReg(e) {

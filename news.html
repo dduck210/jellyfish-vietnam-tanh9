@@ -721,7 +721,7 @@
 
     function openRegModal(){ document.getElementById('regModal').classList.add('open'); document.body.style.overflow='hidden'; }
     function closeRegModal(){ document.getElementById('regModal').classList.remove('open'); document.body.style.overflow=''; }
-    document.getElementById('regModal').addEventListener('click',function(e){if(e.target===this)closeRegModal();});
+    const _rm=document.getElementById('regModal');if(_rm)_rm.addEventListener('click',function(e){if(e.target===this)closeRegModal();});
 
     function submitReg(e){ e.preventDefault(); closeRegModal(); showToast('success','✅ Đăng ký thành công! Chúng tôi sẽ liên hệ bạn trong 24 giờ.'); e.target.reset(); }
     function submitNewsletter(e){ e.preventDefault(); e.target.querySelector('input').value=''; showToast('success','📬 Đăng ký nhận bản tin thành công!'); }
