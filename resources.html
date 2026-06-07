@@ -3,19 +3,16 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Jellyfish Vietnam - Giáo trình N5</title>
+    <title>Jellyfish Vietnam - Trọn bộ giáo trình N5</title>
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
     />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700;800;900&display=swap"
       rel="stylesheet"
     />
     <style>
-      body {
-        font-family: "Inter", Arial, sans-serif;
-      }
       .nav-link-item {
         position: relative;
         opacity: 0.82;
@@ -41,7 +38,6 @@
       .nav-link-item.nav-active::after {
         transform: scaleX(1);
       }
-
       /* ===== HAMBURGER & MOBILE MENU ===== */
       .hamburger-btn {
         display: none;
@@ -65,6 +61,8 @@
         border-radius: 2px;
         transition: all 0.3s ease;
       }
+
+      /* Mobile overlay menu */
       .mobile-menu-overlay {
         display: none;
         position: fixed;
@@ -98,12 +96,13 @@
         align-items: center;
         justify-content: space-between;
         padding: 16px 20px;
-        background: #237a37;
+        background: #fff;
+        border-bottom: 1px solid #e9ecef;
       }
       .mobile-menu-close {
         background: none;
         border: none;
-        color: #fff;
+        color: #333;
         font-size: 28px;
         line-height: 1;
         cursor: pointer;
@@ -132,20 +131,29 @@
         flex-direction: column;
         gap: 10px;
       }
+
       @media (max-width: 767px) {
         .hamburger-btn {
           display: flex;
         }
+        /* Ẩn thanh nav ngang trên mobile */
         header nav {
           display: none !important;
         }
+        /* Ẩn search bar & nút ĐĂNG KÝ TƯ VẤN trên mobile — chỉ giữ SĐT */
         .search-bar-wrap {
           display: none !important;
         }
       }
     </style>
   </head>
-  <body style="background: #f5f5f5; color: #333">
+  <body
+    style="
+      font-family: &quot;Be Vietnam Pro&quot;, Arial, sans-serif;
+      background: #f5f5f5;
+      color: #333;
+    "
+  >
     <header class="bg-white shadow-sm">
       <div
         class="d-flex align-items-center justify-content-between gap-2 px-4 py-3"
@@ -156,18 +164,17 @@
           class="d-block"
           style="height: 55px; width: auto; object-fit: contain"
         />
-        <div class="d-none d-sm-flex flex-grow-1 mx-2 search-bar-wrap">
+        <div class="d-none d-sm-flex flex-grow-1 mx-2">
           <input
             type="text"
             placeholder="Tìm kiếm..."
             class="form-control rounded-pill"
-            style="background: #ececed; border: 1px solid #ececed"
           />
         </div>
         <div class="d-flex align-items-center gap-2 flex-shrink-0">
           <button
             class="btn fw-bold text-white border-0 rounded-3 text-nowrap d-none d-md-inline-flex align-items-center px-3 py-2"
-            style="background: #237a37"
+            style="background: #217335"
           >
             ĐĂNG KÝ TƯ VẤN
           </button>
@@ -175,12 +182,13 @@
             href="tel:0961106466"
             class="btn fw-bold text-white text-decoration-none border-0 rounded-3 text-nowrap d-none d-md-inline-flex align-items-center px-3 py-2"
             style="background: #dc3545"
-            ><img
+          >
+            <img
               src="img/Rectangle 77.png"
               alt=""
               style="width: 16px; margin-right: 6px"
-            />096.110.6466</a
-          >
+            />096.110.6466
+          </a>
           <!-- Hamburger button: chỉ hiện trên mobile -->
           <button class="hamburger-btn" id="hamburgerBtn" aria-label="Mở menu">
             <span></span>
@@ -189,7 +197,7 @@
           </button>
         </div>
       </div>
-      <nav style="background: #237a37; overflow-x: auto; scrollbar-width: none">
+      <nav style="background: #217335; overflow-x: auto; scrollbar-width: none">
         <ul
           class="list-unstyled m-0 d-flex align-items-stretch justify-content-center"
           style="
@@ -209,7 +217,7 @@
           </li>
           <li class="d-flex">
             <a
-              href="vejely.html"
+              href="about.html"
               class="nav-link-item text-white text-decoration-none d-flex align-items-center text-nowrap px-3"
               style="font-size: 15px"
               >Về Jellyfish Việt Nam</a
@@ -217,7 +225,7 @@
           </li>
           <li class="d-flex">
             <a
-              href="khoahoc.html"
+              href="courses.html"
               class="nav-link-item text-white text-decoration-none d-flex align-items-center text-nowrap px-3"
               style="font-size: 15px"
               >Khóa học</a
@@ -225,7 +233,7 @@
           </li>
           <li class="d-flex">
             <a
-              href="lichkhaigiang.html"
+              href="schedule.html"
               class="nav-link-item text-white text-decoration-none d-flex align-items-center text-nowrap px-3"
               style="font-size: 15px"
               >Lịch khai giảng</a
@@ -233,7 +241,7 @@
           </li>
           <li class="d-flex">
             <a
-              href="giaotrinh.html"
+              href="curriculum.html"
               class="nav-link-item nav-active text-white text-decoration-none d-flex align-items-center text-nowrap px-3"
               style="font-size: 15px"
               >Giáo trình</a
@@ -241,7 +249,7 @@
           </li>
           <li class="d-flex">
             <a
-              href="kienthuc.html"
+              href="blog.html"
               class="nav-link-item text-white text-decoration-none d-flex align-items-center text-nowrap px-3"
               style="font-size: 15px"
               >Kiến thức hữu ích</a
@@ -249,7 +257,7 @@
           </li>
           <li class="d-flex">
             <a
-              href="#"
+              href="news.html"
               class="nav-link-item text-white text-decoration-none d-flex align-items-center text-nowrap px-3"
               style="font-size: 15px"
               >Tin tức</a
@@ -258,7 +266,6 @@
         </ul>
       </nav>
     </header>
-
     <!-- ===== MOBILE MENU OVERLAY ===== -->
     <div class="mobile-menu-overlay" id="menuOverlay"></div>
     <div class="mobile-menu-drawer" id="menuDrawer">
@@ -266,7 +273,7 @@
         <img
           src="img/logo.png"
           alt="Jellyfish Vietnam"
-          style="height: 38px; filter: brightness(0) invert(1)"
+          style="height: 38px;"
         />
         <button
           class="mobile-menu-close"
@@ -277,13 +284,13 @@
         </button>
       </div>
       <nav class="mobile-menu-nav">
-        <a href="index.html">Trang chủ</a>
-        <a href="vejely.html">Về Jellyfish Việt Nam</a>
-        <a href="khoahoc.html">Khóa học</a>
-        <a href="lichkhaigiang.html">Lịch khai giảng</a>
-        <a href="giaotrinh.html" class="nav-active">Giáo trình</a>
-        <a href="kienthuc.html">Kiến thức hữu ích</a>
-        <a href="#">Tin tức</a>
+        <a href="index.html" class="nav-active">Trang chủ</a>
+        <a href="about.html">Về Jellyfish Việt Nam</a>
+        <a href="courses.html">Khóa học</a>
+        <a href="schedule.html">Lịch khai giảng</a>
+        <a href="curriculum.html">Giáo trình</a>
+        <a href="blog.html">Kiến thức hữu ích</a>
+        <a href="news.html">Tin tức</a>
       </nav>
       <div class="mobile-menu-footer">
         <a
@@ -304,358 +311,230 @@
     <div class="container py-4" style="max-width: 1200px">
       <div class="row g-4">
         <div class="col-12 col-lg-9">
-          <h1 class="fs-4 fw-bold mb-3">Giáo trình N5</h1>
-          <div class="row row-cols-2 g-3">
-            <div class="col">
-              <div class="card border h-100 p-2">
-                <a href="muagt.html"
-                  ><img
-                    src="img/sachbandich.jpg"
-                    class="card-img-top rounded"
-                    alt="Sách bản dịch"
-                /></a>
-                <div class="card-body px-1 pb-2">
-                  <p
-                    class="d-flex align-items-center gap-2 mb-1"
-                    style="font-size: 13px; color: #555"
-                  >
-                    <img
-                      src="img/bookmark.png"
-                      alt=""
-                      style="width: 14px"
-                    />Giáo trình N5
-                  </p>
-                  <a href="muagt.html" class="text-decoration-none text-dark"
-                    ><h6 class="fw-bold">
-                      N5 – Bản dịch và giải thích ngữ pháp
-                    </h6></a
-                  >
-                  <div>
-                    <span class="text-muted text-decoration-line-through me-1"
-                      >75.000đ</span
-                    ><span
-                      class="fw-bold"
-                      style="color: #e74c3c; font-size: 18px"
-                      >52.000đ</span
-                    >
-                  </div>
-                  <button
-                    class="btn w-100 fw-semibold text-white border-0 mt-2"
-                    style="
-                      background: #217335;
-                      padding: 9px 15px;
-                      border-radius: 5px;
-                      font-size: 13px;
-                    "
-                  >
-                    Thêm vào giỏ hàng
-                  </button>
-                </div>
-              </div>
+          <div class="d-flex gap-3 gap-md-4 mb-4 flex-wrap flex-sm-nowrap">
+            <div class="flex-shrink-0" style="max-width: 220px">
+              <img
+                src="img/chonbogt.jpg"
+                alt="Trọn bộ giáo trình N5"
+                class="img-fluid rounded-3"
+                style="background: #f9f9f9"
+              />
             </div>
-            <div class="col">
-              <div class="card border h-100 p-2">
-                <a href="muagt.html"
-                  ><img
-                    src="img/nghehieu.jpg"
-                    class="card-img-top rounded"
-                    alt="Nghe hiểu"
-                /></a>
-                <div class="card-body px-1 pb-2">
-                  <p
-                    class="d-flex align-items-center gap-2 mb-1"
-                    style="font-size: 13px; color: #555"
-                  >
-                    <img
-                      src="img/bookmark.png"
-                      alt=""
-                      style="width: 14px"
-                    />Giáo trình N5
-                  </p>
-                  <a href="muagt.html" class="text-decoration-none text-dark"
-                    ><h6 class="fw-bold">N5 – Choukai Nghe hiểu</h6></a
-                  >
-                  <div>
-                    <span class="text-muted text-decoration-line-through me-1"
-                      >95.000đ</span
-                    ><span
-                      class="fw-bold"
-                      style="color: #e74c3c; font-size: 18px"
-                      >52.000đ</span
-                    >
-                  </div>
-                  <button
-                    class="btn w-100 fw-semibold text-white border-0 mt-2"
-                    style="
-                      background: #217335;
-                      padding: 9px 15px;
-                      border-radius: 5px;
-                      font-size: 13px;
-                    "
-                  >
-                    Thêm vào giỏ hàng
-                  </button>
-                </div>
+            <div class="flex-grow-1 min-w-0">
+              <p
+                class="d-flex align-items-center gap-2 mb-1"
+                style="font-size: 13px; color: #555"
+              >
+                <img src="img/bookmark.png" alt="" style="width: 14px" />Giáo
+                trình N5
+              </p>
+              <h1 class="fw-bold mb-3" style="font-size: 22px">
+                Trọn bộ giáo trình N5 (5 quyển)
+              </h1>
+              <div class="mb-3">
+                <span class="text-muted text-decoration-line-through me-2"
+                  >375.000đ</span
+                >
+                <span class="fw-bold" style="color: #e74c3c; font-size: 20px"
+                  >250.000đ</span
+                >
               </div>
-            </div>
-            <div class="col">
-              <div class="card border h-100 p-2">
-                <a href="muagt.html"
-                  ><img
-                    src="img/baitap.jpg"
-                    class="card-img-top rounded"
-                    alt="Bài tập"
-                /></a>
-                <div class="card-body px-1 pb-2">
-                  <p
-                    class="d-flex align-items-center gap-2 mb-1"
-                    style="font-size: 13px; color: #555"
-                  >
-                    <img
-                      src="img/bookmark.png"
-                      alt=""
-                      style="width: 14px"
-                    />Giáo trình N5
-                  </p>
-                  <a href="muagt.html" class="text-decoration-none text-dark"
-                    ><h6 class="fw-bold">N5 – Hyoujun Bài tập</h6></a
-                  >
-                  <div>
-                    <span class="text-muted text-decoration-line-through me-1"
-                      >40.000đ</span
-                    ><span
-                      class="fw-bold"
-                      style="color: #e74c3c; font-size: 18px"
-                      >34.000đ</span
-                    >
-                  </div>
-                  <button
-                    class="btn w-100 fw-semibold text-white border-0 mt-2"
-                    style="
-                      background: #217335;
-                      padding: 9px 15px;
-                      border-radius: 5px;
-                      font-size: 13px;
-                    "
-                  >
-                    Thêm vào giỏ hàng
-                  </button>
-                </div>
+              <div
+                class="d-inline-flex border rounded mb-3"
+                style="overflow: hidden"
+              >
+                <button
+                  class="minus border-0 bg-transparent"
+                  style="
+                    width: 35px;
+                    height: 35px;
+                    font-size: 18px;
+                    cursor: pointer;
+                  "
+                >
+                  -
+                </button>
+                <input
+                  type="text"
+                  value="1"
+                  class="border-0 text-center"
+                  style="
+                    width: 40px;
+                    border-left: 1px solid #ddd;
+                    border-right: 1px solid #ddd;
+                    outline: none;
+                  "
+                />
+                <button
+                  class="plus border-0 bg-transparent"
+                  style="
+                    width: 35px;
+                    height: 35px;
+                    font-size: 18px;
+                    cursor: pointer;
+                  "
+                >
+                  +
+                </button>
               </div>
-            </div>
-            <div class="col">
-              <div class="card border h-100 p-2">
-                <a href="muagt.html"
-                  ><img
-                    src="img/quyenchinh.jpg"
-                    class="card-img-top rounded"
-                    alt="Quyển chính"
-                /></a>
-                <div class="card-body px-1 pb-2">
-                  <p
-                    class="d-flex align-items-center gap-2 mb-1"
-                    style="font-size: 13px; color: #555"
-                  >
-                    <img
-                      src="img/bookmark.png"
-                      alt=""
-                      style="width: 14px"
-                    />Giáo trình N5
-                  </p>
-                  <a href="muagt.html" class="text-decoration-none text-dark"
-                    ><h6 class="fw-bold">N5 – Quyển chính</h6></a
-                  >
-                  <div>
-                    <span class="text-muted text-decoration-line-through me-1"
-                      >95.000đ</span
-                    ><span
-                      class="fw-bold"
-                      style="color: #e74c3c; font-size: 18px"
-                      >62.000đ</span
-                    >
-                  </div>
-                  <button
-                    class="btn w-100 fw-semibold text-white border-0 mt-2"
-                    style="
-                      background: #217335;
-                      padding: 9px 15px;
-                      border-radius: 5px;
-                      font-size: 13px;
-                    "
-                  >
-                    Thêm vào giỏ hàng
-                  </button>
-                </div>
-              </div>
-            </div>
-            <div class="col">
-              <div class="card border h-100 p-2">
-                <a href="muagt.html"
-                  ><img
-                    src="img/dochieu.jpg"
-                    class="card-img-top rounded"
-                    alt="Đọc hiểu"
-                /></a>
-                <div class="card-body px-1 pb-2">
-                  <p
-                    class="d-flex align-items-center gap-2 mb-1"
-                    style="font-size: 13px; color: #555"
-                  >
-                    <img
-                      src="img/bookmark.png"
-                      alt=""
-                      style="width: 14px"
-                    />Giáo trình N5
-                  </p>
-                  <a href="muagt.html" class="text-decoration-none text-dark"
-                    ><h6 class="fw-bold">N5 – Shokyuu Đọc hiểu</h6></a
-                  >
-                  <div>
-                    <span class="text-muted text-decoration-line-through me-1"
-                      >70.000đ</span
-                    ><span
-                      class="fw-bold"
-                      style="color: #e74c3c; font-size: 18px"
-                      >50.000đ</span
-                    >
-                  </div>
-                  <button
-                    class="btn w-100 fw-semibold text-white border-0 mt-2"
-                    style="
-                      background: #217335;
-                      padding: 9px 15px;
-                      border-radius: 5px;
-                      font-size: 13px;
-                    "
-                  >
-                    Thêm vào giỏ hàng
-                  </button>
-                </div>
-              </div>
-            </div>
-            <div class="col">
-              <div class="card border h-100 p-2">
-                <a href="muagt.html"
-                  ><img
-                    src="img/chonbogt.jpg"
-                    class="card-img-top rounded"
-                    alt="Trọn bộ"
-                /></a>
-                <div class="card-body px-1 pb-2">
-                  <p
-                    class="d-flex align-items-center gap-2 mb-1"
-                    style="font-size: 13px; color: #555"
-                  >
-                    <img
-                      src="img/bookmark.png"
-                      alt=""
-                      style="width: 14px"
-                    />Giáo trình N5
-                  </p>
-                  <a href="muagt.html" class="text-decoration-none text-dark"
-                    ><h6 class="fw-bold">Trọn bộ giáo trình N5 (5 quyển)</h6></a
-                  >
-                  <div>
-                    <span class="text-muted text-decoration-line-through me-1"
-                      >375.000đ</span
-                    ><span
-                      class="fw-bold"
-                      style="color: #e74c3c; font-size: 18px"
-                      >250.000đ</span
-                    >
-                  </div>
-                  <button
-                    class="btn w-100 fw-semibold text-white border-0 mt-2"
-                    style="
-                      background: #217335;
-                      padding: 9px 15px;
-                      border-radius: 5px;
-                      font-size: 13px;
-                    "
-                  >
-                    Thêm vào giỏ hàng
-                  </button>
-                </div>
-              </div>
+              <button
+                class="btn w-100 fw-bold text-white border-0 rounded-3 d-block"
+                style="background: #217335; padding: 11px 28px; font-size: 15px"
+              >
+                Thêm vào giỏ hàng
+              </button>
             </div>
           </div>
 
-          <div class="d-flex align-items-center flex-wrap gap-1 mt-4">
-            <a
-              href="#"
-              class="d-inline-flex align-items-center justify-content-center border rounded-2 text-dark text-decoration-none bg-white"
-              style="width: 36px; height: 36px; font-size: 15px"
-              >&#8249;</a
-            >
-            <a
-              href="#"
-              class="d-inline-flex align-items-center justify-content-center border rounded-2 text-dark text-decoration-none bg-white"
-              style="width: 36px; height: 36px; font-size: 15px"
-              >1</a
-            >
-            <a
-              href="#"
-              class="d-inline-flex align-items-center justify-content-center border rounded-2 text-dark text-decoration-none bg-white"
-              style="width: 36px; height: 36px; font-size: 15px"
-              >2</a
-            >
-            <a
-              href="#"
-              class="d-inline-flex align-items-center justify-content-center border rounded-2 text-dark text-decoration-none bg-white"
-              style="width: 36px; height: 36px; font-size: 15px"
-              >3</a
-            >
-            <a
-              href="#"
-              class="d-inline-flex align-items-center justify-content-center border rounded-2 text-dark text-decoration-none bg-white"
-              style="width: 36px; height: 36px; font-size: 15px"
-              >4</a
-            >
-            <a
-              href="#"
-              class="d-inline-flex align-items-center justify-content-center rounded-2 text-white text-decoration-none fw-bold"
-              style="
-                width: 36px;
-                height: 36px;
-                font-size: 15px;
-                background: #217335;
-              "
-              >5</a
-            >
-            <a
-              href="#"
-              class="d-inline-flex align-items-center justify-content-center border rounded-2 text-dark text-decoration-none bg-white"
-              style="width: 36px; height: 36px; font-size: 15px"
-              >6</a
-            >
-            <a
-              href="#"
-              class="d-inline-flex align-items-center justify-content-center border rounded-2 text-dark text-decoration-none bg-white"
-              style="width: 36px; height: 36px; font-size: 15px"
-              >7</a
-            >
-            <span class="px-1 text-muted">...</span>
-            <a
-              href="#"
-              class="d-inline-flex align-items-center justify-content-center border rounded-2 text-dark text-decoration-none bg-white"
-              style="width: 36px; height: 36px; font-size: 15px"
-              >10</a
-            >
-            <a
-              href="#"
-              class="d-inline-flex align-items-center justify-content-center border rounded-2 text-dark text-decoration-none bg-white"
-              style="width: 36px; height: 36px; font-size: 15px"
-              >&#8250;</a
-            >
-            <div
-              class="d-flex align-items-center gap-2 ms-auto small text-muted"
-            >
-              <span>Kết quả mỗi trang:</span>
-              <select class="form-select form-select-sm" style="width: 70px">
-                <option value="5" selected>5</option>
-                <option value="10">10</option>
-                <option value="20">20</option>
-              </select>
+          <div class="border-top pt-3">
+            <h2 class="fw-bold mb-3" style="font-size: 18px">
+              Bộ giáo trình Minna no nihongo Trình độ N5 gồm:
+            </h2>
+            <div class="mb-3">
+              <h3 class="mb-1" style="color: #1a5cff; font-size: 16px">
+                1. Shokyuu Đọc hiểu
+              </h3>
+              <p style="margin-bottom: 14px; color: #444; font-size: 14px">
+                Sách luyện đọc hiểu tương ứng với giáo trình Minna no Nihongo.
+              </p>
+            </div>
+            <div class="mb-3">
+              <h3 class="mb-1" style="color: #1a5cff; font-size: 16px">
+                2. Choukai Nghe hiểu
+              </h3>
+              <p style="margin-bottom: 14px; color: #444; font-size: 14px">
+                Các bài nghe phù hợp với trình độ sơ cấp, có kèm theo lời thoại
+                cho các bài nghe ở cuối sách.
+              </p>
+            </div>
+            <div class="mb-3">
+              <h3 class="mb-1" style="color: #1a5cff; font-size: 16px">
+                3. Hyoujun Bài tập
+              </h3>
+              <p style="margin-bottom: 14px; color: #444; font-size: 14px">
+                Bài tập phong phú và đa dạng. Mỗi bài ngữ pháp sẽ có phần luyện
+                tập tương ứng, và có thêm phần tổng hợp chung.
+              </p>
+            </div>
+            <div class="mb-3">
+              <h3 class="mb-1" style="color: #1a5cff; font-size: 16px">
+                4. Bản dịch
+              </h3>
+              <p style="margin-bottom: 14px; color: #444; font-size: 14px">
+                Từ vựng, phần dịch các mẫu câu, ví dụ và hội thoại sang tiếng
+                Việt. Giải thích ngữ pháp chi tiết, dễ hiểu.
+              </p>
+            </div>
+            <div class="mb-3">
+              <h3 class="mb-1" style="color: #1a5cff; font-size: 16px">
+                5. N5 Quyển chính
+              </h3>
+              <p style="margin-bottom: 14px; color: #444; font-size: 14px">
+                Tóm tắt cấu trúc, hội thoại và bài tập tổng hợp kiến thức N5.
+              </p>
+            </div>
+            <p class="small mt-3" style="color: #444; line-height: 1.8">
+              Bộ giáo trình Minna no nihongo Trình độ N5 là bộ sách tiếng Nhật
+              cần thiết dành cho các bạn đã hoàn thành xong 2 bảng chữ cái
+              Hiragana, Katakana và muốn học tiếng Nhật lâu dài. Tất cả các bài
+              tập trong sách đều đi kèm đáp án, do đó đây là bộ sách hiệu quả
+              giúp bạn tự học tại nhà.
+            </p>
+          </div>
+
+          <div class="mt-4 pt-3 border-top">
+            <h2 class="fw-bold mb-3" style="font-size: 18px">
+              Sản phẩm tương tự
+            </h2>
+            <div class="row row-cols-2 g-3">
+              <div class="col">
+                <div class="card border rounded-3 p-2 h-100">
+                  <img
+                    src="img/sachbandich.jpg"
+                    class="card-img-top rounded-2"
+                    style="height: 200px; object-fit: cover"
+                    alt=""
+                  />
+                  <div class="card-body px-1 pb-1">
+                    <p
+                      class="d-flex align-items-center gap-2 small mt-2 mb-1"
+                      style="font-size: 13px; color: #555"
+                    >
+                      <img
+                        src="img/bookmark.png"
+                        alt=""
+                        style="width: 14px"
+                      />Giáo trình N5
+                    </p>
+                    <h6 class="fw-bold small">
+                      N5 – Bản dịch và giải thích ngữ pháp
+                    </h6>
+                    <div>
+                      <span
+                        class="text-muted text-decoration-line-through me-1"
+                        style="font-size: 13px"
+                        >75.000đ</span
+                      ><span class="fw-bold" style="color: #e74c3c"
+                        >52.000đ</span
+                      >
+                    </div>
+                    <button
+                      class="btn w-100 fw-semibold text-white border-0 mt-2"
+                      style="
+                        background: #217335;
+                        padding: 8px 12px;
+                        border-radius: 5px;
+                        font-size: 13px;
+                      "
+                    >
+                      Thêm vào giỏ hàng
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <div class="col">
+                <div class="card border rounded-3 p-2 h-100">
+                  <img
+                    src="img/baitap.jpg"
+                    class="card-img-top rounded-2"
+                    style="height: 200px; object-fit: cover"
+                    alt=""
+                  />
+                  <div class="card-body px-1 pb-1">
+                    <p
+                      class="d-flex align-items-center gap-2 small mt-2 mb-1"
+                      style="font-size: 13px; color: #555"
+                    >
+                      <img
+                        src="img/bookmark.png"
+                        alt=""
+                        style="width: 14px"
+                      />Giáo trình N5
+                    </p>
+                    <h6 class="fw-bold small">N5 – Hyoujun Bài tập</h6>
+                    <div>
+                      <span
+                        class="text-muted text-decoration-line-through me-1"
+                        style="font-size: 13px"
+                        >40.000đ</span
+                      ><span class="fw-bold" style="color: #e74c3c"
+                        >34.000đ</span
+                      >
+                    </div>
+                    <button
+                      class="btn w-100 fw-semibold text-white border-0 mt-2"
+                      style="
+                        background: #217335;
+                        padding: 8px 12px;
+                        border-radius: 5px;
+                        font-size: 13px;
+                      "
+                    >
+                      Thêm vào giỏ hàng
+                    </button>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -780,28 +659,28 @@
               </li>
               <li>
                 <a
-                  href="vejely.html"
+                  href="about.html"
                   class="text-white text-decoration-none fw-bold"
                   >Về Jellyfish</a
                 >
               </li>
               <li>
                 <a
-                  href="khoahoc.html"
+                  href="courses.html"
                   class="text-white text-decoration-none fw-bold"
                   >Khóa học</a
                 >
               </li>
               <li>
                 <a
-                  href="giaotrinh.html"
+                  href="curriculum.html"
                   class="text-white text-decoration-none fw-bold"
                   >Giáo trình</a
                 >
               </li>
               <li>
                 <a
-                  href="kienthuc.html"
+                  href="blog.html"
                   class="text-white text-decoration-none fw-bold"
                   >Kiến thức hữu ích</a
                 >
