@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="vi">
+<html lang="vi" style="scroll-behavior:smooth">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -80,7 +80,9 @@
         background: rgba(0, 0, 0, 0.45);
         z-index: 1040;
       }
-      .mobile-menu-overlay.open { display: block; }
+      .mobile-menu-overlay.open {
+        display: block;
+      }
       .mobile-menu-drawer {
         position: fixed;
         top: 0;
@@ -93,7 +95,9 @@
         overflow-y: auto;
         box-shadow: -4px 0 20px rgba(0, 0, 0, 0.15);
       }
-      .mobile-menu-drawer.open { right: 0; }
+      .mobile-menu-drawer.open {
+        right: 0;
+      }
       .mobile-menu-header {
         display: flex;
         align-items: center;
@@ -119,7 +123,9 @@
         font-size: 15px;
         font-weight: 500;
         border-bottom: 1px solid #f0f0f0;
-        transition: background 0.2s, color 0.2s;
+        transition:
+          background 0.2s,
+          color 0.2s;
       }
       .mobile-menu-nav a:hover,
       .mobile-menu-nav a.nav-active {
@@ -133,17 +139,40 @@
         gap: 10px;
       }
       @media (max-width: 767px) {
-        .hamburger-btn { display: flex; }
-        header nav { display: none !important; }
-        .search-bar-wrap { display: none !important; }
-        .schedule-hero { padding: 48px 0 44px; }
-        .tab-btn { font-size: 13px; padding: 10px 16px; gap: 6px; }
-        .info-card { padding: 22px 18px; }
+        .hamburger-btn {
+          display: flex;
+        }
+        header nav {
+          display: none !important;
+        }
+        .search-bar-wrap {
+          display: none !important;
+        }
+        .schedule-hero {
+          padding: 48px 0 44px;
+        }
+        .tab-btn {
+          font-size: 13px;
+          padding: 10px 16px;
+          gap: 6px;
+        }
+        .info-card {
+          padding: 22px 18px;
+        }
+        .schedule-card {
+          padding: 16px;
+        }
       }
 
       /* === HERO === */
       .schedule-hero {
-        background: linear-gradient(135deg, #0f3d1c 0%, #1b6530 40%, #237a37 70%, #2d9e48 100%);
+        background: linear-gradient(
+          135deg,
+          #0f3d1c 0%,
+          #1b6530 40%,
+          #237a37 70%,
+          #2d9e48 100%
+        );
         padding: 64px 0 52px;
         position: relative;
         overflow: hidden;
@@ -181,13 +210,27 @@
         border-radius: 50px;
         margin-bottom: 14px;
       }
-      .hero-text-animate { animation: heroFadeUp 0.9s ease both; }
-      .hero-text-animate.d1 { animation-delay: 0.2s; }
-      .hero-text-animate.d2 { animation-delay: 0.4s; }
-      .hero-text-animate.d3 { animation-delay: 0.6s; }
+      .hero-text-animate {
+        animation: heroFadeUp 0.9s ease both;
+      }
+      .hero-text-animate.d1 {
+        animation-delay: 0.2s;
+      }
+      .hero-text-animate.d2 {
+        animation-delay: 0.4s;
+      }
+      .hero-text-animate.d3 {
+        animation-delay: 0.6s;
+      }
       @keyframes heroFadeUp {
-        from { opacity: 0; transform: translateY(24px); }
-        to { opacity: 1; transform: none; }
+        from {
+          opacity: 0;
+          transform: translateY(24px);
+        }
+        to {
+          opacity: 1;
+          transform: none;
+        }
       }
       .hero-scroll {
         position: absolute;
@@ -204,8 +247,13 @@
         animation: bounce 2s infinite;
       }
       @keyframes bounce {
-        0%, 100% { transform: translateX(-50%) translateY(0); }
-        50% { transform: translateX(-50%) translateY(8px); }
+        0%,
+        100% {
+          transform: translateX(-50%) translateY(0);
+        }
+        50% {
+          transform: translateX(-50%) translateY(8px);
+        }
       }
       .hero-outline-btn {
         display: inline-block;
@@ -219,14 +267,32 @@
         border: 1.5px solid rgba(255, 255, 255, 0.4);
         transition: background 0.2s;
       }
-      .hero-outline-btn:hover { background: rgba(255, 255, 255, 0.28); color: #fff; }
+      .hero-outline-btn:hover {
+        background: rgba(255, 255, 255, 0.28);
+        color: #fff;
+      }
 
       /* === FADE-UP === */
-      .fade-up { opacity: 0; transform: translateY(28px); transition: opacity 0.6s ease, transform 0.6s ease; }
-      .fade-up.visible { opacity: 1; transform: translateY(0); }
-      .fade-up.d1 { transition-delay: 0.1s; }
-      .fade-up.d2 { transition-delay: 0.2s; }
-      .fade-up.d3 { transition-delay: 0.3s; }
+      .fade-up {
+        opacity: 0;
+        transform: translateY(28px);
+        transition:
+          opacity 0.6s ease,
+          transform 0.6s ease;
+      }
+      .fade-up.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      .fade-up.d1 {
+        transition-delay: 0.1s;
+      }
+      .fade-up.d2 {
+        transition-delay: 0.2s;
+      }
+      .fade-up.d3 {
+        transition-delay: 0.3s;
+      }
 
       /* === BACK TO TOP === */
       #backToTop {
@@ -250,8 +316,13 @@
         align-items: center;
         justify-content: center;
       }
-      #backToTop.show { opacity: 1; transform: translateY(0); }
-      #backToTop:hover { background: #1b6530; }
+      #backToTop.show {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      #backToTop:hover {
+        background: #1b6530;
+      }
 
       /* === SECTION HELPERS === */
       .section-label {
@@ -303,14 +374,20 @@
         transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
         font-family: "Inter", sans-serif;
       }
-      .tab-btn:hover { border-color: var(--green); color: var(--green); background: rgba(35, 122, 55, 0.05); }
+      .tab-btn:hover {
+        border-color: var(--green);
+        color: var(--green);
+        background: rgba(35, 122, 55, 0.05);
+      }
       .tab-btn.active {
         background: var(--green);
         border-color: var(--green);
         color: #fff;
         box-shadow: 0 4px 16px rgba(35, 122, 55, 0.3);
       }
-      .tab-btn svg { flex-shrink: 0; }
+      .tab-btn svg {
+        flex-shrink: 0;
+      }
 
       /* === TAB PANES === */
       .schedule-card {
@@ -321,13 +398,28 @@
         border: 1.5px solid #eee;
         overflow: hidden;
       }
-      .tab-pane { display: none; animation: tabFadeIn 0.35s ease; }
-      .tab-pane.active { display: block; }
-      @keyframes tabFadeIn {
-        from { opacity: 0; transform: translateY(12px); }
-        to { opacity: 1; transform: translateY(0); }
+      .tab-pane {
+        display: none;
+        animation: tabFadeIn 0.35s ease;
       }
-      .tab-pane img { width: 100%; border-radius: 12px; display: block; }
+      .tab-pane.active {
+        display: block;
+      }
+      @keyframes tabFadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(12px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      .tab-pane img {
+        width: 100%;
+        border-radius: 12px;
+        display: block;
+      }
 
       /* === INFO CARDS === */
       .info-card {
@@ -336,10 +428,17 @@
         padding: 28px 24px;
         height: 100%;
         border: 1.5px solid #eee;
-        transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+        transition:
+          transform 0.3s,
+          box-shadow 0.3s,
+          border-color 0.3s;
         text-align: center;
       }
-      .info-card:hover { transform: translateY(-6px); box-shadow: 0 20px 48px rgba(35, 122, 55, 0.13); border-color: var(--green); }
+      .info-card:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 20px 48px rgba(35, 122, 55, 0.13);
+        border-color: var(--green);
+      }
       .info-icon {
         width: 56px;
         height: 56px;
@@ -351,12 +450,26 @@
         margin: 0 auto 16px;
         transition: background 0.3s;
       }
-      .info-card:hover .info-icon { background: rgba(35, 122, 55, 0.2); }
-      .info-card h4 { font-size: 16px; font-weight: 800; color: #111; margin-bottom: 8px; }
-      .info-card p { font-size: 13.5px; color: #555; line-height: 1.75; margin: 0; }
+      .info-card:hover .info-icon {
+        background: rgba(35, 122, 55, 0.2);
+      }
+      .info-card h4 {
+        font-size: 16px;
+        font-weight: 800;
+        color: #111;
+        margin-bottom: 8px;
+      }
+      .info-card p {
+        font-size: 13.5px;
+        color: #555;
+        line-height: 1.75;
+        margin: 0;
+      }
 
       /* === CTA === */
-      .cta-section { background: linear-gradient(135deg, var(--green) 0%, #1a5c2a 100%); }
+      .cta-section {
+        background: linear-gradient(135deg, var(--green) 0%, #1a5c2a 100%);
+      }
 
       /* === REG MODAL === */
       .reg-modal-overlay {
@@ -372,7 +485,10 @@
         pointer-events: none;
         transition: opacity 0.3s;
       }
-      .reg-modal-overlay.open { opacity: 1; pointer-events: all; }
+      .reg-modal-overlay.open {
+        opacity: 1;
+        pointer-events: all;
+      }
       .reg-modal {
         background: #fff;
         border-radius: 18px;
@@ -383,46 +499,138 @@
         transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         position: relative;
       }
-      .reg-modal-overlay.open .reg-modal { transform: scale(1); }
-      .reg-close-btn { position: absolute; top: 14px; right: 18px; background: none; border: none; font-size: 22px; color: #aaa; cursor: pointer; }
-      .reg-close-btn:hover { color: #333; }
+      .reg-modal-overlay.open .reg-modal {
+        transform: scale(1);
+      }
+      .reg-close-btn {
+        position: absolute;
+        top: 14px;
+        right: 18px;
+        background: none;
+        border: none;
+        font-size: 22px;
+        color: #aaa;
+        cursor: pointer;
+      }
+      .reg-close-btn:hover {
+        color: #333;
+      }
     </style>
   </head>
   <body style="background: #f5f5f5; color: #333">
     <header class="bg-white shadow-sm">
-      <div class="d-flex align-items-center justify-content-between gap-2 px-4 py-3">
+      <div
+        class="d-flex align-items-center justify-content-between gap-2 px-4 py-3"
+      >
         <a href="index.html"
-          ><img src="img/logo.png" alt="Jellyfish Vietnam" class="d-block" style="height:55px;width:auto;object-fit:contain"
+          ><img
+            src="img/logo.png"
+            alt="Jellyfish Vietnam"
+            class="d-block"
+            style="height: 55px; width: auto; object-fit: contain"
         /></a>
         <div class="d-none d-sm-flex flex-grow-1 mx-2 search-bar-wrap">
           <input
             type="text"
             placeholder="Tìm kiếm..."
             class="form-control rounded-pill"
-            style="background:#ececed;border:1px solid #ececed"
-            onkeydown="if(event.key==='Enter'&&this.value.trim()){window.location.href='blog.html'}"
+            style="background: #ececed; border: 1px solid #ececed"
+            onkeydown="
+              if (event.key === 'Enter' && this.value.trim()) {
+                window.location.href = 'blog.html';
+              }
+            "
           />
         </div>
         <div class="d-flex align-items-center gap-2 flex-shrink-0">
-          <button onclick="openRegModal()" class="btn fw-bold text-white border-0 rounded-3 text-nowrap d-none d-md-inline-flex align-items-center px-3 py-2" style="background:#237a37">
+          <button
+            onclick="openRegModal()"
+            class="btn fw-bold text-white border-0 rounded-3 text-nowrap d-none d-md-inline-flex align-items-center px-3 py-2"
+            style="background: #237a37"
+          >
             ĐĂNG KÝ TƯ VẤN
           </button>
-          <a href="tel:0961106466" class="btn fw-bold text-white text-decoration-none border-0 rounded-3 text-nowrap d-none d-md-inline-flex align-items-center px-3 py-2" style="background:#dc3545"
-            ><img src="img/Rectangle 77.png" alt="" style="width:16px;margin-right:6px" />096.110.6466</a>
+          <a
+            href="tel:0961106466"
+            class="btn fw-bold text-white text-decoration-none border-0 rounded-3 text-nowrap d-none d-md-inline-flex align-items-center px-3 py-2"
+            style="background: #dc3545"
+            ><img
+              src="img/Rectangle 77.png"
+              alt=""
+              style="width: 16px; margin-right: 6px"
+            />096.110.6466</a
+          >
           <button class="hamburger-btn" id="hamburgerBtn" aria-label="Mở menu">
             <span></span><span></span><span></span>
           </button>
         </div>
       </div>
-      <nav style="background:#237a37;overflow-x:auto;scrollbar-width:none">
-        <ul class="list-unstyled m-0 d-flex align-items-stretch justify-content-center" style="padding:0 16px;width:max-content;min-width:100%;min-height:52px">
-          <li class="d-flex"><a href="index.html" class="nav-link-item text-white text-decoration-none d-flex align-items-center text-nowrap px-3" style="font-size:15px">Trang chủ</a></li>
-          <li class="d-flex"><a href="about.html" class="nav-link-item text-white text-decoration-none d-flex align-items-center text-nowrap px-3" style="font-size:15px">Về Jellyfish Việt Nam</a></li>
-          <li class="d-flex"><a href="courses.html" class="nav-link-item text-white text-decoration-none d-flex align-items-center text-nowrap px-3" style="font-size:15px">Khóa học</a></li>
-          <li class="d-flex"><a href="schedule.html" class="nav-link-item nav-active text-white text-decoration-none d-flex align-items-center text-nowrap px-3" style="font-size:15px">Lịch khai giảng</a></li>
-          <li class="d-flex"><a href="curriculum.html" class="nav-link-item text-white text-decoration-none d-flex align-items-center text-nowrap px-3" style="font-size:15px">Giáo trình</a></li>
-          <li class="d-flex"><a href="blog.html" class="nav-link-item text-white text-decoration-none d-flex align-items-center text-nowrap px-3" style="font-size:15px">Kiến thức hữu ích</a></li>
-          <li class="d-flex"><a href="news.html" class="nav-link-item text-white text-decoration-none d-flex align-items-center text-nowrap px-3" style="font-size:15px">Tin tức</a></li>
+      <nav style="background: #237a37; overflow-x: auto; scrollbar-width: none">
+        <ul
+          class="list-unstyled m-0 d-flex align-items-stretch justify-content-center"
+          style="
+            padding: 0 16px;
+            width: max-content;
+            min-width: 100%;
+            min-height: 52px;
+          "
+        >
+          <li class="d-flex">
+            <a
+              href="index.html"
+              class="nav-link-item text-white text-decoration-none d-flex align-items-center text-nowrap px-3"
+              style="font-size: 15px"
+              >Trang chủ</a
+            >
+          </li>
+          <li class="d-flex">
+            <a
+              href="about.html"
+              class="nav-link-item text-white text-decoration-none d-flex align-items-center text-nowrap px-3"
+              style="font-size: 15px"
+              >Về Jellyfish Việt Nam</a
+            >
+          </li>
+          <li class="d-flex">
+            <a
+              href="courses.html"
+              class="nav-link-item text-white text-decoration-none d-flex align-items-center text-nowrap px-3"
+              style="font-size: 15px"
+              >Khóa học</a
+            >
+          </li>
+          <li class="d-flex">
+            <a
+              href="schedule.html"
+              class="nav-link-item nav-active text-white text-decoration-none d-flex align-items-center text-nowrap px-3"
+              style="font-size: 15px"
+              >Lịch khai giảng</a
+            >
+          </li>
+          <li class="d-flex">
+            <a
+              href="curriculum.html"
+              class="nav-link-item text-white text-decoration-none d-flex align-items-center text-nowrap px-3"
+              style="font-size: 15px"
+              >Giáo trình</a
+            >
+          </li>
+          <li class="d-flex">
+            <a
+              href="blog.html"
+              class="nav-link-item text-white text-decoration-none d-flex align-items-center text-nowrap px-3"
+              style="font-size: 15px"
+              >Kiến thức hữu ích</a
+            >
+          </li>
+          <li class="d-flex">
+            <a
+              href="news.html"
+              class="nav-link-item text-white text-decoration-none d-flex align-items-center text-nowrap px-3"
+              style="font-size: 15px"
+              >Tin tức</a
+            >
+          </li>
         </ul>
       </nav>
     </header>
@@ -431,8 +639,16 @@
     <div class="mobile-menu-overlay" id="menuOverlay"></div>
     <div class="mobile-menu-drawer" id="menuDrawer">
       <div class="mobile-menu-header">
-        <a href="index.html"><img src="img/logo.png" alt="Jellyfish Vietnam" style="height:38px" /></a>
-        <button class="mobile-menu-close" id="menuCloseBtn" aria-label="Đóng menu">&#x2715;</button>
+        <a href="index.html"
+          ><img src="img/logo.png" alt="Jellyfish Vietnam" style="height: 38px"
+        /></a>
+        <button
+          class="mobile-menu-close"
+          id="menuCloseBtn"
+          aria-label="Đóng menu"
+        >
+          &#x2715;
+        </button>
       </div>
       <nav class="mobile-menu-nav">
         <a href="index.html">Trang chủ</a>
@@ -444,64 +660,189 @@
         <a href="news.html">Tin tức</a>
       </nav>
       <div class="mobile-menu-footer">
-        <a href="#" onclick="event.preventDefault();closeMenu();openRegModal()" class="btn fw-bold text-white border-0 rounded-3 text-center py-2" style="background:#237a37;font-size:15px">ĐĂNG KÝ TƯ VẤN</a>
-        <a href="tel:0961106466" class="btn fw-bold text-white border-0 rounded-3 text-center py-2" style="background:#dc3545;font-size:15px">📞 096.110.6466</a>
+        <a
+          href="#"
+          onclick="
+            event.preventDefault();
+            closeMenu();
+            openRegModal();
+          "
+          class="btn fw-bold text-white border-0 rounded-3 text-center py-2"
+          style="background: #237a37; font-size: 15px"
+          >ĐĂNG KÝ TƯ VẤN</a
+        >
+        <a
+          href="tel:0961106466"
+          class="btn fw-bold text-white border-0 rounded-3 text-center py-2"
+          style="background: #dc3545; font-size: 15px"
+          >📞 096.110.6466</a
+        >
       </div>
     </div>
 
     <!-- ===== HERO ===== -->
-    <div class="schedule-hero" style="position:relative">
-      <div class="container" style="max-width:1200px;position:relative;z-index:1">
+    <div class="schedule-hero" style="position: relative">
+      <div
+        class="container"
+        style="max-width: 1200px; position: relative; z-index: 1"
+      >
         <span class="hero-badge-pill hero-text-animate">Lịch khai giảng</span>
-        <h1 class="hero-text-animate d1" style="font-size:clamp(26px,4.5vw,50px);font-weight:900;color:#fff;line-height:1.15;margin-bottom:14px">
-          Lịch Khai Giảng<br /><span style="color:#a8e6b8">Tháng 6 · 2025</span>
+        <h1
+          class="hero-text-animate d1"
+          style="
+            font-size: clamp(26px, 4.5vw, 50px);
+            font-weight: 900;
+            color: #fff;
+            line-height: 1.15;
+            margin-bottom: 14px;
+          "
+        >
+          Lịch Khai Giảng<br /><span style="color: #a8e6b8"
+            >Tháng 6 · 2025</span
+          >
         </h1>
-        <p class="hero-text-animate d2" style="font-size:15px;color:rgba(255,255,255,.88);max-width:500px;margin-bottom:30px;line-height:1.75">
-          Lớp khai giảng liên tục mỗi tháng — học trực tuyến và tại cơ sở Hà Nội &amp; Hải Phòng. Giáo viên Nhật Bản, lớp ≤ 15 người.
+        <p
+          class="hero-text-animate d2"
+          style="
+            font-size: 15px;
+            color: rgba(255, 255, 255, 0.88);
+            max-width: 500px;
+            margin-bottom: 30px;
+            line-height: 1.75;
+          "
+        >
+          Lớp khai giảng liên tục mỗi tháng — học trực tuyến và tại cơ sở Hà Nội
+          &amp; Hải Phòng. Giáo viên Nhật Bản, lớp ≤ 15 người.
         </p>
         <div class="d-flex flex-wrap gap-3 hero-text-animate d3">
-          <button onclick="openRegModal()" class="btn btn-light fw-bold px-4 py-2 rounded-3" style="color:#237a37;font-size:15px">
+          <button
+            onclick="openRegModal()"
+            class="btn btn-light fw-bold px-4 py-2 rounded-3"
+            style="color: #237a37; font-size: 15px"
+          >
             🎓 Đăng ký tư vấn miễn phí
           </button>
-          <a href="#schedule-section" class="hero-outline-btn">📅 Xem lịch ngay</a>
+          <a href="#schedule-section" class="hero-outline-btn"
+            >📅 Xem lịch ngay</a
+          >
         </div>
       </div>
-      <div class="hero-scroll">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <a href="#schedule-section" class="hero-scroll" style="text-decoration:none">
+        <svg
+          width="18"
+          height="18"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+        >
           <path d="M12 5v14M5 12l7 7 7-7" />
         </svg>
         <span>Cuộn xuống</span>
+      </a>
+    </div>
+
+    <!-- ===== STATS STRIP ===== -->
+    <div style="background:var(--green)">
+      <div class="container-fluid px-0">
+        <div class="d-flex flex-wrap justify-content-center">
+          <div style="padding:18px 32px;border-right:1px solid rgba(255,255,255,.2);display:flex;align-items:center;gap:12px">
+            <div>
+              <div style="font-size:26px;font-weight:800;color:#fff;line-height:1">60+</div>
+              <div style="font-size:12px;color:rgba(255,255,255,.85)">Lớp khai giảng mỗi tháng</div>
+            </div>
+          </div>
+          <div style="padding:18px 32px;border-right:1px solid rgba(255,255,255,.2);display:flex;align-items:center;gap:12px">
+            <div>
+              <div style="font-size:26px;font-weight:800;color:#fff;line-height:1">3</div>
+              <div style="font-size:12px;color:rgba(255,255,255,.85)">Hình thức: Online · HN · HP</div>
+            </div>
+          </div>
+          <div style="padding:18px 32px;border-right:1px solid rgba(255,255,255,.2);display:flex;align-items:center;gap:12px">
+            <div>
+              <div style="font-size:26px;font-weight:800;color:#fff;line-height:1">≤15</div>
+              <div style="font-size:12px;color:rgba(255,255,255,.85)">Học viên mỗi lớp</div>
+            </div>
+          </div>
+          <div style="padding:18px 32px;display:flex;align-items:center;gap:12px">
+            <div>
+              <div style="font-size:26px;font-weight:800;color:#fff;line-height:1">100%</div>
+              <div style="font-size:12px;color:rgba(255,255,255,.85)">Học lại miễn phí nếu không đạt</div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
 
     <!-- ===== SCHEDULE SECTION ===== -->
-    <section id="schedule-section" class="py-5" style="background:#f5f5f5">
-      <div class="container" style="max-width:1200px">
+    <section id="schedule-section" class="py-5" style="background: #f5f5f5">
+      <div class="container" style="max-width: 1200px">
         <div class="text-center mb-5 fade-up">
           <span class="section-label">Lịch học chi tiết</span>
           <h2 class="section-title">Chọn hình thức học của bạn</h2>
           <div class="section-divider mx-auto"></div>
-          <p style="color:#666;font-size:15px;max-width:520px;margin:0 auto">
-            Jellyfish tổ chức lớp online và tại trung tâm mỗi tháng — luôn có lớp phù hợp với lịch của bạn.
+          <p
+            style="
+              color: #666;
+              font-size: 15px;
+              max-width: 520px;
+              margin: 0 auto;
+            "
+          >
+            Jellyfish tổ chức lớp online và tại trung tâm mỗi tháng — luôn có
+            lớp phù hợp với lịch của bạn.
           </p>
         </div>
 
         <div class="schedule-tabs fade-up d1">
-          <button id="btn-online" class="tab-btn active" onclick="showTab('online')">
-            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-              <rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/>
+          <button
+            id="btn-online"
+            class="tab-btn active"
+            onclick="showTab('online')"
+          >
+            <svg
+              width="18"
+              height="18"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              viewBox="0 0 24 24"
+            >
+              <rect x="2" y="3" width="20" height="14" rx="2" />
+              <line x1="8" y1="21" x2="16" y2="21" />
+              <line x1="12" y1="17" x2="12" y2="21" />
             </svg>
             Lớp Online
           </button>
           <button id="btn-hanoi" class="tab-btn" onclick="showTab('hanoi')">
-            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-              <path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/>
+            <svg
+              width="18"
+              height="18"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              viewBox="0 0 24 24"
+            >
+              <path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z" />
+              <circle cx="12" cy="10" r="3" />
             </svg>
             Hà Nội
           </button>
-          <button id="btn-haiphong" class="tab-btn" onclick="showTab('haiphong')">
-            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-              <path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/>
+          <button
+            id="btn-haiphong"
+            class="tab-btn"
+            onclick="showTab('haiphong')"
+          >
+            <svg
+              width="18"
+              height="18"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              viewBox="0 0 24 24"
+            >
+              <path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z" />
+              <circle cx="12" cy="10" r="3" />
             </svg>
             Hải Phòng
           </button>
@@ -509,19 +850,30 @@
 
         <div class="schedule-card fade-up d2">
           <div id="tab-online" class="tab-pane active">
-            <img src="img/thang4.png" alt="Lịch khai giảng tháng 6 – Lớp Online" />
+            <img
+              src="img/thang4.png"
+              alt="Lịch khai giảng tháng 6 – Lớp Online"
+            />
           </div>
           <div id="tab-hanoi" class="tab-pane">
             <img src="img/lichkhaigiang.png" alt="Lịch khai giảng – Hà Nội" />
           </div>
           <div id="tab-haiphong" class="tab-pane">
-            <img src="img/lichkhaigiang.png" alt="Lịch khai giảng – Hải Phòng" />
+            <img
+              src="img/lichkhaigiang.png"
+              alt="Lịch khai giảng – Hải Phòng"
+            />
           </div>
         </div>
 
-        <p class="text-center mt-4 fade-up d3" style="font-size:13.5px;color:#888">
+        <p
+          class="text-center mt-4 fade-up d3"
+          style="font-size: 13.5px; color: #888"
+        >
           Lịch khai giảng cập nhật hàng tháng. Liên hệ hotline
-          <a href="tel:0961106466" style="color:var(--green);font-weight:700">096.110.6466</a>
+          <a href="tel:0961106466" style="color: var(--green); font-weight: 700"
+            >096.110.6466</a
+          >
           để biết lịch chính xác nhất.
         </p>
       </div>
@@ -529,7 +881,7 @@
 
     <!-- ===== INFO CARDS ===== -->
     <section class="py-5 bg-white">
-      <div class="container" style="max-width:1200px">
+      <div class="container" style="max-width: 1200px">
         <div class="text-center mb-5">
           <span class="section-label">Thông tin lớp học</span>
           <h2 class="section-title">Tất cả những gì bạn cần biết</h2>
@@ -539,34 +891,72 @@
           <div class="col-12 col-md-4 fade-up d1">
             <div class="info-card">
               <div class="info-icon">
-                <svg width="26" height="26" fill="none" stroke="#237a37" stroke-width="2" viewBox="0 0 24 24">
-                  <rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/>
+                <svg
+                  width="26"
+                  height="26"
+                  fill="none"
+                  stroke="#237a37"
+                  stroke-width="2"
+                  viewBox="0 0 24 24"
+                >
+                  <rect x="3" y="4" width="18" height="18" rx="2" />
+                  <line x1="16" y1="2" x2="16" y2="6" />
+                  <line x1="8" y1="2" x2="8" y2="6" />
+                  <line x1="3" y1="10" x2="21" y2="10" />
                 </svg>
               </div>
               <h4>Khai giảng liên tục</h4>
-              <p>Lớp khai giảng mỗi tháng, nhiều ca sáng – chiều – tối để phù hợp với mọi lịch học. Không cần chờ đợi lâu.</p>
+              <p>
+                Lớp khai giảng mỗi tháng, nhiều ca sáng – chiều – tối để phù hợp
+                với mọi lịch học. Không cần chờ đợi lâu.
+              </p>
             </div>
           </div>
           <div class="col-12 col-md-4 fade-up d2">
             <div class="info-card">
               <div class="info-icon">
-                <svg width="26" height="26" fill="none" stroke="#237a37" stroke-width="2" viewBox="0 0 24 24">
-                  <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.55 2 2 0 0 1 3.59 1.37h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 8.91a16 16 0 0 0 6.08 6.08l.91-.91a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 21.73 16.92z"/>
+                <svg
+                  width="26"
+                  height="26"
+                  fill="none"
+                  stroke="#237a37"
+                  stroke-width="2"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.55 2 2 0 0 1 3.59 1.37h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 8.91a16 16 0 0 0 6.08 6.08l.91-.91a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 21.73 16.92z"
+                  />
                 </svg>
               </div>
               <h4>Tư vấn chọn lớp miễn phí</h4>
-              <p>Đội ngũ tư vấn hỗ trợ chọn ca học và cấp độ phù hợp, liên hệ lại trong vòng 24 giờ sau khi đăng ký.</p>
+              <p>
+                Đội ngũ tư vấn hỗ trợ chọn ca học và cấp độ phù hợp, liên hệ lại
+                trong vòng 24 giờ sau khi đăng ký.
+              </p>
             </div>
           </div>
           <div class="col-12 col-md-4 fade-up d3">
             <div class="info-card">
               <div class="info-icon">
-                <svg width="26" height="26" fill="none" stroke="#237a37" stroke-width="2" viewBox="0 0 24 24">
-                  <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                <svg
+                  width="26"
+                  height="26"
+                  fill="none"
+                  stroke="#237a37"
+                  stroke-width="2"
+                  viewBox="0 0 24 24"
+                >
+                  <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                  <circle cx="9" cy="7" r="4" />
+                  <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+                  <path d="M16 3.13a4 4 0 0 1 0 7.75" />
                 </svg>
               </div>
               <h4>Lớp ≤ 15 học viên</h4>
-              <p>Quy mô nhỏ chuẩn quốc tế — giáo viên Nhật Bản tương tác trực tiếp với từng học viên, đảm bảo chất lượng học.</p>
+              <p>
+                Quy mô nhỏ chuẩn quốc tế — giáo viên Nhật Bản tương tác trực
+                tiếp với từng học viên, đảm bảo chất lượng học.
+              </p>
             </div>
           </div>
         </div>
@@ -575,95 +965,330 @@
 
     <!-- ===== CTA SECTION ===== -->
     <section class="cta-section py-5 text-center text-white">
-      <div class="container" style="max-width:760px">
-        <h2 style="font-size:clamp(22px,3.5vw,38px);font-weight:900;margin-bottom:14px">
+      <div class="container" style="max-width: 760px">
+        <h2
+          style="
+            font-size: clamp(22px, 3.5vw, 38px);
+            font-weight: 900;
+            margin-bottom: 14px;
+          "
+        >
           Đừng bỏ lỡ lớp khai giảng sắp tới!
         </h2>
-        <p style="font-size:15px;opacity:.88;margin-bottom:34px;line-height:1.7">
-          Đăng ký ngay để được tư vấn lịch học phù hợp và nhận thông báo lớp mới sớm nhất.
+        <p
+          style="
+            font-size: 15px;
+            opacity: 0.88;
+            margin-bottom: 34px;
+            line-height: 1.7;
+          "
+        >
+          Đăng ký ngay để được tư vấn lịch học phù hợp và nhận thông báo lớp mới
+          sớm nhất.
         </p>
         <div class="d-flex flex-wrap gap-3 justify-content-center">
-          <button onclick="openRegModal()" class="btn btn-light fw-bold px-5 py-3 rounded-3" style="color:#237a37;font-size:16px">
+          <button
+            onclick="openRegModal()"
+            class="btn btn-light fw-bold px-5 py-3 rounded-3"
+            style="color: #237a37; font-size: 16px"
+          >
             🎓 Đăng ký tư vấn miễn phí
           </button>
-          <a href="tel:0961106466" class="btn fw-bold px-5 py-3 rounded-3" style="background:rgba(255,255,255,.18);color:#fff;border:1.5px solid rgba(255,255,255,.4);font-size:16px">
+          <a
+            href="tel:0961106466"
+            class="btn fw-bold px-5 py-3 rounded-3"
+            style="
+              background: rgba(255, 255, 255, 0.18);
+              color: #fff;
+              border: 1.5px solid rgba(255, 255, 255, 0.4);
+              font-size: 16px;
+            "
+          >
             📞 096.110.6466
           </a>
         </div>
       </div>
     </section>
 
-    <footer class="py-5 text-white" style="background:#0f0a1e;font-size:14px">
-      <div class="container" style="max-width:1200px">
-        <div class="d-flex justify-content-between align-items-start flex-wrap gap-3 mb-3">
+    <footer
+      class="py-5 text-white"
+      style="background: #0f0a1e; font-size: 14px"
+    >
+      <div class="container" style="max-width: 1200px">
+        <div
+          class="d-flex justify-content-between align-items-start flex-wrap gap-3 mb-3"
+        >
           <div>
-            <a href="index.html"><img src="img/Logofooter.png" alt="Jellyfish Vietnam" style="height:50px" /></a>
-            <p class="small mt-1 mb-0 text-uppercase" style="color:#aaa">Expand your horizons</p>
+            <a href="index.html"
+              ><img
+                src="img/Logofooter.png"
+                alt="Jellyfish Vietnam"
+                style="height: 50px"
+            /></a>
+            <p class="small mt-1 mb-0 text-uppercase" style="color: #aaa">
+              Expand your horizons
+            </p>
           </div>
           <nav>
             <ul class="list-unstyled d-flex flex-wrap gap-3 mb-0">
-              <li><a href="index.html" class="text-white text-decoration-none fw-bold">Trang chủ</a></li>
-              <li><a href="about.html" class="text-white text-decoration-none fw-bold">Về Jellyfish</a></li>
-              <li><a href="courses.html" class="text-white text-decoration-none fw-bold">Khóa học</a></li>
-              <li><a href="curriculum.html" class="text-white text-decoration-none fw-bold">Giáo trình</a></li>
-              <li><a href="blog.html" class="text-white text-decoration-none fw-bold">Kiến thức hữu ích</a></li>
+              <li>
+                <a
+                  href="index.html"
+                  class="text-white text-decoration-none fw-bold"
+                  >Trang chủ</a
+                >
+              </li>
+              <li>
+                <a
+                  href="about.html"
+                  class="text-white text-decoration-none fw-bold"
+                  >Về Jellyfish</a
+                >
+              </li>
+              <li>
+                <a
+                  href="courses.html"
+                  class="text-white text-decoration-none fw-bold"
+                  >Khóa học</a
+                >
+              </li>
+              <li>
+                <a
+                  href="curriculum.html"
+                  class="text-white text-decoration-none fw-bold"
+                  >Giáo trình</a
+                >
+              </li>
+              <li>
+                <a
+                  href="blog.html"
+                  class="text-white text-decoration-none fw-bold"
+                  >Kiến thức hữu ích</a
+                >
+              </li>
             </ul>
           </nav>
         </div>
-        <hr style="border-color:rgba(255,255,255,.12)" />
+        <hr style="border-color: rgba(255, 255, 255, 0.12)" />
         <div class="row g-4 py-2">
           <div class="col-12 col-md-4">
             <h5 class="fw-bold mb-3">JELLYFISH JAPAN</h5>
-            <p class="d-flex align-items-start gap-2 mb-2" style="color:#ccc;line-height:1.6">
-              <img src="img/diachiicon.png" alt="" style="width:16px;flex-shrink:0;margin-top:3px;object-fit:contain" />4F Westhill Building, Nishigotanda 2-24-4, Shinagawa, Tokyo, Japan
+            <p
+              class="d-flex align-items-start gap-2 mb-2"
+              style="color: #ccc; line-height: 1.6"
+            >
+              <img
+                src="img/diachiicon.png"
+                alt=""
+                style="
+                  width: 16px;
+                  flex-shrink: 0;
+                  margin-top: 3px;
+                  object-fit: contain;
+                "
+              />4F Westhill Building, Nishigotanda 2-24-4, Shinagawa, Tokyo,
+              Japan
             </p>
-            <p class="d-flex align-items-start gap-2 mb-2" style="color:#ccc;line-height:1.6">
-              <img src="img/linkicon.png" alt="" style="width:16px;flex-shrink:0;margin-top:3px;object-fit:contain" />https://jellyfish-g.co.jp
+            <p
+              class="d-flex align-items-start gap-2 mb-2"
+              style="color: #ccc; line-height: 1.6"
+            >
+              <img
+                src="img/linkicon.png"
+                alt=""
+                style="
+                  width: 16px;
+                  flex-shrink: 0;
+                  margin-top: 3px;
+                  object-fit: contain;
+                "
+              />https://jellyfish-g.co.jp
             </p>
-            <p class="d-flex align-items-start gap-2 mb-2" style="color:#ccc;line-height:1.6">
-              <img src="img/mailicon.png" alt="" style="width:16px;flex-shrink:0;margin-top:3px;object-fit:contain" />job_info@jellyfish-g.co.jp
+            <p
+              class="d-flex align-items-start gap-2 mb-2"
+              style="color: #ccc; line-height: 1.6"
+            >
+              <img
+                src="img/mailicon.png"
+                alt=""
+                style="
+                  width: 16px;
+                  flex-shrink: 0;
+                  margin-top: 3px;
+                  object-fit: contain;
+                "
+              />job_info@jellyfish-g.co.jp
             </p>
-            <p class="d-flex align-items-start gap-2 mb-2" style="color:#ccc;line-height:1.6">
-              <img src="img/callicon.png" alt="" style="width:16px;flex-shrink:0;margin-top:3px;object-fit:contain" />03-5437-0135
+            <p
+              class="d-flex align-items-start gap-2 mb-2"
+              style="color: #ccc; line-height: 1.6"
+            >
+              <img
+                src="img/callicon.png"
+                alt=""
+                style="
+                  width: 16px;
+                  flex-shrink: 0;
+                  margin-top: 3px;
+                  object-fit: contain;
+                "
+              />03-5437-0135
             </p>
           </div>
           <div class="col-12 col-md-4">
             <h5 class="fw-bold mb-3">JELLYFISH VIỆT NAM</h5>
-            <p class="d-flex align-items-start gap-2 mb-2" style="color:#ccc;line-height:1.6">
-              <img src="img/diachiicon.png" alt="" style="width:16px;flex-shrink:0;margin-top:3px;object-fit:contain" />Tầng 13, CMC Tower, 11 Duy Tân, P. Dịch Vọng Hậu, Q. Cầu Giấy, TP. Hà Nội
+            <p
+              class="d-flex align-items-start gap-2 mb-2"
+              style="color: #ccc; line-height: 1.6"
+            >
+              <img
+                src="img/diachiicon.png"
+                alt=""
+                style="
+                  width: 16px;
+                  flex-shrink: 0;
+                  margin-top: 3px;
+                  object-fit: contain;
+                "
+              />Tầng 13, CMC Tower, 11 Duy Tân, P. Dịch Vọng Hậu, Q. Cầu Giấy,
+              TP. Hà Nội
             </p>
-            <p class="d-flex align-items-start gap-2 mb-2" style="color:#ccc;line-height:1.6">
-              <img src="img/linkicon.png" alt="" style="width:16px;flex-shrink:0;margin-top:3px;object-fit:contain" />https://jellyfish-vn.com
+            <p
+              class="d-flex align-items-start gap-2 mb-2"
+              style="color: #ccc; line-height: 1.6"
+            >
+              <img
+                src="img/linkicon.png"
+                alt=""
+                style="
+                  width: 16px;
+                  flex-shrink: 0;
+                  margin-top: 3px;
+                  object-fit: contain;
+                "
+              />https://jellyfish-vn.com
             </p>
-            <p class="d-flex align-items-start gap-2 mb-2" style="color:#ccc;line-height:1.6">
-              <img src="img/mailicon.png" alt="" style="width:16px;flex-shrink:0;margin-top:3px;object-fit:contain" />admin@jellyfish-vn.com
+            <p
+              class="d-flex align-items-start gap-2 mb-2"
+              style="color: #ccc; line-height: 1.6"
+            >
+              <img
+                src="img/mailicon.png"
+                alt=""
+                style="
+                  width: 16px;
+                  flex-shrink: 0;
+                  margin-top: 3px;
+                  object-fit: contain;
+                "
+              />admin@jellyfish-vn.com
             </p>
-            <p class="d-flex align-items-start gap-2 mb-2" style="color:#ccc;line-height:1.6">
-              <img src="img/callicon.png" alt="" style="width:16px;flex-shrink:0;margin-top:3px;object-fit:contain" />0243.7955.846
+            <p
+              class="d-flex align-items-start gap-2 mb-2"
+              style="color: #ccc; line-height: 1.6"
+            >
+              <img
+                src="img/callicon.png"
+                alt=""
+                style="
+                  width: 16px;
+                  flex-shrink: 0;
+                  margin-top: 3px;
+                  object-fit: contain;
+                "
+              />0243.7955.846
             </p>
           </div>
           <div class="col-12 col-md-4">
             <h5 class="fw-bold mb-3">CHI NHÁNH HẢI PHÒNG</h5>
-            <p class="d-flex align-items-start gap-2 mb-2" style="color:#ccc;line-height:1.6">
-              <img src="img/diachiicon.png" alt="" style="width:16px;flex-shrink:0;margin-top:3px;object-fit:contain" />Tầng 3, CMC Tower, tòa nhà Sholega, 275 Lạch Tray, Ngô Quyền, TP. Hải Phòng
+            <p
+              class="d-flex align-items-start gap-2 mb-2"
+              style="color: #ccc; line-height: 1.6"
+            >
+              <img
+                src="img/diachiicon.png"
+                alt=""
+                style="
+                  width: 16px;
+                  flex-shrink: 0;
+                  margin-top: 3px;
+                  object-fit: contain;
+                "
+              />Tầng 3, CMC Tower, tòa nhà Sholega, 275 Lạch Tray, Ngô Quyền,
+              TP. Hải Phòng
             </p>
-            <p class="d-flex align-items-start gap-2 mb-2" style="color:#ccc;line-height:1.6">
-              <img src="img/callicon.png" alt="" style="width:16px;flex-shrink:0;margin-top:3px;object-fit:contain" />0969.895.759
+            <p
+              class="d-flex align-items-start gap-2 mb-2"
+              style="color: #ccc; line-height: 1.6"
+            >
+              <img
+                src="img/callicon.png"
+                alt=""
+                style="
+                  width: 16px;
+                  flex-shrink: 0;
+                  margin-top: 3px;
+                  object-fit: contain;
+                "
+              />0969.895.759
             </p>
           </div>
         </div>
-        <hr style="border-color:rgba(255,255,255,.12)" />
-        <div class="d-flex justify-content-between align-items-center flex-wrap gap-3">
-          <p class="mb-0 small" style="color:#666">© 2025 Jellyfish. All rights reserved.</p>
+        <hr style="border-color: rgba(255, 255, 255, 0.12)" />
+        <div
+          class="d-flex justify-content-between align-items-center flex-wrap gap-3"
+        >
+          <p class="mb-0 small" style="color: #666">
+            © 2025 Jellyfish. All rights reserved.
+          </p>
           <div class="d-flex gap-3">
-            <a href="https://www.youtube.com/@JellyfishVietnam" target="_blank" rel="noopener">
-              <img src="img/yticon.png" alt="YouTube" style="width:24px;height:24px;opacity:.7;object-fit:contain" />
+            <a
+              href="https://www.youtube.com/@JellyfishVietnam"
+              target="_blank"
+              rel="noopener"
+            >
+              <img
+                src="img/yticon.png"
+                alt="YouTube"
+                style="
+                  width: 24px;
+                  height: 24px;
+                  opacity: 0.7;
+                  object-fit: contain;
+                "
+              />
             </a>
-            <a href="https://www.instagram.com/jellyfish.vietnam" target="_blank" rel="noopener">
-              <img src="img/igicons.png" alt="Instagram" style="width:24px;height:24px;opacity:.7;object-fit:contain" />
+            <a
+              href="https://www.instagram.com/jellyfish.vietnam"
+              target="_blank"
+              rel="noopener"
+            >
+              <img
+                src="img/igicons.png"
+                alt="Instagram"
+                style="
+                  width: 24px;
+                  height: 24px;
+                  opacity: 0.7;
+                  object-fit: contain;
+                "
+              />
             </a>
-            <a href="https://www.facebook.com/jellyfish.vn" target="_blank" rel="noopener">
-              <img src="img/fbicons.png" alt="Facebook" style="width:24px;height:24px;opacity:.7;object-fit:contain" />
+            <a
+              href="https://www.facebook.com/jellyfish.vn"
+              target="_blank"
+              rel="noopener"
+            >
+              <img
+                src="img/fbicons.png"
+                alt="Facebook"
+                style="
+                  width: 24px;
+                  height: 24px;
+                  opacity: 0.7;
+                  object-fit: contain;
+                "
+              />
             </a>
           </div>
         </div>
@@ -723,7 +1348,8 @@
         var phone = e.target.querySelector('input[type="tel"]').value.trim();
         if (!name || !phone) {
           var w = document.createElement("div");
-          w.style.cssText = "position:fixed;bottom:32px;right:32px;background:#dc3545;color:#fff;padding:14px 22px;border-radius:10px;font-size:15px;font-weight:600;z-index:9999;box-shadow:0 6px 20px rgba(220,53,69,.3)";
+          w.style.cssText =
+            "position:fixed;bottom:32px;right:32px;background:#dc3545;color:#fff;padding:14px 22px;border-radius:10px;font-size:15px;font-weight:600;z-index:9999;box-shadow:0 6px 20px rgba(220,53,69,.3)";
           w.textContent = "⚠ Vui lòng điền họ tên và số điện thoại.";
           document.body.appendChild(w);
           setTimeout(() => w.remove(), 3000);
@@ -731,7 +1357,8 @@
         }
         closeRegModal();
         var s = document.createElement("div");
-        s.style.cssText = "position:fixed;bottom:32px;right:32px;background:#237a37;color:#fff;padding:14px 22px;border-radius:10px;font-size:15px;font-weight:600;z-index:9999;box-shadow:0 6px 20px rgba(35,122,55,.3)";
+        s.style.cssText =
+          "position:fixed;bottom:32px;right:32px;background:#237a37;color:#fff;padding:14px 22px;border-radius:10px;font-size:15px;font-weight:600;z-index:9999;box-shadow:0 6px 20px rgba(35,122,55,.3)";
         s.textContent = "✓ Đăng ký thành công! Jellyfish sẽ liên hệ bạn sớm.";
         document.body.appendChild(s);
         setTimeout(() => s.remove(), 3500);
@@ -751,9 +1378,11 @@
             }
           });
         },
-        { threshold: 0, rootMargin: "0px 0px -40px 0px" }
+        { threshold: 0, rootMargin: "0px 0px -40px 0px" },
       );
-      document.querySelectorAll(".fade-up").forEach((el) => fadeObs.observe(el));
+      document
+        .querySelectorAll(".fade-up")
+        .forEach((el) => fadeObs.observe(el));
 
       // ===== BACK TO TOP =====
       window.addEventListener("scroll", () => {
@@ -763,35 +1392,111 @@
     </script>
 
     <!-- BACK TO TOP -->
-    <button id="backToTop" title="Lên đầu trang" onclick="window.scrollTo({top:0,behavior:'smooth'})">&#8679;</button>
+    <button
+      id="backToTop"
+      title="Lên đầu trang"
+      onclick="window.scrollTo({ top: 0, behavior: 'smooth' })"
+    >
+      &#8679;
+    </button>
 
     <!-- REG MODAL -->
     <div class="reg-modal-overlay" id="regModal">
       <div class="reg-modal">
-        <button class="reg-close-btn" onclick="closeRegModal()">&#x2715;</button>
-        <div style="width:48px;height:48px;background:#edf7ee;border-radius:12px;display:flex;align-items:center;justify-content:center;margin-bottom:16px">
-          <svg width="24" height="24" fill="none" stroke="#237a37" stroke-width="2.5" viewBox="0 0 24 24">
-            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.55 2 2 0 0 1 3.59 1.37h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 8.91a16 16 0 0 0 6.08 6.08l.91-.91a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 21.73 16.92z" />
+        <button class="reg-close-btn" onclick="closeRegModal()">
+          &#x2715;
+        </button>
+        <div
+          style="
+            width: 48px;
+            height: 48px;
+            background: #edf7ee;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 16px;
+          "
+        >
+          <svg
+            width="24"
+            height="24"
+            fill="none"
+            stroke="#237a37"
+            stroke-width="2.5"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.55 2 2 0 0 1 3.59 1.37h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 8.91a16 16 0 0 0 6.08 6.08l.91-.91a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 21.73 16.92z"
+            />
           </svg>
         </div>
-        <h3 style="font-size:22px;font-weight:800;margin-bottom:6px">Đăng ký tư vấn miễn phí</h3>
-        <p style="font-size:14px;color:#899197;margin-bottom:20px">Đội ngũ tư vấn sẽ liên hệ bạn trong vòng 24 giờ.</p>
+        <h3 style="font-size: 22px; font-weight: 800; margin-bottom: 6px">
+          Đăng ký tư vấn miễn phí
+        </h3>
+        <p style="font-size: 14px; color: #899197; margin-bottom: 20px">
+          Đội ngũ tư vấn sẽ liên hệ bạn trong vòng 24 giờ.
+        </p>
         <form onsubmit="submitReg(event)">
           <div class="mb-3">
-            <label class="form-label fw-semibold" style="font-size:14px">Họ và tên <span style="color:#dc3545">*</span></label>
-            <input type="text" class="form-control" style="border-radius:8px;border:1.5px solid #dee2e6;font-size:14px" placeholder="Nguyễn Văn A" required />
+            <label class="form-label fw-semibold" style="font-size: 14px"
+              >Họ và tên <span style="color: #dc3545">*</span></label
+            >
+            <input
+              type="text"
+              class="form-control"
+              style="
+                border-radius: 8px;
+                border: 1.5px solid #dee2e6;
+                font-size: 14px;
+              "
+              placeholder="Nguyễn Văn A"
+              required
+            />
           </div>
           <div class="mb-3">
-            <label class="form-label fw-semibold" style="font-size:14px">Số điện thoại <span style="color:#dc3545">*</span></label>
-            <input type="tel" class="form-control" style="border-radius:8px;border:1.5px solid #dee2e6;font-size:14px" placeholder="0912 345 678" required />
+            <label class="form-label fw-semibold" style="font-size: 14px"
+              >Số điện thoại <span style="color: #dc3545">*</span></label
+            >
+            <input
+              type="tel"
+              class="form-control"
+              style="
+                border-radius: 8px;
+                border: 1.5px solid #dee2e6;
+                font-size: 14px;
+              "
+              placeholder="0912 345 678"
+              required
+            />
           </div>
           <div class="mb-3">
-            <label class="form-label fw-semibold" style="font-size:14px">Email</label>
-            <input type="email" class="form-control" style="border-radius:8px;border:1.5px solid #dee2e6;font-size:14px" placeholder="example@email.com" />
+            <label class="form-label fw-semibold" style="font-size: 14px"
+              >Email</label
+            >
+            <input
+              type="email"
+              class="form-control"
+              style="
+                border-radius: 8px;
+                border: 1.5px solid #dee2e6;
+                font-size: 14px;
+              "
+              placeholder="example@email.com"
+            />
           </div>
           <div class="mb-4">
-            <label class="form-label fw-semibold" style="font-size:14px">Khóa học quan tâm</label>
-            <select class="form-select" style="border-radius:8px;border:1.5px solid #dee2e6;font-size:14px">
+            <label class="form-label fw-semibold" style="font-size: 14px"
+              >Khóa học quan tâm</label
+            >
+            <select
+              class="form-select"
+              style="
+                border-radius: 8px;
+                border: 1.5px solid #dee2e6;
+                font-size: 14px;
+              "
+            >
               <option value="">-- Chọn khóa học --</option>
               <option>Tiếng Nhật N5</option>
               <option>Tiếng Nhật N4</option>
@@ -800,7 +1505,11 @@
               <option>Tiếng Nhật N1</option>
             </select>
           </div>
-          <button type="submit" class="btn w-100 fw-bold text-white py-2" style="background:#237a37;border-radius:10px;font-size:16px">
+          <button
+            type="submit"
+            class="btn w-100 fw-bold text-white py-2"
+            style="background: #237a37; border-radius: 10px; font-size: 16px"
+          >
             Gửi đăng ký
           </button>
         </form>
