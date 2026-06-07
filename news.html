@@ -4,181 +4,1077 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Tin tức - Jellyfish Vietnam</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
     <style>
-      * { box-sizing: border-box; }
-      body { font-family: "Inter", Arial, sans-serif; background: #f4f5f7; color: #333; }
-      .nav-link-item { position: relative; opacity: .82; transition: opacity .25s; }
-      .nav-link-item::after { content:""; position:absolute; bottom:0; left:0; width:100%; height:3px; background:#fff; transform:scaleX(0); transform-origin:center; transition:transform .3s cubic-bezier(.4,0,.2,1); }
-      .nav-link-item:hover,.nav-link-item.nav-active { opacity:1; }
-      .nav-link-item:hover::after,.nav-link-item.nav-active::after { transform:scaleX(1); }
-      .hamburger-btn { display:none; flex-direction:column; justify-content:center; align-items:center; gap:5px; width:40px; height:40px; background:none; border:none; cursor:pointer; padding:4px; flex-shrink:0; }
-      .hamburger-btn span { display:block; width:26px; height:3px; background:#237a37; border-radius:2px; transition:all .3s; }
-      .mobile-menu-overlay { display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,.45); z-index:1040; }
-      .mobile-menu-overlay.open { display:block; }
-      .mobile-menu-drawer { position:fixed; top:0; right:-280px; width:280px; height:100%; background:#fff; z-index:1050; transition:right .3s; overflow-y:auto; box-shadow:-4px 0 20px rgba(0,0,0,.15); }
-      .mobile-menu-drawer.open { right:0; }
-      .mobile-menu-header { display:flex; align-items:center; justify-content:space-between; padding:16px 20px; background:#fff; border-bottom:1px solid #e9ecef; }
-      .mobile-menu-close { background:none; border:none; color:#333; font-size:28px; line-height:1; cursor:pointer; padding:0; }
-      .mobile-menu-nav a { display:block; padding:14px 20px; color:#333; text-decoration:none; font-size:15px; font-weight:500; border-bottom:1px solid #f0f0f0; transition:background .2s,color .2s; }
-      .mobile-menu-nav a:hover,.mobile-menu-nav a.nav-active { background:#f0f8f1; color:#237a37; }
-      .mobile-menu-footer { padding:20px; display:flex; flex-direction:column; gap:10px; }
-      @media(max-width:767px){ .hamburger-btn{display:flex;} header nav{display:none!important;} .desktop-search{display:none!important;} }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        font-family: "Inter", Arial, sans-serif;
+        background: #f4f5f7;
+        color: #333;
+      }
+      .nav-link-item {
+        position: relative;
+        opacity: 0.82;
+        transition: opacity 0.25s;
+      }
+      .nav-link-item::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 3px;
+        background: #fff;
+        transform: scaleX(0);
+        transform-origin: center;
+        transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+      .nav-link-item:hover,
+      .nav-link-item.nav-active {
+        opacity: 1;
+      }
+      .nav-link-item:hover::after,
+      .nav-link-item.nav-active::after {
+        transform: scaleX(1);
+      }
+      .hamburger-btn {
+        display: none;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 5px;
+        width: 40px;
+        height: 40px;
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: 4px;
+        flex-shrink: 0;
+      }
+      .hamburger-btn span {
+        display: block;
+        width: 26px;
+        height: 3px;
+        background: #237a37;
+        border-radius: 2px;
+        transition: all 0.3s;
+      }
+      .mobile-menu-overlay {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.45);
+        z-index: 1040;
+      }
+      .mobile-menu-overlay.open {
+        display: block;
+      }
+      .mobile-menu-drawer {
+        position: fixed;
+        top: 0;
+        right: -280px;
+        width: 280px;
+        height: 100%;
+        background: #fff;
+        z-index: 1050;
+        transition: right 0.3s;
+        overflow-y: auto;
+        box-shadow: -4px 0 20px rgba(0, 0, 0, 0.15);
+      }
+      .mobile-menu-drawer.open {
+        right: 0;
+      }
+      .mobile-menu-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 16px 20px;
+        background: #fff;
+        border-bottom: 1px solid #e9ecef;
+      }
+      .mobile-menu-close {
+        background: none;
+        border: none;
+        color: #333;
+        font-size: 28px;
+        line-height: 1;
+        cursor: pointer;
+        padding: 0;
+      }
+      .mobile-menu-nav a {
+        display: block;
+        padding: 14px 20px;
+        color: #333;
+        text-decoration: none;
+        font-size: 15px;
+        font-weight: 500;
+        border-bottom: 1px solid #f0f0f0;
+        transition:
+          background 0.2s,
+          color 0.2s;
+      }
+      .mobile-menu-nav a:hover,
+      .mobile-menu-nav a.nav-active {
+        background: #f0f8f1;
+        color: #237a37;
+      }
+      .mobile-menu-footer {
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+      @media (max-width: 767px) {
+        .hamburger-btn {
+          display: flex;
+        }
+        header nav {
+          display: none !important;
+        }
+        .desktop-search {
+          display: none !important;
+        }
+      }
       /* TICKER */
-      .ticker-wrap { background:#237a37; color:#fff; padding:8px 0; overflow:hidden; }
-      .ticker-label { background:#f0c040; color:#1a1a1a; font-weight:800; font-size:12px; padding:3px 12px; border-radius:3px; white-space:nowrap; flex-shrink:0; }
-      .ticker-track { display:flex; white-space:nowrap; animation:ticker 35s linear infinite; gap:60px; }
-      .ticker-track:hover { animation-play-state:paused; }
-      .ticker-item { font-size:13px; font-weight:500; cursor:pointer; }
-      .ticker-item:hover { text-decoration:underline; }
-      @keyframes ticker { 0%{transform:translateX(0)} 100%{transform:translateX(-50%)} }
+      .ticker-wrap {
+        background: #237a37;
+        color: #fff;
+        padding: 8px 0;
+        overflow: hidden;
+      }
+      .ticker-label {
+        background: #f0c040;
+        color: #1a1a1a;
+        font-weight: 800;
+        font-size: 12px;
+        padding: 3px 12px;
+        border-radius: 3px;
+        white-space: nowrap;
+        flex-shrink: 0;
+      }
+      .ticker-track {
+        display: flex;
+        white-space: nowrap;
+        animation: ticker 35s linear infinite;
+        gap: 60px;
+      }
+      .ticker-track:hover {
+        animation-play-state: paused;
+      }
+      .ticker-item {
+        font-size: 13px;
+        font-weight: 500;
+        cursor: pointer;
+      }
+      .ticker-item:hover {
+        text-decoration: underline;
+      }
+      @keyframes ticker {
+        0% {
+          transform: translateX(0);
+        }
+        100% {
+          transform: translateX(-50%);
+        }
+      }
       /* HERO */
-      .news-hero { background:linear-gradient(135deg,#1b6530 0%,#237a37 50%,#2d9e48 100%); padding:52px 0 40px; position:relative; overflow:hidden; }
-      .news-hero::before { content:""; position:absolute; top:-40px; right:-60px; width:320px; height:320px; background:rgba(255,255,255,.05); border-radius:50%; }
+      .news-hero {
+        background: linear-gradient(
+          135deg,
+          #1b6530 0%,
+          #237a37 50%,
+          #2d9e48 100%
+        );
+        padding: 52px 0 40px;
+        position: relative;
+        overflow: hidden;
+      }
+      .news-hero::before {
+        content: "";
+        position: absolute;
+        top: -40px;
+        right: -60px;
+        width: 320px;
+        height: 320px;
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 50%;
+      }
       /* STATS */
-      .stats-strip { background:#fff; border-bottom:1px solid #e9ecef; }
-      .stat-item { padding:14px 24px; border-right:1px solid #f0f0f0; text-align:center; flex:1; }
-      .stat-item:last-child{border-right:none;}
-      .stat-num { font-size:22px; font-weight:800; color:#237a37; line-height:1; }
-      .stat-label { font-size:12px; color:#899197; margin-top:3px; }
+      .stats-strip {
+        background: #fff;
+        border-bottom: 1px solid #e9ecef;
+      }
+      .stat-item {
+        padding: 14px 24px;
+        border-right: 1px solid #f0f0f0;
+        text-align: center;
+        flex: 1;
+      }
+      .stat-item:last-child {
+        border-right: none;
+      }
+      .stat-num {
+        font-size: 22px;
+        font-weight: 800;
+        color: #237a37;
+        line-height: 1;
+      }
+      .stat-label {
+        font-size: 12px;
+        color: #899197;
+        margin-top: 3px;
+      }
       /* CATEGORY */
-      .category-bar { background:#fff; border-bottom:1px solid #e9ecef; padding:12px 0; position:sticky; top:0; z-index:100; }
-      .category-btn { border:1.5px solid #dde1e7; color:#555; background:#fff; font-weight:600; font-size:13px; padding:6px 16px; border-radius:25px; cursor:pointer; transition:all .2s; display:flex; align-items:center; gap:6px; white-space:nowrap; }
-      .category-btn .badge-count { background:#e9ecef; color:#555; font-size:11px; font-weight:700; padding:1px 6px; border-radius:10px; transition:all .2s; }
-      .category-btn:hover { border-color:#237a37; color:#237a37; }
-      .category-btn:hover .badge-count { background:#edf7ee; color:#237a37; }
-      .category-btn.active { background:#237a37; color:#fff; border-color:#237a37; }
-      .category-btn.active .badge-count { background:rgba(255,255,255,.25); color:#fff; }
-      .sort-select { border:1.5px solid #dde1e7; border-radius:8px; padding:6px 12px; font-size:13px; font-weight:600; color:#333; cursor:pointer; outline:none; background:#fff; }
-      .sort-select:focus{border-color:#237a37;}
+      .category-bar {
+        background: #fff;
+        border-bottom: 1px solid #e9ecef;
+        padding: 12px 0;
+        position: sticky;
+        top: 0;
+        z-index: 100;
+      }
+      .category-btn {
+        border: 1.5px solid #dde1e7;
+        color: #555;
+        background: #fff;
+        font-weight: 600;
+        font-size: 13px;
+        padding: 6px 16px;
+        border-radius: 25px;
+        cursor: pointer;
+        transition: all 0.2s;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        white-space: nowrap;
+      }
+      .category-btn .badge-count {
+        background: #e9ecef;
+        color: #555;
+        font-size: 11px;
+        font-weight: 700;
+        padding: 1px 6px;
+        border-radius: 10px;
+        transition: all 0.2s;
+      }
+      .category-btn:hover {
+        border-color: #237a37;
+        color: #237a37;
+      }
+      .category-btn:hover .badge-count {
+        background: #edf7ee;
+        color: #237a37;
+      }
+      .category-btn.active {
+        background: #237a37;
+        color: #fff;
+        border-color: #237a37;
+      }
+      .category-btn.active .badge-count {
+        background: rgba(255, 255, 255, 0.25);
+        color: #fff;
+      }
+      .sort-select {
+        border: 1.5px solid #dde1e7;
+        border-radius: 8px;
+        padding: 6px 12px;
+        font-size: 13px;
+        font-weight: 600;
+        color: #333;
+        cursor: pointer;
+        outline: none;
+        background: #fff;
+      }
+      .sort-select:focus {
+        border-color: #237a37;
+      }
       /* TAGS */
-      .news-tag { display:inline-block; background:#237a37; color:#fff; font-size:11px; font-weight:700; padding:3px 10px; border-radius:4px; margin-bottom:8px; text-transform:uppercase; letter-spacing:.6px; }
+      .news-tag {
+        display: inline-block;
+        background: #237a37;
+        color: #fff;
+        font-size: 11px;
+        font-weight: 700;
+        padding: 3px 10px;
+        border-radius: 4px;
+        margin-bottom: 8px;
+        text-transform: uppercase;
+        letter-spacing: 0.6px;
+      }
       /* FEATURED */
-      .news-featured { border-radius:14px; overflow:hidden; position:relative; height:440px; background:#d9d9d9; cursor:pointer; }
-      .news-featured img { width:100%; height:100%; object-fit:cover; transition:transform .45s ease; }
-      .news-featured:hover img { transform:scale(1.05); }
-      .news-featured-overlay { position:absolute; bottom:0; left:0; right:0; background:linear-gradient(to top,rgba(0,0,0,.85) 0%,rgba(0,0,0,.3) 60%,transparent 100%); padding:36px 28px 28px; color:#fff; }
-      .news-featured-overlay h3 { font-size:22px; font-weight:800; line-height:1.4; margin-bottom:8px; }
-      .news-featured-overlay p { font-size:14px; opacity:.85; margin-bottom:0; }
-      .hot-badge { position:absolute; top:16px; left:16px; background:#dc3545; color:#fff; font-size:11px; font-weight:800; padding:4px 12px; border-radius:4px; letter-spacing:1px; z-index:2; }
+      .news-featured {
+        border-radius: 14px;
+        overflow: hidden;
+        position: relative;
+        height: 440px;
+        background: #d9d9d9;
+        cursor: pointer;
+      }
+      .news-featured img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.45s ease;
+      }
+      .news-featured:hover img {
+        transform: scale(1.05);
+      }
+      .news-featured-overlay {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: linear-gradient(
+          to top,
+          rgba(0, 0, 0, 0.85) 0%,
+          rgba(0, 0, 0, 0.3) 60%,
+          transparent 100%
+        );
+        padding: 36px 28px 28px;
+        color: #fff;
+      }
+      .news-featured-overlay h3 {
+        font-size: 22px;
+        font-weight: 800;
+        line-height: 1.4;
+        margin-bottom: 8px;
+      }
+      .news-featured-overlay p {
+        font-size: 14px;
+        opacity: 0.85;
+        margin-bottom: 0;
+      }
+      .hot-badge {
+        position: absolute;
+        top: 16px;
+        left: 16px;
+        background: #dc3545;
+        color: #fff;
+        font-size: 11px;
+        font-weight: 800;
+        padding: 4px 12px;
+        border-radius: 4px;
+        letter-spacing: 1px;
+        z-index: 2;
+      }
       /* SIDE CARD */
-      .side-card { display:flex; gap:12px; align-items:flex-start; padding:12px; cursor:pointer; transition:background .2s,transform .2s; border-bottom:1px solid #f0f0f0; }
-      .side-card:last-child{border-bottom:none;}
-      .side-card:hover { background:#f0f8f1; transform:translateX(3px); }
-      .side-card img { width:88px; height:68px; object-fit:cover; border-radius:8px; flex-shrink:0; }
-      .side-card-rank { width:24px; height:24px; background:#237a37; color:#fff; border-radius:50%; font-size:12px; font-weight:800; display:flex; align-items:center; justify-content:center; flex-shrink:0; margin-top:2px; }
-      .side-card-rank.hot { background:#dc3545; }
+      .side-card {
+        display: flex;
+        gap: 12px;
+        align-items: flex-start;
+        padding: 12px;
+        cursor: pointer;
+        transition:
+          background 0.2s,
+          transform 0.2s;
+        border-bottom: 1px solid #f0f0f0;
+      }
+      .side-card:last-child {
+        border-bottom: none;
+      }
+      .side-card:hover {
+        background: #f0f8f1;
+        transform: translateX(3px);
+      }
+      .side-card img {
+        width: 88px;
+        height: 68px;
+        object-fit: cover;
+        border-radius: 8px;
+        flex-shrink: 0;
+      }
+      .side-card-rank {
+        width: 24px;
+        height: 24px;
+        background: #237a37;
+        color: #fff;
+        border-radius: 50%;
+        font-size: 12px;
+        font-weight: 800;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+        margin-top: 2px;
+      }
+      .side-card-rank.hot {
+        background: #dc3545;
+      }
       /* GRID */
-      .news-card { border:none; border-radius:12px; overflow:hidden; box-shadow:0 2px 12px rgba(0,0,0,.06); transition:transform .25s,box-shadow .25s; height:100%; cursor:pointer; background:#fff; }
-      .news-card:hover { transform:translateY(-6px); box-shadow:0 16px 40px rgba(0,0,0,.12); }
-      .card-img-wrap { overflow:hidden; position:relative; }
-      .news-card img { width:100%; height:200px; object-fit:cover; transition:transform .4s; }
-      .news-card:hover img { transform:scale(1.06); }
-      .img-overlay-tag { position:absolute; top:12px; left:12px; }
-      .news-card .card-body { padding:18px; }
-      .news-card h5 { font-size:16px; font-weight:700; color:#1a1a1a; line-height:1.45; margin-bottom:6px; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; }
-      .news-card p { font-size:13px; color:#6c757d; line-height:1.65; margin-bottom:10px; display:-webkit-box; -webkit-line-clamp:3; -webkit-box-orient:vertical; overflow:hidden; }
-      .news-meta { display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:6px; }
-      .news-date { font-size:12px; color:#adb5bd; display:flex; align-items:center; gap:4px; }
-      .news-stats { font-size:12px; color:#adb5bd; display:flex; gap:8px; }
-      .author-row { display:flex; align-items:center; gap:8px; margin-bottom:10px; }
-      .author-avatar { width:26px; height:26px; border-radius:50%; object-fit:cover; }
-      .author-name { font-size:12px; font-weight:600; color:#555; }
-      .read-more-btn { font-size:13px; font-weight:700; color:#237a37; background:none; border:none; padding:8px 0 0; cursor:pointer; display:flex; align-items:center; gap:4px; width:100%; border-top:1px solid #f0f0f0; margin-top:8px; transition:gap .2s; }
-      .read-more-btn:hover{gap:8px;}
+      .news-card {
+        border: none;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+        transition:
+          transform 0.25s,
+          box-shadow 0.25s;
+        height: 100%;
+        cursor: pointer;
+        background: #fff;
+      }
+      .news-card:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 16px 40px rgba(0, 0, 0, 0.12);
+      }
+      .card-img-wrap {
+        overflow: hidden;
+        position: relative;
+      }
+      .news-card img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+        transition: transform 0.4s;
+      }
+      .news-card:hover img {
+        transform: scale(1.06);
+      }
+      .img-overlay-tag {
+        position: absolute;
+        top: 12px;
+        left: 12px;
+      }
+      .news-card .card-body {
+        padding: 18px;
+      }
+      .news-card h5 {
+        font-size: 16px;
+        font-weight: 700;
+        color: #1a1a1a;
+        line-height: 1.45;
+        margin-bottom: 6px;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+      }
+      .news-card p {
+        font-size: 13px;
+        color: #6c757d;
+        line-height: 1.65;
+        margin-bottom: 10px;
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+      }
+      .news-meta {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 6px;
+      }
+      .news-date {
+        font-size: 12px;
+        color: #adb5bd;
+        display: flex;
+        align-items: center;
+        gap: 4px;
+      }
+      .news-stats {
+        font-size: 12px;
+        color: #adb5bd;
+        display: flex;
+        gap: 8px;
+      }
+      .author-row {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        margin-bottom: 10px;
+      }
+      .author-avatar {
+        width: 26px;
+        height: 26px;
+        border-radius: 50%;
+        object-fit: cover;
+      }
+      .author-name {
+        font-size: 12px;
+        font-weight: 600;
+        color: #555;
+      }
+      .read-more-btn {
+        font-size: 13px;
+        font-weight: 700;
+        color: #237a37;
+        background: none;
+        border: none;
+        padding: 8px 0 0;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        gap: 4px;
+        width: 100%;
+        border-top: 1px solid #f0f0f0;
+        margin-top: 8px;
+        transition: gap 0.2s;
+      }
+      .read-more-btn:hover {
+        gap: 8px;
+      }
       /* PAGINATION */
-      .pagination-btn { width:38px; height:38px; border-radius:8px; border:1.5px solid #dee2e6; background:#fff; color:#333; font-weight:600; font-size:14px; cursor:pointer; transition:all .2s; display:flex; align-items:center; justify-content:center; }
-      .pagination-btn:hover,.pagination-btn.active { background:#237a37; color:#fff; border-color:#237a37; }
-      .pagination-btn:disabled { opacity:.35; cursor:default; }
+      .pagination-btn {
+        width: 38px;
+        height: 38px;
+        border-radius: 8px;
+        border: 1.5px solid #dee2e6;
+        background: #fff;
+        color: #333;
+        font-weight: 600;
+        font-size: 14px;
+        cursor: pointer;
+        transition: all 0.2s;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .pagination-btn:hover,
+      .pagination-btn.active {
+        background: #237a37;
+        color: #fff;
+        border-color: #237a37;
+      }
+      .pagination-btn:disabled {
+        opacity: 0.35;
+        cursor: default;
+      }
       /* NEWSLETTER */
-      .newsletter-section { background:linear-gradient(135deg,#f0f8f1,#e8f5ea); border:1.5px solid #c3e6cb; border-radius:16px; padding:36px; }
+      .newsletter-section {
+        background: linear-gradient(135deg, #f0f8f1, #e8f5ea);
+        border: 1.5px solid #c3e6cb;
+        border-radius: 16px;
+        padding: 36px;
+      }
       /* ARTICLE MODAL */
-      .article-modal-overlay { position:fixed; inset:0; background:rgba(0,0,0,.6); z-index:2000; display:flex; align-items:flex-start; justify-content:center; padding:20px; overflow-y:auto; opacity:0; pointer-events:none; transition:opacity .3s; }
-      .article-modal-overlay.open { opacity:1; pointer-events:all; }
-      .article-modal { background:#fff; border-radius:18px; max-width:800px; width:100%; margin:auto; overflow:hidden; transform:translateY(40px); transition:transform .35s cubic-bezier(.4,0,.2,1); }
-      .article-modal-overlay.open .article-modal { transform:translateY(0); }
-      .reading-progress-bar { height:4px; background:#237a37; width:0%; transition:width .1s; position:sticky; top:0; z-index:10; }
-      .article-modal-hero { position:relative; height:340px; overflow:hidden; }
-      .article-modal-hero img { width:100%; height:100%; object-fit:cover; }
-      .article-modal-hero-overlay { position:absolute; inset:0; background:linear-gradient(to top,rgba(0,0,0,.65) 0%,transparent 55%); }
-      .article-modal-close { position:absolute; top:16px; right:16px; background:rgba(255,255,255,.92); border:none; border-radius:50%; width:38px; height:38px; font-size:18px; cursor:pointer; display:flex; align-items:center; justify-content:center; z-index:5; transition:background .2s,transform .2s; }
-      .article-modal-close:hover { background:#fff; transform:rotate(90deg); }
-      .article-modal-body { padding:32px; }
-      .article-modal-body h2 { font-size:26px; font-weight:800; line-height:1.4; color:#111; margin-bottom:14px; }
-      .article-meta-row { display:flex; flex-wrap:wrap; gap:16px; align-items:center; padding:12px 0; border-top:1px solid #f0f0f0; border-bottom:1px solid #f0f0f0; margin-bottom:24px; }
-      .article-meta-item { font-size:13px; color:#899197; display:flex; align-items:center; gap:6px; }
-      .article-content p { font-size:15px; line-height:1.9; color:#3a3a3a; margin-bottom:18px; }
-      .article-content h4 { font-size:18px; font-weight:700; color:#237a37; margin:28px 0 12px; padding-left:14px; border-left:4px solid #237a37; }
-      .article-content ul { padding-left:20px; margin-bottom:18px; }
-      .article-content ul li { font-size:15px; line-height:1.85; color:#3a3a3a; margin-bottom:8px; }
-      .article-tags { display:flex; flex-wrap:wrap; gap:8px; margin:20px 0 0; }
-      .article-tag { font-size:12px; font-weight:600; padding:4px 12px; border-radius:20px; background:#f0f8f1; color:#237a37; border:1px solid #c3e6cb; cursor:pointer; transition:all .2s; }
-      .article-tag:hover { background:#237a37; color:#fff; }
-      .article-share { display:flex; align-items:center; gap:10px; margin-top:24px; padding-top:20px; border-top:1px solid #f0f0f0; flex-wrap:wrap; }
-      .share-btn { display:flex; align-items:center; gap:6px; padding:8px 16px; border-radius:8px; border:1.5px solid #dee2e6; background:#fff; font-size:13px; font-weight:600; cursor:pointer; transition:all .2s; color:#333; }
-      .share-btn:hover { border-color:#237a37; color:#237a37; }
-      .related-section { padding:24px 32px; background:#f8f9fa; border-top:1px solid #eee; }
-      .related-section h5 { font-size:15px; font-weight:700; margin-bottom:14px; color:#111; }
-      .related-card { display:flex; gap:12px; align-items:flex-start; padding:10px; border-radius:10px; cursor:pointer; transition:background .2s; }
-      .related-card:hover { background:#edf7ee; }
-      .related-card img { width:76px; height:60px; object-fit:cover; border-radius:8px; flex-shrink:0; }
-      .related-card h6 { font-size:13px; font-weight:600; margin:0 0 4px; line-height:1.4; color:#1a1a1a; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; }
-      .modal-cta { padding:22px 32px; background:linear-gradient(135deg,#237a37,#1b6530); text-align:center; }
-      .modal-cta p { color:rgba(255,255,255,.85); font-size:14px; margin-bottom:12px; }
-      .modal-cta button { background:#fff; color:#237a37; border:none; border-radius:10px; padding:11px 32px; font-size:15px; font-weight:800; cursor:pointer; transition:transform .2s; }
-      .modal-cta button:hover { transform:scale(1.05); }
+      .article-modal-overlay {
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.6);
+        z-index: 2000;
+        display: flex;
+        align-items: flex-start;
+        justify-content: center;
+        padding: 20px;
+        overflow-y: auto;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.3s;
+      }
+      .article-modal-overlay.open {
+        opacity: 1;
+        pointer-events: all;
+      }
+      .article-modal {
+        background: #fff;
+        border-radius: 18px;
+        max-width: 800px;
+        width: 100%;
+        margin: auto;
+        overflow: hidden;
+        transform: translateY(40px);
+        transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+      .article-modal-overlay.open .article-modal {
+        transform: translateY(0);
+      }
+      .reading-progress-bar {
+        height: 4px;
+        background: #237a37;
+        width: 0%;
+        transition: width 0.1s;
+        position: sticky;
+        top: 0;
+        z-index: 10;
+      }
+      .article-modal-hero {
+        position: relative;
+        height: 340px;
+        overflow: hidden;
+      }
+      .article-modal-hero img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      .article-modal-hero-overlay {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          to top,
+          rgba(0, 0, 0, 0.65) 0%,
+          transparent 55%
+        );
+      }
+      .article-modal-close {
+        position: absolute;
+        top: 16px;
+        right: 16px;
+        background: rgba(255, 255, 255, 0.92);
+        border: none;
+        border-radius: 50%;
+        width: 38px;
+        height: 38px;
+        font-size: 18px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 5;
+        transition:
+          background 0.2s,
+          transform 0.2s;
+      }
+      .article-modal-close:hover {
+        background: #fff;
+        transform: rotate(90deg);
+      }
+      .article-modal-body {
+        padding: 32px;
+      }
+      .article-modal-body h2 {
+        font-size: 26px;
+        font-weight: 800;
+        line-height: 1.4;
+        color: #111;
+        margin-bottom: 14px;
+      }
+      .article-meta-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 16px;
+        align-items: center;
+        padding: 12px 0;
+        border-top: 1px solid #f0f0f0;
+        border-bottom: 1px solid #f0f0f0;
+        margin-bottom: 24px;
+      }
+      .article-meta-item {
+        font-size: 13px;
+        color: #899197;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+      }
+      .article-content p {
+        font-size: 15px;
+        line-height: 1.9;
+        color: #3a3a3a;
+        margin-bottom: 18px;
+      }
+      .article-content h4 {
+        font-size: 18px;
+        font-weight: 700;
+        color: #237a37;
+        margin: 28px 0 12px;
+        padding-left: 14px;
+        border-left: 4px solid #237a37;
+      }
+      .article-content ul {
+        padding-left: 20px;
+        margin-bottom: 18px;
+      }
+      .article-content ul li {
+        font-size: 15px;
+        line-height: 1.85;
+        color: #3a3a3a;
+        margin-bottom: 8px;
+      }
+      .article-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin: 20px 0 0;
+      }
+      .article-tag {
+        font-size: 12px;
+        font-weight: 600;
+        padding: 4px 12px;
+        border-radius: 20px;
+        background: #f0f8f1;
+        color: #237a37;
+        border: 1px solid #c3e6cb;
+        cursor: pointer;
+        transition: all 0.2s;
+      }
+      .article-tag:hover {
+        background: #237a37;
+        color: #fff;
+      }
+      .article-share {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-top: 24px;
+        padding-top: 20px;
+        border-top: 1px solid #f0f0f0;
+        flex-wrap: wrap;
+      }
+      .share-btn {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        padding: 8px 16px;
+        border-radius: 8px;
+        border: 1.5px solid #dee2e6;
+        background: #fff;
+        font-size: 13px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.2s;
+        color: #333;
+      }
+      .share-btn:hover {
+        border-color: #237a37;
+        color: #237a37;
+      }
+      .related-section {
+        padding: 24px 32px;
+        background: #f8f9fa;
+        border-top: 1px solid #eee;
+      }
+      .related-section h5 {
+        font-size: 15px;
+        font-weight: 700;
+        margin-bottom: 14px;
+        color: #111;
+      }
+      .related-card {
+        display: flex;
+        gap: 12px;
+        align-items: flex-start;
+        padding: 10px;
+        border-radius: 10px;
+        cursor: pointer;
+        transition: background 0.2s;
+      }
+      .related-card:hover {
+        background: #edf7ee;
+      }
+      .related-card img {
+        width: 76px;
+        height: 60px;
+        object-fit: cover;
+        border-radius: 8px;
+        flex-shrink: 0;
+      }
+      .related-card h6 {
+        font-size: 13px;
+        font-weight: 600;
+        margin: 0 0 4px;
+        line-height: 1.4;
+        color: #1a1a1a;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+      }
+      .modal-cta {
+        padding: 22px 32px;
+        background: linear-gradient(135deg, #237a37, #1b6530);
+        text-align: center;
+      }
+      .modal-cta p {
+        color: rgba(255, 255, 255, 0.85);
+        font-size: 14px;
+        margin-bottom: 12px;
+      }
+      .modal-cta button {
+        background: #fff;
+        color: #237a37;
+        border: none;
+        border-radius: 10px;
+        padding: 11px 32px;
+        font-size: 15px;
+        font-weight: 800;
+        cursor: pointer;
+        transition: transform 0.2s;
+      }
+      .modal-cta button:hover {
+        transform: scale(1.05);
+      }
       /* REG MODAL */
-      .reg-modal-overlay { position:fixed; inset:0; background:rgba(0,0,0,.5); z-index:3000; display:flex; align-items:center; justify-content:center; padding:20px; opacity:0; pointer-events:none; transition:opacity .3s; }
-      .reg-modal-overlay.open { opacity:1; pointer-events:all; }
-      .reg-modal { background:#fff; border-radius:18px; max-width:480px; width:100%; padding:36px; transform:scale(.92); transition:transform .3s cubic-bezier(.4,0,.2,1); position:relative; }
-      .reg-modal-overlay.open .reg-modal { transform:scale(1); }
-      .reg-close-btn { position:absolute; top:14px; right:18px; background:none; border:none; font-size:22px; color:#aaa; cursor:pointer; }
-      .reg-close-btn:hover{color:#333;}
-      .form-control:focus,.form-select:focus { border-color:#237a37!important; box-shadow:0 0 0 3px rgba(35,122,55,.12)!important; }
+      .reg-modal-overlay {
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: 3000;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.3s;
+      }
+      .reg-modal-overlay.open {
+        opacity: 1;
+        pointer-events: all;
+      }
+      .reg-modal {
+        background: #fff;
+        border-radius: 18px;
+        max-width: 480px;
+        width: 100%;
+        padding: 36px;
+        transform: scale(0.92);
+        transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        position: relative;
+      }
+      .reg-modal-overlay.open .reg-modal {
+        transform: scale(1);
+      }
+      .reg-close-btn {
+        position: absolute;
+        top: 14px;
+        right: 18px;
+        background: none;
+        border: none;
+        font-size: 22px;
+        color: #aaa;
+        cursor: pointer;
+      }
+      .reg-close-btn:hover {
+        color: #333;
+      }
+      .form-control:focus,
+      .form-select:focus {
+        border-color: #237a37 !important;
+        box-shadow: 0 0 0 3px rgba(35, 122, 55, 0.12) !important;
+      }
       /* TOAST */
-      .toast-wrap { position:fixed; bottom:28px; right:28px; z-index:9999; display:flex; flex-direction:column; gap:10px; pointer-events:none; }
-      .toast-item { background:#1a1a1a; color:#fff; padding:14px 20px; border-radius:12px; font-size:14px; font-weight:500; box-shadow:0 8px 24px rgba(0,0,0,.2); transform:translateX(130px); opacity:0; transition:all .35s cubic-bezier(.4,0,.2,1); pointer-events:all; min-width:240px; }
-      .toast-item.show { transform:translateX(0); opacity:1; }
-      .toast-item.success { background:#237a37; }
+      .toast-wrap {
+        position: fixed;
+        bottom: 28px;
+        right: 28px;
+        z-index: 9999;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        pointer-events: none;
+      }
+      .toast-item {
+        background: #1a1a1a;
+        color: #fff;
+        padding: 14px 20px;
+        border-radius: 12px;
+        font-size: 14px;
+        font-weight: 500;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+        transform: translateX(130px);
+        opacity: 0;
+        transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+        pointer-events: all;
+        min-width: 240px;
+      }
+      .toast-item.show {
+        transform: translateX(0);
+        opacity: 1;
+      }
+      .toast-item.success {
+        background: #237a37;
+      }
       /* BACK TO TOP */
-      #back-to-top { position:fixed; bottom:28px; left:28px; width:44px; height:44px; background:#237a37; color:#fff; border:none; border-radius:50%; font-size:20px; cursor:pointer; box-shadow:0 4px 16px rgba(35,122,55,.4); opacity:0; transform:translateY(20px); transition:all .3s; z-index:1000; display:flex; align-items:center; justify-content:center; }
-      #back-to-top.show { opacity:1; transform:translateY(0); }
-      #back-to-top:hover { background:#1b6530; }
-      mark { background:#fff3c4; border-radius:2px; padding:0 2px; }
-      #no-results { display:none; text-align:center; padding:60px 0; color:#899197; }
-      .section-title { font-size:20px; font-weight:800; text-transform:uppercase; letter-spacing:1px; color:#1a1a1a; display:flex; align-items:center; gap:8px; }
+      #back-to-top {
+        position: fixed;
+        bottom: 28px;
+        left: 28px;
+        width: 44px;
+        height: 44px;
+        background: #237a37;
+        color: #fff;
+        border: none;
+        border-radius: 50%;
+        font-size: 20px;
+        cursor: pointer;
+        box-shadow: 0 4px 16px rgba(35, 122, 55, 0.4);
+        opacity: 0;
+        transform: translateY(20px);
+        transition: all 0.3s;
+        z-index: 1000;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      #back-to-top.show {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      #back-to-top:hover {
+        background: #1b6530;
+      }
+      mark {
+        background: #fff3c4;
+        border-radius: 2px;
+        padding: 0 2px;
+      }
+      #no-results {
+        display: none;
+        text-align: center;
+        padding: 60px 0;
+        color: #899197;
+      }
+      .section-title {
+        font-size: 20px;
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        color: #1a1a1a;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
     </style>
   </head>
   <body>
-
     <!-- HEADER -->
     <header class="bg-white shadow-sm">
-      <div class="d-flex align-items-center justify-content-between gap-2 px-4 py-3">
-        <a href="index.html"><img src="img/logo.png" alt="Jellyfish Vietnam" style="height:55px;width:auto;object-fit:contain" /></a>
+      <div
+        class="d-flex align-items-center justify-content-between gap-2 px-4 py-3"
+      >
+        <a href="index.html"
+          ><img
+            src="img/logo.png"
+            alt="Jellyfish Vietnam"
+            style="height: 55px; width: auto; object-fit: contain"
+        /></a>
         <div class="d-none d-sm-flex flex-grow-1 mx-3 desktop-search">
-          <div style="position:relative;width:100%;">
-            <input type="text" id="headerSearch" placeholder="Tìm kiếm tin tức..." class="form-control rounded-pill pe-5" style="background:#f4f5f7;border:1.5px solid #e9ecef;font-size:14px;" />
-            <svg style="position:absolute;right:14px;top:50%;transform:translateY(-50%);color:#aaa;" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          <div style="position: relative; width: 100%">
+            <input
+              type="text"
+              id="headerSearch"
+              placeholder="Tìm kiếm tin tức..."
+              class="form-control rounded-pill pe-5"
+              style="
+                background: #f4f5f7;
+                border: 1.5px solid #e9ecef;
+                font-size: 14px;
+              "
+            />
+            <svg
+              style="
+                position: absolute;
+                right: 14px;
+                top: 50%;
+                transform: translateY(-50%);
+                color: #aaa;
+              "
+              width="16"
+              height="16"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              viewBox="0 0 24 24"
+            >
+              <circle cx="11" cy="11" r="8" />
+              <line x1="21" y1="21" x2="16.65" y2="16.65" />
+            </svg>
           </div>
         </div>
         <div class="d-flex align-items-center gap-2 flex-shrink-0">
-          <button class="btn fw-bold text-white border-0 rounded-3 text-nowrap d-none d-md-inline-flex align-items-center px-3 py-2" style="background:#237a37;" onclick="openRegModal()">ĐĂNG KÝ TƯ VẤN</button>
-          <a href="tel:0961106466" class="btn fw-bold text-white text-decoration-none border-0 rounded-3 text-nowrap d-none d-md-inline-flex align-items-center px-3 py-2" style="background:#dc3545;">
-            <img src="img/Rectangle 77.png" alt="" style="width:16px;margin-right:6px" />096.110.6466
+          <button
+            class="btn fw-bold text-white border-0 rounded-3 text-nowrap d-none d-md-inline-flex align-items-center px-3 py-2"
+            style="background: #237a37"
+            onclick="openRegModal()"
+          >
+            ĐĂNG KÝ TƯ VẤN
+          </button>
+          <a
+            href="tel:0961106466"
+            class="btn fw-bold text-white text-decoration-none border-0 rounded-3 text-nowrap d-none d-md-inline-flex align-items-center px-3 py-2"
+            style="background: #dc3545"
+          >
+            <img
+              src="img/Rectangle 77.png"
+              alt=""
+              style="width: 16px; margin-right: 6px"
+            />096.110.6466
           </a>
-          <button class="hamburger-btn" id="hamburgerBtn"><span></span><span></span><span></span></button>
+          <button class="hamburger-btn" id="hamburgerBtn">
+            <span></span><span></span><span></span>
+          </button>
         </div>
       </div>
-      <nav style="background:#237a37;overflow-x:auto;scrollbar-width:none">
-        <ul class="list-unstyled m-0 d-flex align-items-stretch justify-content-center" style="padding:0 16px;width:max-content;min-width:100%;min-height:52px;">
-          <li class="d-flex"><a href="index.html" class="nav-link-item text-white text-decoration-none d-flex align-items-center text-nowrap px-3" style="font-size:15px">Trang chủ</a></li>
-          <li class="d-flex"><a href="about.html" class="nav-link-item text-white text-decoration-none d-flex align-items-center text-nowrap px-3" style="font-size:15px">Về Jellyfish Việt Nam</a></li>
-          <li class="d-flex"><a href="courses.html" class="nav-link-item text-white text-decoration-none d-flex align-items-center text-nowrap px-3" style="font-size:15px">Khóa học</a></li>
-          <li class="d-flex"><a href="schedule.html" class="nav-link-item text-white text-decoration-none d-flex align-items-center text-nowrap px-3" style="font-size:15px">Lịch khai giảng</a></li>
-          <li class="d-flex"><a href="curriculum.html" class="nav-link-item text-white text-decoration-none d-flex align-items-center text-nowrap px-3" style="font-size:15px">Giáo trình</a></li>
-          <li class="d-flex"><a href="blog.html" class="nav-link-item text-white text-decoration-none d-flex align-items-center text-nowrap px-3" style="font-size:15px">Kiến thức hữu ích</a></li>
-          <li class="d-flex"><a href="news.html" class="nav-link-item nav-active text-white text-decoration-none d-flex align-items-center text-nowrap px-3" style="font-size:15px">Tin tức</a></li>
+      <nav style="background: #237a37; overflow-x: auto; scrollbar-width: none">
+        <ul
+          class="list-unstyled m-0 d-flex align-items-stretch justify-content-center"
+          style="
+            padding: 0 16px;
+            width: max-content;
+            min-width: 100%;
+            min-height: 52px;
+          "
+        >
+          <li class="d-flex">
+            <a
+              href="index.html"
+              class="nav-link-item text-white text-decoration-none d-flex align-items-center text-nowrap px-3"
+              style="font-size: 15px"
+              >Trang chủ</a
+            >
+          </li>
+          <li class="d-flex">
+            <a
+              href="about.html"
+              class="nav-link-item text-white text-decoration-none d-flex align-items-center text-nowrap px-3"
+              style="font-size: 15px"
+              >Về Jellyfish Việt Nam</a
+            >
+          </li>
+          <li class="d-flex">
+            <a
+              href="courses.html"
+              class="nav-link-item text-white text-decoration-none d-flex align-items-center text-nowrap px-3"
+              style="font-size: 15px"
+              >Khóa học</a
+            >
+          </li>
+          <li class="d-flex">
+            <a
+              href="schedule.html"
+              class="nav-link-item text-white text-decoration-none d-flex align-items-center text-nowrap px-3"
+              style="font-size: 15px"
+              >Lịch khai giảng</a
+            >
+          </li>
+          <li class="d-flex">
+            <a
+              href="curriculum.html"
+              class="nav-link-item text-white text-decoration-none d-flex align-items-center text-nowrap px-3"
+              style="font-size: 15px"
+              >Giáo trình</a
+            >
+          </li>
+          <li class="d-flex">
+            <a
+              href="blog.html"
+              class="nav-link-item text-white text-decoration-none d-flex align-items-center text-nowrap px-3"
+              style="font-size: 15px"
+              >Kiến thức hữu ích</a
+            >
+          </li>
+          <li class="d-flex">
+            <a
+              href="news.html"
+              class="nav-link-item nav-active text-white text-decoration-none d-flex align-items-center text-nowrap px-3"
+              style="font-size: 15px"
+              >Tin tức</a
+            >
+          </li>
         </ul>
       </nav>
     </header>
@@ -187,7 +1083,9 @@
     <div class="mobile-menu-overlay" id="menuOverlay"></div>
     <div class="mobile-menu-drawer" id="menuDrawer">
       <div class="mobile-menu-header">
-        <a href="index.html"><img src="img/logo.png" alt="Jellyfish Vietnam" style="height:38px;" /></a>
+        <a href="index.html"
+          ><img src="img/logo.png" alt="Jellyfish Vietnam" style="height: 38px"
+        /></a>
         <button class="mobile-menu-close" id="menuCloseBtn">&#x2715;</button>
       </div>
       <nav class="mobile-menu-nav">
@@ -200,8 +1098,19 @@
         <a href="news.html" class="nav-active">Tin tức</a>
       </nav>
       <div class="mobile-menu-footer">
-        <button onclick="openRegModal()" class="btn fw-bold text-white border-0 rounded-3 py-2" style="background:#237a37;font-size:15px;">ĐĂNG KÝ TƯ VẤN</button>
-        <a href="tel:0961106466" class="btn fw-bold text-white border-0 rounded-3 py-2" style="background:#dc3545;font-size:15px;">📞 096.110.6466</a>
+        <button
+          onclick="openRegModal()"
+          class="btn fw-bold text-white border-0 rounded-3 py-2"
+          style="background: #237a37; font-size: 15px"
+        >
+          ĐĂNG KÝ TƯ VẤN
+        </button>
+        <a
+          href="tel:0961106466"
+          class="btn fw-bold text-white border-0 rounded-3 py-2"
+          style="background: #dc3545; font-size: 15px"
+          >📞 096.110.6466</a
+        >
       </div>
     </div>
 
@@ -212,36 +1121,94 @@
         <div class="article-modal-hero">
           <img id="modalImg" src="" alt="" />
           <div class="article-modal-hero-overlay"></div>
-          <button class="article-modal-close" onclick="closeArticleModal()">&#x2715;</button>
+          <button class="article-modal-close" onclick="closeArticleModal()">
+            &#x2715;
+          </button>
         </div>
         <div class="article-modal-body">
           <span id="modalTag" class="news-tag"></span>
           <h2 id="modalTitle"></h2>
           <div class="article-meta-row">
             <span class="article-meta-item">
-              <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+              <svg
+                width="14"
+                height="14"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                viewBox="0 0 24 24"
+              >
+                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+                <circle cx="12" cy="7" r="4" />
+              </svg>
               <span id="modalAuthor"></span>
             </span>
             <span class="article-meta-item">
-              <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+              <svg
+                width="14"
+                height="14"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                viewBox="0 0 24 24"
+              >
+                <rect x="3" y="4" width="18" height="18" rx="2" />
+                <line x1="16" y1="2" x2="16" y2="6" />
+                <line x1="8" y1="2" x2="8" y2="6" />
+                <line x1="3" y1="10" x2="21" y2="10" />
+              </svg>
               <span id="modalDate"></span>
             </span>
             <span class="article-meta-item">
-              <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              <svg
+                width="14"
+                height="14"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                viewBox="0 0 24 24"
+              >
+                <circle cx="12" cy="12" r="10" />
+                <polyline points="12 6 12 12 16 14" />
+              </svg>
               <span id="modalReadTime"></span>
             </span>
             <span class="article-meta-item">
-              <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+              <svg
+                width="14"
+                height="14"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                viewBox="0 0 24 24"
+              >
+                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
+                <circle cx="12" cy="12" r="3" />
+              </svg>
               <span id="modalViews"></span> lượt xem
             </span>
           </div>
           <div class="article-content" id="modalContent"></div>
           <div class="article-tags" id="modalTags"></div>
           <div class="article-share">
-            <span style="font-size:13px;font-weight:600;color:#555;">Chia sẻ:</span>
-            <button class="share-btn" onclick="copyLink()">🔗 Sao chép link</button>
-            <button class="share-btn" style="background:#1877f2;color:#fff;border-color:#1877f2;">Facebook</button>
-            <button class="share-btn" style="background:#000;color:#fff;border-color:#000;">X (Twitter)</button>
+            <span style="font-size: 13px; font-weight: 600; color: #555"
+              >Chia sẻ:</span
+            >
+            <button class="share-btn" onclick="copyLink()">
+              🔗 Sao chép link
+            </button>
+            <button
+              class="share-btn"
+              style="background: #1877f2; color: #fff; border-color: #1877f2"
+            >
+              Facebook
+            </button>
+            <button
+              class="share-btn"
+              style="background: #000; color: #fff; border-color: #000"
+            >
+              X (Twitter)
+            </button>
           </div>
         </div>
         <div class="related-section">
@@ -249,8 +1216,17 @@
           <div id="relatedArticles" class="d-flex flex-column gap-2"></div>
         </div>
         <div class="modal-cta">
-          <p>Muốn tìm hiểu thêm về các khóa học tiếng Nhật tại Jellyfish Vietnam?</p>
-          <button onclick="closeArticleModal();openRegModal()">Đăng ký tư vấn miễn phí →</button>
+          <p>
+            Muốn tìm hiểu thêm về các khóa học tiếng Nhật tại Jellyfish Vietnam?
+          </p>
+          <button
+            onclick="
+              closeArticleModal();
+              openRegModal();
+            "
+          >
+            Đăng ký tư vấn miễn phí →
+          </button>
         </div>
       </div>
     </div>
@@ -258,74 +1234,208 @@
     <!-- REG MODAL -->
     <div class="reg-modal-overlay" id="regModal">
       <div class="reg-modal">
-        <button class="reg-close-btn" onclick="closeRegModal()">&#x2715;</button>
-        <div style="width:48px;height:48px;background:#edf7ee;border-radius:12px;display:flex;align-items:center;justify-content:center;margin-bottom:16px;">
-          <svg width="24" height="24" fill="none" stroke="#237a37" stroke-width="2.5" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.55 2 2 0 0 1 3.59 1.37h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 8.91a16 16 0 0 0 6.08 6.08l.91-.91a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 21.73 16.92z"/></svg>
+        <button class="reg-close-btn" onclick="closeRegModal()">
+          &#x2715;
+        </button>
+        <div
+          style="
+            width: 48px;
+            height: 48px;
+            background: #edf7ee;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 16px;
+          "
+        >
+          <svg
+            width="24"
+            height="24"
+            fill="none"
+            stroke="#237a37"
+            stroke-width="2.5"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.55 2 2 0 0 1 3.59 1.37h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 8.91a16 16 0 0 0 6.08 6.08l.91-.91a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 21.73 16.92z"
+            />
+          </svg>
         </div>
-        <h3 style="font-size:22px;font-weight:800;margin-bottom:6px;">Đăng ký tư vấn miễn phí</h3>
-        <p style="font-size:14px;color:#899197;margin-bottom:20px;">Đội ngũ tư vấn sẽ liên hệ bạn trong vòng 24 giờ.</p>
+        <h3 style="font-size: 22px; font-weight: 800; margin-bottom: 6px">
+          Đăng ký tư vấn miễn phí
+        </h3>
+        <p style="font-size: 14px; color: #899197; margin-bottom: 20px">
+          Đội ngũ tư vấn sẽ liên hệ bạn trong vòng 24 giờ.
+        </p>
         <form id="regForm" onsubmit="submitReg(event)">
           <div class="mb-3">
-            <label class="form-label fw-semibold" style="font-size:14px;">Họ và tên <span style="color:#dc3545">*</span></label>
-            <input type="text" class="form-control" style="border-radius:8px;border:1.5px solid #dee2e6;font-size:14px;" placeholder="Nguyễn Văn A" required />
+            <label class="form-label fw-semibold" style="font-size: 14px"
+              >Họ và tên <span style="color: #dc3545">*</span></label
+            >
+            <input
+              type="text"
+              class="form-control"
+              style="
+                border-radius: 8px;
+                border: 1.5px solid #dee2e6;
+                font-size: 14px;
+              "
+              placeholder="Nguyễn Văn A"
+              required
+            />
           </div>
           <div class="mb-3">
-            <label class="form-label fw-semibold" style="font-size:14px;">Số điện thoại <span style="color:#dc3545">*</span></label>
-            <input type="tel" class="form-control" style="border-radius:8px;border:1.5px solid #dee2e6;font-size:14px;" placeholder="0912 345 678" required />
+            <label class="form-label fw-semibold" style="font-size: 14px"
+              >Số điện thoại <span style="color: #dc3545">*</span></label
+            >
+            <input
+              type="tel"
+              class="form-control"
+              style="
+                border-radius: 8px;
+                border: 1.5px solid #dee2e6;
+                font-size: 14px;
+              "
+              placeholder="0912 345 678"
+              required
+            />
           </div>
           <div class="mb-3">
-            <label class="form-label fw-semibold" style="font-size:14px;">Email</label>
-            <input type="email" class="form-control" style="border-radius:8px;border:1.5px solid #dee2e6;font-size:14px;" placeholder="example@email.com" />
+            <label class="form-label fw-semibold" style="font-size: 14px"
+              >Email</label
+            >
+            <input
+              type="email"
+              class="form-control"
+              style="
+                border-radius: 8px;
+                border: 1.5px solid #dee2e6;
+                font-size: 14px;
+              "
+              placeholder="example@email.com"
+            />
           </div>
           <div class="mb-4">
-            <label class="form-label fw-semibold" style="font-size:14px;">Khóa học quan tâm</label>
-            <select class="form-select" style="border-radius:8px;border:1.5px solid #dee2e6;font-size:14px;">
+            <label class="form-label fw-semibold" style="font-size: 14px"
+              >Khóa học quan tâm</label
+            >
+            <select
+              class="form-select"
+              style="
+                border-radius: 8px;
+                border: 1.5px solid #dee2e6;
+                font-size: 14px;
+              "
+            >
               <option value="">-- Chọn khóa học --</option>
-              <option>Tiếng Nhật N5</option><option>Tiếng Nhật N4</option>
-              <option>Tiếng Nhật N3</option><option>Tiếng Nhật N2</option>
+              <option>Tiếng Nhật N5</option>
+              <option>Tiếng Nhật N4</option>
+              <option>Tiếng Nhật N3</option>
+              <option>Tiếng Nhật N2</option>
               <option>Tiếng Nhật N1</option>
             </select>
           </div>
-          <button type="submit" class="btn w-100 fw-bold text-white py-2" style="background:#237a37;border-radius:10px;font-size:16px;">Gửi đăng ký</button>
+          <button
+            type="submit"
+            class="btn w-100 fw-bold text-white py-2"
+            style="background: #237a37; border-radius: 10px; font-size: 16px"
+          >
+            Gửi đăng ký
+          </button>
         </form>
       </div>
     </div>
 
     <div class="toast-wrap" id="toastWrap"></div>
-    <button id="back-to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+    <button
+      id="back-to-top"
+      onclick="window.scrollTo({ top: 0, behavior: 'smooth' })"
+    >
+      ↑
+    </button>
 
     <main>
       <!-- TICKER -->
       <div class="ticker-wrap">
-        <div class="container d-flex align-items-center gap-3" style="max-width:1224px;overflow:hidden;">
+        <div
+          class="container d-flex align-items-center gap-3"
+          style="max-width: 1224px; overflow: hidden"
+        >
           <span class="ticker-label">🔴 NÓNG</span>
-          <div style="overflow:hidden;flex:1;"><div class="ticker-track" id="tickerTrack"></div></div>
+          <div style="overflow: hidden; flex: 1">
+            <div class="ticker-track" id="tickerTrack"></div>
+          </div>
         </div>
       </div>
 
       <!-- HERO -->
       <section class="news-hero text-white text-center">
-        <div class="container" style="max-width:1224px;position:relative;z-index:1;">
-          <div style="display:inline-block;background:rgba(255,255,255,.15);border-radius:20px;padding:4px 16px;font-size:12px;font-weight:700;letter-spacing:1px;margin-bottom:12px;">TIN TỨC &amp; SỰ KIỆN</div>
-          <h1 class="fw-bold mb-2" style="font-size:40px;letter-spacing:-.5px;">Tin tức Jellyfish Vietnam</h1>
-          <p style="font-size:17px;opacity:.88;margin-bottom:0;">Cập nhật những tin tức mới nhất về hoạt động, sự kiện và ưu đãi</p>
+        <div
+          class="container"
+          style="max-width: 1224px; position: relative; z-index: 1"
+        >
+          <div
+            style="
+              display: inline-block;
+              background: rgba(255, 255, 255, 0.15);
+              border-radius: 20px;
+              padding: 4px 16px;
+              font-size: 12px;
+              font-weight: 700;
+              letter-spacing: 1px;
+              margin-bottom: 12px;
+            "
+          >
+            TIN TỨC &amp; SỰ KIỆN
+          </div>
+          <h1
+            class="fw-bold mb-2"
+            style="font-size: 40px; letter-spacing: -0.5px"
+          >
+            Tin tức Jellyfish Vietnam
+          </h1>
+          <p style="font-size: 17px; opacity: 0.88; margin-bottom: 0">
+            Cập nhật những tin tức mới nhất về hoạt động, sự kiện và ưu đãi
+          </p>
         </div>
       </section>
 
       <!-- STATS -->
       <div class="stats-strip">
-        <div class="container d-flex align-items-stretch" style="max-width:1224px;padding:0;">
-          <div class="stat-item"><div class="stat-num">10,000+</div><div class="stat-label">Học viên</div></div>
-          <div class="stat-item"><div class="stat-num">92%</div><div class="stat-label">Tỷ lệ đậu JLPT</div></div>
-          <div class="stat-item"><div class="stat-num">8+</div><div class="stat-label">Năm kinh nghiệm</div></div>
-          <div class="stat-item"><div class="stat-num">3</div><div class="stat-label">Chi nhánh</div></div>
+        <div
+          class="container d-flex align-items-stretch"
+          style="max-width: 1224px; padding: 0"
+        >
+          <div class="stat-item">
+            <div class="stat-num">10,000+</div>
+            <div class="stat-label">Học viên</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-num">92%</div>
+            <div class="stat-label">Tỷ lệ đậu JLPT</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-num">8+</div>
+            <div class="stat-label">Năm kinh nghiệm</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-num">3</div>
+            <div class="stat-label">Chi nhánh</div>
+          </div>
         </div>
       </div>
 
       <!-- CATEGORY BAR -->
       <div class="category-bar">
-        <div class="container d-flex align-items-center gap-3 flex-wrap" style="max-width:1224px;">
-          <div class="d-flex flex-wrap gap-2 flex-grow-1" id="categoryBtns"></div>
+        <div
+          class="container d-flex align-items-center gap-3 flex-wrap"
+          style="max-width: 1224px"
+        >
+          <div
+            class="d-flex flex-wrap gap-2 flex-grow-1"
+            id="categoryBtns"
+          ></div>
           <select class="sort-select" id="sortSelect">
             <option value="newest">Mới nhất</option>
             <option value="views">Xem nhiều nhất</option>
@@ -336,27 +1446,48 @@
 
       <!-- FEATURED + TOP READ -->
       <section class="py-5 bg-white">
-        <div class="container" style="max-width:1224px;">
+        <div class="container" style="max-width: 1224px">
           <div class="row g-4">
             <div class="col-12 col-lg-7">
               <div class="section-title mb-4">🔥 Tin nổi bật</div>
               <div class="news-featured" onclick="openArticle(0)">
                 <div class="hot-badge">HOT</div>
-                <img id="featuredImg" src="https://jellyfish-vn.com/wp-content/uploads/2026/03/IMG_2812-1-1024x683.jpg" alt="" />
+                <img
+                  id="featuredImg"
+                  src="https://jellyfish-vn.com/wp-content/uploads/2026/03/IMG_2812-1-1024x683.jpg"
+                  alt=""
+                />
                 <div class="news-featured-overlay">
-                  <span class="news-tag" id="featuredTag" style="background:#f0c040;color:#1a1a1a;"></span>
+                  <span
+                    class="news-tag"
+                    id="featuredTag"
+                    style="background: #f0c040; color: #1a1a1a"
+                  ></span>
                   <h3 id="featuredTitle"></h3>
                   <p id="featuredSummary"></p>
                   <div class="d-flex align-items-center gap-3 mt-3">
-                    <span style="font-size:12px;opacity:.8;" id="featuredMeta"></span>
-                    <span style="font-size:13px;font-weight:700;text-decoration:underline;">Đọc tiếp →</span>
+                    <span
+                      style="font-size: 12px; opacity: 0.8"
+                      id="featuredMeta"
+                    ></span>
+                    <span
+                      style="
+                        font-size: 13px;
+                        font-weight: 700;
+                        text-decoration: underline;
+                      "
+                      >Đọc tiếp →</span
+                    >
                   </div>
                 </div>
               </div>
             </div>
             <div class="col-12 col-lg-5">
               <div class="section-title mb-4">📈 Đọc nhiều nhất</div>
-              <div class="bg-white rounded-3 border overflow-hidden" id="topReadList"></div>
+              <div
+                class="bg-white rounded-3 border overflow-hidden"
+                id="topReadList"
+              ></div>
             </div>
           </div>
         </div>
@@ -364,37 +1495,96 @@
 
       <!-- NEWS GRID -->
       <section class="py-5">
-        <div class="container" style="max-width:1224px;">
-          <div class="d-flex align-items-center justify-content-between mb-4 flex-wrap gap-2">
+        <div class="container" style="max-width: 1224px">
+          <div
+            class="d-flex align-items-center justify-content-between mb-4 flex-wrap gap-2"
+          >
             <div class="section-title">📰 Tất cả tin tức</div>
-            <span id="result-count" style="font-size:14px;color:#899197;"></span>
+            <span
+              id="result-count"
+              style="font-size: 14px; color: #899197"
+            ></span>
           </div>
-          <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4" id="news-grid"></div>
+          <div
+            class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4"
+            id="news-grid"
+          ></div>
           <div id="no-results">
-            <svg width="56" height="56" fill="none" stroke="#ccc" stroke-width="1.5" viewBox="0 0 24 24" style="display:block;margin:0 auto 16px"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-            <p style="font-size:18px;font-weight:600;margin-bottom:4px;">Không tìm thấy kết quả</p>
-            <p style="font-size:14px;">Thử từ khóa khác hoặc chọn danh mục khác.</p>
+            <svg
+              width="56"
+              height="56"
+              fill="none"
+              stroke="#ccc"
+              stroke-width="1.5"
+              viewBox="0 0 24 24"
+              style="display: block; margin: 0 auto 16px"
+            >
+              <circle cx="11" cy="11" r="8" />
+              <line x1="21" y1="21" x2="16.65" y2="16.65" />
+            </svg>
+            <p style="font-size: 18px; font-weight: 600; margin-bottom: 4px">
+              Không tìm thấy kết quả
+            </p>
+            <p style="font-size: 14px">
+              Thử từ khóa khác hoặc chọn danh mục khác.
+            </p>
           </div>
-          <div class="d-flex justify-content-center align-items-center gap-2 mt-5 flex-wrap" id="pagination"></div>
+          <div
+            class="d-flex justify-content-center align-items-center gap-2 mt-5 flex-wrap"
+            id="pagination"
+          ></div>
         </div>
       </section>
 
       <!-- NEWSLETTER -->
       <section class="py-5 bg-white">
-        <div class="container" style="max-width:1224px;">
+        <div class="container" style="max-width: 1224px">
           <div class="newsletter-section">
             <div class="row align-items-center g-4">
               <div class="col-12 col-md-6">
-                <div style="font-size:28px;margin-bottom:8px;">📬</div>
-                <h3 class="fw-bold mb-2" style="font-size:24px;">Nhận tin tức mới nhất</h3>
-                <p style="color:#555;font-size:15px;margin-bottom:0;">Đăng ký nhận bản tin hàng tuần — không spam, chỉ tin tức chất lượng về tiếng Nhật và Jellyfish Vietnam.</p>
+                <div style="font-size: 28px; margin-bottom: 8px">📬</div>
+                <h3 class="fw-bold mb-2" style="font-size: 24px">
+                  Nhận tin tức mới nhất
+                </h3>
+                <p style="color: #555; font-size: 15px; margin-bottom: 0">
+                  Đăng ký nhận bản tin hàng tuần — không spam, chỉ tin tức chất
+                  lượng về tiếng Nhật và Jellyfish Vietnam.
+                </p>
               </div>
               <div class="col-12 col-md-6">
-                <form onsubmit="submitNewsletter(event)" class="d-flex gap-2 flex-wrap">
-                  <input type="email" placeholder="Nhập địa chỉ email của bạn..." class="form-control rounded-pill" style="flex:1;min-width:200px;border:1.5px solid #c3e6cb;" required />
-                  <button type="submit" class="btn fw-bold text-white rounded-pill px-4" style="background:#237a37;white-space:nowrap;">Đăng ký</button>
+                <form
+                  onsubmit="submitNewsletter(event)"
+                  class="d-flex gap-2 flex-wrap"
+                >
+                  <input
+                    type="email"
+                    placeholder="Nhập địa chỉ email của bạn..."
+                    class="form-control rounded-pill"
+                    style="
+                      flex: 1;
+                      min-width: 200px;
+                      border: 1.5px solid #c3e6cb;
+                    "
+                    required
+                  />
+                  <button
+                    type="submit"
+                    class="btn fw-bold text-white rounded-pill px-4"
+                    style="background: #237a37; white-space: nowrap"
+                  >
+                    Đăng ký
+                  </button>
                 </form>
-                <p style="font-size:12px;color:#899197;margin-top:8px;margin-bottom:0;">✅ Hơn 3,200 người đã đăng ký · Hủy đăng ký bất cứ lúc nào</p>
+                <p
+                  style="
+                    font-size: 12px;
+                    color: #899197;
+                    margin-top: 8px;
+                    margin-bottom: 0;
+                  "
+                >
+                  ✅ Hơn 3,200 người đã đăng ký · Hủy đăng ký bất cứ lúc nào
+                </p>
               </div>
             </div>
           </div>
@@ -402,61 +1592,273 @@
       </section>
 
       <!-- CTA -->
-      <section class="py-5 text-center" style="background:linear-gradient(135deg,#237a37,#1b6530);">
-        <div class="container" style="max-width:640px;">
-          <h2 class="fw-bold text-white mb-2" style="font-size:30px;">Sẵn sàng bắt đầu hành trình tiếng Nhật?</h2>
-          <p class="text-white mb-4" style="opacity:.85;font-size:16px;">Đội ngũ tư vấn Jellyfish Vietnam luôn sẵn sàng hỗ trợ bạn chọn lộ trình phù hợp nhất.</p>
-          <button onclick="openRegModal()" class="btn fw-bold px-5 py-3" style="background:#fff;color:#237a37;border-radius:50px;font-size:18px;font-weight:800;box-shadow:0 8px 24px rgba(0,0,0,.2);">Đăng ký tư vấn miễn phí →</button>
+      <section
+        class="py-5 text-center"
+        style="background: linear-gradient(135deg, #237a37, #1b6530)"
+      >
+        <div class="container" style="max-width: 640px">
+          <h2 class="fw-bold text-white mb-2" style="font-size: 30px">
+            Sẵn sàng bắt đầu hành trình tiếng Nhật?
+          </h2>
+          <p class="text-white mb-4" style="opacity: 0.85; font-size: 16px">
+            Đội ngũ tư vấn Jellyfish Vietnam luôn sẵn sàng hỗ trợ bạn chọn lộ
+            trình phù hợp nhất.
+          </p>
+          <button
+            onclick="openRegModal()"
+            class="btn fw-bold px-5 py-3"
+            style="
+              background: #fff;
+              color: #237a37;
+              border-radius: 50px;
+              font-size: 18px;
+              font-weight: 800;
+              box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+            "
+          >
+            Đăng ký tư vấn miễn phí →
+          </button>
         </div>
       </section>
     </main>
 
     <!-- FOOTER -->
-    <footer class="py-5" style="background:#110c22;">
-      <div class="container" style="max-width:1224px;">
-        <div class="d-flex justify-content-between align-items-start flex-wrap gap-3 mb-3">
+    <footer class="py-5" style="background: #110c22">
+      <div class="container" style="max-width: 1224px">
+        <div
+          class="d-flex justify-content-between align-items-start flex-wrap gap-3 mb-3"
+        >
           <div>
-            <img src="img/logo-jf.svg" alt="Jellyfish Vietnam" style="height:56px;width:172px;object-fit:contain" />
-            <p class="mt-2 mb-0 text-white" style="font-size:16px;font-weight:800;">Expand your horizons</p>
+            <img
+              src="img/logo-jf.svg"
+              alt="Jellyfish Vietnam"
+              style="height: 56px; width: 172px; object-fit: contain"
+            />
+            <p
+              class="mt-2 mb-0 text-white"
+              style="font-size: 16px; font-weight: 800"
+            >
+              Expand your horizons
+            </p>
           </div>
           <nav>
             <ul class="list-unstyled d-flex flex-wrap gap-3 mb-0">
-              <li><a href="index.html" class="text-white text-decoration-none fw-semibold" style="font-size:15px;">Trang chủ</a></li>
-              <li><a href="about.html" class="text-white text-decoration-none fw-semibold" style="font-size:15px;">Về Jellyfish</a></li>
-              <li><a href="courses.html" class="text-white text-decoration-none fw-semibold" style="font-size:15px;">Khóa học</a></li>
-              <li><a href="curriculum.html" class="text-white text-decoration-none fw-semibold" style="font-size:15px;">Giáo trình</a></li>
-              <li><a href="blog.html" class="text-white text-decoration-none fw-semibold" style="font-size:15px;">Kiến thức</a></li>
-              <li><a href="news.html" class="text-white text-decoration-none fw-semibold" style="font-size:15px;">Tin tức</a></li>
+              <li>
+                <a
+                  href="index.html"
+                  class="text-white text-decoration-none fw-semibold"
+                  style="font-size: 15px"
+                  >Trang chủ</a
+                >
+              </li>
+              <li>
+                <a
+                  href="about.html"
+                  class="text-white text-decoration-none fw-semibold"
+                  style="font-size: 15px"
+                  >Về Jellyfish</a
+                >
+              </li>
+              <li>
+                <a
+                  href="courses.html"
+                  class="text-white text-decoration-none fw-semibold"
+                  style="font-size: 15px"
+                  >Khóa học</a
+                >
+              </li>
+              <li>
+                <a
+                  href="curriculum.html"
+                  class="text-white text-decoration-none fw-semibold"
+                  style="font-size: 15px"
+                  >Giáo trình</a
+                >
+              </li>
+              <li>
+                <a
+                  href="blog.html"
+                  class="text-white text-decoration-none fw-semibold"
+                  style="font-size: 15px"
+                  >Kiến thức</a
+                >
+              </li>
+              <li>
+                <a
+                  href="news.html"
+                  class="text-white text-decoration-none fw-semibold"
+                  style="font-size: 15px"
+                  >Tin tức</a
+                >
+              </li>
             </ul>
           </nav>
         </div>
-        <hr style="border-color:#2e293d;" />
+        <hr style="border-color: #2e293d" />
         <div class="row g-4 py-2">
           <div class="col-12 col-md-4">
-            <h5 class="fw-semibold mb-3 text-white" style="font-size:15px;">JELLYFISH JAPAN</h5>
-            <p class="d-flex align-items-start gap-3 mb-2" style="color:#b3b1b8;font-size:14px;line-height:22px;"><img src="img/diachiicon.png" alt="" style="width:18px;height:18px;flex-shrink:0;margin-top:2px;" />4F Westhill Building, Nishigotanda 2-24-4, Shinagawa, Tokyo, Japan</p>
-            <p class="d-flex align-items-start gap-3 mb-2" style="color:#b3b1b8;font-size:14px;line-height:22px;"><img src="img/mailicon.png" alt="" style="width:18px;height:18px;flex-shrink:0;margin-top:2px;" />job_info@jellyfish-g.co.jp</p>
-            <p class="d-flex align-items-start gap-3 mb-0" style="color:#b3b1b8;font-size:14px;line-height:22px;"><img src="img/callicon.png" alt="" style="width:18px;height:18px;flex-shrink:0;margin-top:2px;" />03-5437-0135</p>
+            <h5 class="fw-semibold mb-3 text-white" style="font-size: 15px">
+              JELLYFISH JAPAN
+            </h5>
+            <p
+              class="d-flex align-items-start gap-3 mb-2"
+              style="color: #b3b1b8; font-size: 14px; line-height: 22px"
+            >
+              <img
+                src="img/diachiicon.png"
+                alt=""
+                style="
+                  width: 18px;
+                  height: 18px;
+                  flex-shrink: 0;
+                  margin-top: 2px;
+                "
+              />4F Westhill Building, Nishigotanda 2-24-4, Shinagawa, Tokyo,
+              Japan
+            </p>
+            <p
+              class="d-flex align-items-start gap-3 mb-2"
+              style="color: #b3b1b8; font-size: 14px; line-height: 22px"
+            >
+              <img
+                src="img/mailicon.png"
+                alt=""
+                style="
+                  width: 18px;
+                  height: 18px;
+                  flex-shrink: 0;
+                  margin-top: 2px;
+                "
+              />job_info@jellyfish-g.co.jp
+            </p>
+            <p
+              class="d-flex align-items-start gap-3 mb-0"
+              style="color: #b3b1b8; font-size: 14px; line-height: 22px"
+            >
+              <img
+                src="img/callicon.png"
+                alt=""
+                style="
+                  width: 18px;
+                  height: 18px;
+                  flex-shrink: 0;
+                  margin-top: 2px;
+                "
+              />03-5437-0135
+            </p>
           </div>
           <div class="col-12 col-md-4">
-            <h5 class="fw-semibold mb-3 text-white" style="font-size:15px;">JELLYFISH VIỆT NAM</h5>
-            <p class="d-flex align-items-start gap-3 mb-2" style="color:#b3b1b8;font-size:14px;line-height:22px;"><img src="img/diachiicon.png" alt="" style="width:18px;height:18px;flex-shrink:0;margin-top:2px;" />Tầng 13, CMC Tower, 11 Duy Tân, Q. Cầu Giấy, TP. Hà Nội</p>
-            <p class="d-flex align-items-start gap-3 mb-2" style="color:#b3b1b8;font-size:14px;line-height:22px;"><img src="img/mailicon.png" alt="" style="width:18px;height:18px;flex-shrink:0;margin-top:2px;" />admin@jellyfish-vn.com</p>
-            <p class="d-flex align-items-start gap-3 mb-0" style="color:#b3b1b8;font-size:14px;line-height:22px;"><img src="img/callicon.png" alt="" style="width:18px;height:18px;flex-shrink:0;margin-top:2px;" />0243.7955.846</p>
+            <h5 class="fw-semibold mb-3 text-white" style="font-size: 15px">
+              JELLYFISH VIỆT NAM
+            </h5>
+            <p
+              class="d-flex align-items-start gap-3 mb-2"
+              style="color: #b3b1b8; font-size: 14px; line-height: 22px"
+            >
+              <img
+                src="img/diachiicon.png"
+                alt=""
+                style="
+                  width: 18px;
+                  height: 18px;
+                  flex-shrink: 0;
+                  margin-top: 2px;
+                "
+              />Tầng 13, CMC Tower, 11 Duy Tân, Q. Cầu Giấy, TP. Hà Nội
+            </p>
+            <p
+              class="d-flex align-items-start gap-3 mb-2"
+              style="color: #b3b1b8; font-size: 14px; line-height: 22px"
+            >
+              <img
+                src="img/mailicon.png"
+                alt=""
+                style="
+                  width: 18px;
+                  height: 18px;
+                  flex-shrink: 0;
+                  margin-top: 2px;
+                "
+              />admin@jellyfish-vn.com
+            </p>
+            <p
+              class="d-flex align-items-start gap-3 mb-0"
+              style="color: #b3b1b8; font-size: 14px; line-height: 22px"
+            >
+              <img
+                src="img/callicon.png"
+                alt=""
+                style="
+                  width: 18px;
+                  height: 18px;
+                  flex-shrink: 0;
+                  margin-top: 2px;
+                "
+              />0243.7955.846
+            </p>
           </div>
           <div class="col-12 col-md-4">
-            <h5 class="fw-semibold mb-3 text-white" style="font-size:15px;">CHI NHÁNH HẢI PHÒNG</h5>
-            <p class="d-flex align-items-start gap-3 mb-2" style="color:#b3b1b8;font-size:14px;line-height:22px;"><img src="img/diachiicon.png" alt="" style="width:18px;height:18px;flex-shrink:0;margin-top:2px;" />Tầng 3, tòa nhà Sholega, 275 Lạch Tray, Ngô Quyền, TP. Hải Phòng</p>
-            <p class="d-flex align-items-start gap-3 mb-0" style="color:#b3b1b8;font-size:14px;line-height:22px;"><img src="img/callicon.png" alt="" style="width:18px;height:18px;flex-shrink:0;margin-top:2px;" />0969.895.759</p>
+            <h5 class="fw-semibold mb-3 text-white" style="font-size: 15px">
+              CHI NHÁNH HẢI PHÒNG
+            </h5>
+            <p
+              class="d-flex align-items-start gap-3 mb-2"
+              style="color: #b3b1b8; font-size: 14px; line-height: 22px"
+            >
+              <img
+                src="img/diachiicon.png"
+                alt=""
+                style="
+                  width: 18px;
+                  height: 18px;
+                  flex-shrink: 0;
+                  margin-top: 2px;
+                "
+              />Tầng 3, tòa nhà Sholega, 275 Lạch Tray, Ngô Quyền, TP. Hải Phòng
+            </p>
+            <p
+              class="d-flex align-items-start gap-3 mb-0"
+              style="color: #b3b1b8; font-size: 14px; line-height: 22px"
+            >
+              <img
+                src="img/callicon.png"
+                alt=""
+                style="
+                  width: 18px;
+                  height: 18px;
+                  flex-shrink: 0;
+                  margin-top: 2px;
+                "
+              />0969.895.759
+            </p>
           </div>
         </div>
-        <hr style="border-color:#2e293d;" />
-        <div class="d-flex justify-content-between align-items-center flex-wrap gap-3">
-          <p class="mb-0" style="color:#b3b1b8;font-size:14px;">© 2026 Jellyfish Vietnam. All rights reserved.</p>
+        <hr style="border-color: #2e293d" />
+        <div
+          class="d-flex justify-content-between align-items-center flex-wrap gap-3"
+        >
+          <p class="mb-0" style="color: #b3b1b8; font-size: 14px">
+            © 2026 Jellyfish Vietnam. All rights reserved.
+          </p>
           <div class="d-flex gap-3">
-            <a href="#"><img src="img/yticon.png" alt="YouTube" style="width:24px;height:24px;object-fit:contain" /></a>
-            <a href="#"><img src="img/igicons.png" alt="Instagram" style="width:24px;height:24px;object-fit:contain" /></a>
-            <a href="#"><img src="img/fbicons.png" alt="Facebook" style="width:24px;height:24px;object-fit:contain" /></a>
+            <a href="#"
+              ><img
+                src="img/yticon.png"
+                alt="YouTube"
+                style="width: 24px; height: 24px; object-fit: contain"
+            /></a>
+            <a href="#"
+              ><img
+                src="img/igicons.png"
+                alt="Instagram"
+                style="width: 24px; height: 24px; object-fit: contain"
+            /></a>
+            <a href="#"
+              ><img
+                src="img/fbicons.png"
+                alt="Facebook"
+                style="width: 24px; height: 24px; object-fit: contain"
+            /></a>
           </div>
         </div>
       </div>
@@ -464,179 +1866,342 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-    const ARTICLES = [
-      { id:0, cat:'Sự kiện', featured:true, img:'https://jellyfish-vn.com/wp-content/uploads/2026/03/IMG_2812-1-1024x683.jpg',
-        title:'Jellyfish Vietnam khai trương chi nhánh mới tại TP. Hồ Chí Minh',
-        date:'05/06/2026', readTime:'5 phút đọc', views:3847, author:'Ban Truyền thông',
-        tags:['Chi nhánh mới','TP.HCM','Mở rộng'],
-        summary:'Đánh dấu bước phát triển lớn, Jellyfish Vietnam chính thức mở rộng hoạt động tại TP.HCM với cơ sở vật chất hiện đại và đội ngũ giáo viên chất lượng cao.',
-        content:`<p>Ngày 05/06/2026, Jellyfish Vietnam chính thức khai trương chi nhánh tại TP. Hồ Chí Minh, tầng 8, tòa nhà Vietcombank Tower, đường Công trường Mê Linh, Quận 1. Đây là bước tiến chiến lược quan trọng trong lộ trình mở rộng quy mô hoạt động toàn quốc.</p><h4>Cơ sở vật chất hiện đại</h4><p>Chi nhánh được đầu tư với tổng diện tích hơn 800m², gồm 12 phòng học trang bị màn hình tương tác, hệ thống âm thanh chuẩn Nhật Bản, phòng luyện nghe chuyên biệt và thư viện hơn 2.000 đầu sách tiếng Nhật.</p><h4>Đội ngũ giáo viên chất lượng cao</h4><p>Chi nhánh quy tụ 15 giáo viên, trong đó có 6 giáo viên bản ngữ đến từ các trường đại học hàng đầu tại Tokyo, Osaka và Kyoto.</p><ul><li>Lớp học offline tại chi nhánh: sáng – chiều – tối</li><li>Lớp học online kết hợp: linh hoạt theo lịch học viên</li><li>Tư vấn lộ trình học 1-1 hoàn toàn miễn phí</li><li>Ưu đãi khai trương: giảm 20% học phí cho 100 học viên đầu tiên</li></ul>` },
-      { id:1, cat:'Học bổng', img:'https://jellyfish-vn.com/wp-content/uploads/2025/07/Webinar-Chien-thuat-san-hoc-bong-toan-phan-cung-dai-hoc-Kyoto-1-1024x768.jpg',
-        title:'Chương trình học bổng JLPT 2026 – Cơ hội vàng cho học viên xuất sắc',
-        date:'01/06/2026', readTime:'3 phút đọc', views:2134, author:'Phòng Học vụ',
-        tags:['Học bổng','JLPT','2026'],
-        summary:'Jellyfish Vietnam công bố chương trình học bổng JLPT 2026 với tổng giá trị lên đến 500 triệu đồng, dành cho học viên đạt kết quả xuất sắc trong kỳ thi JLPT tháng 7.',
-        content:`<p>Jellyfish Vietnam chính thức công bố Chương trình Học bổng JLPT 2026 với tổng giá trị học bổng lên đến <strong>500 triệu đồng</strong>.</p><h4>Cơ cấu học bổng</h4><ul><li>Học bổng N1: Miễn 100% học phí cho 5 học viên điểm cao nhất</li><li>Học bổng N2: Giảm 70% học phí cho 10 học viên xuất sắc nhất</li><li>Học bổng N3: Giảm 50% học phí cho 15 học viên</li><li>Học bổng Tiềm năng: Giảm 30% cho học viên có tiến bộ vượt bậc nhất</li></ul><h4>Điều kiện tham gia</h4><p>Học viên đang theo học tại Jellyfish Vietnam, tham dự kỳ thi JLPT tháng 7/2026 và đạt điểm từ 100/180 trở lên (N3, N2) hoặc 110/180 trở lên (N1).</p>` },
-      { id:2, cat:'Khai giảng', img:'https://jellyfish-vn.com/wp-content/uploads/2025/09/Hoc-sinh-Viet-Nam-do-Kyoto-iUP-2025-1024x1024.png',
-        title:'Khai giảng lớp N3 tháng 7/2026 – Đăng ký ngay hôm nay!',
-        date:'28/05/2026', readTime:'2 phút đọc', views:1623, author:'Phòng Tuyển sinh',
-        tags:['N3','Khai giảng','Tháng 7'],
-        summary:'Lớp tiếng Nhật N3 tháng 7/2026 chính thức mở đăng ký với nhiều ưu đãi hấp dẫn. Số lượng chỉ 20 học viên/lớp, đăng ký sớm để giữ chỗ.',
-        content:`<p>Jellyfish Vietnam thông báo khai giảng lớp Tiếng Nhật N3 vào ngày <strong>07/07/2026</strong>.</p><h4>Thông tin khóa học</h4><ul><li>Khai giảng: 07/07/2026</li><li>Thời lượng: 6 tháng (180 giờ học)</li><li>Lịch học: Thứ 2–4–6 (19:00–21:00) hoặc Thứ 7–CN (8:00–12:00)</li><li>Học phí: 5.800.000 đồng (ưu đãi sớm: 4.900.000 đồng)</li><li>Sĩ số: Tối đa 20 học viên/lớp</li></ul><h4>Ưu đãi đăng ký sớm</h4><p>Đăng ký trước ngày 20/06/2026 sẽ được giảm ngay <strong>900.000 đồng</strong>, tặng kèm bộ tài liệu ôn thi N3 chính hãng và 3 buổi luyện đề miễn phí với giáo viên bản ngữ.</p>` },
-      { id:3, cat:'Hoạt động', img:'https://jellyfish-vn.com/wp-content/uploads/2026/01/web-1-1024x768.jpg',
-        title:'Ngày hội văn hóa Nhật Bản 2026 – Trải nghiệm không thể bỏ lỡ',
-        date:'20/05/2026', readTime:'4 phút đọc', views:2941, author:'Ban Truyền thông',
-        tags:['Văn hóa','Lễ hội','Nhật Bản'],
-        summary:'Ngày hội văn hóa Nhật Bản thường niên của Jellyfish Vietnam quy tụ hơn 500 học viên và khách tham quan, mang đến những trải nghiệm văn hóa xứ Phù Tang đặc sắc.',
-        content:`<p>Ngày 18/05/2026, Jellyfish Vietnam đã tổ chức thành công "Ngày hội Văn hóa Nhật Bản 2026" tại Trung tâm Hội nghị Quốc gia, Hà Nội.</p><h4>Các hoạt động nổi bật</h4><ul><li>Biểu diễn trà đạo (茶道) do nghệ nhân từ Kyoto trình bày</li><li>Workshop Origami và thư pháp Nhật Bản</li><li>Trải nghiệm mặc Yukata, Kimono và chụp ảnh kỷ niệm</li><li>Thi hát Karaoke tiếng Nhật với giải thưởng hấp dẫn</li><li>Gian hàng ẩm thực Nhật Bản: Takoyaki, Ramen, Matcha</li></ul>` },
-      { id:4, cat:'Sự kiện', img:'https://jellyfish-vn.com/wp-content/uploads/2026/01/Jellyfish-vietnam-1-1024x512.png',
-        title:'Giao lưu văn hóa Nhật – Việt: Kết nối trái tim, mở rộng tương lai',
-        date:'10/06/2026', readTime:'4 phút đọc', views:2412, author:'Ban Truyền thông',
-        tags:['Giao lưu','Văn hóa','Quốc tế'],
-        summary:'Chương trình giao lưu văn hóa đặc sắc giữa học viên Jellyfish và các bạn sinh viên Nhật Bản diễn ra thành công tốt đẹp tại Hà Nội.',
-        content:`<p>Ngày 08/06/2026, chương trình "Giao lưu văn hóa Nhật – Việt" do Jellyfish Vietnam phối hợp cùng Đại sứ quán Nhật Bản tổ chức đã diễn ra tại Hà Nội. Hơn 200 học viên từ các lớp N3, N2 và N1 đã có cơ hội gặp gỡ 50 sinh viên đến từ Tokyo và Osaka.</p><h4>Hoạt động giao lưu</h4><ul><li>Tranh luận song ngữ về chủ đề văn hóa và xã hội</li><li>Thi đấu trò chơi truyền thống Nhật Bản</li><li>Trình diễn nghệ thuật Taiko (trống Nhật Bản)</li><li>Tặng quà lưu niệm và kết bạn pen-pal quốc tế</li></ul>` },
-      { id:5, cat:'Học bổng', img:'https://jellyfish-vn.com/wp-content/uploads/2025/06/grdr-2025-06-01-185519.056-1-1024x683.jpg',
-        title:'Jellyfish Vietnam trao 20 suất học bổng cho học viên xuất sắc',
-        date:'08/06/2026', readTime:'3 phút đọc', views:1821, author:'Phòng Học vụ',
-        tags:['Học bổng','Trao thưởng','Kỷ niệm'],
-        summary:'Nhân dịp kỷ niệm thành lập, Jellyfish Vietnam trao tặng học bổng trị giá lên đến 50% học phí cho những học viên đạt thành tích cao nhất năm học 2025–2026.',
-        content:`<p>Trong buổi lễ kỷ niệm 8 năm thành lập (2018–2026), Jellyfish Vietnam trao học bổng cho 20 học viên xuất sắc nhất. Tổng giá trị hơn 160 triệu đồng.</p><h4>Danh sách học bổng</h4><ul><li>5 học bổng toàn phần (100% học phí) cho học viên đạt N1</li><li>8 học bổng 50% học phí cho học viên đạt N2 xuất sắc</li><li>7 học bổng khuyến học 30% cho học viên tiến bộ nhất</li></ul>` },
-      { id:6, cat:'Khai giảng', img:'https://jellyfish-vn.com/wp-content/uploads/2025/10/online-seminar-Study-in-Japan-with-the-E-Track-Program-%E2%80%93-The-First-Step-Toward-Global-Integration.png',
-        title:'Lớp N2 tháng 7 chính thức mở đăng ký – Số lượng có hạn!',
-        date:'05/06/2026', readTime:'2 phút đọc', views:1445, author:'Phòng Tuyển sinh',
-        tags:['N2','Khai giảng','Ưu đãi'],
-        summary:'Lớp học N2 chuyên sâu sắp khai giảng với giáo viên bản ngữ và giáo trình mới nhất. Đăng ký sớm để nhận ưu đãi đặc biệt.',
-        content:`<p>Jellyfish Vietnam thông báo khai giảng lớp Tiếng Nhật N2 vào ngày <strong>15/07/2026</strong>.</p><h4>Điểm khác biệt của khóa N2 Jellyfish</h4><ul><li>100% giáo viên bản ngữ, tốt nghiệp sư phạm tại Nhật Bản</li><li>Giáo trình độc quyền "Jellyfish N2 Master"</li><li>10 buổi luyện đề JLPT thực chiến</li><li>Nhóm hỗ trợ 24/7 trên Zalo/Line</li></ul><p><strong>Học phí ưu đãi:</strong> 7.200.000 đồng (giá gốc 8.500.000 đồng). Áp dụng cho 30 học viên đầu tiên trước ngày 30/06/2026.</p>` },
-      { id:7, cat:'Hoạt động', img:'https://jellyfish-vn.com/wp-content/uploads/2025/07/Signing-Ceremony-of-Strategic-Cooperation-between-Jellyfish-Vietnam-JSC-and-New-B-JSC-1024x686.jpeg',
-        title:'Học viên Jellyfish tham quan doanh nghiệp Nhật Bản tại Hà Nội',
-        date:'01/06/2026', readTime:'3 phút đọc', views:1102, author:'Ban Học vụ',
-        tags:['Tham quan','Doanh nghiệp','Thực tế'],
-        summary:'Chuyến tham quan thực tế tại các doanh nghiệp Nhật Bản giúp học viên trải nghiệm môi trường làm việc và nâng cao kỹ năng tiếng Nhật trong thực tiễn.',
-        content:`<p>Ngày 30/05/2026, Jellyfish Vietnam tổ chức chuyến tham quan tại 3 doanh nghiệp Nhật Bản tại Khu công nghiệp Thăng Long: Canon Vietnam, Panasonic Vietnam và Sumitomo Electric.</p><h4>Lợi ích từ chương trình</h4><ul><li>Tiếp xúc trực tiếp với môi trường làm việc văn hóa Nhật Bản</li><li>Thực hành tiếng Nhật trong các tình huống kinh doanh thực tế</li><li>Gặp gỡ và phỏng vấn thử với HR người Nhật</li><li>Tìm hiểu cơ hội thực tập và việc làm tại doanh nghiệp FDI Nhật Bản</li></ul>` },
-      { id:8, cat:'Thông báo', img:'https://jellyfish-vn.com/wp-content/uploads/2025/05/1-1-1024x683.png',
-        title:'Jellyfish Vietnam ra mắt ứng dụng học tiếng Nhật trên điện thoại',
-        date:'25/05/2026', readTime:'3 phút đọc', views:3219, author:'Ban Công nghệ',
-        tags:['App','Công nghệ','Học online'],
-        summary:'Ứng dụng học tập mới với hơn 5.000 bài tập tương tác, flashcard thông minh và lộ trình học cá nhân hóa giúp bạn tiến bộ nhanh hơn.',
-        content:`<p>Sau 18 tháng nghiên cứu và phát triển, Jellyfish Vietnam chính thức ra mắt ứng dụng di động <strong>"Jellyfish Learn"</strong> trên cả iOS và Android.</p><h4>Tính năng nổi bật</h4><ul><li>Hơn <strong>5.000 bài tập tương tác</strong> theo cấu trúc đề thi JLPT chính thức</li><li>Hệ thống Flashcard thông minh với thuật toán SRS</li><li>AI phân tích điểm yếu và đề xuất lộ trình học cá nhân hóa</li><li>Luyện nghe với giọng đọc bản ngữ chuẩn xác</li><li>Mini game học từ vựng và ngữ pháp theo dạng gamification</li></ul><p>Ứng dụng hiện <strong>miễn phí hoàn toàn</strong> cho tất cả học viên đang theo học tại Jellyfish Vietnam.</p>` },
-      { id:9, cat:'Sự kiện', img:'https://jellyfish-vn.com/wp-content/uploads/2025/05/hoi-thao-hoc-bong-quy-fast-retailing-1-1024x768.jpg',
-        title:'Hội thảo "Cơ hội việc làm tại Nhật Bản 2026" – Miễn phí tham dự',
-        date:'18/05/2026', readTime:'3 phút đọc', views:4134, author:'Ban Tư vấn',
-        tags:['Hội thảo','Việc làm','Nhật Bản'],
-        summary:'Buổi hội thảo chia sẻ về thị trường lao động Nhật Bản, yêu cầu tuyển dụng và các kỹ năng cần có để làm việc thành công tại xứ sở hoa anh đào.',
-        content:`<p>Ngày 25/05/2026, Jellyfish Vietnam phối hợp cùng JETRO tổ chức hội thảo "Cơ hội việc làm tại Nhật Bản 2026" tại khách sạn Melia Hà Nội. Sự kiện thu hút hơn 300 bạn trẻ tham dự.</p><h4>Nội dung hội thảo</h4><ul><li>Tổng quan thị trường lao động Nhật Bản 2026</li><li>Yêu cầu tuyển dụng thực tế từ các công ty Nhật Bản hàng đầu</li><li>Kinh nghiệm từ người Việt đang làm việc thành công tại Nhật</li><li>Các chương trình visa và quy trình xin việc tại Nhật Bản</li></ul><p>Điểm nhấn: phiên "Job Fair" mini với 8 doanh nghiệp Nhật Bản phỏng vấn trực tiếp. Kết quả, 12 học viên Jellyfish Vietnam đã nhận lời mời thử việc ngay tại sự kiện.</p>` },
-      { id:10, cat:'Thông báo', img:'https://jellyfish-vn.com/wp-content/uploads/2025/11/chuong-trinh-hoi-thao-online-cua-Dai-hoc-Kyoto-1.jpg',
-        title:'Thông báo lịch nghỉ lễ Quốc khánh 2/9/2026 và lịch học bù',
-        date:'15/05/2026', readTime:'2 phút đọc', views:891, author:'Phòng Hành chính',
-        tags:['Lịch nghỉ','Quốc khánh','Học bù'],
-        summary:'Jellyfish Vietnam thông báo lịch nghỉ lễ Quốc khánh 2/9/2026 và kế hoạch học bù cho toàn bộ học viên tại các cơ sở.',
-        content:`<p>Thực hiện quy định Nhà nước về nghỉ lễ Quốc khánh 2/9, Jellyfish Vietnam xin thông báo lịch nghỉ và học bù cho tất cả học viên tại Hà Nội, TP.HCM và Hải Phòng.</p><h4>Lịch nghỉ lễ</h4><ul><li>Nghỉ lễ: Thứ 3, ngày 02/09/2026</li><li>Các lớp ngày Thứ 3 sẽ được dời sang cuối tuần</li></ul><h4>Lịch học bù</h4><ul><li>Thứ 7, 05/09/2026: 8:00–10:00 (lớp sáng Thứ 3)</li><li>Chủ nhật, 06/09/2026: 14:00–16:00 (lớp chiều Thứ 3)</li><li>Thứ 7, 05/09/2026: 19:30–21:30 (lớp tối Thứ 3)</li></ul><p>Mọi thắc mắc liên hệ hotline: <strong>096.110.6466</strong>.</p>` },
-      { id:11, cat:'Sự kiện', img:'https://jellyfish-vn.com/wp-content/uploads/2025/06/Jellyfish-Vietnam-1024x778.png',
-        title:'Jellyfish Vietnam được vinh danh "Trung tâm Nhật ngữ uy tín nhất 2026"',
-        date:'10/05/2026', readTime:'3 phút đọc', views:5623, author:'Ban Truyền thông',
-        tags:['Giải thưởng','Uy tín','2026'],
-        summary:'Jellyfish Vietnam vinh dự nhận giải thưởng "Trung tâm Nhật ngữ uy tín nhất Việt Nam 2026" – năm thứ 3 liên tiếp – do Hiệp hội Giáo dục Tư thục Việt Nam trao tặng.',
-        content:`<p>Tối ngày 08/05/2026, Jellyfish Vietnam vinh dự nhận giải thưởng <strong>"Trung tâm Nhật ngữ uy tín nhất Việt Nam 2026"</strong> – năm thứ 3 liên tiếp.</p><h4>Tiêu chí đánh giá</h4><ul><li>Tỷ lệ học viên đạt JLPT: 92% (cao nhất ngành)</li><li>Chỉ số hài lòng học viên: 4.8/5 sao (khảo sát 2.400 học viên)</li><li>Đội ngũ giáo viên đạt chuẩn quốc tế 100%</li><li>Cam kết hoàn tiền nếu không đạt JLPT sau 1 lần thi</li></ul>` },
-      { id:12, cat:'Khai giảng', img:'https://jellyfish-vn.com/wp-content/uploads/2026/01/Fast-Retailing-Information-Sessions-2026-Eng-ver.png',
-        title:'Mở thêm lớp N5 dành cho người hoàn toàn mới bắt đầu học tiếng Nhật',
-        date:'05/05/2026', readTime:'2 phút đọc', views:2234, author:'Phòng Tuyển sinh',
-        tags:['N5','Cơ bản','Người mới'],
-        summary:'Jellyfish Vietnam mở thêm 3 lớp N5 buổi tối và cuối tuần để đáp ứng nhu cầu học tập ngày càng tăng cao của người mới bắt đầu.',
-        content:`<p>Jellyfish Vietnam quyết định mở thêm <strong>3 lớp N5 mới</strong> dành cho người hoàn toàn chưa biết tiếng Nhật, khai giảng tháng 7/2026.</p><h4>Lớp N5 Jellyfish dành cho ai?</h4><ul><li>Người hoàn toàn mới bắt đầu, chưa biết một chữ tiếng Nhật nào</li><li>Học sinh, sinh viên, người đi làm muốn thêm lợi thế nghề nghiệp</li></ul><h4>Cam kết đầu ra</h4><p>Sau 4 tháng học, sẵn sàng dự thi JLPT N5 với tỷ lệ đậu cam kết <strong>90%</strong>. Không đạt N5 sau lần thi đầu sẽ được học lại miễn phí.</p><p>Học phí ưu đãi: chỉ <strong>3.200.000 đồng</strong> cho 50 học viên đăng ký đầu tiên.</p>` }
-    ];
+      const ARTICLES = [
+        {
+          id: 0,
+          cat: "Sự kiện",
+          featured: true,
+          img: "https://jellyfish-vn.com/wp-content/uploads/2026/03/IMG_2812-1-1024x683.jpg",
+          title:
+            "Jellyfish Vietnam khai trương chi nhánh mới tại TP. Hồ Chí Minh",
+          date: "05/06/2026",
+          readTime: "5 phút đọc",
+          views: 3847,
+          author: "Ban Truyền thông",
+          tags: ["Chi nhánh mới", "TP.HCM", "Mở rộng"],
+          summary:
+            "Đánh dấu bước phát triển lớn, Jellyfish Vietnam chính thức mở rộng hoạt động tại TP.HCM với cơ sở vật chất hiện đại và đội ngũ giáo viên chất lượng cao.",
+          content: `<p>Ngày 05/06/2026, Jellyfish Vietnam chính thức khai trương chi nhánh tại TP. Hồ Chí Minh, tầng 8, tòa nhà Vietcombank Tower, đường Công trường Mê Linh, Quận 1. Đây là bước tiến chiến lược quan trọng trong lộ trình mở rộng quy mô hoạt động toàn quốc.</p><h4>Cơ sở vật chất hiện đại</h4><p>Chi nhánh được đầu tư với tổng diện tích hơn 800m², gồm 12 phòng học trang bị màn hình tương tác, hệ thống âm thanh chuẩn Nhật Bản, phòng luyện nghe chuyên biệt và thư viện hơn 2.000 đầu sách tiếng Nhật.</p><h4>Đội ngũ giáo viên chất lượng cao</h4><p>Chi nhánh quy tụ 15 giáo viên, trong đó có 6 giáo viên bản ngữ đến từ các trường đại học hàng đầu tại Tokyo, Osaka và Kyoto.</p><ul><li>Lớp học offline tại chi nhánh: sáng – chiều – tối</li><li>Lớp học online kết hợp: linh hoạt theo lịch học viên</li><li>Tư vấn lộ trình học 1-1 hoàn toàn miễn phí</li><li>Ưu đãi khai trương: giảm 20% học phí cho 100 học viên đầu tiên</li></ul>`,
+        },
+        {
+          id: 1,
+          cat: "Học bổng",
+          img: "https://jellyfish-vn.com/wp-content/uploads/2025/07/Webinar-Chien-thuat-san-hoc-bong-toan-phan-cung-dai-hoc-Kyoto-1-1024x768.jpg",
+          title:
+            "Chương trình học bổng JLPT 2026 – Cơ hội vàng cho học viên xuất sắc",
+          date: "01/06/2026",
+          readTime: "3 phút đọc",
+          views: 2134,
+          author: "Phòng Học vụ",
+          tags: ["Học bổng", "JLPT", "2026"],
+          summary:
+            "Jellyfish Vietnam công bố chương trình học bổng JLPT 2026 với tổng giá trị lên đến 500 triệu đồng, dành cho học viên đạt kết quả xuất sắc trong kỳ thi JLPT tháng 7.",
+          content: `<p>Jellyfish Vietnam chính thức công bố Chương trình Học bổng JLPT 2026 với tổng giá trị học bổng lên đến <strong>500 triệu đồng</strong>.</p><h4>Cơ cấu học bổng</h4><ul><li>Học bổng N1: Miễn 100% học phí cho 5 học viên điểm cao nhất</li><li>Học bổng N2: Giảm 70% học phí cho 10 học viên xuất sắc nhất</li><li>Học bổng N3: Giảm 50% học phí cho 15 học viên</li><li>Học bổng Tiềm năng: Giảm 30% cho học viên có tiến bộ vượt bậc nhất</li></ul><h4>Điều kiện tham gia</h4><p>Học viên đang theo học tại Jellyfish Vietnam, tham dự kỳ thi JLPT tháng 7/2026 và đạt điểm từ 100/180 trở lên (N3, N2) hoặc 110/180 trở lên (N1).</p>`,
+        },
+        {
+          id: 2,
+          cat: "Khai giảng",
+          img: "https://jellyfish-vn.com/wp-content/uploads/2025/09/Hoc-sinh-Viet-Nam-do-Kyoto-iUP-2025-1024x1024.png",
+          title: "Khai giảng lớp N3 tháng 7/2026 – Đăng ký ngay hôm nay!",
+          date: "28/05/2026",
+          readTime: "2 phút đọc",
+          views: 1623,
+          author: "Phòng Tuyển sinh",
+          tags: ["N3", "Khai giảng", "Tháng 7"],
+          summary:
+            "Lớp tiếng Nhật N3 tháng 7/2026 chính thức mở đăng ký với nhiều ưu đãi hấp dẫn. Số lượng chỉ 20 học viên/lớp, đăng ký sớm để giữ chỗ.",
+          content: `<p>Jellyfish Vietnam thông báo khai giảng lớp Tiếng Nhật N3 vào ngày <strong>07/07/2026</strong>.</p><h4>Thông tin khóa học</h4><ul><li>Khai giảng: 07/07/2026</li><li>Thời lượng: 6 tháng (180 giờ học)</li><li>Lịch học: Thứ 2–4–6 (19:00–21:00) hoặc Thứ 7–CN (8:00–12:00)</li><li>Học phí: 5.800.000 đồng (ưu đãi sớm: 4.900.000 đồng)</li><li>Sĩ số: Tối đa 20 học viên/lớp</li></ul><h4>Ưu đãi đăng ký sớm</h4><p>Đăng ký trước ngày 20/06/2026 sẽ được giảm ngay <strong>900.000 đồng</strong>, tặng kèm bộ tài liệu ôn thi N3 chính hãng và 3 buổi luyện đề miễn phí với giáo viên bản ngữ.</p>`,
+        },
+        {
+          id: 3,
+          cat: "Hoạt động",
+          img: "https://jellyfish-vn.com/wp-content/uploads/2026/01/web-1-1024x768.jpg",
+          title: "Ngày hội văn hóa Nhật Bản 2026 – Trải nghiệm không thể bỏ lỡ",
+          date: "20/05/2026",
+          readTime: "4 phút đọc",
+          views: 2941,
+          author: "Ban Truyền thông",
+          tags: ["Văn hóa", "Lễ hội", "Nhật Bản"],
+          summary:
+            "Ngày hội văn hóa Nhật Bản thường niên của Jellyfish Vietnam quy tụ hơn 500 học viên và khách tham quan, mang đến những trải nghiệm văn hóa xứ Phù Tang đặc sắc.",
+          content: `<p>Ngày 18/05/2026, Jellyfish Vietnam đã tổ chức thành công "Ngày hội Văn hóa Nhật Bản 2026" tại Trung tâm Hội nghị Quốc gia, Hà Nội.</p><h4>Các hoạt động nổi bật</h4><ul><li>Biểu diễn trà đạo (茶道) do nghệ nhân từ Kyoto trình bày</li><li>Workshop Origami và thư pháp Nhật Bản</li><li>Trải nghiệm mặc Yukata, Kimono và chụp ảnh kỷ niệm</li><li>Thi hát Karaoke tiếng Nhật với giải thưởng hấp dẫn</li><li>Gian hàng ẩm thực Nhật Bản: Takoyaki, Ramen, Matcha</li></ul>`,
+        },
+        {
+          id: 4,
+          cat: "Sự kiện",
+          img: "https://jellyfish-vn.com/wp-content/uploads/2026/01/Jellyfish-vietnam-1-1024x512.png",
+          title:
+            "Giao lưu văn hóa Nhật – Việt: Kết nối trái tim, mở rộng tương lai",
+          date: "10/06/2026",
+          readTime: "4 phút đọc",
+          views: 2412,
+          author: "Ban Truyền thông",
+          tags: ["Giao lưu", "Văn hóa", "Quốc tế"],
+          summary:
+            "Chương trình giao lưu văn hóa đặc sắc giữa học viên Jellyfish và các bạn sinh viên Nhật Bản diễn ra thành công tốt đẹp tại Hà Nội.",
+          content: `<p>Ngày 08/06/2026, chương trình "Giao lưu văn hóa Nhật – Việt" do Jellyfish Vietnam phối hợp cùng Đại sứ quán Nhật Bản tổ chức đã diễn ra tại Hà Nội. Hơn 200 học viên từ các lớp N3, N2 và N1 đã có cơ hội gặp gỡ 50 sinh viên đến từ Tokyo và Osaka.</p><h4>Hoạt động giao lưu</h4><ul><li>Tranh luận song ngữ về chủ đề văn hóa và xã hội</li><li>Thi đấu trò chơi truyền thống Nhật Bản</li><li>Trình diễn nghệ thuật Taiko (trống Nhật Bản)</li><li>Tặng quà lưu niệm và kết bạn pen-pal quốc tế</li></ul>`,
+        },
+        {
+          id: 5,
+          cat: "Học bổng",
+          img: "https://jellyfish-vn.com/wp-content/uploads/2025/06/grdr-2025-06-01-185519.056-1-1024x683.jpg",
+          title:
+            "Jellyfish Vietnam trao 20 suất học bổng cho học viên xuất sắc",
+          date: "08/06/2026",
+          readTime: "3 phút đọc",
+          views: 1821,
+          author: "Phòng Học vụ",
+          tags: ["Học bổng", "Trao thưởng", "Kỷ niệm"],
+          summary:
+            "Nhân dịp kỷ niệm thành lập, Jellyfish Vietnam trao tặng học bổng trị giá lên đến 50% học phí cho những học viên đạt thành tích cao nhất năm học 2025–2026.",
+          content: `<p>Trong buổi lễ kỷ niệm 8 năm thành lập (2018–2026), Jellyfish Vietnam trao học bổng cho 20 học viên xuất sắc nhất. Tổng giá trị hơn 160 triệu đồng.</p><h4>Danh sách học bổng</h4><ul><li>5 học bổng toàn phần (100% học phí) cho học viên đạt N1</li><li>8 học bổng 50% học phí cho học viên đạt N2 xuất sắc</li><li>7 học bổng khuyến học 30% cho học viên tiến bộ nhất</li></ul>`,
+        },
+        {
+          id: 6,
+          cat: "Khai giảng",
+          img: "https://jellyfish-vn.com/wp-content/uploads/2025/10/online-seminar-Study-in-Japan-with-the-E-Track-Program-%E2%80%93-The-First-Step-Toward-Global-Integration.png",
+          title: "Lớp N2 tháng 7 chính thức mở đăng ký – Số lượng có hạn!",
+          date: "05/06/2026",
+          readTime: "2 phút đọc",
+          views: 1445,
+          author: "Phòng Tuyển sinh",
+          tags: ["N2", "Khai giảng", "Ưu đãi"],
+          summary:
+            "Lớp học N2 chuyên sâu sắp khai giảng với giáo viên bản ngữ và giáo trình mới nhất. Đăng ký sớm để nhận ưu đãi đặc biệt.",
+          content: `<p>Jellyfish Vietnam thông báo khai giảng lớp Tiếng Nhật N2 vào ngày <strong>15/07/2026</strong>.</p><h4>Điểm khác biệt của khóa N2 Jellyfish</h4><ul><li>100% giáo viên bản ngữ, tốt nghiệp sư phạm tại Nhật Bản</li><li>Giáo trình độc quyền "Jellyfish N2 Master"</li><li>10 buổi luyện đề JLPT thực chiến</li><li>Nhóm hỗ trợ 24/7 trên Zalo/Line</li></ul><p><strong>Học phí ưu đãi:</strong> 7.200.000 đồng (giá gốc 8.500.000 đồng). Áp dụng cho 30 học viên đầu tiên trước ngày 30/06/2026.</p>`,
+        },
+        {
+          id: 7,
+          cat: "Hoạt động",
+          img: "https://jellyfish-vn.com/wp-content/uploads/2025/07/Signing-Ceremony-of-Strategic-Cooperation-between-Jellyfish-Vietnam-JSC-and-New-B-JSC-1024x686.jpeg",
+          title:
+            "Học viên Jellyfish tham quan doanh nghiệp Nhật Bản tại Hà Nội",
+          date: "01/06/2026",
+          readTime: "3 phút đọc",
+          views: 1102,
+          author: "Ban Học vụ",
+          tags: ["Tham quan", "Doanh nghiệp", "Thực tế"],
+          summary:
+            "Chuyến tham quan thực tế tại các doanh nghiệp Nhật Bản giúp học viên trải nghiệm môi trường làm việc và nâng cao kỹ năng tiếng Nhật trong thực tiễn.",
+          content: `<p>Ngày 30/05/2026, Jellyfish Vietnam tổ chức chuyến tham quan tại 3 doanh nghiệp Nhật Bản tại Khu công nghiệp Thăng Long: Canon Vietnam, Panasonic Vietnam và Sumitomo Electric.</p><h4>Lợi ích từ chương trình</h4><ul><li>Tiếp xúc trực tiếp với môi trường làm việc văn hóa Nhật Bản</li><li>Thực hành tiếng Nhật trong các tình huống kinh doanh thực tế</li><li>Gặp gỡ và phỏng vấn thử với HR người Nhật</li><li>Tìm hiểu cơ hội thực tập và việc làm tại doanh nghiệp FDI Nhật Bản</li></ul>`,
+        },
+        {
+          id: 8,
+          cat: "Thông báo",
+          img: "https://jellyfish-vn.com/wp-content/uploads/2025/05/1-1-1024x683.png",
+          title:
+            "Jellyfish Vietnam ra mắt ứng dụng học tiếng Nhật trên điện thoại",
+          date: "25/05/2026",
+          readTime: "3 phút đọc",
+          views: 3219,
+          author: "Ban Công nghệ",
+          tags: ["App", "Công nghệ", "Học online"],
+          summary:
+            "Ứng dụng học tập mới với hơn 5.000 bài tập tương tác, flashcard thông minh và lộ trình học cá nhân hóa giúp bạn tiến bộ nhanh hơn.",
+          content: `<p>Sau 18 tháng nghiên cứu và phát triển, Jellyfish Vietnam chính thức ra mắt ứng dụng di động <strong>"Jellyfish Learn"</strong> trên cả iOS và Android.</p><h4>Tính năng nổi bật</h4><ul><li>Hơn <strong>5.000 bài tập tương tác</strong> theo cấu trúc đề thi JLPT chính thức</li><li>Hệ thống Flashcard thông minh với thuật toán SRS</li><li>AI phân tích điểm yếu và đề xuất lộ trình học cá nhân hóa</li><li>Luyện nghe với giọng đọc bản ngữ chuẩn xác</li><li>Mini game học từ vựng và ngữ pháp theo dạng gamification</li></ul><p>Ứng dụng hiện <strong>miễn phí hoàn toàn</strong> cho tất cả học viên đang theo học tại Jellyfish Vietnam.</p>`,
+        },
+        {
+          id: 9,
+          cat: "Sự kiện",
+          img: "https://jellyfish-vn.com/wp-content/uploads/2025/05/hoi-thao-hoc-bong-quy-fast-retailing-1-1024x768.jpg",
+          title:
+            'Hội thảo "Cơ hội việc làm tại Nhật Bản 2026" – Miễn phí tham dự',
+          date: "18/05/2026",
+          readTime: "3 phút đọc",
+          views: 4134,
+          author: "Ban Tư vấn",
+          tags: ["Hội thảo", "Việc làm", "Nhật Bản"],
+          summary:
+            "Buổi hội thảo chia sẻ về thị trường lao động Nhật Bản, yêu cầu tuyển dụng và các kỹ năng cần có để làm việc thành công tại xứ sở hoa anh đào.",
+          content: `<p>Ngày 25/05/2026, Jellyfish Vietnam phối hợp cùng JETRO tổ chức hội thảo "Cơ hội việc làm tại Nhật Bản 2026" tại khách sạn Melia Hà Nội. Sự kiện thu hút hơn 300 bạn trẻ tham dự.</p><h4>Nội dung hội thảo</h4><ul><li>Tổng quan thị trường lao động Nhật Bản 2026</li><li>Yêu cầu tuyển dụng thực tế từ các công ty Nhật Bản hàng đầu</li><li>Kinh nghiệm từ người Việt đang làm việc thành công tại Nhật</li><li>Các chương trình visa và quy trình xin việc tại Nhật Bản</li></ul><p>Điểm nhấn: phiên "Job Fair" mini với 8 doanh nghiệp Nhật Bản phỏng vấn trực tiếp. Kết quả, 12 học viên Jellyfish Vietnam đã nhận lời mời thử việc ngay tại sự kiện.</p>`,
+        },
+        {
+          id: 10,
+          cat: "Thông báo",
+          img: "https://jellyfish-vn.com/wp-content/uploads/2025/11/chuong-trinh-hoi-thao-online-cua-Dai-hoc-Kyoto-1.jpg",
+          title: "Thông báo lịch nghỉ lễ Quốc khánh 2/9/2026 và lịch học bù",
+          date: "15/05/2026",
+          readTime: "2 phút đọc",
+          views: 891,
+          author: "Phòng Hành chính",
+          tags: ["Lịch nghỉ", "Quốc khánh", "Học bù"],
+          summary:
+            "Jellyfish Vietnam thông báo lịch nghỉ lễ Quốc khánh 2/9/2026 và kế hoạch học bù cho toàn bộ học viên tại các cơ sở.",
+          content: `<p>Thực hiện quy định Nhà nước về nghỉ lễ Quốc khánh 2/9, Jellyfish Vietnam xin thông báo lịch nghỉ và học bù cho tất cả học viên tại Hà Nội, TP.HCM và Hải Phòng.</p><h4>Lịch nghỉ lễ</h4><ul><li>Nghỉ lễ: Thứ 3, ngày 02/09/2026</li><li>Các lớp ngày Thứ 3 sẽ được dời sang cuối tuần</li></ul><h4>Lịch học bù</h4><ul><li>Thứ 7, 05/09/2026: 8:00–10:00 (lớp sáng Thứ 3)</li><li>Chủ nhật, 06/09/2026: 14:00–16:00 (lớp chiều Thứ 3)</li><li>Thứ 7, 05/09/2026: 19:30–21:30 (lớp tối Thứ 3)</li></ul><p>Mọi thắc mắc liên hệ hotline: <strong>096.110.6466</strong>.</p>`,
+        },
+        {
+          id: 11,
+          cat: "Sự kiện",
+          img: "https://jellyfish-vn.com/wp-content/uploads/2025/06/Jellyfish-Vietnam-1024x778.png",
+          title:
+            'Jellyfish Vietnam được vinh danh "Trung tâm Nhật ngữ uy tín nhất 2026"',
+          date: "10/05/2026",
+          readTime: "3 phút đọc",
+          views: 5623,
+          author: "Ban Truyền thông",
+          tags: ["Giải thưởng", "Uy tín", "2026"],
+          summary:
+            'Jellyfish Vietnam vinh dự nhận giải thưởng "Trung tâm Nhật ngữ uy tín nhất Việt Nam 2026" – năm thứ 3 liên tiếp – do Hiệp hội Giáo dục Tư thục Việt Nam trao tặng.',
+          content: `<p>Tối ngày 08/05/2026, Jellyfish Vietnam vinh dự nhận giải thưởng <strong>"Trung tâm Nhật ngữ uy tín nhất Việt Nam 2026"</strong> – năm thứ 3 liên tiếp.</p><h4>Tiêu chí đánh giá</h4><ul><li>Tỷ lệ học viên đạt JLPT: 92% (cao nhất ngành)</li><li>Chỉ số hài lòng học viên: 4.8/5 sao (khảo sát 2.400 học viên)</li><li>Đội ngũ giáo viên đạt chuẩn quốc tế 100%</li><li>Cam kết hoàn tiền nếu không đạt JLPT sau 1 lần thi</li></ul>`,
+        },
+        {
+          id: 12,
+          cat: "Khai giảng",
+          img: "https://jellyfish-vn.com/wp-content/uploads/2026/01/Fast-Retailing-Information-Sessions-2026-Eng-ver.png",
+          title:
+            "Mở thêm lớp N5 dành cho người hoàn toàn mới bắt đầu học tiếng Nhật",
+          date: "05/05/2026",
+          readTime: "2 phút đọc",
+          views: 2234,
+          author: "Phòng Tuyển sinh",
+          tags: ["N5", "Cơ bản", "Người mới"],
+          summary:
+            "Jellyfish Vietnam mở thêm 3 lớp N5 buổi tối và cuối tuần để đáp ứng nhu cầu học tập ngày càng tăng cao của người mới bắt đầu.",
+          content: `<p>Jellyfish Vietnam quyết định mở thêm <strong>3 lớp N5 mới</strong> dành cho người hoàn toàn chưa biết tiếng Nhật, khai giảng tháng 7/2026.</p><h4>Lớp N5 Jellyfish dành cho ai?</h4><ul><li>Người hoàn toàn mới bắt đầu, chưa biết một chữ tiếng Nhật nào</li><li>Học sinh, sinh viên, người đi làm muốn thêm lợi thế nghề nghiệp</li></ul><h4>Cam kết đầu ra</h4><p>Sau 4 tháng học, sẵn sàng dự thi JLPT N5 với tỷ lệ đậu cam kết <strong>90%</strong>. Không đạt N5 sau lần thi đầu sẽ được học lại miễn phí.</p><p>Học phí ưu đãi: chỉ <strong>3.200.000 đồng</strong> cho 50 học viên đăng ký đầu tiên.</p>`,
+        },
+      ];
 
-    const CATS = ['Sự kiện','Học bổng','Khai giảng','Hoạt động','Thông báo'];
-    const PER_PAGE = 6;
-    let curFilter='all', curSearch='', curSort='newest', curPage=1;
+      const CATS = [
+        "Sự kiện",
+        "Học bổng",
+        "Khai giảng",
+        "Hoạt động",
+        "Thông báo",
+      ];
+      const PER_PAGE = 6;
+      let curFilter = "all",
+        curSearch = "",
+        curSort = "newest",
+        curPage = 1;
 
-    function getViews(id) {
-      const s = JSON.parse(localStorage.getItem('jf_views')||'{}');
-      return s[id] || ARTICLES.find(a=>a.id===id)?.views || 0;
-    }
-    function incViews(id) {
-      const s = JSON.parse(localStorage.getItem('jf_views')||'{}');
-      s[id] = (s[id] || ARTICLES.find(a=>a.id===id)?.views || 0) + 1;
-      localStorage.setItem('jf_views', JSON.stringify(s));
-      return s[id];
-    }
-    function fv(v){ return v>=1000?(v/1000).toFixed(1).replace('.0','')+'k':String(v); }
+      function getViews(id) {
+        const s = JSON.parse(localStorage.getItem("jf_views") || "{}");
+        return s[id] || ARTICLES.find((a) => a.id === id)?.views || 0;
+      }
+      function incViews(id) {
+        const s = JSON.parse(localStorage.getItem("jf_views") || "{}");
+        s[id] = (s[id] || ARTICLES.find((a) => a.id === id)?.views || 0) + 1;
+        localStorage.setItem("jf_views", JSON.stringify(s));
+        return s[id];
+      }
+      function fv(v) {
+        return v >= 1000
+          ? (v / 1000).toFixed(1).replace(".0", "") + "k"
+          : String(v);
+      }
 
-    function initTicker(){
-      const hot = [...ARTICLES].sort((a,b)=>getViews(b.id)-getViews(a.id)).slice(0,6);
-      const items = [...hot,...hot].map(a=>`<span class="ticker-item" onclick="openArticle(${a.id})">📌 ${a.title}</span>`).join('');
-      document.getElementById('tickerTrack').innerHTML = items;
-    }
+      function initTicker() {
+        const hot = [...ARTICLES]
+          .sort((a, b) => getViews(b.id) - getViews(a.id))
+          .slice(0, 6);
+        const items = [...hot, ...hot]
+          .map(
+            (a) =>
+              `<span class="ticker-item" onclick="openArticle(${a.id})">📌 ${a.title}</span>`,
+          )
+          .join("");
+        document.getElementById("tickerTrack").innerHTML = items;
+      }
 
-    function initCats(){
-      const el = document.getElementById('categoryBtns');
-      let h = `<button class="category-btn active" data-filter="all">Tất cả <span class="badge-count">${ARTICLES.length}</span></button>`;
-      CATS.forEach(cat => {
-        const n = ARTICLES.filter(a=>a.cat===cat).length;
-        h += `<button class="category-btn" data-filter="${cat}">${cat} <span class="badge-count">${n}</span></button>`;
-      });
-      el.innerHTML = h;
-      el.querySelectorAll('.category-btn').forEach(btn => {
-        btn.addEventListener('click', function(){
-          el.querySelectorAll('.category-btn').forEach(b=>b.classList.remove('active'));
-          this.classList.add('active');
-          curFilter = this.dataset.filter; curPage = 1; renderGrid();
+      function initCats() {
+        const el = document.getElementById("categoryBtns");
+        let h = `<button class="category-btn active" data-filter="all">Tất cả <span class="badge-count">${ARTICLES.length}</span></button>`;
+        CATS.forEach((cat) => {
+          const n = ARTICLES.filter((a) => a.cat === cat).length;
+          h += `<button class="category-btn" data-filter="${cat}">${cat} <span class="badge-count">${n}</span></button>`;
         });
-      });
-    }
+        el.innerHTML = h;
+        el.querySelectorAll(".category-btn").forEach((btn) => {
+          btn.addEventListener("click", function () {
+            el.querySelectorAll(".category-btn").forEach((b) =>
+              b.classList.remove("active"),
+            );
+            this.classList.add("active");
+            curFilter = this.dataset.filter;
+            curPage = 1;
+            renderGrid();
+          });
+        });
+      }
 
-    function initFeatured(){
-      const a = ARTICLES[0];
-      document.getElementById('featuredTag').textContent = a.cat;
-      document.getElementById('featuredTitle').textContent = a.title;
-      document.getElementById('featuredSummary').textContent = a.summary;
-      document.getElementById('featuredMeta').textContent = `${a.date} · ${a.readTime} · ${fv(getViews(a.id))} lượt xem`;
-    }
+      function initFeatured() {
+        const a = ARTICLES[0];
+        document.getElementById("featuredTag").textContent = a.cat;
+        document.getElementById("featuredTitle").textContent = a.title;
+        document.getElementById("featuredSummary").textContent = a.summary;
+        document.getElementById("featuredMeta").textContent =
+          `${a.date} · ${a.readTime} · ${fv(getViews(a.id))} lượt xem`;
+      }
 
-    function initTopRead(){
-      const top = [...ARTICLES].sort((a,b)=>getViews(b.id)-getViews(a.id)).slice(0,4);
-      document.getElementById('topReadList').innerHTML = top.map((a,i)=>`
+      function initTopRead() {
+        const top = [...ARTICLES]
+          .sort((a, b) => getViews(b.id) - getViews(a.id))
+          .slice(0, 4);
+        document.getElementById("topReadList").innerHTML = top
+          .map(
+            (a, i) => `
         <div class="side-card" onclick="openArticle(${a.id})">
-          <div class="side-card-rank ${i===0?'hot':''}">${i+1}</div>
+          <div class="side-card-rank ${i === 0 ? "hot" : ""}">${i + 1}</div>
           <img src="${a.img}" alt="" />
           <div style="flex:1;min-width:0;">
             <span class="news-tag" style="font-size:10px;">${a.cat}</span>
             <h6 class="fw-bold mb-1" style="font-size:14px;line-height:1.4;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;">${a.title}</h6>
             <span style="font-size:12px;color:#adb5bd;">👁 ${fv(getViews(a.id))} · ${a.readTime}</span>
           </div>
-        </div>`).join('');
-    }
+        </div>`,
+          )
+          .join("");
+      }
 
-    function getFiltered(){
-      let list = ARTICLES.filter(a=>{
-        const mc = curFilter==='all' || a.cat===curFilter;
+      function getFiltered() {
+        let list = ARTICLES.filter((a) => {
+          const mc = curFilter === "all" || a.cat === curFilter;
+          const q = curSearch.toLowerCase();
+          const ms =
+            !q ||
+            a.title.toLowerCase().includes(q) ||
+            a.summary.toLowerCase().includes(q);
+          return mc && ms;
+        });
+        if (curSort === "views")
+          list = [...list].sort((a, b) => getViews(b.id) - getViews(a.id));
+        else if (curSort === "featured")
+          list = [...list].sort(
+            (a, b) => (b.featured ? 1 : 0) - (a.featured ? 1 : 0),
+          );
+        return list;
+      }
+
+      function hl(t, q) {
+        if (!q) return t;
+        return t.replace(
+          new RegExp(`(${q.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")})`, "gi"),
+          "<mark>$1</mark>",
+        );
+      }
+
+      function renderGrid() {
+        const list = getFiltered();
+        const total = Math.max(1, Math.ceil(list.length / PER_PAGE));
+        if (curPage > total) curPage = 1;
+        const s = (curPage - 1) * PER_PAGE;
+        const page = list.slice(s, s + PER_PAGE);
+        const grid = document.getElementById("news-grid");
+        const noR = document.getElementById("no-results");
+        const cnt = document.getElementById("result-count");
+        if (!list.length) {
+          grid.innerHTML = "";
+          noR.style.display = "block";
+          cnt.textContent = "";
+          renderPag(0, 0);
+          return;
+        }
+        noR.style.display = "none";
+        cnt.textContent = `Hiển thị ${s + 1}–${Math.min(s + PER_PAGE, list.length)} / ${list.length} bài viết`;
         const q = curSearch.toLowerCase();
-        const ms = !q || a.title.toLowerCase().includes(q) || a.summary.toLowerCase().includes(q);
-        return mc && ms;
-      });
-      if(curSort==='views') list=[...list].sort((a,b)=>getViews(b.id)-getViews(a.id));
-      else if(curSort==='featured') list=[...list].sort((a,b)=>(b.featured?1:0)-(a.featured?1:0));
-      return list;
-    }
-
-    function hl(t,q){
-      if(!q) return t;
-      return t.replace(new RegExp(`(${q.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')})`,'gi'),'<mark>$1</mark>');
-    }
-
-    function renderGrid(){
-      const list = getFiltered();
-      const total = Math.max(1,Math.ceil(list.length/PER_PAGE));
-      if(curPage>total) curPage=1;
-      const s = (curPage-1)*PER_PAGE;
-      const page = list.slice(s, s+PER_PAGE);
-      const grid = document.getElementById('news-grid');
-      const noR = document.getElementById('no-results');
-      const cnt = document.getElementById('result-count');
-      if(!list.length){ grid.innerHTML=''; noR.style.display='block'; cnt.textContent=''; renderPag(0,0); return; }
-      noR.style.display='none';
-      cnt.textContent = `Hiển thị ${s+1}–${Math.min(s+PER_PAGE,list.length)} / ${list.length} bài viết`;
-      const q = curSearch.toLowerCase();
-      grid.innerHTML = page.map(a=>`
+        grid.innerHTML = page
+          .map(
+            (a) => `
         <div class="col" onclick="openArticle(${a.id})">
           <div class="card news-card">
             <div class="card-img-wrap">
@@ -648,8 +2213,8 @@
                 <svg width="14" height="14" fill="none" stroke="#555" stroke-width="2" viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
                 <span class="author-name">${a.author}</span>
               </div>
-              <h5>${q?hl(a.title,q):a.title}</h5>
-              <p>${q?hl(a.summary,q):a.summary}</p>
+              <h5>${q ? hl(a.title, q) : a.title}</h5>
+              <p>${q ? hl(a.summary, q) : a.summary}</p>
               <div class="news-meta">
                 <span class="news-date">
                   <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
@@ -660,95 +2225,196 @@
               <button class="read-more-btn">Đọc thêm <span>→</span></button>
             </div>
           </div>
-        </div>`).join('');
-      renderPag(curPage, total);
-    }
+        </div>`,
+          )
+          .join("");
+        renderPag(curPage, total);
+      }
 
-    function renderPag(p,total){
-      const el = document.getElementById('pagination');
-      if(total<=1){el.innerHTML='';return;}
-      let h = `<button class="pagination-btn" onclick="goPage(${p-1})" ${p===1?'disabled':''}>‹</button>`;
-      for(let i=1;i<=total;i++) h+=`<button class="pagination-btn ${i===p?'active':''}" onclick="goPage(${i})">${i}</button>`;
-      h += `<button class="pagination-btn" onclick="goPage(${p+1})" ${p===total?'disabled':''}>›</button>`;
-      el.innerHTML = h;
-    }
+      function renderPag(p, total) {
+        const el = document.getElementById("pagination");
+        if (total <= 1) {
+          el.innerHTML = "";
+          return;
+        }
+        let h = `<button class="pagination-btn" onclick="goPage(${p - 1})" ${p === 1 ? "disabled" : ""}>‹</button>`;
+        for (let i = 1; i <= total; i++)
+          h += `<button class="pagination-btn ${i === p ? "active" : ""}" onclick="goPage(${i})">${i}</button>`;
+        h += `<button class="pagination-btn" onclick="goPage(${p + 1})" ${p === total ? "disabled" : ""}>›</button>`;
+        el.innerHTML = h;
+      }
 
-    function goPage(p){
-      const total = Math.ceil(getFiltered().length/PER_PAGE);
-      if(p<1||p>total) return;
-      curPage=p; renderGrid();
-      document.getElementById('news-grid').scrollIntoView({behavior:'smooth',block:'start'});
-    }
+      function goPage(p) {
+        const total = Math.ceil(getFiltered().length / PER_PAGE);
+        if (p < 1 || p > total) return;
+        curPage = p;
+        renderGrid();
+        document
+          .getElementById("news-grid")
+          .scrollIntoView({ behavior: "smooth", block: "start" });
+      }
 
-    document.getElementById('sortSelect').addEventListener('change',function(){ curSort=this.value; curPage=1; renderGrid(); });
+      document
+        .getElementById("sortSelect")
+        .addEventListener("change", function () {
+          curSort = this.value;
+          curPage = 1;
+          renderGrid();
+        });
 
-    let st;
-    document.getElementById('headerSearch').addEventListener('input',function(){
-      clearTimeout(st); st=setTimeout(()=>{ curSearch=this.value.trim(); curPage=1; renderGrid(); },280);
-    });
+      let st;
+      document
+        .getElementById("headerSearch")
+        .addEventListener("input", function () {
+          clearTimeout(st);
+          st = setTimeout(() => {
+            curSearch = this.value.trim();
+            curPage = 1;
+            renderGrid();
+          }, 280);
+        });
 
-    function openArticle(id){
-      const a = ARTICLES.find(x=>x.id===id); if(!a) return;
-      const v = incViews(id);
-      document.getElementById('modalImg').src = a.img;
-      document.getElementById('modalTag').textContent = a.cat;
-      document.getElementById('modalTitle').textContent = a.title;
-      document.getElementById('modalDate').textContent = a.date;
-      document.getElementById('modalReadTime').textContent = a.readTime;
-      document.getElementById('modalViews').textContent = fv(v);
-      document.getElementById('modalAuthor').textContent = a.author;
-      document.getElementById('modalContent').innerHTML = a.content;
-      document.getElementById('modalTags').innerHTML = (a.tags||[]).map(t=>`<span class="article-tag">#${t}</span>`).join('');
-      const rel = [...ARTICLES.filter(x=>x.id!==id&&x.cat===a.cat).slice(0,2), ...ARTICLES.filter(x=>x.id!==id&&x.cat!==a.cat).slice(0,1)];
-      document.getElementById('relatedArticles').innerHTML = rel.map(r=>`
+      function openArticle(id) {
+        const a = ARTICLES.find((x) => x.id === id);
+        if (!a) return;
+        const v = incViews(id);
+        document.getElementById("modalImg").src = a.img;
+        document.getElementById("modalTag").textContent = a.cat;
+        document.getElementById("modalTitle").textContent = a.title;
+        document.getElementById("modalDate").textContent = a.date;
+        document.getElementById("modalReadTime").textContent = a.readTime;
+        document.getElementById("modalViews").textContent = fv(v);
+        document.getElementById("modalAuthor").textContent = a.author;
+        document.getElementById("modalContent").innerHTML = a.content;
+        document.getElementById("modalTags").innerHTML = (a.tags || [])
+          .map((t) => `<span class="article-tag">#${t}</span>`)
+          .join("");
+        const rel = [
+          ...ARTICLES.filter((x) => x.id !== id && x.cat === a.cat).slice(0, 2),
+          ...ARTICLES.filter((x) => x.id !== id && x.cat !== a.cat).slice(0, 1),
+        ];
+        document.getElementById("relatedArticles").innerHTML = rel
+          .map(
+            (r) => `
         <div class="related-card" onclick="openArticle(${r.id})">
           <img src="${r.img}" alt="" />
           <div><h6>${r.title}</h6><span style="font-size:12px;color:#adb5bd;">${r.cat} · ${r.date}</span></div>
-        </div>`).join('');
-      const ov = document.getElementById('articleModal');
-      ov.classList.add('open'); document.body.style.overflow='hidden'; ov.scrollTop=0;
-      document.getElementById('readingProgress').style.width='0%';
-      renderGrid(); initTopRead();
-    }
+        </div>`,
+          )
+          .join("");
+        const ov = document.getElementById("articleModal");
+        ov.classList.add("open");
+        document.body.style.overflow = "hidden";
+        ov.scrollTop = 0;
+        document.getElementById("readingProgress").style.width = "0%";
+        renderGrid();
+        initTopRead();
+      }
 
-    document.getElementById('articleModal').addEventListener('scroll',function(){
-      const sc = this.scrollHeight-this.clientHeight;
-      document.getElementById('readingProgress').style.width=(sc>0?Math.min(100,(this.scrollTop/sc)*100):0)+'%';
-    });
+      document
+        .getElementById("articleModal")
+        .addEventListener("scroll", function () {
+          const sc = this.scrollHeight - this.clientHeight;
+          document.getElementById("readingProgress").style.width =
+            (sc > 0 ? Math.min(100, (this.scrollTop / sc) * 100) : 0) + "%";
+        });
 
-    function closeArticleModal(){ document.getElementById('articleModal').classList.remove('open'); document.body.style.overflow=''; }
-    document.getElementById('articleModal').addEventListener('click',function(e){if(e.target===this)closeArticleModal();});
+      function closeArticleModal() {
+        document.getElementById("articleModal").classList.remove("open");
+        document.body.style.overflow = "";
+      }
+      document
+        .getElementById("articleModal")
+        .addEventListener("click", function (e) {
+          if (e.target === this) closeArticleModal();
+        });
 
-    function openRegModal(){ document.getElementById('regModal').classList.add('open'); document.body.style.overflow='hidden'; }
-    function closeRegModal(){ document.getElementById('regModal').classList.remove('open'); document.body.style.overflow=''; }
-    const _rm=document.getElementById('regModal');if(_rm)_rm.addEventListener('click',function(e){if(e.target===this)closeRegModal();});
+      function openRegModal() {
+        document.getElementById("regModal").classList.add("open");
+        document.body.style.overflow = "hidden";
+      }
+      function closeRegModal() {
+        document.getElementById("regModal").classList.remove("open");
+        document.body.style.overflow = "";
+      }
+      const _rm = document.getElementById("regModal");
+      if (_rm)
+        _rm.addEventListener("click", function (e) {
+          if (e.target === this) closeRegModal();
+        });
 
-    function submitReg(e){ e.preventDefault(); closeRegModal(); showToast('success','✅ Đăng ký thành công! Chúng tôi sẽ liên hệ bạn trong 24 giờ.'); e.target.reset(); }
-    function submitNewsletter(e){ e.preventDefault(); e.target.querySelector('input').value=''; showToast('success','📬 Đăng ký nhận bản tin thành công!'); }
+      function submitReg(e) {
+        e.preventDefault();
+        closeRegModal();
+        showToast(
+          "success",
+          "✅ Đăng ký thành công! Chúng tôi sẽ liên hệ bạn trong 24 giờ.",
+        );
+        e.target.reset();
+      }
+      function submitNewsletter(e) {
+        e.preventDefault();
+        e.target.querySelector("input").value = "";
+        showToast("success", "📬 Đăng ký nhận bản tin thành công!");
+      }
 
-    function showToast(type,msg){
-      const w = document.getElementById('toastWrap');
-      const el = document.createElement('div');
-      el.className=`toast-item ${type}`; el.textContent=msg; w.appendChild(el);
-      requestAnimationFrame(()=>requestAnimationFrame(()=>el.classList.add('show')));
-      setTimeout(()=>{el.classList.remove('show');setTimeout(()=>el.remove(),400);},3500);
-    }
+      function showToast(type, msg) {
+        const w = document.getElementById("toastWrap");
+        const el = document.createElement("div");
+        el.className = `toast-item ${type}`;
+        el.textContent = msg;
+        w.appendChild(el);
+        requestAnimationFrame(() =>
+          requestAnimationFrame(() => el.classList.add("show")),
+        );
+        setTimeout(() => {
+          el.classList.remove("show");
+          setTimeout(() => el.remove(), 400);
+        }, 3500);
+      }
 
-    function copyLink(){ navigator.clipboard.writeText(window.location.href).then(()=>showToast('','🔗 Đã sao chép liên kết!')); }
+      function copyLink() {
+        navigator.clipboard
+          .writeText(window.location.href)
+          .then(() => showToast("", "🔗 Đã sao chép liên kết!"));
+      }
 
-    const hamburgerBtn=document.getElementById('hamburgerBtn');
-    const menuDrawer=document.getElementById('menuDrawer');
-    const menuOverlay=document.getElementById('menuOverlay');
-    function openMenu(){ menuDrawer.classList.add('open'); menuOverlay.classList.add('open'); document.body.style.overflow='hidden'; }
-    function closeMenu(){ menuDrawer.classList.remove('open'); menuOverlay.classList.remove('open'); document.body.style.overflow=''; }
-    hamburgerBtn.addEventListener('click',openMenu);
-    document.getElementById('menuCloseBtn').addEventListener('click',closeMenu);
-    menuOverlay.addEventListener('click',closeMenu);
+      const hamburgerBtn = document.getElementById("hamburgerBtn");
+      const menuDrawer = document.getElementById("menuDrawer");
+      const menuOverlay = document.getElementById("menuOverlay");
+      function openMenu() {
+        menuDrawer.classList.add("open");
+        menuOverlay.classList.add("open");
+        document.body.style.overflow = "hidden";
+      }
+      function closeMenu() {
+        menuDrawer.classList.remove("open");
+        menuOverlay.classList.remove("open");
+        document.body.style.overflow = "";
+      }
+      hamburgerBtn.addEventListener("click", openMenu);
+      document
+        .getElementById("menuCloseBtn")
+        .addEventListener("click", closeMenu);
+      menuOverlay.addEventListener("click", closeMenu);
 
-    window.addEventListener('scroll',()=>document.getElementById('back-to-top').classList.toggle('show',window.scrollY>400));
-    document.addEventListener('keydown',e=>{if(e.key==='Escape'){closeArticleModal();closeRegModal();}});
+      window.addEventListener("scroll", () =>
+        document
+          .getElementById("back-to-top")
+          .classList.toggle("show", window.scrollY > 400),
+      );
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") {
+          closeArticleModal();
+          closeRegModal();
+        }
+      });
 
-    initTicker(); initCats(); initFeatured(); initTopRead(); renderGrid();
+      initTicker();
+      initCats();
+      initFeatured();
+      initTopRead();
+      renderGrid();
     </script>
   </body>
 </html>
