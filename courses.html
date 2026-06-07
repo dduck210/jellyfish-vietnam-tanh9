@@ -148,6 +148,24 @@
         .search-bar-wrap {
           display: none !important;
         }
+        .stats-strip-item {
+          border-right: none;
+          border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+          width: 50%;
+          justify-content: center;
+        }
+        .stats-strip-item:nth-child(odd) {
+          border-right: 1px solid rgba(255, 255, 255, 0.15);
+        }
+        .stats-strip-item:nth-last-child(-n + 2) {
+          border-bottom: none;
+        }
+        .courses-hero {
+          padding: 48px 0 44px;
+        }
+        .why-item {
+          gap: 12px;
+        }
       }
 
       /* === HERO === */
@@ -437,6 +455,10 @@
         border-radius: 50px;
         margin: 3px;
       }
+      .level-tags-wrap {
+        margin-bottom: 16px;
+        width: 100%;
+      }
       .enroll-btn {
         display: block;
         background: var(--green);
@@ -453,7 +475,7 @@
           background 0.2s,
           transform 0.2s;
         margin-top: auto;
-        padding-top: 14px;
+        padding: 12px 20px;
       }
       .enroll-btn:hover {
         background: #1b6530;
@@ -1015,7 +1037,7 @@
                 Nhập môn — Nắm vững bảng chữ cái, từ vựng và ngữ pháp cơ bản
                 nhất.
               </p>
-              <div>
+              <div class="level-tags-wrap">
                 <span class="level-tag">~2 tháng</span
                 ><span class="level-tag">Sơ cấp</span
                 ><span class="level-tag">GV Nhật</span>
@@ -1032,7 +1054,7 @@
               <p class="level-desc">
                 Sơ trung cấp — Giao tiếp hàng ngày, mở rộng từ vựng và ngữ pháp.
               </p>
-              <div>
+              <div class="level-tags-wrap">
                 <span class="level-tag">~3 tháng</span
                 ><span class="level-tag">Sơ trung</span
                 ><span class="level-tag">GV Nhật</span>
@@ -1050,7 +1072,7 @@
                 Trung cấp — Đọc hiểu văn bản, nghe hiểu hội thoại thực tế đa
                 dạng.
               </p>
-              <div>
+              <div class="level-tags-wrap">
                 <span class="level-tag">~4 tháng</span
                 ><span class="level-tag">Trung cấp</span
                 ><span class="level-tag">GV Nhật</span>
@@ -1068,7 +1090,7 @@
                 Cao cấp — Chuẩn bị du học, làm việc tại Nhật, xử lý ngôn ngữ
                 chuyên sâu.
               </p>
-              <div>
+              <div class="level-tags-wrap">
                 <span class="level-tag">~5 tháng</span
                 ><span class="level-tag">Cao cấp</span
                 ><span class="level-tag">GV Nhật</span>
@@ -2129,7 +2151,7 @@
           class="d-flex justify-content-between align-items-center flex-wrap gap-3"
         >
           <p class="mb-0 small" style="color: #666">
-            © 2023 Jellyfish. All rights reserved.
+            © 2025 Jellyfish. All rights reserved.
           </p>
           <div class="d-flex gap-3">
             <a
