@@ -193,23 +193,24 @@
       .news-hero {
         background: linear-gradient(
           135deg,
-          #1b6530 0%,
-          #237a37 50%,
-          #2d9e48 100%
+          #1a5e2a 0%,
+          #237a37 55%,
+          #2d9348 100%
         );
-        padding: 52px 0 40px;
+        padding: 64px 0 52px;
         position: relative;
         overflow: hidden;
       }
       .news-hero::before {
         content: "";
         position: absolute;
-        top: -40px;
-        right: -60px;
-        width: 320px;
-        height: 320px;
-        background: rgba(255, 255, 255, 0.05);
+        top: -80px;
+        right: -80px;
+        width: 340px;
+        height: 340px;
+        background: rgba(255, 255, 255, 0.06);
         border-radius: 50%;
+        pointer-events: none;
       }
       /* STATS */
       .stats-strip {
@@ -946,6 +947,7 @@
         from { opacity: 0; transform: translateY(24px); }
         to   { opacity: 1; transform: none; }
       }
+      .hero-badge { display: inline-flex; align-items: center; gap: 8px; background: rgba(255,255,255,.15); border: 1px solid rgba(255,255,255,.3); backdrop-filter: blur(8px); border-radius: 50px; padding: 6px 16px; font-size: 13px; font-weight: 600; color: #fff; margin-bottom: 16px; }
       .hero-anim { animation: heroFadeUp 0.7s ease both; }
       .hero-anim.d1 { animation-delay: 0.1s; }
       .hero-anim.d2 { animation-delay: 0.25s; }
@@ -1405,42 +1407,29 @@
       </div>
 
       <!-- HERO -->
-      <section class="news-hero text-white text-center">
+      <section class="news-hero text-white">
         <div
           class="container"
           style="max-width: 1224px; position: relative; z-index: 1"
         >
-          <nav aria-label="breadcrumb" class="hero-anim d1" style="margin-bottom: 16px;">
-            <ol class="breadcrumb justify-content-center mb-0" style="font-size: 13px; opacity: 0.8;">
-              <li class="breadcrumb-item"><a href="index.html" class="text-white text-decoration-none">Trang chủ</a></li>
-              <li class="breadcrumb-item active text-white">Tin tức</li>
+          <nav aria-label="breadcrumb" class="hero-anim d1">
+            <ol class="breadcrumb mb-3" style="--bs-breadcrumb-divider:'›'">
+              <li class="breadcrumb-item"><a href="index.html" class="text-white text-decoration-none opacity-75">Trang chủ</a></li>
+              <li class="breadcrumb-item active text-white" aria-current="page">Tin tức</li>
             </ol>
           </nav>
-          <div
-            class="hero-anim d2"
-            style="
-              display: inline-block;
-              background: rgba(255, 255, 255, 0.15);
-              border: 1px solid rgba(255, 255, 255, 0.3);
-              backdrop-filter: blur(8px);
-              border-radius: 20px;
-              padding: 4px 16px;
-              font-size: 12px;
-              font-weight: 700;
-              letter-spacing: 1px;
-              margin-bottom: 12px;
-            "
-          >
-            TIN TỨC &amp; SỰ KIỆN
+          <div class="hero-badge hero-anim d1">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 20H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h10l6 6v8a2 2 0 0 1-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg>
+            Tin tức &amp; Sự kiện
           </div>
           <h1
-            class="fw-bold mb-2 hero-anim d3"
-            style="font-size: 40px; letter-spacing: -0.5px"
+            class="fw-bold mb-3 hero-anim d2"
+            style="font-size: clamp(26px, 4vw, 42px); line-height: 1.2;"
           >
             Tin tức Jellyfish Vietnam
           </h1>
-          <p class="hero-anim" style="font-size: 17px; opacity: 0.88; margin-bottom: 0; animation-delay: 0.55s;">
-            Cập nhật những tin tức mới nhất về hoạt động, sự kiện và ưu đãi
+          <p class="hero-anim d3" style="font-size: 16px; opacity: 0.88; margin-bottom: 0; max-width: 540px;">
+            Cập nhật những tin tức mới nhất về hoạt động, sự kiện và ưu đãi của Jellyfish Vietnam.
           </p>
         </div>
       </section>

@@ -172,10 +172,9 @@
       .courses-hero {
         background: linear-gradient(
           135deg,
-          #0f3d1c 0%,
-          #1b6530 40%,
-          #237a37 70%,
-          #2d9e48 100%
+          #1a5e2a 0%,
+          #237a37 55%,
+          #2d9348 100%
         );
         padding: 64px 0 52px;
         position: relative;
@@ -186,46 +185,48 @@
         position: absolute;
         top: -80px;
         right: -80px;
-        width: 400px;
-        height: 400px;
-        background: rgba(255, 255, 255, 0.05);
+        width: 340px;
+        height: 340px;
+        background: rgba(255, 255, 255, 0.06);
         border-radius: 50%;
+        pointer-events: none;
       }
       .courses-hero::after {
         content: "";
         position: absolute;
         bottom: -60px;
-        left: -60px;
-        width: 280px;
-        height: 280px;
+        left: -40px;
+        width: 260px;
+        height: 260px;
         background: rgba(255, 255, 255, 0.04);
         border-radius: 50%;
+        pointer-events: none;
       }
-      .hero-badge-pill {
-        display: inline-block;
+      .hero-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
         background: rgba(255, 255, 255, 0.15);
         border: 1px solid rgba(255, 255, 255, 0.3);
-        color: #fff;
-        font-size: 11px;
-        font-weight: 700;
-        letter-spacing: 2.5px;
-        text-transform: uppercase;
-        padding: 5px 16px;
+        backdrop-filter: blur(8px);
         border-radius: 50px;
-        margin-bottom: 14px;
+        padding: 6px 16px;
+        font-size: 13px;
+        font-weight: 600;
+        color: #fff;
+        margin-bottom: 16px;
       }
-      /* === HERO ANIMATE === */
-      .hero-text-animate {
-        animation: heroFadeUp 0.9s ease both;
+      .hero-anim {
+        animation: heroFadeUp 0.7s ease both;
       }
-      .hero-text-animate.d1 {
-        animation-delay: 0.2s;
+      .hero-anim.d1 {
+        animation-delay: 0.1s;
       }
-      .hero-text-animate.d2 {
+      .hero-anim.d2 {
+        animation-delay: 0.25s;
+      }
+      .hero-anim.d3 {
         animation-delay: 0.4s;
-      }
-      .hero-text-animate.d3 {
-        animation-delay: 0.6s;
       }
       @keyframes heroFadeUp {
         from {
@@ -855,9 +856,18 @@
         class="container"
         style="max-width: 1200px; position: relative; z-index: 1"
       >
-        <span class="hero-badge-pill hero-text-animate">Khóa học JLPT</span>
+        <nav aria-label="breadcrumb" class="hero-anim d1">
+          <ol class="breadcrumb mb-3" style="--bs-breadcrumb-divider:'›'">
+            <li class="breadcrumb-item"><a href="index.html" class="text-white text-decoration-none opacity-75">Trang chủ</a></li>
+            <li class="breadcrumb-item active text-white" aria-current="page">Khóa học</li>
+          </ol>
+        </nav>
+        <div class="hero-badge hero-anim d1">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+          Khóa học JLPT
+        </div>
         <h1
-          class="hero-text-animate d1"
+          class="hero-anim d2"
           style="
             font-size: clamp(26px, 4.5vw, 50px);
             font-weight: 900;
@@ -871,7 +881,7 @@
           >
         </h1>
         <p
-          class="hero-text-animate d2"
+          class="hero-anim d2"
           style="
             font-size: 15px;
             color: rgba(255, 255, 255, 0.88);
@@ -883,7 +893,7 @@
           Khóa học cấp tốc — rút ngắn thời gian còn 1/2 — cam kết đầu ra — giáo
           viên Nhật Bản trực tiếp giảng dạy.
         </p>
-        <div class="d-flex flex-wrap gap-3 hero-text-animate d3">
+        <div class="d-flex flex-wrap gap-3 hero-anim d3">
           <button
             onclick="openRegModal()"
             class="btn btn-light fw-bold px-4 py-2 rounded-3"
