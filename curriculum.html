@@ -157,10 +157,10 @@
         <input type="text" placeholder="Tìm kiếm tài liệu..." class="form-control rounded-pill" id="headerSearch" oninput="applyFilters()" />
       </div>
       <div class="d-flex align-items-center gap-2 flex-shrink-0">
-        <button class="btn btn-light border-0 rounded-circle p-2 d-none d-md-flex align-items-center justify-content-center cart-wrap" onclick="openCartToast()" style="width:40px;height:40px" title="Giỏ hàng">
+        <a href="cart.html" class="btn btn-light border-0 rounded-circle p-2 d-none d-md-flex align-items-center justify-content-center cart-wrap" style="width:40px;height:40px" title="Giỏ hàng">
           <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
           <span class="cart-badge" id="cartCount">0</span>
-        </button>
+        </a>
         <button onclick="openRegModal()" class="btn fw-bold text-white border-0 rounded-3 text-nowrap d-none d-md-inline-flex align-items-center px-3 py-2" style="background:var(--green)">ĐĂNG KÝ TƯ VẤN</button>
         <a href="tel:0961106466" class="btn fw-bold text-white text-decoration-none border-0 rounded-3 text-nowrap d-none d-md-inline-flex align-items-center px-3 py-2" style="background:#dc3545">
           <img src="img/Rectangle 77.png" alt="" style="width:16px;margin-right:6px" />096.110.6466
@@ -624,16 +624,16 @@
     // CART
     function addToCart(id) { const p = PRODUCTS.find(x => x.id === id); if (p) addToCartWithQty(p, 1); }
     function addToCartWithQty(p, qty) {
-      cartQty += qty;
+      let cart = JSON.parse(localStorage.getItem('jf_cart') || '[]');
+      const existing = cart.find(x => x.id === p.id);
+      if (existing) { existing.qty += qty; } else { cart.push({ id: p.id, title: p.title, img: p.img, price: p.price, orig: p.orig, label: p.label, disc: p.disc, qty: qty }); }
+      localStorage.setItem('jf_cart', JSON.stringify(cart));
+      cartQty = cart.reduce((s, x) => s + x.qty, 0);
       const badge = document.getElementById('cartCount');
       badge.textContent = cartQty;
       badge.style.display = 'flex';
       const short = p.title.length > 28 ? p.title.substring(0, 28) + '…' : p.title;
       showToast('✓ Đã thêm "' + short + '" vào giỏ', 'ok');
-    }
-    function openCartToast() {
-      if (cartQty === 0) { showToast('Giỏ hàng đang trống.', ''); return; }
-      showToast('Giỏ hàng: ' + cartQty + ' sản phẩm. Gọi 096.110.6466 để đặt hàng.', 'ok');
     }
 
     // TOAST
@@ -680,7 +680,12 @@
     }, { threshold: 0, rootMargin: '0px 0px -40px 0px' });
     document.querySelectorAll('.fade-up').forEach(el => _fuObs.observe(el));
 
-    // INIT
+    // INIT — sync cart badge from localStorage
+    (function() {
+      const saved = JSON.parse(localStorage.getItem('jf_cart') || '[]');
+      cartQty = saved.reduce((s, x) => s + x.qty, 0);
+      if (cartQty > 0) { const b = document.getElementById('cartCount'); b.textContent = cartQty; b.style.display = 'flex'; }
+    })();
     renderProducts(PRODUCTS);
     applyFilters();
   </script>
