@@ -146,6 +146,9 @@
         .desktop-search {
           display: none !important;
         }
+        .stats-strip-item { border-right: none; border-bottom: 1px solid rgba(255,255,255,.15); width: 50%; justify-content: center; }
+        .stats-strip-item:nth-child(odd) { border-right: 1px solid rgba(255,255,255,.15); }
+        .stats-strip-item:nth-last-child(-n+2) { border-bottom: none; }
       }
       /* TICKER */
       .ticker-wrap {
@@ -207,31 +210,19 @@
         border-radius: 50%;
         pointer-events: none;
       }
-      /* STATS */
-      .stats-strip {
-        background: #fff;
-        border-bottom: 1px solid #e9ecef;
-      }
-      .stat-item {
-        padding: 14px 24px;
-        border-right: 1px solid #f0f0f0;
-        text-align: center;
-        flex: 1;
-      }
-      .stat-item:last-child {
-        border-right: none;
-      }
-      .stat-num {
-        font-size: 22px;
-        font-weight: 800;
-        color: #237a37;
-        line-height: 1;
-      }
-      .stat-label {
-        font-size: 12px;
-        color: #899197;
-        margin-top: 3px;
-      }
+      /* STATS & PARTNER STRIP */
+      .stats-strip { background: var(--green); }
+      .stats-strip-item { padding: 18px 28px; display: flex; align-items: center; gap: 14px; border-right: 1px solid rgba(255,255,255,.2); }
+      .stats-strip-item:last-child { border-right: none; }
+      .stats-strip-number { font-size: 26px; font-weight: 800; color: #fff; line-height: 1; }
+      .stats-strip-label { font-size: 12px; color: rgba(255,255,255,.85); line-height: 1.4; }
+      .partner-strip { background: #fff; border-top: 1px solid #eee; border-bottom: 1px solid #eee; overflow: hidden; }
+      .partner-track { display: flex; animation: scrollPartner 30s linear infinite; width: max-content; }
+      .partner-track:hover { animation-play-state: paused; }
+      .partner-item { display: flex; align-items: center; gap: 10px; padding: 16px 36px; white-space: nowrap; font-size: 14px; font-weight: 700; color: #333; border-right: 1px solid #f0f0f0; transition: color .2s; }
+      .partner-item:hover { color: var(--green); }
+      .partner-dot { width: 7px; height: 7px; background: var(--green); border-radius: 50%; flex-shrink: 0; }
+      @keyframes scrollPartner { from { transform: translateX(0); } to { transform: translateX(-50%); } }
       /* CATEGORY */
       .category-bar {
         background: #fff;
@@ -1430,27 +1421,39 @@
       </section>
 
       <!-- STATS -->
-      <div class="stats-strip fade-up">
-        <div
-          class="container d-flex align-items-stretch"
-          style="max-width: 1224px; padding: 0"
-        >
-          <div class="stat-item">
-            <div class="stat-num">10,000+</div>
-            <div class="stat-label">Học viên</div>
+      <div class="stats-strip">
+        <div class="container-fluid px-0">
+          <div class="d-flex flex-wrap justify-content-center">
+            <div class="stats-strip-item"><div><div class="stats-strip-number">500+</div><div class="stats-strip-label">Học viên mỗi tháng</div></div></div>
+            <div class="stats-strip-item"><div><div class="stats-strip-number">60+</div><div class="stats-strip-label">Lớp khai giảng mỗi tháng</div></div></div>
+            <div class="stats-strip-item"><div><div class="stats-strip-number">15+</div><div class="stats-strip-label">Năm kinh nghiệm</div></div></div>
+            <div class="stats-strip-item"><div><div class="stats-strip-number">100%</div><div class="stats-strip-label">Học lại miễn phí</div></div></div>
           </div>
-          <div class="stat-item">
-            <div class="stat-num">92%</div>
-            <div class="stat-label">Tỷ lệ đậu JLPT</div>
-          </div>
-          <div class="stat-item">
-            <div class="stat-num">8+</div>
-            <div class="stat-label">Năm kinh nghiệm</div>
-          </div>
-          <div class="stat-item">
-            <div class="stat-num">3</div>
-            <div class="stat-label">Chi nhánh</div>
-          </div>
+        </div>
+      </div>
+      <!-- PARTNER STRIP -->
+      <div class="partner-strip py-1">
+        <div class="partner-track">
+          <div class="partner-item"><span class="partner-dot"></span>Đại học Kyoto</div>
+          <div class="partner-item"><span class="partner-dot"></span>Fast Retailing (UNIQLO)</div>
+          <div class="partner-item"><span class="partner-dot"></span>Tập đoàn FPT</div>
+          <div class="partner-item"><span class="partner-dot"></span>Đại học Waseda</div>
+          <div class="partner-item"><span class="partner-dot"></span>Honda Vietnam</div>
+          <div class="partner-item"><span class="partner-dot"></span>Đại học Keio</div>
+          <div class="partner-item"><span class="partner-dot"></span>Panasonic Vietnam</div>
+          <div class="partner-item"><span class="partner-dot"></span>Đại học Osaka</div>
+          <div class="partner-item"><span class="partner-dot"></span>Học viện Tochigi</div>
+          <div class="partner-item"><span class="partner-dot"></span>Đại học Ritsumeikan</div>
+          <div class="partner-item"><span class="partner-dot"></span>Đại học Kyoto</div>
+          <div class="partner-item"><span class="partner-dot"></span>Fast Retailing (UNIQLO)</div>
+          <div class="partner-item"><span class="partner-dot"></span>Tập đoàn FPT</div>
+          <div class="partner-item"><span class="partner-dot"></span>Đại học Waseda</div>
+          <div class="partner-item"><span class="partner-dot"></span>Honda Vietnam</div>
+          <div class="partner-item"><span class="partner-dot"></span>Đại học Keio</div>
+          <div class="partner-item"><span class="partner-dot"></span>Panasonic Vietnam</div>
+          <div class="partner-item"><span class="partner-dot"></span>Đại học Osaka</div>
+          <div class="partner-item"><span class="partner-dot"></span>Học viện Tochigi</div>
+          <div class="partner-item"><span class="partner-dot"></span>Đại học Ritsumeikan</div>
         </div>
       </div>
 
