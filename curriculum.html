@@ -45,7 +45,7 @@
       /* ===== HERO ===== */
       .curriculum-hero {
         background: linear-gradient(135deg, #1a5e2a 0%, #237a37 55%, #2d9348 100%);
-        padding: 72px 0 60px;
+        padding: 64px 0 52px;
         color: #fff;
         position: relative;
         overflow: hidden;
@@ -53,8 +53,8 @@
       .curriculum-hero::before {
         content: "";
         position: absolute;
-        top: -80px; right: -100px;
-        width: 400px; height: 400px;
+        top: -80px; right: -80px;
+        width: 340px; height: 340px;
         background: rgba(255,255,255,0.06);
         border-radius: 50%;
         pointer-events: none;
@@ -62,8 +62,8 @@
       .curriculum-hero::after {
         content: "";
         position: absolute;
-        bottom: -60px; left: -80px;
-        width: 280px; height: 280px;
+        bottom: -60px; left: -40px;
+        width: 260px; height: 260px;
         background: rgba(255,255,255,0.04);
         border-radius: 50%;
         pointer-events: none;
@@ -75,46 +75,35 @@
         background: rgba(255,255,255,0.15);
         border: 1px solid rgba(255,255,255,0.3);
         color: #fff;
-        padding: 6px 18px;
-        border-radius: 100px;
+        padding: 6px 16px;
+        border-radius: 50px;
         font-size: 13px;
         font-weight: 600;
-        margin-bottom: 20px;
+        margin-bottom: 16px;
         backdrop-filter: blur(8px);
       }
       .curriculum-hero h1 {
-        font-size: clamp(30px, 5vw, 50px);
+        font-size: clamp(26px, 4vw, 42px);
         font-weight: 800;
-        line-height: 1.15;
-        margin-bottom: 14px;
+        line-height: 1.2;
+        margin-bottom: 12px;
       }
       .curriculum-hero .hero-lead {
-        font-size: 17px;
+        font-size: 16px;
         opacity: 0.88;
-        max-width: 560px;
+        max-width: 540px;
         line-height: 1.7;
-        margin-bottom: 28px;
+        margin-bottom: 0;
       }
-      .hero-breadcrumb {
-        display: flex;
-        align-items: center;
-        gap: 8px;
-        font-size: 13px;
-        opacity: 0.72;
-      }
-      .hero-breadcrumb a { color: #fff; text-decoration: none; }
-      .hero-breadcrumb a:hover { opacity: 1; text-decoration: underline; }
-      .hero-breadcrumb span { opacity: 0.6; }
 
       @keyframes heroFadeUp {
         from { opacity: 0; transform: translateY(24px); }
         to { opacity: 1; transform: none; }
       }
-      .hero-anim { opacity: 0; animation: heroFadeUp 0.7s ease forwards; }
+      .hero-anim { opacity: 0; animation: heroFadeUp 0.7s ease both; }
       .hero-anim.d1 { animation-delay: 0.1s; }
       .hero-anim.d2 { animation-delay: 0.25s; }
       .hero-anim.d3 { animation-delay: 0.4s; }
-      .hero-anim.d4 { animation-delay: 0.55s; }
 
       /* ===== MAIN SECTION ===== */
       .curriculum-main { background: #f5f7f5; padding: 56px 0 72px; }
@@ -345,17 +334,18 @@
     <!-- ===== HERO ===== -->
     <section class="curriculum-hero">
       <div class="container" style="max-width:1200px;position:relative;z-index:1">
+        <nav aria-label="breadcrumb" class="hero-anim d1">
+          <ol class="breadcrumb mb-3" style="--bs-breadcrumb-divider:'›'">
+            <li class="breadcrumb-item"><a href="index.html" class="text-white text-decoration-none opacity-75">Trang chủ</a></li>
+            <li class="breadcrumb-item active text-white" aria-current="page">Giáo trình</li>
+          </ol>
+        </nav>
         <div class="hero-badge hero-anim d1">
           <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
           Tài liệu học tiếng Nhật chính thống
         </div>
         <h1 class="hero-anim d2">Giáo trình JLPT<br><span style="opacity:.82">Jellyfish Vietnam</span></h1>
         <p class="hero-lead hero-anim d3">Bộ giáo trình chuẩn hóa, được tuyển chọn và biên soạn bởi đội ngũ giáo viên Nhật Bản — đồng hành cùng bạn từ N5 đến N1.</p>
-        <div class="hero-breadcrumb hero-anim d4">
-          <a href="index.html">Trang chủ</a>
-          <span>›</span>
-          <span style="opacity:1;color:#fff">Giáo trình</span>
-        </div>
       </div>
     </section>
 

@@ -196,13 +196,8 @@
 
       /* HERO */
       .blog-hero {
-        background: linear-gradient(
-          135deg,
-          #1a5e2a 0%,
-          #237a37 55%,
-          #2d9348 100%
-        );
-        padding: 72px 0 60px;
+        background: linear-gradient(135deg, #1a5e2a 0%, #237a37 55%, #2d9348 100%);
+        padding: 64px 0 52px;
         color: #fff;
         position: relative;
         overflow: hidden;
@@ -211,9 +206,9 @@
         content: "";
         position: absolute;
         top: -80px;
-        right: -100px;
-        width: 400px;
-        height: 400px;
+        right: -80px;
+        width: 340px;
+        height: 340px;
         background: rgba(255, 255, 255, 0.06);
         border-radius: 50%;
         pointer-events: none;
@@ -222,9 +217,9 @@
         content: "";
         position: absolute;
         bottom: -60px;
-        left: -80px;
-        width: 280px;
-        height: 280px;
+        left: -40px;
+        width: 260px;
+        height: 260px;
         background: rgba(255, 255, 255, 0.04);
         border-radius: 50%;
         pointer-events: none;
@@ -236,39 +231,25 @@
         background: rgba(255, 255, 255, 0.15);
         border: 1px solid rgba(255, 255, 255, 0.3);
         color: #fff;
-        padding: 6px 18px;
-        border-radius: 100px;
+        padding: 6px 16px;
+        border-radius: 50px;
         font-size: 13px;
         font-weight: 600;
-        margin-bottom: 20px;
+        margin-bottom: 16px;
         backdrop-filter: blur(8px);
       }
       .blog-hero h1 {
-        font-size: clamp(30px, 5vw, 50px);
+        font-size: clamp(26px, 4vw, 42px);
         font-weight: 800;
-        line-height: 1.15;
-        margin-bottom: 14px;
+        line-height: 1.2;
+        margin-bottom: 12px;
       }
       .blog-hero .hero-lead {
-        font-size: 17px;
+        font-size: 16px;
         opacity: 0.88;
-        max-width: 600px;
+        max-width: 540px;
         line-height: 1.7;
-        margin-bottom: 28px;
-      }
-      .hero-breadcrumb {
-        display: flex;
-        align-items: center;
-        gap: 8px;
-        font-size: 13px;
-        opacity: 0.72;
-      }
-      .hero-breadcrumb a {
-        color: #fff;
-        text-decoration: none;
-      }
-      .hero-breadcrumb a:hover {
-        text-decoration: underline;
+        margin-bottom: 0;
       }
 
       @keyframes heroFadeUp {
@@ -283,7 +264,7 @@
       }
       .hero-anim {
         opacity: 0;
-        animation: heroFadeUp 0.7s ease forwards;
+        animation: heroFadeUp 0.7s ease both;
       }
       .hero-anim.d1 {
         animation-delay: 0.1s;
@@ -769,100 +750,310 @@
 
       /* ARTICLE READER MODAL */
       .art-ov {
-        position: fixed; inset: 0; background: rgba(0,0,0,.6);
-        z-index: 2000; display: flex; align-items: flex-start;
-        justify-content: center; padding: 20px; overflow-y: auto;
-        opacity: 0; pointer-events: none; transition: opacity .3s;
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.6);
+        z-index: 2000;
+        display: flex;
+        align-items: flex-start;
+        justify-content: center;
+        padding: 20px;
+        overflow-y: auto;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.3s;
       }
-      .art-ov.open { opacity: 1; pointer-events: all; }
+      .art-ov.open {
+        opacity: 1;
+        pointer-events: all;
+      }
       .art-box {
-        background: #fff; border-radius: 18px; max-width: 800px;
-        width: 100%; margin: auto; overflow: hidden;
+        background: #fff;
+        border-radius: 18px;
+        max-width: 800px;
+        width: 100%;
+        margin: auto;
+        overflow: hidden;
         transform: translateY(40px);
-        transition: transform .35s cubic-bezier(.4,0,.2,1);
+        transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
       }
-      .art-ov.open .art-box { transform: translateY(0); }
-      .art-rbar { height: 4px; background: var(--green); width: 0%; transition: width .1s; position: sticky; top: 0; z-index: 10; }
-      .art-hero { position: relative; height: 300px; overflow: hidden; }
-      .art-hero img { width: 100%; height: 100%; object-fit: cover; }
-      .art-hero-ov { position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,.6) 0%, transparent 55%); }
+      .art-ov.open .art-box {
+        transform: translateY(0);
+      }
+      .art-rbar {
+        height: 4px;
+        background: var(--green);
+        width: 0%;
+        transition: width 0.1s;
+        position: sticky;
+        top: 0;
+        z-index: 10;
+      }
+      .art-hero {
+        position: relative;
+        height: 300px;
+        overflow: hidden;
+      }
+      .art-hero img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      .art-hero-ov {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          to top,
+          rgba(0, 0, 0, 0.6) 0%,
+          transparent 55%
+        );
+      }
       .art-close-btn {
-        position: absolute; top: 14px; right: 14px;
-        background: rgba(255,255,255,.92); border: none; border-radius: 50%;
-        width: 36px; height: 36px; font-size: 18px; cursor: pointer;
-        display: flex; align-items: center; justify-content: center;
-        z-index: 5; transition: background .2s, transform .2s;
+        position: absolute;
+        top: 14px;
+        right: 14px;
+        background: rgba(255, 255, 255, 0.92);
+        border: none;
+        border-radius: 50%;
+        width: 36px;
+        height: 36px;
+        font-size: 18px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 5;
+        transition:
+          background 0.2s,
+          transform 0.2s;
       }
-      .art-close-btn:hover { background: #fff; transform: rotate(90deg); }
-      .art-body { padding: 28px 32px; }
-      .art-body h2 { font-size: 23px; font-weight: 800; line-height: 1.4; color: #111; margin-bottom: 12px; }
+      .art-close-btn:hover {
+        background: #fff;
+        transform: rotate(90deg);
+      }
+      .art-body {
+        padding: 28px 32px;
+      }
+      .art-body h2 {
+        font-size: 23px;
+        font-weight: 800;
+        line-height: 1.4;
+        color: #111;
+        margin-bottom: 12px;
+      }
       .art-meta-strip {
-        display: flex; flex-wrap: wrap; gap: 14px; align-items: center;
-        padding: 10px 0; border-top: 1px solid #f0f0f0;
-        border-bottom: 1px solid #f0f0f0; margin-bottom: 22px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 14px;
+        align-items: center;
+        padding: 10px 0;
+        border-top: 1px solid #f0f0f0;
+        border-bottom: 1px solid #f0f0f0;
+        margin-bottom: 22px;
       }
-      .art-meta-chip { font-size: 13px; color: #899197; display: flex; align-items: center; gap: 5px; }
-      .art-content p { font-size: 15px; line-height: 1.9; color: #3a3a3a; margin-bottom: 16px; }
+      .art-meta-chip {
+        font-size: 13px;
+        color: #899197;
+        display: flex;
+        align-items: center;
+        gap: 5px;
+      }
+      .art-content p {
+        font-size: 15px;
+        line-height: 1.9;
+        color: #3a3a3a;
+        margin-bottom: 16px;
+      }
       .art-content h4 {
-        font-size: 17px; font-weight: 700; color: var(--green);
-        margin: 24px 0 10px; padding-left: 12px; border-left: 4px solid var(--green);
+        font-size: 17px;
+        font-weight: 700;
+        color: var(--green);
+        margin: 24px 0 10px;
+        padding-left: 12px;
+        border-left: 4px solid var(--green);
       }
-      .art-content ul { padding-left: 20px; margin-bottom: 16px; }
-      .art-content ul li { font-size: 15px; line-height: 1.85; color: #3a3a3a; margin-bottom: 6px; }
-      .art-tags { display: flex; flex-wrap: wrap; gap: 8px; margin: 18px 0 0; }
+      .art-content ul {
+        padding-left: 20px;
+        margin-bottom: 16px;
+      }
+      .art-content ul li {
+        font-size: 15px;
+        line-height: 1.85;
+        color: #3a3a3a;
+        margin-bottom: 6px;
+      }
+      .art-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin: 18px 0 0;
+      }
       .art-tag {
-        font-size: 12px; font-weight: 600; padding: 4px 12px;
-        border-radius: 20px; background: #f0f8f1; color: var(--green);
-        border: 1px solid #c3e6cb; cursor: pointer; transition: all .2s;
+        font-size: 12px;
+        font-weight: 600;
+        padding: 4px 12px;
+        border-radius: 20px;
+        background: #f0f8f1;
+        color: var(--green);
+        border: 1px solid #c3e6cb;
+        cursor: pointer;
+        transition: all 0.2s;
       }
-      .art-tag:hover { background: var(--green); color: #fff; }
-      .art-share { display: flex; align-items: center; gap: 10px; margin-top: 22px; padding-top: 18px; border-top: 1px solid #f0f0f0; flex-wrap: wrap; }
+      .art-tag:hover {
+        background: var(--green);
+        color: #fff;
+      }
+      .art-share {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-top: 22px;
+        padding-top: 18px;
+        border-top: 1px solid #f0f0f0;
+        flex-wrap: wrap;
+      }
       .share-btn {
-        display: flex; align-items: center; gap: 6px; padding: 7px 14px;
-        border-radius: 8px; border: 1.5px solid #dee2e6; background: #fff;
-        font-size: 13px; font-weight: 600; cursor: pointer; transition: all .2s; color: #333;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        padding: 7px 14px;
+        border-radius: 8px;
+        border: 1.5px solid #dee2e6;
+        background: #fff;
+        font-size: 13px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.2s;
+        color: #333;
       }
-      .share-btn:hover { border-color: var(--green); color: var(--green); }
-      .art-related { padding: 22px 32px; background: #f8f9fa; border-top: 1px solid #eee; }
-      .art-related h5 { font-size: 15px; font-weight: 700; margin-bottom: 12px; color: #111; }
+      .share-btn:hover {
+        border-color: var(--green);
+        color: var(--green);
+      }
+      .art-related {
+        padding: 22px 32px;
+        background: #f8f9fa;
+        border-top: 1px solid #eee;
+      }
+      .art-related h5 {
+        font-size: 15px;
+        font-weight: 700;
+        margin-bottom: 12px;
+        color: #111;
+      }
       .art-rel-item {
-        display: flex; gap: 12px; align-items: flex-start;
-        padding: 10px; border-radius: 10px; cursor: pointer;
-        transition: background .2s; text-decoration: none;
+        display: flex;
+        gap: 12px;
+        align-items: flex-start;
+        padding: 10px;
+        border-radius: 10px;
+        cursor: pointer;
+        transition: background 0.2s;
+        text-decoration: none;
       }
-      .art-rel-item:hover { background: #edf7ee; }
-      .art-rel-item img { width: 72px; height: 58px; object-fit: cover; border-radius: 8px; flex-shrink: 0; }
-      .art-rel-title { font-size: 13px; font-weight: 600; line-height: 1.4; color: #1a1a1a; margin: 0 0 3px; }
-      .art-bottom-cta { padding: 22px 32px; background: linear-gradient(135deg, var(--green), #1b6530); text-align: center; }
-      .art-bottom-cta p { color: rgba(255,255,255,.85); font-size: 14px; margin-bottom: 10px; }
+      .art-rel-item:hover {
+        background: #edf7ee;
+      }
+      .art-rel-item img {
+        width: 72px;
+        height: 58px;
+        object-fit: cover;
+        border-radius: 8px;
+        flex-shrink: 0;
+      }
+      .art-rel-title {
+        font-size: 13px;
+        font-weight: 600;
+        line-height: 1.4;
+        color: #1a1a1a;
+        margin: 0 0 3px;
+      }
+      .art-bottom-cta {
+        padding: 22px 32px;
+        background: linear-gradient(135deg, var(--green), #1b6530);
+        text-align: center;
+      }
+      .art-bottom-cta p {
+        color: rgba(255, 255, 255, 0.85);
+        font-size: 14px;
+        margin-bottom: 10px;
+      }
       .art-bottom-cta button {
-        background: #fff; color: var(--green); border: none; border-radius: 10px;
-        padding: 10px 28px; font-size: 15px; font-weight: 800; cursor: pointer; transition: transform .2s;
+        background: #fff;
+        color: var(--green);
+        border: none;
+        border-radius: 10px;
+        padding: 10px 28px;
+        font-size: 15px;
+        font-weight: 800;
+        cursor: pointer;
+        transition: transform 0.2s;
       }
-      .art-bottom-cta button:hover { transform: scale(1.05); }
+      .art-bottom-cta button:hover {
+        transform: scale(1.05);
+      }
       /* TOAST */
-      .jf-toast-wrap { position: fixed; bottom: 28px; right: 28px; z-index: 9999; display: flex; flex-direction: column; gap: 10px; pointer-events: none; }
-      .jf-toast {
-        background: #1a1a1a; color: #fff; padding: 14px 20px; border-radius: 12px;
-        font-size: 14px; font-weight: 500; box-shadow: 0 8px 24px rgba(0,0,0,.2);
-        transform: translateX(130px); opacity: 0;
-        transition: all .35s cubic-bezier(.4,0,.2,1);
-        pointer-events: all; min-width: 240px;
+      .jf-toast-wrap {
+        position: fixed;
+        bottom: 28px;
+        right: 28px;
+        z-index: 9999;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        pointer-events: none;
       }
-      .jf-toast.show { transform: translateX(0); opacity: 1; }
-      .jf-toast.ok { background: var(--green); }
+      .jf-toast {
+        background: #1a1a1a;
+        color: #fff;
+        padding: 14px 20px;
+        border-radius: 12px;
+        font-size: 14px;
+        font-weight: 500;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+        transform: translateX(130px);
+        opacity: 0;
+        transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+        pointer-events: all;
+        min-width: 240px;
+      }
+      .jf-toast.show {
+        transform: translateX(0);
+        opacity: 1;
+      }
+      .jf-toast.ok {
+        background: var(--green);
+      }
       /* MOBILE */
       @media (max-width: 575px) {
-        .art-body { padding: 20px 18px; }
-        .art-related, .art-bottom-cta { padding: 18px; }
-        .art-hero { height: 200px; }
+        .art-body {
+          padding: 20px 18px;
+        }
+        .art-related,
+        .art-bottom-cta {
+          padding: 18px;
+        }
+        .art-hero {
+          height: 200px;
+        }
       }
       @media (max-width: 575px) {
-        .article-card { flex-direction: column; }
-        .article-img-wrap { width: 100%; height: 200px; }
-        .article-body { padding: 18px 20px; }
-        .blog-hero { padding: 48px 0 40px; }
-        .blog-main { padding: 36px 0 48px; }
+        .article-card {
+          flex-direction: column;
+        }
+        .article-img-wrap {
+          width: 100%;
+          height: 200px;
+        }
+        .article-body {
+          padding: 18px 20px;
+        }
+        .blog-hero {
+          padding: 48px 0 40px;
+        }
+        .blog-main {
+          padding: 36px 0 48px;
+        }
       }
       @media (max-width: 767px) {
         .blog-hero h1 {
@@ -1050,15 +1241,14 @@
         class="container"
         style="max-width: 1200px; position: relative; z-index: 1"
       >
+        <nav aria-label="breadcrumb" class="hero-anim d1">
+          <ol class="breadcrumb mb-3" style="--bs-breadcrumb-divider:'›'">
+            <li class="breadcrumb-item"><a href="index.html" class="text-white text-decoration-none opacity-75">Trang chủ</a></li>
+            <li class="breadcrumb-item active text-white" aria-current="page">Kiến thức hữu ích</li>
+          </ol>
+        </nav>
         <div class="hero-badge hero-anim d1">
-          <svg
-            width="14"
-            height="14"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2.5"
-            viewBox="0 0 24 24"
-          >
+          <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
             <path d="M12 20h9M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4Z" />
           </svg>
           Góc kiến thức
@@ -1068,11 +1258,6 @@
           Chia sẻ kinh nghiệm học tiếng Nhật, thông tin du học và bí quyết vượt
           JLPT từ đội ngũ giáo viên Jellyfish.
         </p>
-        <div class="hero-breadcrumb hero-anim d4">
-          <a href="index.html">Trang chủ</a>
-          <span>›</span>
-          <span style="opacity: 1; color: #fff">Kiến thức hữu ích</span>
-        </div>
       </div>
     </section>
 
@@ -1115,7 +1300,13 @@
                 </div>
                 <div class="article-body">
                   <span class="article-cat-badge">Du học Nhật Bản</span>
-                  <a href="#" class="article-title" onclick="event.preventDefault();openArticle(0)"
+                  <a
+                    href="#"
+                    class="article-title"
+                    onclick="
+                      event.preventDefault();
+                      openArticle(0);
+                    "
                     >10 Tiêu chí đánh giá trung tâm du học Nhật Bản uy tín</a
                   >
                   <div class="article-meta">
@@ -1138,7 +1329,13 @@
                     Bài viết này sẽ giúp bạn có cái nhìn tổng quan và đưa ra lựa
                     chọn đúng đắn nhất.
                   </p>
-                  <a href="#" class="article-read-link" onclick="event.preventDefault();openArticle(0)"
+                  <a
+                    href="#"
+                    class="article-read-link"
+                    onclick="
+                      event.preventDefault();
+                      openArticle(0);
+                    "
                     >Đọc thêm
                     <svg
                       width="15"
@@ -1162,7 +1359,13 @@
                 </div>
                 <div class="article-body">
                   <span class="article-cat-badge orange">Học bổng</span>
-                  <a href="#" class="article-title" onclick="event.preventDefault();openArticle(1)"
+                  <a
+                    href="#"
+                    class="article-title"
+                    onclick="
+                      event.preventDefault();
+                      openArticle(1);
+                    "
                     >Học bổng 100% ngành điều dưỡng tỉnh Fukui 2023 – 2024</a
                   >
                   <div class="article-meta">
@@ -1184,7 +1387,13 @@
                     là một trong những học bổng tốt nhất năm 2023 – 2024, mở ra
                     cơ hội sống và làm việc lâu dài tại Nhật Bản.
                   </p>
-                  <a href="#" class="article-read-link" onclick="event.preventDefault();openArticle(1)"
+                  <a
+                    href="#"
+                    class="article-read-link"
+                    onclick="
+                      event.preventDefault();
+                      openArticle(1);
+                    "
                     >Đọc thêm
                     <svg
                       width="15"
@@ -1208,7 +1417,13 @@
                 </div>
                 <div class="article-body">
                   <span class="article-cat-badge">Du học Nhật Bản</span>
-                  <a href="#" class="article-title" onclick="event.preventDefault();openArticle(2)"
+                  <a
+                    href="#"
+                    class="article-title"
+                    onclick="
+                      event.preventDefault();
+                      openArticle(2);
+                    "
                     >Trường Nhật ngữ First Study Osaka</a
                   >
                   <div class="article-meta">
@@ -1230,7 +1445,13 @@
                     đánh giá là một trong những trường có khả năng hỗ trợ học
                     sinh Việt Nam tốt nhất tại Nhật Bản.
                   </p>
-                  <a href="#" class="article-read-link" onclick="event.preventDefault();openArticle(2)"
+                  <a
+                    href="#"
+                    class="article-read-link"
+                    onclick="
+                      event.preventDefault();
+                      openArticle(2);
+                    "
                     >Đọc thêm
                     <svg
                       width="15"
@@ -1254,7 +1475,13 @@
                 </div>
                 <div class="article-body">
                   <span class="article-cat-badge">Du học Nhật Bản</span>
-                  <a href="#" class="article-title" onclick="event.preventDefault();openArticle(3)"
+                  <a
+                    href="#"
+                    class="article-title"
+                    onclick="
+                      event.preventDefault();
+                      openArticle(3);
+                    "
                     >Tổng chi phí du học Nhật Bản là bao nhiêu?</a
                   >
                   <div class="article-meta">
@@ -1276,7 +1503,13 @@
                     Cùng Jellyfish tìm hiểu chi tiết các khoản học phí, sinh
                     hoạt phí và những khoản cần chuẩn bị trước khi đi.
                   </p>
-                  <a href="#" class="article-read-link" onclick="event.preventDefault();openArticle(3)"
+                  <a
+                    href="#"
+                    class="article-read-link"
+                    onclick="
+                      event.preventDefault();
+                      openArticle(3);
+                    "
                     >Đọc thêm
                     <svg
                       width="15"
@@ -1300,7 +1533,13 @@
                 </div>
                 <div class="article-body">
                   <span class="article-cat-badge orange">Học bổng</span>
-                  <a href="#" class="article-title" onclick="event.preventDefault();openArticle(4)"
+                  <a
+                    href="#"
+                    class="article-title"
+                    onclick="
+                      event.preventDefault();
+                      openArticle(4);
+                    "
                     >Học bổng toàn phần ngành điều dưỡng tại Hokkaido – Kỳ
                     4/2024</a
                   >
@@ -1323,7 +1562,13 @@
                     bổng du học có giá trị nhất hiện nay, hỗ trợ toàn bộ chi phí
                     học tập và sinh hoạt trong suốt thời gian học.
                   </p>
-                  <a href="#" class="article-read-link" onclick="event.preventDefault();openArticle(4)"
+                  <a
+                    href="#"
+                    class="article-read-link"
+                    onclick="
+                      event.preventDefault();
+                      openArticle(4);
+                    "
                     >Đọc thêm
                     <svg
                       width="15"
@@ -1340,15 +1585,59 @@
             </div>
 
             <!-- Result count -->
-            <div class="d-flex align-items-center mt-3 fade-up" id="resultCountWrap">
-              <p id="resultCount" class="mb-0" style="font-size:14px;color:#888;"></p>
+            <div
+              class="d-flex align-items-center mt-3 fade-up"
+              id="resultCountWrap"
+            >
+              <p
+                id="resultCount"
+                class="mb-0"
+                style="font-size: 14px; color: #888"
+              ></p>
             </div>
             <!-- No results -->
-            <div id="noResults" style="display:none;text-align:center;padding:48px 0;color:#aaa;">
-              <svg width="48" height="48" fill="none" stroke="#ccc" stroke-width="1.5" viewBox="0 0 24 24" style="display:block;margin:0 auto 12px"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-              <p style="font-size:16px;font-weight:600;margin-bottom:4px">Không tìm thấy bài viết</p>
-              <p style="font-size:14px">Thử từ khóa khác hoặc chọn danh mục khác.</p>
-              <button onclick="resetSearch()" style="margin-top:8px;padding:8px 22px;border:1.5px solid var(--green);background:#fff;color:var(--green);border-radius:8px;font-weight:600;cursor:pointer;">Xem tất cả</button>
+            <div
+              id="noResults"
+              style="
+                display: none;
+                text-align: center;
+                padding: 48px 0;
+                color: #aaa;
+              "
+            >
+              <svg
+                width="48"
+                height="48"
+                fill="none"
+                stroke="#ccc"
+                stroke-width="1.5"
+                viewBox="0 0 24 24"
+                style="display: block; margin: 0 auto 12px"
+              >
+                <circle cx="11" cy="11" r="8" />
+                <line x1="21" y1="21" x2="16.65" y2="16.65" />
+              </svg>
+              <p style="font-size: 16px; font-weight: 600; margin-bottom: 4px">
+                Không tìm thấy bài viết
+              </p>
+              <p style="font-size: 14px">
+                Thử từ khóa khác hoặc chọn danh mục khác.
+              </p>
+              <button
+                onclick="resetSearch()"
+                style="
+                  margin-top: 8px;
+                  padding: 8px 22px;
+                  border: 1.5px solid var(--green);
+                  background: #fff;
+                  color: var(--green);
+                  border-radius: 8px;
+                  font-weight: 600;
+                  cursor: pointer;
+                "
+              >
+                Xem tất cả
+              </button>
             </div>
           </div>
 
@@ -1359,8 +1648,20 @@
               <div class="sidebar-card fade-up">
                 <p class="sidebar-card-title">Tìm kiếm</p>
                 <div class="sidebar-search">
-                  <input type="text" id="sidebarSearchInput" placeholder="Nhập từ khóa..." oninput="doSearch(this.value)" />
-                  <button aria-label="Tìm kiếm" onclick="doSearch(document.getElementById('sidebarSearchInput').value)">
+                  <input
+                    type="text"
+                    id="sidebarSearchInput"
+                    placeholder="Nhập từ khóa..."
+                    oninput="doSearch(this.value)"
+                  />
+                  <button
+                    aria-label="Tìm kiếm"
+                    onclick="
+                      doSearch(
+                        document.getElementById('sidebarSearchInput').value,
+                      )
+                    "
+                  >
                     <svg
                       width="16"
                       height="16"
@@ -1392,25 +1693,70 @@
               <!-- Recent posts -->
               <div class="sidebar-card fade-up">
                 <p class="sidebar-card-title">Bài đăng gần đây</p>
-                <a href="#" class="recent-item" onclick="event.preventDefault();openArticle(5)">
+                <a
+                  href="#"
+                  class="recent-item"
+                  onclick="
+                    event.preventDefault();
+                    openArticle(5);
+                  "
+                >
                   <span class="recent-num r1">1</span>
-                  <span class="recent-title">Từ vựng tiếng Nhật chủ đề mùa đông</span>
+                  <span class="recent-title"
+                    >Từ vựng tiếng Nhật chủ đề mùa đông</span
+                  >
                 </a>
-                <a href="#" class="recent-item" onclick="event.preventDefault();openArticle(6)">
+                <a
+                  href="#"
+                  class="recent-item"
+                  onclick="
+                    event.preventDefault();
+                    openArticle(6);
+                  "
+                >
                   <span class="recent-num r2">2</span>
-                  <span class="recent-title">Từ vựng tiếng Nhật chủ đề Giáng sinh</span>
+                  <span class="recent-title"
+                    >Từ vựng tiếng Nhật chủ đề Giáng sinh</span
+                  >
                 </a>
-                <a href="#" class="recent-item" onclick="event.preventDefault();openArticle(7)">
+                <a
+                  href="#"
+                  class="recent-item"
+                  onclick="
+                    event.preventDefault();
+                    openArticle(7);
+                  "
+                >
                   <span class="recent-num r3">3</span>
-                  <span class="recent-title">Những mẫu câu giao tiếp phổ biến trong lớp học</span>
+                  <span class="recent-title"
+                    >Những mẫu câu giao tiếp phổ biến trong lớp học</span
+                  >
                 </a>
-                <a href="#" class="recent-item" onclick="event.preventDefault();openArticle(8)">
+                <a
+                  href="#"
+                  class="recent-item"
+                  onclick="
+                    event.preventDefault();
+                    openArticle(8);
+                  "
+                >
                   <span class="recent-num">4</span>
-                  <span class="recent-title">Khóa học luyện thi N2 cấp tốc cam kết đầu ra</span>
+                  <span class="recent-title"
+                    >Khóa học luyện thi N2 cấp tốc cam kết đầu ra</span
+                  >
                 </a>
-                <a href="#" class="recent-item" onclick="event.preventDefault();openArticle(9)">
+                <a
+                  href="#"
+                  class="recent-item"
+                  onclick="
+                    event.preventDefault();
+                    openArticle(9);
+                  "
+                >
                   <span class="recent-num">5</span>
-                  <span class="recent-title">Cuộc thi "Nét bút tri ân" Ngày nhà giáo Việt Nam</span>
+                  <span class="recent-title"
+                    >Cuộc thi "Nét bút tri ân" Ngày nhà giáo Việt Nam</span
+                  >
                 </a>
               </div>
 
@@ -1754,34 +2100,79 @@
     <div class="art-ov" id="articleModal">
       <div class="art-box">
         <div class="art-rbar" id="artReadingBar"></div>
-        <div class="art-hero" style="position:relative">
+        <div class="art-hero" style="position: relative">
           <img id="artModalImg" src="" alt="" />
           <div class="art-hero-ov"></div>
-          <button class="art-close-btn" onclick="closeArticleModal()">&#x2715;</button>
+          <button class="art-close-btn" onclick="closeArticleModal()">
+            &#x2715;
+          </button>
         </div>
         <div class="art-body">
-          <span id="artModalCat" class="article-cat-badge" style="margin-bottom:12px;display:inline-flex;"></span>
+          <span
+            id="artModalCat"
+            class="article-cat-badge"
+            style="margin-bottom: 12px; display: inline-flex"
+          ></span>
           <h2 id="artModalTitle"></h2>
           <div class="art-meta-strip">
             <span class="art-meta-chip">
-              <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+              <svg
+                width="13"
+                height="13"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                viewBox="0 0 24 24"
+              >
+                <rect x="3" y="4" width="18" height="18" rx="2" />
+                <path d="M16 2v4M8 2v4M3 10h18" />
+              </svg>
               <span id="artModalDate"></span>
             </span>
             <span class="art-meta-chip">
-              <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              <svg
+                width="13"
+                height="13"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                viewBox="0 0 24 24"
+              >
+                <circle cx="12" cy="12" r="10" />
+                <polyline points="12 6 12 12 16 14" />
+              </svg>
               <span id="artModalTime"></span>
             </span>
             <span class="art-meta-chip">
-              <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+              <svg
+                width="13"
+                height="13"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                viewBox="0 0 24 24"
+              >
+                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+                <circle cx="12" cy="7" r="4" />
+              </svg>
               <span id="artModalAuthor"></span>
             </span>
           </div>
           <div id="artModalContent" class="art-content"></div>
           <div id="artModalTags" class="art-tags"></div>
           <div class="art-share">
-            <span style="font-size:13px;font-weight:600;color:#555;">Chia sẻ:</span>
-            <button class="share-btn" onclick="copyLink()">🔗 Sao chép link</button>
-            <button class="share-btn" style="background:#1877f2;color:#fff;border-color:#1877f2;">Facebook</button>
+            <span style="font-size: 13px; font-weight: 600; color: #555"
+              >Chia sẻ:</span
+            >
+            <button class="share-btn" onclick="copyLink()">
+              🔗 Sao chép link
+            </button>
+            <button
+              class="share-btn"
+              style="background: #1877f2; color: #fff; border-color: #1877f2"
+            >
+              Facebook
+            </button>
           </div>
         </div>
         <div class="art-related">
@@ -1790,7 +2181,14 @@
         </div>
         <div class="art-bottom-cta">
           <p>Muốn tư vấn lộ trình du học Nhật Bản cùng Jellyfish Vietnam?</p>
-          <button onclick="closeArticleModal();openRegModal();">Đăng ký tư vấn miễn phí →</button>
+          <button
+            onclick="
+              closeArticleModal();
+              openRegModal();
+            "
+          >
+            Đăng ký tư vấn miễn phí →
+          </button>
         </div>
       </div>
     </div>
@@ -1922,10 +2320,15 @@
       /* ── ARTICLES DATA ── */
       const BLOG_ARTICLES = [
         {
-          id: 0, cat: "du-hoc", catLabel: "Du học Nhật Bản", catClass: "",
+          id: 0,
+          cat: "du-hoc",
+          catLabel: "Du học Nhật Bản",
+          catClass: "",
           img: "img/10tieuchi.jpg",
           title: "10 Tiêu chí đánh giá trung tâm du học Nhật Bản uy tín",
-          date: "22/09/2023", readTime: "5 phút đọc", author: "Jellyfish Vietnam",
+          date: "22/09/2023",
+          readTime: "5 phút đọc",
+          author: "Jellyfish Vietnam",
           tags: ["Du học", "Nhật Bản", "Chọn trung tâm"],
           content: `<p>Với sự phát triển mạnh mẽ của phong trào du học Nhật Bản, ngày càng có nhiều trung tâm tư vấn xuất hiện. Việc chọn một đơn vị uy tín là quyết định quan trọng ảnh hưởng đến toàn bộ hành trình của bạn.</p>
 <h4>1. Giấy phép hoạt động hợp pháp</h4><p>Trung tâm phải có giấy phép kinh doanh dịch vụ tư vấn du học do Bộ Giáo dục và Đào tạo cấp. Đây là điều kiện tối thiểu để hoạt động hợp pháp.</p>
@@ -1934,108 +2337,153 @@
 <h4>4. Đội ngũ tư vấn viên chuyên nghiệp</h4><p>Tư vấn viên phải có kiến thức sâu về hệ thống giáo dục Nhật Bản, thủ tục visa và kinh nghiệm cá nhân hoặc làm việc tại Nhật.</p>
 <h4>5. Tỷ lệ đậu visa cao</h4><p>Tỷ lệ đậu visa của trung tâm phản ánh chất lượng hồ sơ. Jellyfish Vietnam duy trì tỷ lệ trên 95% trong 3 năm gần nhất.</p>
 <h4>6–10. Hỗ trợ sau xuất cảnh, minh bạch chi phí, đánh giá cựu học viên, chính sách hoàn tiền, cơ sở vật chất</h4>
-<p>Dịch vụ chăm sóc học viên sau xuất cảnh, niêm yết chi phí rõ ràng bằng văn bản, review thực tế từ alumni, chính sách hoàn tiền khi visa bị từ chối và văn phòng chuyên nghiệp có hệ thống quản lý hồ sơ trực tuyến — đó là 5 tiêu chí còn lại bạn cần kiểm tra trước khi ký hợp đồng với bất kỳ trung tâm nào.</p>`
+<p>Dịch vụ chăm sóc học viên sau xuất cảnh, niêm yết chi phí rõ ràng bằng văn bản, review thực tế từ alumni, chính sách hoàn tiền khi visa bị từ chối và văn phòng chuyên nghiệp có hệ thống quản lý hồ sơ trực tuyến — đó là 5 tiêu chí còn lại bạn cần kiểm tra trước khi ký hợp đồng với bất kỳ trung tâm nào.</p>`,
         },
         {
-          id: 1, cat: "hoc-bong", catLabel: "Học bổng", catClass: "orange",
+          id: 1,
+          cat: "hoc-bong",
+          catLabel: "Học bổng",
+          catClass: "orange",
           img: "img/hocbong.jpg",
           title: "Học bổng 100% ngành điều dưỡng tỉnh Fukui 2023 – 2024",
-          date: "22/09/2023", readTime: "4 phút đọc", author: "Phòng Học vụ",
+          date: "22/09/2023",
+          readTime: "4 phút đọc",
+          author: "Phòng Học vụ",
           tags: ["Học bổng", "Điều dưỡng", "Fukui"],
           content: `<p>Tỉnh Fukui đang đối mặt với tình trạng thiếu hụt nhân lực ngành điều dưỡng nghiêm trọng. Chính quyền tỉnh thiết kế chương trình học bổng đặc biệt dành cho sinh viên Việt Nam có trình độ tiếng Nhật tốt.</p>
 <h4>Giá trị học bổng</h4><ul><li>Miễn 100% học phí trong toàn bộ thời gian học (3 năm)</li><li>Hỗ trợ nhà ở: 30.000 yên/tháng</li><li>Phụ cấp sinh hoạt: 50.000 yên/tháng</li><li>Vé máy bay khứ hồi khi hoàn thành chương trình</li><li>Bảo hiểm y tế toàn phần</li></ul>
 <h4>Điều kiện tham gia</h4><ul><li>Quốc tịch Việt Nam, độ tuổi 18 – 30</li><li>Trình độ tiếng Nhật tối thiểu N3 tại thời điểm nộp hồ sơ</li><li>Tốt nghiệp THPT hoặc tương đương</li><li>Cam kết làm việc tại Fukui ít nhất 5 năm sau khi tốt nghiệp</li></ul>
-<h4>Cơ hội nghề nghiệp</h4><p>Sau khi hoàn thành chương trình, học viên được ưu tiên ký hợp đồng chính thức tại các bệnh viện và nhà dưỡng lão tại Fukui với mức lương trung bình <strong>250.000 – 300.000 yên/tháng</strong>. Hạn nộp hồ sơ: <strong>30/11/2023</strong>.</p>`
+<h4>Cơ hội nghề nghiệp</h4><p>Sau khi hoàn thành chương trình, học viên được ưu tiên ký hợp đồng chính thức tại các bệnh viện và nhà dưỡng lão tại Fukui với mức lương trung bình <strong>250.000 – 300.000 yên/tháng</strong>. Hạn nộp hồ sơ: <strong>30/11/2023</strong>.</p>`,
         },
         {
-          id: 2, cat: "du-hoc", catLabel: "Du học Nhật Bản", catClass: "",
+          id: 2,
+          cat: "du-hoc",
+          catLabel: "Du học Nhật Bản",
+          catClass: "",
           img: "img/truongnhat.jpg",
           title: "Trường Nhật ngữ First Study Osaka",
-          date: "22/09/2023", readTime: "4 phút đọc", author: "Jellyfish Vietnam",
+          date: "22/09/2023",
+          readTime: "4 phút đọc",
+          author: "Jellyfish Vietnam",
           tags: ["Trường Nhật ngữ", "Osaka", "First Study"],
           content: `<p>First Study Japanese Language Institute là một trong những trường ngôn ngữ hàng đầu tại Osaka, được thành lập năm 2008 với sứ mệnh giúp học sinh quốc tế hội nhập nhanh vào môi trường Nhật Bản.</p>
 <h4>Thông tin cơ bản</h4><ul><li><strong>Địa chỉ:</strong> 2-5-8 Namba, Chuo-ku, Osaka, Japan</li><li><strong>Số học viên:</strong> hơn 600 học viên đang theo học</li><li><strong>Tỷ lệ học viên Việt Nam:</strong> ~25%</li><li><strong>Học phí:</strong> từ 690.000 yên/năm</li></ul>
 <h4>Điểm mạnh</h4><p>Trường nằm ngay trung tâm Osaka, cách ga Namba 5 phút đi bộ. Đội ngũ giáo viên 100% người Nhật bản ngữ, đa số có bằng thạc sĩ chuyên ngành giảng dạy tiếng Nhật.</p>
-<h4>Hỗ trợ dành riêng cho học viên Việt Nam</h4><p>First Study có phòng tư vấn học vụ riêng bằng tiếng Việt, hỗ trợ thủ tục gia hạn visa, tìm nhà trọ và giới thiệu việc làm part-time. Tỷ lệ đậu JLPT N2 của học viên Việt Nam tại First Study đạt <strong>82%</strong> — cao hơn nhiều so với mặt bằng chung 65%.</p>`
+<h4>Hỗ trợ dành riêng cho học viên Việt Nam</h4><p>First Study có phòng tư vấn học vụ riêng bằng tiếng Việt, hỗ trợ thủ tục gia hạn visa, tìm nhà trọ và giới thiệu việc làm part-time. Tỷ lệ đậu JLPT N2 của học viên Việt Nam tại First Study đạt <strong>82%</strong> — cao hơn nhiều so với mặt bằng chung 65%.</p>`,
         },
         {
-          id: 3, cat: "du-hoc", catLabel: "Du học Nhật Bản", catClass: "",
+          id: 3,
+          cat: "du-hoc",
+          catLabel: "Du học Nhật Bản",
+          catClass: "",
           img: "img/tongchitieu.jpg",
           title: "Tổng chi phí du học Nhật Bản là bao nhiêu?",
-          date: "22/09/2023", readTime: "6 phút đọc", author: "Jellyfish Vietnam",
+          date: "22/09/2023",
+          readTime: "6 phút đọc",
+          author: "Jellyfish Vietnam",
           tags: ["Chi phí", "Du học", "Tài chính"],
           content: `<p>Một trong những băn khoăn lớn nhất của các bạn muốn du học Nhật Bản là "cần bao nhiêu tiền?" Jellyfish tổng hợp con số tham khảo để bạn lên kế hoạch tài chính tốt hơn.</p>
 <h4>Chi phí trước khi xuất cảnh</h4><ul><li>Học phí tiếng Nhật tại Việt Nam (N3–N4): 10 – 20 triệu đồng</li><li>Phí dịch vụ tư vấn du học: 15 – 30 triệu đồng</li><li>Phí làm hồ sơ, dịch thuật, công chứng: 3 – 5 triệu đồng</li><li>Vé máy bay một chiều: 8 – 15 triệu đồng</li></ul>
 <h4>Học phí tại Nhật Bản</h4><p>Học phí trường ngôn ngữ dao động từ <strong>600.000 – 900.000 yên/năm</strong> (tương đương 100 – 150 triệu đồng).</p>
 <h4>Chi phí sinh hoạt hàng tháng</h4><ul><li>Nhà ở: 30.000 – 60.000 yên</li><li>Ăn uống: 20.000 – 35.000 yên</li><li>Đi lại: 8.000 – 15.000 yên</li><li>Điện/nước/internet: 8.000 – 12.000 yên</li><li><strong>Tổng: khoảng 80.000 – 140.000 yên/tháng</strong></li></ul>
-<h4>Thu nhập từ part-time</h4><p>Du học sinh được làm thêm tối đa <strong>28 giờ/tuần</strong>. Với mức lương tối thiểu ~1.100 yên/giờ, bạn có thể kiếm 100.000 – 130.000 yên/tháng, đủ trang trải phần lớn sinh hoạt phí.</p>`
+<h4>Thu nhập từ part-time</h4><p>Du học sinh được làm thêm tối đa <strong>28 giờ/tuần</strong>. Với mức lương tối thiểu ~1.100 yên/giờ, bạn có thể kiếm 100.000 – 130.000 yên/tháng, đủ trang trải phần lớn sinh hoạt phí.</p>`,
         },
         {
-          id: 4, cat: "hoc-bong", catLabel: "Học bổng", catClass: "orange",
+          id: 4,
+          cat: "hoc-bong",
+          catLabel: "Học bổng",
+          catClass: "orange",
           img: "img/toanphan.jpg",
           title: "Học bổng toàn phần ngành điều dưỡng tại Hokkaido – Kỳ 4/2024",
-          date: "22/09/2023", readTime: "4 phút đọc", author: "Phòng Học vụ",
+          date: "22/09/2023",
+          readTime: "4 phút đọc",
+          author: "Phòng Học vụ",
           tags: ["Học bổng toàn phần", "Hokkaido", "Điều dưỡng"],
           content: `<p>Hokkaido đang triển khai chương trình học bổng đặc biệt để thu hút nhân lực điều dưỡng quốc tế trong bối cảnh dân số già hóa nhanh chóng tại đây.</p>
 <h4>Điểm khác biệt so với học bổng Fukui</h4><ul><li>Hỗ trợ sinh hoạt cao hơn: 80.000 yên/tháng</li><li>Chương trình học 3.5 năm (thêm 6 tháng thực tập lâm sàng)</li><li>Cam kết làm việc 7 năm sau tốt nghiệp</li><li>Hỗ trợ học tiếng Nhật 6 tháng trước khi nhập học chính thức</li></ul>
 <h4>Kỳ 4/2024 mở thêm 15 suất</h4><p>Học bổng kỳ này mở thêm <strong>15 suất</strong> cho học viên Việt Nam. Yêu cầu tiếng Nhật: <strong>N4</strong> khi nộp hồ sơ, cam kết đạt N3 trước khi nhập học (4/2024). Tổng giá trị mỗi suất ước tính <strong>12 – 15 triệu yên</strong>.</p>
-<h4>Liên hệ tư vấn</h4><p>Jellyfish Vietnam là đơn vị tư vấn được tỉnh Hokkaido ủy quyền xét hồ sơ học bổng trực tiếp. Deadline nộp hồ sơ: <strong>15/01/2024</strong>.</p>`
+<h4>Liên hệ tư vấn</h4><p>Jellyfish Vietnam là đơn vị tư vấn được tỉnh Hokkaido ủy quyền xét hồ sơ học bổng trực tiếp. Deadline nộp hồ sơ: <strong>15/01/2024</strong>.</p>`,
         },
         /* ── Sidebar recent posts (id 5-9) ── */
         {
-          id: 5, cat: "hoc-tap", catLabel: "Học tập", catClass: "",
+          id: 5,
+          cat: "hoc-tap",
+          catLabel: "Học tập",
+          catClass: "",
           img: "img/10tieuchi.jpg",
           title: "Từ vựng tiếng Nhật chủ đề mùa đông",
-          date: "15/12/2023", readTime: "3 phút đọc", author: "Giáo viên Jellyfish",
+          date: "15/12/2023",
+          readTime: "3 phút đọc",
+          author: "Giáo viên Jellyfish",
           tags: ["Từ vựng", "Mùa đông", "N5"],
           content: `<p>Mùa đông Nhật Bản là khoảng thời gian đặc biệt với tuyết rơi, lễ hội đèn lồng và các món ăn ấm áp. Dưới đây là bộ từ vựng tiếng Nhật chủ đề mùa đông bạn nên biết.</p>
 <h4>Từ vựng thời tiết</h4><ul><li>冬 (ふゆ – fuyu): mùa đông</li><li>雪 (ゆき – yuki): tuyết</li><li>氷 (こおり – koori): băng</li><li>寒い (さむい – samui): lạnh</li><li>吹雪 (ふぶき – fubuki): bão tuyết</li></ul>
 <h4>Từ vựng trang phục</h4><ul><li>コート (kooto): áo khoác</li><li>マフラー (mafuraa): khăn quàng cổ</li><li>手袋 (てぶくろ – tebukuro): găng tay</li><li>ブーツ (buutsu): ủng</li><li>セーター (seetaa): áo len</li></ul>
-<h4>Lễ hội mùa đông nổi tiếng</h4><p>さっぽろ雪まつり (Sapporo Yuki Matsuri) diễn ra đầu tháng 2 hàng năm tại Hokkaido — một trong những lễ hội mùa đông nổi tiếng nhất Nhật Bản với các công trình điêu khắc tuyết khổng lồ.</p>`
+<h4>Lễ hội mùa đông nổi tiếng</h4><p>さっぽろ雪まつり (Sapporo Yuki Matsuri) diễn ra đầu tháng 2 hàng năm tại Hokkaido — một trong những lễ hội mùa đông nổi tiếng nhất Nhật Bản với các công trình điêu khắc tuyết khổng lồ.</p>`,
         },
         {
-          id: 6, cat: "hoc-tap", catLabel: "Học tập", catClass: "",
+          id: 6,
+          cat: "hoc-tap",
+          catLabel: "Học tập",
+          catClass: "",
           img: "img/truongnhat.jpg",
           title: "Từ vựng tiếng Nhật chủ đề Giáng sinh",
-          date: "20/12/2023", readTime: "3 phút đọc", author: "Giáo viên Jellyfish",
+          date: "20/12/2023",
+          readTime: "3 phút đọc",
+          author: "Giáo viên Jellyfish",
           tags: ["Từ vựng", "Giáng sinh", "N4"],
           content: `<p>Dù Giáng sinh không phải ngày lễ truyền thống Nhật Bản, người Nhật đón Noel rất rộn ràng — đặc biệt với những đôi lứa. Cùng học từ vựng và câu chúc Giáng sinh bằng tiếng Nhật!</p>
 <h4>Từ vựng Giáng sinh cơ bản</h4><ul><li>クリスマス (Kurisumasu): Giáng sinh</li><li>クリスマスツリー: cây thông Noel</li><li>サンタクロース: ông già Noel</li><li>プレゼント (Purezento): quà tặng</li><li>ケーキ (Keeki): bánh kem (người Nhật ăn bánh KFC vào Noel!)</li></ul>
-<h4>Câu chúc Giáng sinh</h4><ul><li>メリークリスマス！: Giáng sinh vui vẻ!</li><li>良いお年を！: Chúc năm mới tốt lành!</li><li>今年もお世話になりました: Cảm ơn bạn đã quan tâm năm nay!</li></ul>`
+<h4>Câu chúc Giáng sinh</h4><ul><li>メリークリスマス！: Giáng sinh vui vẻ!</li><li>良いお年を！: Chúc năm mới tốt lành!</li><li>今年もお世話になりました: Cảm ơn bạn đã quan tâm năm nay!</li></ul>`,
         },
         {
-          id: 7, cat: "hoc-tap", catLabel: "Học tập", catClass: "",
+          id: 7,
+          cat: "hoc-tap",
+          catLabel: "Học tập",
+          catClass: "",
           img: "img/hocbong.jpg",
           title: "Những mẫu câu giao tiếp phổ biến trong lớp học",
-          date: "10/12/2023", readTime: "4 phút đọc", author: "Giáo viên Jellyfish",
+          date: "10/12/2023",
+          readTime: "4 phút đọc",
+          author: "Giáo viên Jellyfish",
           tags: ["Giao tiếp", "Lớp học", "N5"],
           content: `<p>Khi mới bắt đầu học tiếng Nhật, biết những mẫu câu phổ biến trong lớp học sẽ giúp bạn tự tin hơn khi giao tiếp với thầy cô và bạn học.</p>
 <h4>Khi cần hỏi lại</h4><ul><li>もう一度言ってください: Làm ơn nói lại một lần nữa</li><li>ゆっくり話してください: Làm ơn nói chậm lại</li><li>意味は何ですか: Nghĩa của từ này là gì?</li></ul>
 <h4>Khi cần giúp đỡ</h4><ul><li>わかりません (Wakarimasen): Con không hiểu</li><li>先生、質問があります: Thưa thầy/cô, con có câu hỏi</li><li>もう少し説明してください: Nhờ thầy/cô giải thích thêm</li></ul>
-<h4>Thể hiện sự cảm ơn và lịch sự</h4><ul><li>ありがとうございます: Cảm ơn (lịch sự)</li><li>よろしくお願いします: Rất vui được làm quen / Mong được sự giúp đỡ</li><li>失礼します (Shitsurei shimasu): Xin lỗi vì đã làm phiền</li></ul>`
+<h4>Thể hiện sự cảm ơn và lịch sự</h4><ul><li>ありがとうございます: Cảm ơn (lịch sự)</li><li>よろしくお願いします: Rất vui được làm quen / Mong được sự giúp đỡ</li><li>失礼します (Shitsurei shimasu): Xin lỗi vì đã làm phiền</li></ul>`,
         },
         {
-          id: 8, cat: "hoc-tap", catLabel: "Học tập", catClass: "",
+          id: 8,
+          cat: "hoc-tap",
+          catLabel: "Học tập",
+          catClass: "",
           img: "img/tongchitieu.jpg",
           title: "Khóa học luyện thi N2 cấp tốc cam kết đầu ra",
-          date: "05/12/2023", readTime: "3 phút đọc", author: "Jellyfish Vietnam",
+          date: "05/12/2023",
+          readTime: "3 phút đọc",
+          author: "Jellyfish Vietnam",
           tags: ["N2", "Luyện thi", "JLPT"],
           content: `<p>Dành cho các bạn đã có nền N3 vững chắc và muốn chinh phục N2 trong thời gian ngắn nhất, Jellyfish Vietnam thiết kế khóa N2 Cấp tốc với lộ trình tập trung và cam kết đầu ra rõ ràng.</p>
 <h4>Thông tin khóa học</h4><ul><li><strong>Thời lượng:</strong> 4 tháng (96 giờ học chính + 20 giờ luyện đề)</li><li><strong>Lịch học:</strong> Thứ 2 – 4 – 6 (18:30 – 21:00) hoặc cuối tuần</li><li><strong>Sĩ số:</strong> Tối đa 15 học viên/lớp</li><li><strong>Học phí:</strong> 6.500.000 đồng (bao gồm tài liệu)</li></ul>
 <h4>Cam kết đầu ra</h4><p>Nếu học viên hoàn thành 80% buổi học và không đậu N2 trong lần thi đầu tiên, sẽ được <strong>học lại hoàn toàn miễn phí</strong> cho đến khi đạt chứng chỉ.</p>
-<h4>Kết quả kỳ thi gần nhất</h4><p>Kỳ thi JLPT tháng 7/2023, lớp N2 cấp tốc Jellyfish đạt tỷ lệ đậu <strong>88%</strong> — một trong những tỷ lệ cao nhất tại Việt Nam.</p>`
+<h4>Kết quả kỳ thi gần nhất</h4><p>Kỳ thi JLPT tháng 7/2023, lớp N2 cấp tốc Jellyfish đạt tỷ lệ đậu <strong>88%</strong> — một trong những tỷ lệ cao nhất tại Việt Nam.</p>`,
         },
         {
-          id: 9, cat: "su-kien", catLabel: "Sự kiện", catClass: "",
+          id: 9,
+          cat: "su-kien",
+          catLabel: "Sự kiện",
+          catClass: "",
           img: "img/toanphan.jpg",
-          title: "Cuộc thi \"Nét bút tri ân\" Ngày nhà giáo Việt Nam",
-          date: "19/11/2023", readTime: "3 phút đọc", author: "Ban Truyền thông",
+          title: 'Cuộc thi "Nét bút tri ân" Ngày nhà giáo Việt Nam',
+          date: "19/11/2023",
+          readTime: "3 phút đọc",
+          author: "Ban Truyền thông",
           tags: ["Sự kiện", "Ngày nhà giáo", "Cuộc thi"],
           content: `<p>Nhân dịp ngày Nhà giáo Việt Nam 20/11/2023, Jellyfish Vietnam tổ chức cuộc thi <strong>"Nét bút tri ân"</strong> — viết thư pháp tiếng Nhật để tri ân thầy cô giáo.</p>
 <h4>Thể lệ cuộc thi</h4><ul><li>Đối tượng: Tất cả học viên đang theo học tại Jellyfish Vietnam</li><li>Hình thức: Viết thư pháp tiếng Nhật trên giấy A4, nội dung là câu yêu thích về thầy cô</li><li>Nộp bài: Tại văn phòng Jellyfish hoặc qua email trước 18/11/2023</li></ul>
 <h4>Giải thưởng</h4><ul><li><strong>Giải Nhất:</strong> Học bổng 50% khóa học tiếp theo + bộ dụng cụ thư pháp cao cấp</li><li><strong>Giải Nhì:</strong> Học bổng 30% + sách tiếng Nhật</li><li><strong>Giải Ba:</strong> Học bổng 15% + voucher học phí</li><li><strong>5 giải Khuyến khích:</strong> Voucher 500.000 đồng</li></ul>
-<h4>Kết quả</h4><p>Cuộc thi nhận được <strong>186 bài dự thi</strong> từ học viên tại Hà Nội, Hải Phòng và online. Giải Nhất thuộc về học viên Nguyễn Thu Hà (lớp N2 tối thứ 3–5) với câu: <em>"先生は第二の親である"</em> — Thầy cô là cha mẹ thứ hai.</p>`
-        }
+<h4>Kết quả</h4><p>Cuộc thi nhận được <strong>186 bài dự thi</strong> từ học viên tại Hà Nội, Hải Phòng và online. Giải Nhất thuộc về học viên Nguyễn Thu Hà (lớp N2 tối thứ 3–5) với câu: <em>"先生は第二の親である"</em> — Thầy cô là cha mẹ thứ hai.</p>`,
+        },
       ];
 
       /* ── MOBILE MENU ── */
@@ -2043,8 +2491,16 @@
       const menuDrawer = document.getElementById("menuDrawer");
       const menuOverlay = document.getElementById("menuOverlay");
       const menuCloseBtn = document.getElementById("menuCloseBtn");
-      function openMenu() { menuDrawer.classList.add("open"); menuOverlay.classList.add("open"); document.body.style.overflow = "hidden"; }
-      function closeMenu() { menuDrawer.classList.remove("open"); menuOverlay.classList.remove("open"); document.body.style.overflow = ""; }
+      function openMenu() {
+        menuDrawer.classList.add("open");
+        menuOverlay.classList.add("open");
+        document.body.style.overflow = "hidden";
+      }
+      function closeMenu() {
+        menuDrawer.classList.remove("open");
+        menuOverlay.classList.remove("open");
+        document.body.style.overflow = "";
+      }
       hamburgerBtn.addEventListener("click", openMenu);
       menuCloseBtn.addEventListener("click", closeMenu);
       menuOverlay.addEventListener("click", closeMenu);
@@ -2056,16 +2512,24 @@
         el.className = "jf-toast" + (ok ? " ok" : "");
         el.textContent = msg;
         w.appendChild(el);
-        requestAnimationFrame(() => requestAnimationFrame(() => el.classList.add("show")));
-        setTimeout(() => { el.classList.remove("show"); setTimeout(() => el.remove(), 400); }, 3500);
+        requestAnimationFrame(() =>
+          requestAnimationFrame(() => el.classList.add("show")),
+        );
+        setTimeout(() => {
+          el.classList.remove("show");
+          setTimeout(() => el.remove(), 400);
+        }, 3500);
       }
 
       /* ── CATEGORY FILTER ── */
-      let curCat = "all", curSearch = "";
+      let curCat = "all",
+        curSearch = "";
 
       function filterCat(cat) {
         curCat = cat;
-        document.querySelectorAll(".filter-btn").forEach(b => b.classList.remove("active"));
+        document
+          .querySelectorAll(".filter-btn")
+          .forEach((b) => b.classList.remove("active"));
         document.getElementById("filter-" + cat).classList.add("active");
         applyFilters();
       }
@@ -2085,7 +2549,9 @@
         curCat = "all";
         document.getElementById("headerSearchBlog").value = "";
         document.getElementById("sidebarSearchInput").value = "";
-        document.querySelectorAll(".filter-btn").forEach(b => b.classList.remove("active"));
+        document
+          .querySelectorAll(".filter-btn")
+          .forEach((b) => b.classList.remove("active"));
         document.getElementById("filter-all").classList.add("active");
         applyFilters();
       }
@@ -2093,7 +2559,7 @@
       function applyFilters() {
         const cards = document.querySelectorAll(".article-card-wrap");
         let visible = 0;
-        cards.forEach(el => {
+        cards.forEach((el) => {
           const catMatch = curCat === "all" || el.dataset.cat === curCat;
           const text = el.textContent.toLowerCase();
           const searchMatch = !curSearch || text.includes(curSearch);
@@ -2102,43 +2568,62 @@
             visible++;
             if (el.style.display === "none") {
               el.style.display = "";
-              requestAnimationFrame(() => { el.style.opacity = "1"; el.style.transform = "none"; });
+              requestAnimationFrame(() => {
+                el.style.opacity = "1";
+                el.style.transform = "none";
+              });
             } else {
-              el.style.opacity = "1"; el.style.transform = "none";
+              el.style.opacity = "1";
+              el.style.transform = "none";
             }
           } else {
-            el.style.opacity = "0"; el.style.transform = "translateY(8px)";
-            setTimeout(() => { el.style.display = "none"; }, 280);
+            el.style.opacity = "0";
+            el.style.transform = "translateY(8px)";
+            setTimeout(() => {
+              el.style.display = "none";
+            }, 280);
           }
         });
         // update count
         const cnt = document.getElementById("resultCount");
         const noR = document.getElementById("noResults");
-        if (cnt) cnt.textContent = visible > 0 ? `Hiển thị ${visible} bài viết` : "";
+        if (cnt)
+          cnt.textContent = visible > 0 ? `Hiển thị ${visible} bài viết` : "";
         if (noR) noR.style.display = visible === 0 ? "block" : "none";
       }
 
       /* ── ARTICLE MODAL ── */
       function openArticle(id) {
-        const a = BLOG_ARTICLES.find(x => x.id === id);
+        const a = BLOG_ARTICLES.find((x) => x.id === id);
         if (!a) return;
         document.getElementById("artModalImg").src = a.img;
         const catEl = document.getElementById("artModalCat");
         catEl.textContent = a.catLabel;
-        catEl.className = "article-cat-badge" + (a.catClass ? " " + a.catClass : "") + " mb-3 d-inline-flex";
+        catEl.className =
+          "article-cat-badge" +
+          (a.catClass ? " " + a.catClass : "") +
+          " mb-3 d-inline-flex";
         document.getElementById("artModalTitle").textContent = a.title;
         document.getElementById("artModalDate").textContent = a.date;
         document.getElementById("artModalTime").textContent = a.readTime;
         document.getElementById("artModalAuthor").textContent = a.author;
         document.getElementById("artModalContent").innerHTML = a.content;
-        document.getElementById("artModalTags").innerHTML = (a.tags || []).map(t => `<span class="art-tag">#${t}</span>`).join("");
+        document.getElementById("artModalTags").innerHTML = (a.tags || [])
+          .map((t) => `<span class="art-tag">#${t}</span>`)
+          .join("");
         // related articles
-        const related = BLOG_ARTICLES.filter(x => x.id !== id && x.id <= 4).slice(0, 3);
-        document.getElementById("artModalRelated").innerHTML = related.map(r => `
+        const related = BLOG_ARTICLES.filter(
+          (x) => x.id !== id && x.id <= 4,
+        ).slice(0, 3);
+        document.getElementById("artModalRelated").innerHTML = related
+          .map(
+            (r) => `
           <a href="#" class="art-rel-item" onclick="event.preventDefault();openArticle(${r.id})">
             <img src="${r.img}" alt="" />
             <div><p class="art-rel-title">${r.title}</p><span style="font-size:12px;color:#adb5bd;">${r.catLabel} · ${r.date}</span></div>
-          </a>`).join("");
+          </a>`,
+          )
+          .join("");
         const ov = document.getElementById("articleModal");
         ov.classList.add("open");
         document.body.style.overflow = "hidden";
@@ -2149,49 +2634,87 @@
         document.getElementById("articleModal").classList.remove("open");
         document.body.style.overflow = "";
       }
-      document.getElementById("articleModal").addEventListener("scroll", function () {
-        const sc = this.scrollHeight - this.clientHeight;
-        document.getElementById("artReadingBar").style.width = (sc > 0 ? Math.min(100, (this.scrollTop / sc) * 100) : 0) + "%";
-      });
-      document.getElementById("articleModal").addEventListener("click", function (e) {
-        if (e.target === this) closeArticleModal();
-      });
+      document
+        .getElementById("articleModal")
+        .addEventListener("scroll", function () {
+          const sc = this.scrollHeight - this.clientHeight;
+          document.getElementById("artReadingBar").style.width =
+            (sc > 0 ? Math.min(100, (this.scrollTop / sc) * 100) : 0) + "%";
+        });
+      document
+        .getElementById("articleModal")
+        .addEventListener("click", function (e) {
+          if (e.target === this) closeArticleModal();
+        });
 
       function copyLink() {
-        navigator.clipboard.writeText(window.location.href).then(() => showToast("🔗 Đã sao chép liên kết!", false));
+        navigator.clipboard
+          .writeText(window.location.href)
+          .then(() => showToast("🔗 Đã sao chép liên kết!", false));
       }
 
       /* ── REG MODAL ── */
-      function openRegModal() { document.getElementById("regModal").classList.add("open"); document.body.style.overflow = "hidden"; }
-      function closeRegModal() { document.getElementById("regModal").classList.remove("open"); document.body.style.overflow = ""; }
+      function openRegModal() {
+        document.getElementById("regModal").classList.add("open");
+        document.body.style.overflow = "hidden";
+      }
+      function closeRegModal() {
+        document.getElementById("regModal").classList.remove("open");
+        document.body.style.overflow = "";
+      }
       const _rm = document.getElementById("regModal");
-      if (_rm) _rm.addEventListener("click", function (e) { if (e.target === this) closeRegModal(); });
+      if (_rm)
+        _rm.addEventListener("click", function (e) {
+          if (e.target === this) closeRegModal();
+        });
       function submitReg(e) {
         e.preventDefault();
         const name = e.target.querySelector('input[type="text"]').value.trim();
         const phone = e.target.querySelector('input[type="tel"]').value.trim();
-        if (!name || !phone) { showToast("Vui lòng điền họ tên và số điện thoại.", false); return; }
+        if (!name || !phone) {
+          showToast("Vui lòng điền họ tên và số điện thoại.", false);
+          return;
+        }
         closeRegModal();
-        showToast("✅ Đăng ký thành công! Jellyfish sẽ liên hệ bạn trong 24 giờ.", true);
+        showToast(
+          "✅ Đăng ký thành công! Jellyfish sẽ liên hệ bạn trong 24 giờ.",
+          true,
+        );
         e.target.reset();
       }
 
       /* ── KEYBOARD ── */
-      document.addEventListener("keydown", e => {
-        if (e.key === "Escape") { closeArticleModal(); closeRegModal(); }
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") {
+          closeArticleModal();
+          closeRegModal();
+        }
       });
 
       /* ── INTERSECTION OBSERVER ── */
       const observer = new IntersectionObserver(
-        entries => { entries.forEach(en => { if (en.isIntersecting) { en.target.classList.add("visible"); observer.unobserve(en.target); } }); },
-        { threshold: 0, rootMargin: "0px 0px -40px 0px" }
+        (entries) => {
+          entries.forEach((en) => {
+            if (en.isIntersecting) {
+              en.target.classList.add("visible");
+              observer.unobserve(en.target);
+            }
+          });
+        },
+        { threshold: 0, rootMargin: "0px 0px -40px 0px" },
       );
-      document.querySelectorAll(".fade-up").forEach(el => observer.observe(el));
+      document
+        .querySelectorAll(".fade-up")
+        .forEach((el) => observer.observe(el));
 
       /* ── BACK TO TOP ── */
       const btt = document.getElementById("backToTop");
-      window.addEventListener("scroll", () => btt.classList.toggle("visible", window.scrollY > 400));
-      btt.addEventListener("click", () => window.scrollTo({ top: 0, behavior: "smooth" }));
+      window.addEventListener("scroll", () =>
+        btt.classList.toggle("visible", window.scrollY > 400),
+      );
+      btt.addEventListener("click", () =>
+        window.scrollTo({ top: 0, behavior: "smooth" }),
+      );
 
       /* ── INIT result count ── */
       applyFilters();
