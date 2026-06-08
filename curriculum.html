@@ -339,6 +339,10 @@
 
         <div class="row row-cols-1 row-cols-sm-2 row-cols-xl-3 g-4" id="productGrid"></div>
 
+        <div id="loadMoreWrap" style="display:none;justify-content:center;margin-top:32px">
+          <button onclick="loadMore()" style="background:var(--green);color:#fff;border:none;border-radius:12px;font-size:15px;font-weight:700;padding:13px 44px;cursor:pointer;transition:background .2s,transform .15s;box-shadow:0 4px 16px rgba(35,122,55,.25)" onmouseover="this.style.background='#1a5e2a';this.style.transform='translateY(-2px)'" onmouseout="this.style.background='var(--green)';this.style.transform='none'">Xem thêm sản phẩm</button>
+        </div>
+
         <div id="noResults">
           <svg width="64" height="64" fill="none" stroke="#ccc" stroke-width="1.5" viewBox="0 0 24 24" style="display:block;margin:0 auto 16px"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
           <h5 style="color:#aaa;font-weight:600">Không tìm thấy sản phẩm</h5>
@@ -513,7 +517,7 @@
         contents:'<strong>Thông tin:</strong><ul style="margin:8px 0 0;padding-left:20px"><li>40.000+ từ mục Nhật – Việt</li><li>Kèm Kanji và furigana</li><li>Ví dụ câu thực tế</li><li>Bảng động từ và tính từ biến thể</li></ul>' }
     ];
 
-    let curCat = 'all', cartQty = 0, activePdId = null;
+    let curCat = 'all', cartQty = 0, activePdId = null, _showAll = false;
 
     // RENDER
     function renderProducts(list) {
@@ -546,22 +550,30 @@
     }
     function applyFilters() {
       const q = getSearch();
+      const hasFilter = curCat !== 'all' || q.length > 0;
       const wraps = document.querySelectorAll('#productGrid .product-wrap');
       let visible = 0;
-      wraps.forEach(el => {
+      wraps.forEach((el, i) => {
         const catOk = curCat === 'all' || el.dataset.cat === curCat;
         const textOk = !q || el.dataset.title.includes(q) || el.querySelector('.card-title-text').textContent.toLowerCase().includes(q);
-        if (catOk && textOk) {
+        const beyondLimit = !hasFilter && !_showAll && i >= 8;
+        if (catOk && textOk && !beyondLimit) {
           visible++;
           el.style.display = '';
           requestAnimationFrame(() => { el.style.opacity = '1'; el.style.transform = 'none'; });
         } else {
           el.style.opacity = '0'; el.style.transform = 'translateY(8px)';
-          setTimeout(() => { if (!((curCat==='all'||el.dataset.cat===curCat)&&(!getSearch()||el.dataset.title.includes(getSearch())||el.querySelector('.card-title-text').textContent.toLowerCase().includes(getSearch())))) el.style.display = 'none'; }, 280);
+          setTimeout(() => { el.style.display = 'none'; }, 280);
         }
       });
       document.getElementById('resultCount').textContent = visible > 0 ? 'Hiển thị ' + visible + ' sản phẩm' : '';
       document.getElementById('noResults').style.display = visible === 0 ? 'block' : 'none';
+      document.getElementById('loadMoreWrap').style.display = (!hasFilter && !_showAll && wraps.length > 8) ? 'flex' : 'none';
+    }
+    function loadMore() {
+      _showAll = true;
+      applyFilters();
+      document.querySelectorAll('#productGrid .fade-up').forEach(el => _fuObs.observe(el));
     }
     function setCat(btn, cat) {
       curCat = cat;
@@ -570,7 +582,7 @@
       applyFilters();
     }
     function resetFilters() {
-      curCat = 'all';
+      curCat = 'all'; _showAll = false;
       ['desktopSearch','mobileSearch','headerSearch'].forEach(id => { document.getElementById(id).value = ''; });
       document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
       document.querySelector('.cat-btn[data-cat="all"]').classList.add('active');
