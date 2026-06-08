@@ -105,6 +105,20 @@
       .hero-anim.d2 { animation-delay: 0.25s; }
       .hero-anim.d3 { animation-delay: 0.4s; }
 
+      /* STATS & PARTNER STRIP */
+      .stats-strip { background: var(--green); }
+      .stats-strip-item { padding: 18px 28px; display: flex; align-items: center; gap: 14px; border-right: 1px solid rgba(255,255,255,.2); }
+      .stats-strip-item:last-child { border-right: none; }
+      .stats-strip-number { font-size: 26px; font-weight: 800; color: #fff; line-height: 1; }
+      .stats-strip-label { font-size: 12px; color: rgba(255,255,255,.85); line-height: 1.4; }
+      .partner-strip { background: #fff; border-top: 1px solid #eee; border-bottom: 1px solid #eee; overflow: hidden; }
+      .partner-track { display: flex; animation: scrollPartner 30s linear infinite; width: max-content; }
+      .partner-track:hover { animation-play-state: paused; }
+      .partner-item { display: flex; align-items: center; gap: 10px; padding: 16px 36px; white-space: nowrap; font-size: 14px; font-weight: 700; color: #333; border-right: 1px solid #f0f0f0; transition: color 0.2s; }
+      .partner-item:hover { color: var(--green); }
+      .partner-dot { width: 7px; height: 7px; background: var(--green); border-radius: 50%; flex-shrink: 0; }
+      @keyframes scrollPartner { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
       /* ===== MAIN SECTION ===== */
       .curriculum-main { background: #f5f7f5; padding: 56px 0 72px; }
 
@@ -278,6 +292,9 @@
         .curriculum-main { padding: 36px 0 48px; }
         .level-tab-btn { padding: 9px 22px; font-size: 14px; }
         .sidebar-card { margin-bottom: 20px; }
+        .stats-strip-item { border-right: none; border-bottom: 1px solid rgba(255,255,255,.15); width: 50%; justify-content: center; }
+        .stats-strip-item:nth-child(odd) { border-right: 1px solid rgba(255,255,255,.15); }
+        .stats-strip-item:nth-last-child(-n+2) { border-bottom: none; }
       }
     </style>
   </head>
@@ -348,6 +365,41 @@
         <p class="hero-lead hero-anim d3">Bộ giáo trình chuẩn hóa, được tuyển chọn và biên soạn bởi đội ngũ giáo viên Nhật Bản — đồng hành cùng bạn từ N5 đến N1.</p>
       </div>
     </section>
+
+    <div class="stats-strip">
+      <div class="container-fluid px-0">
+        <div class="d-flex flex-wrap justify-content-center">
+          <div class="stats-strip-item"><div><div class="stats-strip-number">500+</div><div class="stats-strip-label">Học viên mỗi tháng</div></div></div>
+          <div class="stats-strip-item"><div><div class="stats-strip-number">60+</div><div class="stats-strip-label">Lớp khai giảng mỗi tháng</div></div></div>
+          <div class="stats-strip-item"><div><div class="stats-strip-number">15+</div><div class="stats-strip-label">Năm kinh nghiệm</div></div></div>
+          <div class="stats-strip-item"><div><div class="stats-strip-number">100%</div><div class="stats-strip-label">Học lại miễn phí</div></div></div>
+        </div>
+      </div>
+    </div>
+    <div class="partner-strip py-1">
+      <div class="partner-track">
+        <div class="partner-item"><span class="partner-dot"></span>Đại học Kyoto</div>
+        <div class="partner-item"><span class="partner-dot"></span>Fast Retailing (UNIQLO)</div>
+        <div class="partner-item"><span class="partner-dot"></span>Tập đoàn FPT</div>
+        <div class="partner-item"><span class="partner-dot"></span>Đại học Waseda</div>
+        <div class="partner-item"><span class="partner-dot"></span>Honda Vietnam</div>
+        <div class="partner-item"><span class="partner-dot"></span>Đại học Keio</div>
+        <div class="partner-item"><span class="partner-dot"></span>Panasonic Vietnam</div>
+        <div class="partner-item"><span class="partner-dot"></span>Đại học Osaka</div>
+        <div class="partner-item"><span class="partner-dot"></span>Học viện Tochigi</div>
+        <div class="partner-item"><span class="partner-dot"></span>Đại học Ritsumeikan</div>
+        <div class="partner-item"><span class="partner-dot"></span>Đại học Kyoto</div>
+        <div class="partner-item"><span class="partner-dot"></span>Fast Retailing (UNIQLO)</div>
+        <div class="partner-item"><span class="partner-dot"></span>Tập đoàn FPT</div>
+        <div class="partner-item"><span class="partner-dot"></span>Đại học Waseda</div>
+        <div class="partner-item"><span class="partner-dot"></span>Honda Vietnam</div>
+        <div class="partner-item"><span class="partner-dot"></span>Đại học Keio</div>
+        <div class="partner-item"><span class="partner-dot"></span>Panasonic Vietnam</div>
+        <div class="partner-item"><span class="partner-dot"></span>Đại học Osaka</div>
+        <div class="partner-item"><span class="partner-dot"></span>Học viện Tochigi</div>
+        <div class="partner-item"><span class="partner-dot"></span>Đại học Ritsumeikan</div>
+      </div>
+    </div>
 
     <!-- ===== MAIN ===== -->
     <section class="curriculum-main">
