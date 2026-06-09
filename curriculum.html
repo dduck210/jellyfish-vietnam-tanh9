@@ -4,6 +4,10 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1.0" />
     <title>Giáo Trình – Jellyfish Vietnam</title>
+    <meta
+      name="description"
+      content="Kho giáo trình tiếng Nhật chính thống tại Jellyfish — Minna no Nihongo, Shin Kanzen Master, tài liệu luyện thi JLPT N5 đến N1."
+    />
     <link rel="icon" href="img/logotab.png" type="image/png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -29,47 +33,61 @@
         color: #111827;
       }
 
-      @keyframes heroFadeUp {
-        from {
-          opacity: 0;
-          transform: translateY(22px);
-        }
-        to {
-          opacity: 1;
-          transform: none;
-        }
+      /* Mobile drawer — slides from RIGHT */
+      .mobile-menu-overlay {
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.45);
+        z-index: 1040;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.3s;
+        backdrop-filter: blur(2px);
       }
-      .hero-anim {
-        animation: heroFadeUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) both;
+      .mobile-menu-overlay.open {
+        opacity: 1;
+        pointer-events: all;
       }
-      .hero-anim.d1 {
-        animation-delay: 0.1s;
+      .mobile-menu-drawer {
+        position: fixed;
+        top: 0;
+        right: -300px;
+        width: 300px;
+        height: 100%;
+        background: #fff;
+        z-index: 1050;
+        transition: right 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+        overflow-y: auto;
+        box-shadow: -8px 0 40px rgba(0, 0, 0, 0.12);
       }
-      .hero-anim.d2 {
-        animation-delay: 0.28s;
-      }
-      .hero-anim.d3 {
-        animation-delay: 0.46s;
-      }
-
-      @keyframes scrollPartner {
-        from {
-          transform: translateX(0);
-        }
-        to {
-          transform: translateX(-50%);
-        }
-      }
-      .partner-track {
-        display: flex;
-        gap: 40px;
-        width: max-content;
-        animation: scrollPartner 22s linear infinite;
-      }
-      .partner-track:hover {
-        animation-play-state: paused;
+      .mobile-menu-drawer.open {
+        right: 0;
       }
 
+      /* Nav link underline */
+      .nav-link {
+        position: relative;
+      }
+      .nav-link::after {
+        content: "";
+        position: absolute;
+        bottom: -4px;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background: var(--accent);
+        border-radius: 1px;
+        transition: width 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+      .nav-link:hover::after,
+      .nav-link.active::after {
+        width: 100%;
+      }
+      .nav-link.active {
+        color: #fff !important;
+      }
+
+      /* Fade-up */
       .fade-up {
         opacity: 0;
         transform: translateY(24px);
@@ -94,57 +112,68 @@
         transition-delay: 0.24s;
       }
 
-      .nav-link {
-        position: relative;
-      }
-      .nav-link::after {
-        content: "";
-        position: absolute;
-        bottom: -6px;
-        left: 0;
-        width: 0;
-        height: 2px;
-        background: var(--accent);
-        border-radius: 1px;
-        transition: width 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-      }
-      .nav-link:hover::after,
-      .nav-link.active::after {
-        width: 100%;
+      /* Stat number */
+      .stat-number {
+        font-variant-numeric: tabular-nums;
       }
 
-      .menu-drawer {
-        position: fixed;
-        top: 0;
-        left: 0;
-        height: 100%;
-        width: 300px;
-        background: #fff;
-        z-index: 1100;
-        transform: translateX(-100%);
-        transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-        overflow-y: auto;
-        box-shadow: 24px 0 48px rgba(0, 0, 0, 0.12);
+      /* CTA button */
+      .cta-btn {
+        transition:
+          filter 0.22s,
+          transform 0.22s,
+          box-shadow 0.22s;
       }
-      .menu-drawer.open {
-        transform: none;
-      }
-      .menu-overlay {
-        position: fixed;
-        inset: 0;
-        background: rgba(0, 0, 0, 0.4);
-        z-index: 1090;
-        opacity: 0;
-        pointer-events: none;
-        transition: opacity 0.35s;
-        backdrop-filter: blur(2px);
-      }
-      .menu-overlay.open {
-        opacity: 1;
-        pointer-events: all;
+      .cta-btn:hover {
+        filter: brightness(1.1);
+        transform: translateY(-2px);
+        box-shadow: 0 10px 28px rgba(5, 150, 105, 0.3);
       }
 
-      /* === Product card — kept here because JS injects these class names === */
+      /* Hero animations */
+      @keyframes heroFadeUp {
+        from {
+          opacity: 0;
+          transform: translateY(22px);
+        }
+        to {
+          opacity: 1;
+          transform: none;
+        }
+      }
+      .hero-anim {
+        animation: heroFadeUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) both;
+      }
+      .hero-anim.d1 {
+        animation-delay: 0.1s;
+      }
+      .hero-anim.d2 {
+        animation-delay: 0.28s;
+      }
+      .hero-anim.d3 {
+        animation-delay: 0.46s;
+      }
+
+      /* Partner strip */
+      @keyframes scrollPartner {
+        from {
+          transform: translateX(0);
+        }
+        to {
+          transform: translateX(-50%);
+        }
+      }
+      .partner-track {
+        display: flex;
+        gap: 40px;
+        width: max-content;
+        animation: scrollPartner 26s linear infinite;
+      }
+      .partner-track:hover {
+        animation-play-state: paused;
+      }
+
+      /* Product card */
       .product-card {
         background: #fff;
         border: 1px solid #f0f0f0;
@@ -253,6 +282,7 @@
         transform: scale(0.97);
       }
 
+      /* Category filter buttons */
       .cat-btn {
         padding: 7px 16px;
         border-radius: 10px;
@@ -277,6 +307,7 @@
         box-shadow: 0 4px 14px rgba(5, 150, 105, 0.28);
       }
 
+      /* Product detail modal */
       .pd-modal {
         position: fixed;
         inset: 0;
@@ -317,6 +348,7 @@
         border-radius: 2px;
       }
 
+      /* Quantity control */
       .qty-wrap {
         display: flex;
         align-items: center;
@@ -356,11 +388,13 @@
         font-family: inherit;
       }
 
+      /* Reg modal */
       .reg-modal-overlay {
         position: fixed;
         inset: 0;
         z-index: 3000;
-        background: rgba(0, 0, 0, 0.45);
+        background: rgba(0, 0, 0, 0.5);
+        backdrop-filter: blur(4px);
         display: flex;
         align-items: center;
         justify-content: center;
@@ -368,7 +402,6 @@
         pointer-events: none;
         transition: opacity 0.3s;
         padding: 16px;
-        backdrop-filter: blur(4px);
       }
       .reg-modal-overlay.open {
         opacity: 1;
@@ -376,26 +409,19 @@
       }
       .reg-modal {
         background: #fff;
-        border-radius: 24px;
-        max-width: 400px;
+        border-radius: 20px;
+        max-width: 440px;
         width: 100%;
         max-height: 90vh;
         overflow-y: auto;
         padding: 36px 32px;
         position: relative;
-        transform: translateY(20px) scale(0.98);
+        transform: translateY(20px) scale(0.97);
         transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
-        box-shadow: 0 40px 80px rgba(0, 0, 0, 0.2);
+        box-shadow: 0 40px 80px rgba(0, 0, 0, 0.18);
       }
       .reg-modal-overlay.open .reg-modal {
         transform: none;
-      }
-      .reg-modal::-webkit-scrollbar {
-        width: 4px;
-      }
-      .reg-modal::-webkit-scrollbar-thumb {
-        background: #e2e8f0;
-        border-radius: 2px;
       }
       .reg-close-btn {
         position: absolute;
@@ -419,6 +445,7 @@
         color: #475569;
       }
 
+      /* Toast */
       .jf-toast-wrap {
         position: fixed;
         bottom: 28px;
@@ -454,36 +481,45 @@
         transform: none;
       }
 
-      #backToTop {
-        position: fixed;
-        bottom: 28px;
-        left: 24px;
-        width: 44px;
-        height: 44px;
-        border-radius: 50%;
-        background: var(--deep);
+      /* Header search */
+      .header-search {
+        border: 1px solid rgba(255, 255, 255, 0.14);
+        background: rgba(255, 255, 255, 0.09);
         color: #fff;
-        border: none;
-        cursor: pointer;
-        z-index: 900;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        opacity: 0;
-        transform: translateY(12px);
-        transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-        box-shadow: 0 8px 24px rgba(15, 46, 27, 0.35);
+        border-radius: 10px;
+        padding: 8px 14px;
+        font-size: 14px;
+        outline: none;
+        font-family: inherit;
+        transition: all 0.2s;
       }
-      #backToTop.show {
-        opacity: 1;
-        transform: none;
+      .header-search::placeholder {
+        color: rgba(255, 255, 255, 0.4);
       }
-      #backToTop:hover {
-        background: var(--accent);
-        box-shadow: 0 8px 24px rgba(5, 150, 105, 0.4);
-        transform: translateY(-2px);
+      .header-search:focus {
+        background: rgba(255, 255, 255, 0.15);
+        border-color: rgba(255, 255, 255, 0.26);
       }
 
+      /* Form fields */
+      .form-field {
+        width: 100%;
+        border: 1.5px solid #e5e7eb;
+        border-radius: 10px;
+        padding: 10px 14px;
+        font-size: 14px;
+        outline: none;
+        font-family: inherit;
+        color: #111827;
+        transition: all 0.2s;
+        background: #fff;
+      }
+      .form-field:focus {
+        border-color: var(--accent);
+        box-shadow: 0 0 0 3px rgba(5, 150, 105, 0.08);
+      }
+
+      /* Sidebar cards */
       .best-item {
         display: flex;
         gap: 12px;
@@ -521,23 +557,35 @@
         letter-spacing: -0.02em;
       }
 
-      .header-search {
-        border: 1px solid rgba(255, 255, 255, 0.14);
-        background: rgba(255, 255, 255, 0.09);
+      /* Back to top */
+      #backToTop {
+        position: fixed;
+        bottom: 28px;
+        left: 24px;
+        width: 44px;
+        height: 44px;
+        border-radius: 50%;
+        background: var(--deep);
         color: #fff;
-        border-radius: 10px;
-        padding: 8px 14px;
-        font-size: 14px;
-        outline: none;
-        font-family: inherit;
-        transition: all 0.2s;
+        border: none;
+        cursor: pointer;
+        z-index: 900;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        opacity: 0;
+        transform: translateY(12px);
+        transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+        box-shadow: 0 8px 24px rgba(15, 46, 27, 0.35);
       }
-      .header-search::placeholder {
-        color: rgba(255, 255, 255, 0.4);
+      #backToTop.show {
+        opacity: 1;
+        transform: none;
       }
-      .header-search:focus {
-        background: rgba(255, 255, 255, 0.15);
-        border-color: rgba(255, 255, 255, 0.26);
+      #backToTop:hover {
+        background: var(--accent);
+        box-shadow: 0 8px 24px rgba(5, 150, 105, 0.4);
+        transform: translateY(-2px);
       }
 
       .no-scrollbar {
@@ -547,37 +595,23 @@
       .no-scrollbar::-webkit-scrollbar {
         display: none;
       }
-
-      .form-field {
-        width: 100%;
-        border: 1.5px solid #e5e7eb;
-        border-radius: 10px;
-        padding: 10px 14px;
-        font-size: 14px;
-        outline: none;
-        font-family: inherit;
-        color: #111827;
-        transition: all 0.2s;
-        background: #fff;
-      }
-      .form-field:focus {
-        border-color: var(--accent);
-        box-shadow: 0 0 0 3px rgba(5, 150, 105, 0.08);
-      }
     </style>
   </head>
   <body>
-    <!-- MOBILE OVERLAY + DRAWER -->
-    <div class="menu-overlay" id="menuOverlay"></div>
-    <div class="menu-drawer" id="menuDrawer">
+    <!-- MOBILE OVERLAY + DRAWER (slides from RIGHT) -->
+    <div class="mobile-menu-overlay" id="menuOverlay"></div>
+    <div class="mobile-menu-drawer" id="menuDrawer">
       <div
         class="flex items-center justify-between px-5 py-4"
         style="border-bottom: 1px solid #f1f5f9"
       >
-        <img src="img/Logo.png" alt="Jellyfish" style="height: 30px" />
+        <a href="index.html"
+          ><img src="img/logo.png" alt="Jellyfish Vietnam" style="height: 36px"
+        /></a>
         <button
           id="menuCloseBtn"
-          class="text-gray-400 bg-transparent border-0 cursor-pointer w-8 h-8 flex items-center justify-center rounded-lg transition-all text-xl leading-none hover:bg-gray-50 hover:text-gray-600"
+          aria-label="Đóng menu"
+          class="text-gray-400 bg-transparent border-0 cursor-pointer w-9 h-9 flex items-center justify-center rounded-lg text-2xl leading-none hover:bg-gray-50 hover:text-gray-600 transition-all"
         >
           &times;
         </button>
@@ -593,7 +627,7 @@
           href="about.html"
           class="block py-3 text-sm font-semibold text-gray-600 no-underline hover:text-[#059669] transition-colors"
           style="border-bottom: 1px solid #f8fafc"
-          >Về Jellyfish</a
+          >Về Jellyfish Việt Nam</a
         >
         <a
           href="courses.html"
@@ -602,16 +636,16 @@
           >Khóa học</a
         >
         <a
-          href="curriculum.html"
-          class="block py-3 text-sm font-bold no-underline transition-colors"
-          style="color: #059669; border-bottom: 1px solid #f8fafc"
-          >Giáo trình</a
-        >
-        <a
           href="schedule.html"
           class="block py-3 text-sm font-semibold text-gray-600 no-underline hover:text-[#059669] transition-colors"
           style="border-bottom: 1px solid #f8fafc"
           >Lịch khai giảng</a
+        >
+        <a
+          href="curriculum.html"
+          class="block py-3 text-sm font-bold no-underline transition-colors"
+          style="color: #059669; border-bottom: 1px solid #f8fafc"
+          >Giáo trình</a
         >
         <a
           href="blog.html"
@@ -634,7 +668,7 @@
           class="form-field text-sm"
         />
       </div>
-      <div class="px-5 pb-5">
+      <div class="px-5 pb-6 flex flex-col gap-3">
         <button
           onclick="openRegModal()"
           class="w-full py-2.5 rounded-xl font-bold text-white text-sm border-0 cursor-pointer transition-all active:scale-95"
@@ -642,6 +676,12 @@
         >
           Tư vấn miễn phí
         </button>
+        <a
+          href="cart.html"
+          class="block text-center font-bold text-white py-2.5 rounded-xl no-underline text-sm transition-all active:scale-95"
+          style="background: #0f2e1b"
+          >🛒 Giỏ hàng</a
+        >
       </div>
     </div>
 
@@ -652,22 +692,25 @@
     >
       <button
         id="hamburgerBtn"
-        class="text-white bg-transparent border-0 cursor-pointer p-1 flex items-center justify-center"
+        aria-label="Mở menu"
+        class="flex flex-col gap-1.5 bg-transparent border-0 cursor-pointer p-1"
       >
-        <svg
-          width="22"
-          height="22"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="2"
-          viewBox="0 0 24 24"
-        >
-          <line x1="3" y1="6" x2="21" y2="6" />
-          <line x1="3" y1="12" x2="21" y2="12" />
-          <line x1="3" y1="18" x2="21" y2="18" />
-        </svg>
+        <span
+          class="block rounded"
+          style="width: 24px; height: 2px; background: #fff"
+        ></span>
+        <span
+          class="block rounded"
+          style="width: 24px; height: 2px; background: #fff"
+        ></span>
+        <span
+          class="block rounded"
+          style="width: 24px; height: 2px; background: #fff"
+        ></span>
       </button>
-      <img src="img/Logo.png" alt="Jellyfish" style="height: 30px" />
+      <a href="index.html"
+        ><img src="img/logo.png" alt="Jellyfish Vietnam" style="height: 32px"
+      /></a>
       <a href="cart.html" class="relative text-white no-underline">
         <svg
           width="22"
@@ -707,7 +750,6 @@
         border-bottom: 1px solid rgba(255, 255, 255, 0.06);
       "
     >
-      <!-- Single row: Logo | Nav | Actions -->
       <div
         style="
           max-width: 1280px;
@@ -719,7 +761,6 @@
           margin: 0 auto;
         "
       >
-        <!-- Logo -->
         <a
           href="index.html"
           style="
@@ -735,8 +776,6 @@
             style="height: 36px; display: block"
           />
         </a>
-
-        <!-- Nav — flex-1 fills the middle -->
         <nav class="flex items-center gap-5 flex-1">
           <a
             href="index.html"
@@ -757,16 +796,16 @@
             >Khóa học</a
           >
           <a
-            href="curriculum.html"
-            class="nav-link active text-sm font-bold py-1 no-underline"
-            style="color: #fff"
-            >Giáo trình</a
-          >
-          <a
             href="schedule.html"
             class="nav-link text-sm font-semibold py-1 no-underline transition-colors"
             style="color: rgba(255, 255, 255, 0.7)"
             >Lịch khai giảng</a
+          >
+          <a
+            href="curriculum.html"
+            class="nav-link active text-sm font-bold py-1 no-underline"
+            style="color: #fff"
+            >Giáo trình</a
           >
           <a
             href="blog.html"
@@ -781,8 +820,6 @@
             >Tin tức</a
           >
         </nav>
-
-        <!-- Actions -->
         <div class="flex items-center gap-1 flex-shrink-0">
           <button
             id="searchToggleBtn"
@@ -806,7 +843,7 @@
           <a
             href="cart.html"
             title="Giỏ hàng"
-            class="w-9 h-9 flex items-center justify-center rounded-lg no-underline transition-all hover:bg-white/10"
+            class="w-9 h-9 flex items-center justify-center rounded-lg no-underline transition-all hover:bg-white/10 relative"
             style="color: rgba(255, 255, 255, 0.65)"
           >
             <svg
@@ -835,15 +872,14 @@
           ></span>
           <button
             onclick="openRegModal()"
-            class="font-bold text-sm px-5 py-2 rounded-xl cursor-pointer border-0 transition-all active:scale-95"
+            class="cta-btn font-bold text-sm px-5 py-2 rounded-xl cursor-pointer border-0"
             style="background: #fff; color: #0f2e1b"
           >
             Tư vấn miễn phí
           </button>
         </div>
       </div>
-
-      <!-- Collapsible search (slides down on icon click) -->
+      <!-- Collapsible search -->
       <div
         id="headerSearchBar"
         style="
@@ -896,7 +932,6 @@
       class="relative overflow-hidden text-white text-center"
       style="background: #0f2e1b; padding: 88px 0 72px"
     >
-      <!-- Glow orbs -->
       <div
         class="absolute pointer-events-none"
         style="
@@ -927,9 +962,7 @@
           left: 4%;
         "
       ></div>
-
       <div class="relative mx-auto px-6" style="max-width: 1200px; z-index: 1">
-        <!-- Glassmorphism badge -->
         <div
           class="inline-flex items-center gap-2 mb-5 px-4 py-1.5 text-xs font-semibold rounded-full hero-anim d1"
           style="
@@ -951,14 +984,12 @@
           </svg>
           Kho giáo trình Jellyfish
         </div>
-
         <h1
           class="font-extrabold leading-tight mb-4 hero-anim d2"
           style="font-size: clamp(30px, 5.5vw, 54px); letter-spacing: -0.025em"
         >
           Giáo trình tiếng Nhật<br />chính thống
         </h1>
-
         <p
           class="mb-8 hero-anim d3 mx-auto"
           style="
@@ -971,7 +1002,6 @@
           Minna no Nihongo, Shin Kanzen Master và tài liệu luyện thi JLPT từ N5
           đến N1 — được biên soạn và tuyển chọn bởi giảng viên Jellyfish.
         </p>
-
         <ul
           class="flex flex-wrap justify-center gap-4 text-sm hero-anim d3 m-0 p-0"
           style="
@@ -1048,248 +1078,333 @@
     </section>
 
     <!-- STATS STRIP -->
-    <section class="text-white py-8" style="background: #059669">
-      <div class="mx-auto px-6" style="max-width: 1200px">
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+    <div style="background: #059669">
+      <div
+        style="
+          max-width: 1280px;
+          margin: 0 auto;
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: center;
+        "
+      >
+        <div
+          style="
+            padding: 20px 36px;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            border-right: 1px solid rgba(255, 255, 255, 0.18);
+          "
+        >
           <div>
             <div
-              class="font-extrabold"
-              style="font-size: 2rem; letter-spacing: -0.03em"
+              style="
+                font-size: 28px;
+                font-weight: 900;
+                color: #fff;
+                line-height: 1;
+              "
             >
-              500+
+              50+
             </div>
-            <div class="text-sm mt-1" style="color: rgba(255, 255, 255, 0.75)">
-              học viên
+            <div
+              style="
+                font-size: 12px;
+                color: rgba(255, 255, 255, 0.82);
+                margin-top: 4px;
+              "
+            >
+              Đầu sách giáo trình
             </div>
           </div>
+        </div>
+        <div
+          style="
+            padding: 20px 36px;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            border-right: 1px solid rgba(255, 255, 255, 0.18);
+          "
+        >
           <div>
             <div
-              class="font-extrabold"
-              style="font-size: 2rem; letter-spacing: -0.03em"
+              style="
+                font-size: 28px;
+                font-weight: 900;
+                color: #fff;
+                line-height: 1;
+              "
             >
-              60+
+              N5→N1
             </div>
-            <div class="text-sm mt-1" style="color: rgba(255, 255, 255, 0.75)">
-              lớp học
+            <div
+              style="
+                font-size: 12px;
+                color: rgba(255, 255, 255, 0.82);
+                margin-top: 4px;
+              "
+            >
+              Đầy đủ cấp độ
             </div>
           </div>
+        </div>
+        <div
+          style="
+            padding: 20px 36px;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            border-right: 1px solid rgba(255, 255, 255, 0.18);
+          "
+        >
           <div>
             <div
-              class="font-extrabold"
-              style="font-size: 2rem; letter-spacing: -0.03em"
+              style="
+                font-size: 28px;
+                font-weight: 900;
+                color: #fff;
+                line-height: 1;
+              "
             >
-              15+
+              10,000+
             </div>
-            <div class="text-sm mt-1" style="color: rgba(255, 255, 255, 0.75)">
-              năm kinh nghiệm
+            <div
+              style="
+                font-size: 12px;
+                color: rgba(255, 255, 255, 0.82);
+                margin-top: 4px;
+              "
+            >
+              Bộ sách đã bán
             </div>
           </div>
+        </div>
+        <div
+          style="
+            padding: 20px 36px;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+          "
+        >
           <div>
             <div
-              class="font-extrabold"
-              style="font-size: 2rem; letter-spacing: -0.03em"
+              style="
+                font-size: 28px;
+                font-weight: 900;
+                color: #fff;
+                line-height: 1;
+              "
             >
               100%
             </div>
-            <div class="text-sm mt-1" style="color: rgba(255, 255, 255, 0.75)">
-              học lại miễn phí
+            <div
+              style="
+                font-size: 12px;
+                color: rgba(255, 255, 255, 0.82);
+                margin-top: 4px;
+              "
+            >
+              Bản dịch tiếng Việt
             </div>
           </div>
         </div>
       </div>
-    </section>
+    </div>
 
     <!-- PARTNER STRIP -->
     <section
-      class="overflow-hidden py-5 bg-white"
+      class="overflow-hidden py-4 bg-white"
       style="border-top: 1px solid #f1f5f9; border-bottom: 1px solid #f1f5f9"
     >
       <div class="partner-track">
         <span
-          class="flex items-center gap-2 text-sm font-semibold whitespace-nowrap"
-          style="color: #94a3b8"
-          ><img
-            src="img/dhbk.png"
-            style="height: 26px; object-fit: contain"
-            alt=""
-          />Đại học Bách Khoa</span
+          class="flex items-center gap-3 whitespace-nowrap px-9 text-sm font-semibold"
+          style="color: #94a3b8; border-right: 1px solid #f0f0f0"
+          ><span
+            class="w-2 h-2 rounded-full flex-shrink-0"
+            style="background: #059669"
+          ></span
+          >Đại học Kyoto</span
         >
         <span
-          class="flex items-center gap-2 text-sm font-semibold whitespace-nowrap"
-          style="color: #94a3b8"
-          ><img
-            src="img/dhnn.png"
-            style="height: 26px; object-fit: contain"
-            alt=""
-          />Đại học Ngoại Ngữ</span
+          class="flex items-center gap-3 whitespace-nowrap px-9 text-sm font-semibold"
+          style="color: #94a3b8; border-right: 1px solid #f0f0f0"
+          ><span
+            class="w-2 h-2 rounded-full flex-shrink-0"
+            style="background: #059669"
+          ></span
+          >Fast Retailing (UNIQLO)</span
         >
         <span
-          class="flex items-center gap-2 text-sm font-semibold whitespace-nowrap"
-          style="color: #94a3b8"
-          ><img
-            src="img/neu.png"
-            style="height: 26px; object-fit: contain"
-            alt=""
-          />Đại học Kinh tế QD</span
+          class="flex items-center gap-3 whitespace-nowrap px-9 text-sm font-semibold"
+          style="color: #94a3b8; border-right: 1px solid #f0f0f0"
+          ><span
+            class="w-2 h-2 rounded-full flex-shrink-0"
+            style="background: #059669"
+          ></span
+          >Tập đoàn FPT</span
         >
         <span
-          class="flex items-center gap-2 text-sm font-semibold whitespace-nowrap"
-          style="color: #94a3b8"
-          ><img
-            src="img/hust.png"
-            style="height: 26px; object-fit: contain"
-            alt=""
-          />HUST</span
+          class="flex items-center gap-3 whitespace-nowrap px-9 text-sm font-semibold"
+          style="color: #94a3b8; border-right: 1px solid #f0f0f0"
+          ><span
+            class="w-2 h-2 rounded-full flex-shrink-0"
+            style="background: #059669"
+          ></span
+          >Đại học Waseda</span
         >
         <span
-          class="flex items-center gap-2 text-sm font-semibold whitespace-nowrap"
-          style="color: #94a3b8"
-          ><img
-            src="img/fpt.png"
-            style="height: 26px; object-fit: contain"
-            alt=""
-          />FPT Software</span
+          class="flex items-center gap-3 whitespace-nowrap px-9 text-sm font-semibold"
+          style="color: #94a3b8; border-right: 1px solid #f0f0f0"
+          ><span
+            class="w-2 h-2 rounded-full flex-shrink-0"
+            style="background: #059669"
+          ></span
+          >Honda Vietnam</span
         >
         <span
-          class="flex items-center gap-2 text-sm font-semibold whitespace-nowrap"
-          style="color: #94a3b8"
-          ><img
-            src="img/viettel.png"
-            style="height: 26px; object-fit: contain"
-            alt=""
-          />Viettel</span
+          class="flex items-center gap-3 whitespace-nowrap px-9 text-sm font-semibold"
+          style="color: #94a3b8; border-right: 1px solid #f0f0f0"
+          ><span
+            class="w-2 h-2 rounded-full flex-shrink-0"
+            style="background: #059669"
+          ></span
+          >Đại học Keio</span
         >
         <span
-          class="flex items-center gap-2 text-sm font-semibold whitespace-nowrap"
-          style="color: #94a3b8"
-          ><img
-            src="img/vingroup.png"
-            style="height: 26px; object-fit: contain"
-            alt=""
-          />Vingroup</span
+          class="flex items-center gap-3 whitespace-nowrap px-9 text-sm font-semibold"
+          style="color: #94a3b8; border-right: 1px solid #f0f0f0"
+          ><span
+            class="w-2 h-2 rounded-full flex-shrink-0"
+            style="background: #059669"
+          ></span
+          >Panasonic Vietnam</span
         >
         <span
-          class="flex items-center gap-2 text-sm font-semibold whitespace-nowrap"
-          style="color: #94a3b8"
-          ><img
-            src="img/samsung.png"
-            style="height: 26px; object-fit: contain"
-            alt=""
-          />Samsung VN</span
+          class="flex items-center gap-3 whitespace-nowrap px-9 text-sm font-semibold"
+          style="color: #94a3b8; border-right: 1px solid #f0f0f0"
+          ><span
+            class="w-2 h-2 rounded-full flex-shrink-0"
+            style="background: #059669"
+          ></span
+          >Đại học Osaka</span
         >
         <span
-          class="flex items-center gap-2 text-sm font-semibold whitespace-nowrap"
-          style="color: #94a3b8"
-          ><img
-            src="img/honda.png"
-            style="height: 26px; object-fit: contain"
-            alt=""
-          />Honda VN</span
+          class="flex items-center gap-3 whitespace-nowrap px-9 text-sm font-semibold"
+          style="color: #94a3b8; border-right: 1px solid #f0f0f0"
+          ><span
+            class="w-2 h-2 rounded-full flex-shrink-0"
+            style="background: #059669"
+          ></span
+          >Học viện Tochigi</span
         >
         <span
-          class="flex items-center gap-2 text-sm font-semibold whitespace-nowrap"
-          style="color: #94a3b8"
-          ><img
-            src="img/toyota.png"
-            style="height: 26px; object-fit: contain"
-            alt=""
-          />Toyota VN</span
+          class="flex items-center gap-3 whitespace-nowrap px-9 text-sm font-semibold"
+          style="color: #94a3b8; border-right: 1px solid #f0f0f0"
+          ><span
+            class="w-2 h-2 rounded-full flex-shrink-0"
+            style="background: #059669"
+          ></span
+          >Đại học Ritsumeikan</span
         >
         <!-- duplicate for seamless loop -->
         <span
-          class="flex items-center gap-2 text-sm font-semibold whitespace-nowrap"
-          style="color: #94a3b8"
-          ><img
-            src="img/dhbk.png"
-            style="height: 26px; object-fit: contain"
-            alt=""
-          />Đại học Bách Khoa</span
+          class="flex items-center gap-3 whitespace-nowrap px-9 text-sm font-semibold"
+          style="color: #94a3b8; border-right: 1px solid #f0f0f0"
+          ><span
+            class="w-2 h-2 rounded-full flex-shrink-0"
+            style="background: #059669"
+          ></span
+          >Đại học Kyoto</span
         >
         <span
-          class="flex items-center gap-2 text-sm font-semibold whitespace-nowrap"
-          style="color: #94a3b8"
-          ><img
-            src="img/dhnn.png"
-            style="height: 26px; object-fit: contain"
-            alt=""
-          />Đại học Ngoại Ngữ</span
+          class="flex items-center gap-3 whitespace-nowrap px-9 text-sm font-semibold"
+          style="color: #94a3b8; border-right: 1px solid #f0f0f0"
+          ><span
+            class="w-2 h-2 rounded-full flex-shrink-0"
+            style="background: #059669"
+          ></span
+          >Fast Retailing (UNIQLO)</span
         >
         <span
-          class="flex items-center gap-2 text-sm font-semibold whitespace-nowrap"
-          style="color: #94a3b8"
-          ><img
-            src="img/neu.png"
-            style="height: 26px; object-fit: contain"
-            alt=""
-          />Đại học Kinh tế QD</span
+          class="flex items-center gap-3 whitespace-nowrap px-9 text-sm font-semibold"
+          style="color: #94a3b8; border-right: 1px solid #f0f0f0"
+          ><span
+            class="w-2 h-2 rounded-full flex-shrink-0"
+            style="background: #059669"
+          ></span
+          >Tập đoàn FPT</span
         >
         <span
-          class="flex items-center gap-2 text-sm font-semibold whitespace-nowrap"
-          style="color: #94a3b8"
-          ><img
-            src="img/hust.png"
-            style="height: 26px; object-fit: contain"
-            alt=""
-          />HUST</span
+          class="flex items-center gap-3 whitespace-nowrap px-9 text-sm font-semibold"
+          style="color: #94a3b8; border-right: 1px solid #f0f0f0"
+          ><span
+            class="w-2 h-2 rounded-full flex-shrink-0"
+            style="background: #059669"
+          ></span
+          >Đại học Waseda</span
         >
         <span
-          class="flex items-center gap-2 text-sm font-semibold whitespace-nowrap"
-          style="color: #94a3b8"
-          ><img
-            src="img/fpt.png"
-            style="height: 26px; object-fit: contain"
-            alt=""
-          />FPT Software</span
+          class="flex items-center gap-3 whitespace-nowrap px-9 text-sm font-semibold"
+          style="color: #94a3b8; border-right: 1px solid #f0f0f0"
+          ><span
+            class="w-2 h-2 rounded-full flex-shrink-0"
+            style="background: #059669"
+          ></span
+          >Honda Vietnam</span
         >
         <span
-          class="flex items-center gap-2 text-sm font-semibold whitespace-nowrap"
-          style="color: #94a3b8"
-          ><img
-            src="img/viettel.png"
-            style="height: 26px; object-fit: contain"
-            alt=""
-          />Viettel</span
+          class="flex items-center gap-3 whitespace-nowrap px-9 text-sm font-semibold"
+          style="color: #94a3b8; border-right: 1px solid #f0f0f0"
+          ><span
+            class="w-2 h-2 rounded-full flex-shrink-0"
+            style="background: #059669"
+          ></span
+          >Đại học Keio</span
         >
         <span
-          class="flex items-center gap-2 text-sm font-semibold whitespace-nowrap"
-          style="color: #94a3b8"
-          ><img
-            src="img/vingroup.png"
-            style="height: 26px; object-fit: contain"
-            alt=""
-          />Vingroup</span
+          class="flex items-center gap-3 whitespace-nowrap px-9 text-sm font-semibold"
+          style="color: #94a3b8; border-right: 1px solid #f0f0f0"
+          ><span
+            class="w-2 h-2 rounded-full flex-shrink-0"
+            style="background: #059669"
+          ></span
+          >Panasonic Vietnam</span
         >
         <span
-          class="flex items-center gap-2 text-sm font-semibold whitespace-nowrap"
-          style="color: #94a3b8"
-          ><img
-            src="img/samsung.png"
-            style="height: 26px; object-fit: contain"
-            alt=""
-          />Samsung VN</span
+          class="flex items-center gap-3 whitespace-nowrap px-9 text-sm font-semibold"
+          style="color: #94a3b8; border-right: 1px solid #f0f0f0"
+          ><span
+            class="w-2 h-2 rounded-full flex-shrink-0"
+            style="background: #059669"
+          ></span
+          >Đại học Osaka</span
         >
         <span
-          class="flex items-center gap-2 text-sm font-semibold whitespace-nowrap"
-          style="color: #94a3b8"
-          ><img
-            src="img/honda.png"
-            style="height: 26px; object-fit: contain"
-            alt=""
-          />Honda VN</span
+          class="flex items-center gap-3 whitespace-nowrap px-9 text-sm font-semibold"
+          style="color: #94a3b8; border-right: 1px solid #f0f0f0"
+          ><span
+            class="w-2 h-2 rounded-full flex-shrink-0"
+            style="background: #059669"
+          ></span
+          >Học viện Tochigi</span
         >
         <span
-          class="flex items-center gap-2 text-sm font-semibold whitespace-nowrap"
+          class="flex items-center gap-3 whitespace-nowrap px-9 text-sm font-semibold"
           style="color: #94a3b8"
-          ><img
-            src="img/toyota.png"
-            style="height: 26px; object-fit: contain"
-            alt=""
-          />Toyota VN</span
+          ><span
+            class="w-2 h-2 rounded-full flex-shrink-0"
+            style="background: #059669"
+          ></span
+          >Đại học Ritsumeikan</span
         >
       </div>
     </section>
 
-    <!-- MAIN -->
+    <!-- MAIN CONTENT -->
     <main class="mx-auto px-4 md:px-6 py-12" style="max-width: 1200px">
       <div class="flex gap-8">
         <!-- SIDEBAR (desktop) -->
@@ -1518,7 +1633,7 @@
           >
             <button
               onclick="loadMore()"
-              class="inline-flex items-center gap-2 font-bold text-white px-8 py-3 rounded-full text-sm cursor-pointer border-0 transition-all active:scale-95"
+              class="cta-btn inline-flex items-center gap-2 font-bold text-white px-8 py-3 rounded-full text-sm cursor-pointer border-0"
               style="
                 background: #059669;
                 box-shadow: 0 8px 24px rgba(5, 150, 105, 0.3);
@@ -1668,7 +1783,7 @@
               <button class="qty-btn" onclick="changeQty(1)">+</button>
             </div>
             <button
-              class="font-bold text-white cursor-pointer border-0 transition-all active:scale-95"
+              class="cta-btn font-bold text-white cursor-pointer border-0 transition-all active:scale-95"
               style="
                 flex: 1;
                 padding: 12px;
@@ -1723,290 +1838,278 @@
     </button>
 
     <!-- FOOTER -->
-    <footer class="py-12 text-white text-sm" style="background: #0f2e1b">
-      <div class="mx-auto px-6" style="max-width: 1200px">
+    <footer class="py-14 px-4 md:px-6" style="background: #0f2e1b">
+      <div class="mx-auto" style="max-width: 1200px">
         <div class="flex justify-between items-start flex-wrap gap-6 mb-6">
           <div>
-            <img
-              src="img/Logofooter.png"
-              alt="Jellyfish Vietnam"
-              style="height: 48px"
-            />
-            <p
-              class="text-xs mt-2 uppercase tracking-widest"
-              style="color: rgba(255, 255, 255, 0.35)"
-            >
+            <a href="index.html"
+              ><img
+                src="img/logo-jf.svg"
+                alt="Jellyfish Vietnam"
+                style="height: 52px; width: 168px; object-fit: contain"
+            /></a>
+            <p class="mt-2 mb-0 text-white font-extrabold text-sm">
               Expand your horizons
             </p>
           </div>
           <nav>
-            <ul class="flex flex-wrap gap-5 m-0 p-0" style="list-style: none">
+            <ul class="list-none p-0 m-0 flex flex-wrap gap-5">
               <li>
                 <a
                   href="index.html"
-                  class="text-white no-underline font-semibold hover:opacity-70 transition-opacity"
+                  class="text-white no-underline font-semibold text-sm hover:text-emerald-400 transition-colors"
                   >Trang chủ</a
                 >
               </li>
               <li>
                 <a
                   href="about.html"
-                  class="text-white no-underline font-semibold hover:opacity-70 transition-opacity"
+                  class="text-white no-underline font-semibold text-sm hover:text-emerald-400 transition-colors"
                   >Về Jellyfish</a
                 >
               </li>
               <li>
                 <a
                   href="courses.html"
-                  class="text-white no-underline font-semibold hover:opacity-70 transition-opacity"
+                  class="text-white no-underline font-semibold text-sm hover:text-emerald-400 transition-colors"
                   >Khóa học</a
                 >
               </li>
               <li>
                 <a
                   href="curriculum.html"
-                  class="text-white no-underline font-semibold hover:opacity-70 transition-opacity"
+                  class="text-white no-underline font-semibold text-sm hover:text-emerald-400 transition-colors"
                   >Giáo trình</a
                 >
               </li>
               <li>
                 <a
                   href="blog.html"
-                  class="text-white no-underline font-semibold hover:opacity-70 transition-opacity"
+                  class="text-white no-underline font-semibold text-sm hover:text-emerald-400 transition-colors"
                   >Kiến thức hữu ích</a
                 >
               </li>
               <li>
                 <a
                   href="news.html"
-                  class="text-white no-underline font-semibold hover:opacity-70 transition-opacity"
+                  class="text-white no-underline font-semibold text-sm hover:text-emerald-400 transition-colors"
                   >Tin tức</a
                 >
               </li>
             </ul>
           </nav>
         </div>
-        <hr style="border-color: rgba(255, 255, 255, 0.08)" />
-        <div
-          class="grid gap-8 py-8"
-          style="grid-template-columns: repeat(auto-fit, minmax(220px, 1fr))"
-        >
+        <hr style="border-color: rgba(255, 255, 255, 0.12)" />
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 py-8">
           <div>
             <h5
-              class="font-bold mb-4 text-xs uppercase tracking-widest"
-              style="color: rgba(255, 255, 255, 0.5)"
+              class="font-bold mb-4 text-white text-xs tracking-widest uppercase"
             >
               JELLYFISH JAPAN
             </h5>
-            <p
-              class="flex items-start gap-2.5 mb-3 leading-relaxed"
-              style="color: rgba(255, 255, 255, 0.55)"
-            >
+            <div class="flex items-start gap-3 mb-3">
               <img
                 src="img/diachiicon.png"
                 alt=""
                 style="
-                  width: 14px;
+                  width: 18px;
+                  height: 18px;
                   flex-shrink: 0;
-                  margin-top: 3px;
+                  margin-top: 2px;
                   object-fit: contain;
-                  opacity: 0.6;
                 "
-              />4F Westhill Building, Nishigotanda 2-24-4, Shinagawa, Tokyo,
-              Japan
-            </p>
-            <p
-              class="flex items-start gap-2.5 mb-3"
-              style="color: rgba(255, 255, 255, 0.55)"
-            >
+              /><span
+                class="text-sm leading-relaxed"
+                style="color: rgba(255, 255, 255, 0.6)"
+                >4F Westhill Building, Nishigotanda 2-24-4, Shinagawa, Tokyo,
+                Japan</span
+              >
+            </div>
+            <div class="flex items-start gap-3 mb-3">
               <img
                 src="img/linkicon.png"
                 alt=""
                 style="
-                  width: 14px;
+                  width: 18px;
+                  height: 18px;
                   flex-shrink: 0;
                   margin-top: 2px;
                   object-fit: contain;
-                  opacity: 0.6;
                 "
-              />https://jellyfish-g.co.jp
-            </p>
-            <p
-              class="flex items-start gap-2.5 mb-3"
-              style="color: rgba(255, 255, 255, 0.55)"
-            >
+              /><span class="text-sm" style="color: rgba(255, 255, 255, 0.6)"
+                >https://jellyfish-g.co.jp</span
+              >
+            </div>
+            <div class="flex items-start gap-3 mb-3">
               <img
                 src="img/mailicon.png"
                 alt=""
                 style="
-                  width: 14px;
+                  width: 18px;
+                  height: 18px;
                   flex-shrink: 0;
                   margin-top: 2px;
                   object-fit: contain;
-                  opacity: 0.6;
                 "
-              />job_info@jellyfish-g.co.jp
-            </p>
-            <p
-              class="flex items-start gap-2.5"
-              style="color: rgba(255, 255, 255, 0.55)"
-            >
+              /><span class="text-sm" style="color: rgba(255, 255, 255, 0.6)"
+                >job_info@jellyfish-g.co.jp</span
+              >
+            </div>
+            <div class="flex items-start gap-3">
               <img
                 src="img/callicon.png"
                 alt=""
                 style="
-                  width: 14px;
+                  width: 18px;
+                  height: 18px;
                   flex-shrink: 0;
                   margin-top: 2px;
                   object-fit: contain;
-                  opacity: 0.6;
                 "
-              />03-5437-0135
-            </p>
+              /><span class="text-sm" style="color: rgba(255, 255, 255, 0.6)"
+                >03-5437-0135</span
+              >
+            </div>
           </div>
           <div>
             <h5
-              class="font-bold mb-4 text-xs uppercase tracking-widest"
-              style="color: rgba(255, 255, 255, 0.5)"
+              class="font-bold mb-4 text-white text-xs tracking-widest uppercase"
             >
               JELLYFISH VIỆT NAM
             </h5>
-            <p
-              class="flex items-start gap-2.5 mb-3 leading-relaxed"
-              style="color: rgba(255, 255, 255, 0.55)"
-            >
+            <div class="flex items-start gap-3 mb-3">
               <img
                 src="img/diachiicon.png"
                 alt=""
                 style="
-                  width: 14px;
+                  width: 18px;
+                  height: 18px;
                   flex-shrink: 0;
-                  margin-top: 3px;
+                  margin-top: 2px;
                   object-fit: contain;
-                  opacity: 0.6;
                 "
-              />Tầng 13, CMC Tower, 11 Duy Tân, P. Dịch Vọng Hậu, Q. Cầu Giấy,
-              TP. Hà Nội
-            </p>
-            <p
-              class="flex items-start gap-2.5 mb-3"
-              style="color: rgba(255, 255, 255, 0.55)"
-            >
+              /><span
+                class="text-sm leading-relaxed"
+                style="color: rgba(255, 255, 255, 0.6)"
+                >Tầng 13, CMC Tower, 11 Duy Tân, P. Dịch Vọng Hậu, Q. Cầu Giấy,
+                TP. Hà Nội</span
+              >
+            </div>
+            <div class="flex items-start gap-3 mb-3">
               <img
                 src="img/linkicon.png"
                 alt=""
                 style="
-                  width: 14px;
+                  width: 18px;
+                  height: 18px;
                   flex-shrink: 0;
                   margin-top: 2px;
                   object-fit: contain;
-                  opacity: 0.6;
                 "
-              />https://jellyfish-vn.com
-            </p>
-            <p
-              class="flex items-start gap-2.5 mb-3"
-              style="color: rgba(255, 255, 255, 0.55)"
-            >
+              /><span class="text-sm" style="color: rgba(255, 255, 255, 0.6)"
+                >https://jellyfish-vn.com</span
+              >
+            </div>
+            <div class="flex items-start gap-3 mb-3">
               <img
                 src="img/mailicon.png"
                 alt=""
                 style="
-                  width: 14px;
+                  width: 18px;
+                  height: 18px;
                   flex-shrink: 0;
                   margin-top: 2px;
                   object-fit: contain;
-                  opacity: 0.6;
                 "
-              />admin@jellyfish-vn.com
-            </p>
-            <p
-              class="flex items-start gap-2.5"
-              style="color: rgba(255, 255, 255, 0.55)"
-            >
+              /><span class="text-sm" style="color: rgba(255, 255, 255, 0.6)"
+                >admin@jellyfish-vn.com</span
+              >
+            </div>
+            <div class="flex items-start gap-3">
               <img
                 src="img/callicon.png"
                 alt=""
                 style="
-                  width: 14px;
+                  width: 18px;
+                  height: 18px;
                   flex-shrink: 0;
                   margin-top: 2px;
                   object-fit: contain;
-                  opacity: 0.6;
                 "
-              />0243.7955.846
-            </p>
+              /><span class="text-sm" style="color: rgba(255, 255, 255, 0.6)"
+                >0243.7955.846</span
+              >
+            </div>
           </div>
           <div>
             <h5
-              class="font-bold mb-4 text-xs uppercase tracking-widest"
-              style="color: rgba(255, 255, 255, 0.5)"
+              class="font-bold mb-4 text-white text-xs tracking-widest uppercase"
             >
               CHI NHÁNH HẢI PHÒNG
             </h5>
-            <p
-              class="flex items-start gap-2.5 mb-3 leading-relaxed"
-              style="color: rgba(255, 255, 255, 0.55)"
-            >
+            <div class="flex items-start gap-3 mb-3">
               <img
                 src="img/diachiicon.png"
                 alt=""
                 style="
-                  width: 14px;
+                  width: 18px;
+                  height: 18px;
                   flex-shrink: 0;
-                  margin-top: 3px;
+                  margin-top: 2px;
                   object-fit: contain;
-                  opacity: 0.6;
                 "
-              />Tầng 3, CMC Tower, tòa nhà Sholega, 275 Lạch Tray, Ngô Quyền,
-              TP. Hải Phòng
-            </p>
-            <p
-              class="flex items-start gap-2.5"
-              style="color: rgba(255, 255, 255, 0.55)"
-            >
+              /><span
+                class="text-sm leading-relaxed"
+                style="color: rgba(255, 255, 255, 0.6)"
+                >Tầng 3, CMC Tower, tòa nhà Sholega, 275 Lạch Tray, Ngô Quyền,
+                TP. Hải Phòng</span
+              >
+            </div>
+            <div class="flex items-start gap-3">
               <img
                 src="img/callicon.png"
                 alt=""
                 style="
-                  width: 14px;
+                  width: 18px;
+                  height: 18px;
                   flex-shrink: 0;
                   margin-top: 2px;
                   object-fit: contain;
-                  opacity: 0.6;
                 "
-              />0969.895.759
-            </p>
+              /><span class="text-sm" style="color: rgba(255, 255, 255, 0.6)"
+                >0969.895.759</span
+              >
+            </div>
           </div>
         </div>
-        <hr style="border-color: rgba(255, 255, 255, 0.08)" />
-        <div class="flex justify-between items-center flex-wrap gap-4 pt-6">
-          <p class="m-0 text-xs" style="color: rgba(255, 255, 255, 0.3)">
+        <hr style="border-color: rgba(255, 255, 255, 0.12)" />
+        <div class="flex justify-between items-center flex-wrap gap-4 pt-4">
+          <p class="mb-0 text-sm" style="color: rgba(255, 255, 255, 0.45)">
             © 2025 Jellyfish. All rights reserved.
           </p>
-          <div class="flex gap-3">
+          <div class="flex gap-4 items-center">
             <a
-              href="#"
-              class="transition-opacity hover:opacity-100"
-              style="opacity: 0.45"
+              href="https://www.youtube.com/@JellyfishVietnam"
+              target="_blank"
+              rel="noopener"
               ><img
                 src="img/yticon.png"
                 alt="YouTube"
                 style="width: 22px; height: 22px; object-fit: contain"
             /></a>
             <a
-              href="#"
-              class="transition-opacity hover:opacity-100"
-              style="opacity: 0.45"
+              href="https://www.instagram.com/jellyfish.vietnam"
+              target="_blank"
+              rel="noopener"
               ><img
                 src="img/igicons.png"
                 alt="Instagram"
                 style="width: 22px; height: 22px; object-fit: contain"
             /></a>
             <a
-              href="#"
-              class="transition-opacity hover:opacity-100"
-              style="opacity: 0.45"
+              href="https://www.facebook.com/jellyfish.vn"
+              target="_blank"
+              rel="noopener"
               ><img
                 src="img/fbicons.png"
                 alt="Facebook"
@@ -2020,9 +2123,7 @@
     <!-- REG MODAL -->
     <div class="reg-modal-overlay" id="regModal">
       <div class="reg-modal">
-        <button class="reg-close-btn" onclick="closeRegModal()">
-          &#x2715;
-        </button>
+        <button class="reg-close-btn" onclick="closeRegModal()">&times;</button>
         <div
           class="flex items-center justify-center rounded-2xl mb-5"
           style="width: 52px; height: 52px; background: #ecfdf5"
@@ -2094,7 +2195,7 @@
               style="color: #374151"
               >Khóa học quan tâm</label
             >
-            <select class="form-field">
+            <select class="form-field" style="cursor: pointer">
               <option value="">-- Chọn khóa học --</option>
               <option>Tiếng Nhật N5</option>
               <option>Tiếng Nhật N4</option>
@@ -2105,7 +2206,7 @@
           </div>
           <button
             type="submit"
-            class="w-full font-bold text-white cursor-pointer border-0 transition-all active:scale-95"
+            class="cta-btn w-full font-bold text-white cursor-pointer border-0 transition-all active:scale-95"
             style="
               padding: 13px;
               background: #059669;
@@ -2122,7 +2223,7 @@
     </div>
 
     <script>
-      const PRODUCTS = [
+      var PRODUCTS = [
         {
           id: 0,
           cat: "n5",
@@ -2262,7 +2363,7 @@
           orig: "130.000đ",
           price: "95.000đ",
           disc: "-27%",
-          desc: "3000 từ vựng trọng tâm N1 với ví dụ thực tế, cách dùng chi tiết và bài kiểm tra sau mỗi 50 từ. Phù hợp học mọi lúc.",
+          desc: "3000 từ vựng trọng tâm N1 với ví dụ thực tế, cách dùng chi tiết và bài kiểm tra sau mỗi 50 từ.",
           contents:
             '<strong>Đặc điểm:</strong><ul style="margin:8px 0 0;padding-left:20px"><li>3000 từ vựng N1 trọng tâm</li><li>Ví dụ câu thực tế</li><li>Bài kiểm tra từng chương</li><li>Danh sách Kanji kèm cách đọc</li></ul>',
         },
@@ -2275,43 +2376,81 @@
           orig: "160.000đ",
           price: "120.000đ",
           disc: "-25%",
-          desc: "Từ điển Nhật – Việt với hơn 40.000 từ mục, kèm Kanji, furigana và ví dụ câu. Công cụ không thể thiếu khi học tiếng Nhật.",
+          desc: "Từ điển Nhật – Việt với hơn 40.000 từ mục, kèm Kanji, furigana và ví dụ câu.",
           contents:
             '<strong>Thông tin:</strong><ul style="margin:8px 0 0;padding-left:20px"><li>40.000+ từ mục Nhật – Việt</li><li>Kèm Kanji và furigana</li><li>Ví dụ câu thực tế</li><li>Bảng động từ và tính từ biến thể</li></ul>',
         },
       ];
 
-      let curCat = "all",
+      var curCat = "all",
         cartQty = 0,
         activePdId = null,
         _showAll = false;
 
+      var _fuObs = new IntersectionObserver(
+        function (entries) {
+          entries.forEach(function (e) {
+            if (e.isIntersecting) {
+              e.target.classList.add("visible");
+              _fuObs.unobserve(e.target);
+            }
+          });
+        },
+        { threshold: 0, rootMargin: "0px 0px -40px 0px" },
+      );
+
       function renderProducts(list) {
-        const grid = document.getElementById("productGrid");
+        var grid = document.getElementById("productGrid");
         grid.innerHTML = list
-          .map(
-            (p, i) => `
-          <div class="col product-wrap fade-up d${(i % 4) + 1}" data-cat="${p.cat}" data-title="${p.title.toLowerCase()} ${p.label.toLowerCase()}">
-            <div class="product-card" onclick="openProduct(${p.id})">
-              <div class="img-wrap">
-                <img src="${p.img}" alt="${p.title}" loading="lazy" />
-                <span class="badge-tag">${p.label}</span>
-                <span class="discount-tag">${p.disc}</span>
-              </div>
-              <div class="card-body-inner">
-                <div class="card-title-text">${p.title}</div>
-                <div class="price-orig">${p.orig}</div>
-                <div class="price-new">${p.price}</div>
-                <button class="btn-cart" onclick="event.stopPropagation();addToCart(${p.id})">+ Thêm vào giỏ hàng</button>
-              </div>
-            </div>
-          </div>
-        `,
-          )
+          .map(function (p, i) {
+            return (
+              '<div class="col product-wrap fade-up d' +
+              ((i % 4) + 1) +
+              '" data-cat="' +
+              p.cat +
+              '" data-title="' +
+              p.title.toLowerCase() +
+              " " +
+              p.label.toLowerCase() +
+              '">' +
+              '<div class="product-card" onclick="openProduct(' +
+              p.id +
+              ')">' +
+              '<div class="img-wrap"><img src="' +
+              p.img +
+              '" alt="' +
+              p.title +
+              '" loading="lazy" />' +
+              '<span class="badge-tag">' +
+              p.label +
+              "</span>" +
+              '<span class="discount-tag">' +
+              p.disc +
+              "</span>" +
+              "</div>" +
+              '<div class="card-body-inner">' +
+              '<div class="card-title-text">' +
+              p.title +
+              "</div>" +
+              '<div class="price-orig">' +
+              p.orig +
+              "</div>" +
+              '<div class="price-new">' +
+              p.price +
+              "</div>" +
+              '<button class="btn-cart" onclick="event.stopPropagation();addToCart(' +
+              p.id +
+              ')">+ Thêm vào giỏ hàng</button>' +
+              "</div>" +
+              "</div></div>"
+            );
+          })
           .join("");
         document
           .querySelectorAll("#productGrid .fade-up")
-          .forEach((el) => _fuObs.observe(el));
+          .forEach(function (el) {
+            _fuObs.observe(el);
+          });
       }
 
       function getSearch() {
@@ -2324,31 +2463,31 @@
           .trim();
       }
       function applyFilters() {
-        const q = getSearch();
-        const hasFilter = curCat !== "all" || q.length > 0;
-        const wraps = document.querySelectorAll("#productGrid .product-wrap");
-        let visible = 0;
-        wraps.forEach((el, i) => {
-          const catOk = curCat === "all" || el.dataset.cat === curCat;
-          const textOk =
+        var q = getSearch();
+        var hasFilter = curCat !== "all" || q.length > 0;
+        var wraps = document.querySelectorAll("#productGrid .product-wrap");
+        var visible = 0;
+        wraps.forEach(function (el, i) {
+          var catOk = curCat === "all" || el.dataset.cat === curCat;
+          var textOk =
             !q ||
             el.dataset.title.includes(q) ||
             el
               .querySelector(".card-title-text")
               .textContent.toLowerCase()
               .includes(q);
-          const beyondLimit = !hasFilter && !_showAll && i >= 8;
+          var beyondLimit = !hasFilter && !_showAll && i >= 8;
           if (catOk && textOk && !beyondLimit) {
             visible++;
             el.style.display = "";
-            requestAnimationFrame(() => {
+            requestAnimationFrame(function () {
               el.style.opacity = "1";
               el.style.transform = "none";
             });
           } else {
             el.style.opacity = "0";
             el.style.transform = "translateY(8px)";
-            setTimeout(() => {
+            setTimeout(function () {
               el.style.display = "none";
             }, 280);
           }
@@ -2365,20 +2504,38 @@
         applyFilters();
         document
           .querySelectorAll("#productGrid .fade-up")
-          .forEach((el) => _fuObs.observe(el));
+          .forEach(function (el) {
+            _fuObs.observe(el);
+          });
       }
       function setCat(btn, cat) {
         curCat = cat;
-        document
-          .querySelectorAll(".cat-btn")
-          .forEach((b) => b.classList.remove("active"));
+        document.querySelectorAll(".cat-btn").forEach(function (b) {
+          b.classList.remove("active");
+        });
         btn.classList.add("active");
         applyFilters();
       }
+      function resetFilters() {
+        curCat = "all";
+        _showAll = false;
+        ["desktopSearch", "mobileSearch", "headerSearch"].forEach(
+          function (id) {
+            document.getElementById(id).value = "";
+          },
+        );
+        document.querySelectorAll(".cat-btn").forEach(function (b) {
+          b.classList.remove("active");
+        });
+        document
+          .querySelector('.cat-btn[data-cat="all"]')
+          .classList.add("active");
+        applyFilters();
+      }
       function toggleHeaderSearch() {
-        const bar = document.getElementById("headerSearchBar");
-        const btn = document.getElementById("searchToggleBtn");
-        const isOpen =
+        var bar = document.getElementById("headerSearchBar");
+        var btn = document.getElementById("searchToggleBtn");
+        var isOpen =
           bar.style.maxHeight !== "0px" && bar.style.maxHeight !== "";
         if (isOpen) {
           bar.style.maxHeight = "0";
@@ -2393,23 +2550,10 @@
         }
       }
 
-      function resetFilters() {
-        curCat = "all";
-        _showAll = false;
-        ["desktopSearch", "mobileSearch", "headerSearch"].forEach((id) => {
-          document.getElementById(id).value = "";
-        });
-        document
-          .querySelectorAll(".cat-btn")
-          .forEach((b) => b.classList.remove("active"));
-        document
-          .querySelector('.cat-btn[data-cat="all"]')
-          .classList.add("active");
-        applyFilters();
-      }
-
       function openProduct(id) {
-        const p = PRODUCTS.find((x) => x.id === id);
+        var p = PRODUCTS.find(function (x) {
+          return x.id === id;
+        });
         if (!p) return;
         activePdId = id;
         document.getElementById("pdImg").src = p.img;
@@ -2429,23 +2573,28 @@
         document.body.style.overflow = "";
       }
       function changeQty(d) {
-        const inp = document.getElementById("pdQty");
+        var inp = document.getElementById("pdQty");
         inp.value = Math.max(1, Math.min(99, (parseInt(inp.value) || 1) + d));
       }
       function addToCartFromModal() {
-        const p = PRODUCTS.find((x) => x.id === activePdId);
-        const qty = parseInt(document.getElementById("pdQty").value) || 1;
+        var p = PRODUCTS.find(function (x) {
+          return x.id === activePdId;
+        });
+        var qty = parseInt(document.getElementById("pdQty").value) || 1;
         if (p) addToCartWithQty(p, qty);
         closePdModal();
       }
-
       function addToCart(id) {
-        const p = PRODUCTS.find((x) => x.id === id);
+        var p = PRODUCTS.find(function (x) {
+          return x.id === id;
+        });
         if (p) addToCartWithQty(p, 1);
       }
       function addToCartWithQty(p, qty) {
-        let cart = JSON.parse(localStorage.getItem("jf_cart") || "[]");
-        const existing = cart.find((x) => x.id === p.id);
+        var cart = JSON.parse(localStorage.getItem("jf_cart") || "[]");
+        var existing = cart.find(function (x) {
+          return x.id === p.id;
+        });
         if (existing) {
           existing.qty += qty;
         } else {
@@ -2461,30 +2610,37 @@
           });
         }
         localStorage.setItem("jf_cart", JSON.stringify(cart));
-        cartQty = cart.reduce((s, x) => s + x.qty, 0);
-        const badge = document.getElementById("cartCount");
+        cartQty = cart.reduce(function (s, x) {
+          return s + x.qty;
+        }, 0);
+        var badge = document.getElementById("cartCount");
         badge.textContent = cartQty;
         badge.style.display = "flex";
-        const short =
+        var short =
           p.title.length > 28 ? p.title.substring(0, 28) + "…" : p.title;
         showToast('✓ Đã thêm "' + short + '" vào giỏ', "ok");
       }
 
       function showToast(msg, type) {
-        const wrap = document.getElementById("toastWrap");
-        const t = document.createElement("div");
+        var wrap = document.getElementById("toastWrap");
+        var t = document.createElement("div");
         t.className = "jf-toast" + (type ? " " + type : "");
         t.textContent = msg;
         wrap.appendChild(t);
-        requestAnimationFrame(() =>
-          requestAnimationFrame(() => t.classList.add("show")),
-        );
-        setTimeout(() => {
+        requestAnimationFrame(function () {
+          requestAnimationFrame(function () {
+            t.classList.add("show");
+          });
+        });
+        setTimeout(function () {
           t.classList.remove("show");
-          setTimeout(() => t.remove(), 400);
+          setTimeout(function () {
+            t.remove();
+          }, 400);
         }, 3500);
       }
 
+      // Mobile drawer
       function openMenu() {
         document.getElementById("menuDrawer").classList.add("open");
         document.getElementById("menuOverlay").classList.add("open");
@@ -2505,6 +2661,7 @@
         .getElementById("menuOverlay")
         .addEventListener("click", closeMenu);
 
+      // Reg modal
       function openRegModal() {
         document.getElementById("regModal").classList.add("open");
         document.body.style.overflow = "hidden";
@@ -2523,10 +2680,11 @@
         .addEventListener("click", function (e) {
           if (e.target === this) closePdModal();
         });
+
       function submitReg(e) {
         e.preventDefault();
-        const name = e.target.querySelector('input[type="text"]').value.trim();
-        const phone = e.target.querySelector('input[type="tel"]').value.trim();
+        var name = e.target.querySelector('input[type="text"]').value.trim();
+        var phone = e.target.querySelector('input[type="tel"]').value.trim();
         if (!name || !phone) {
           showToast("⚠ Vui lòng điền họ tên và số điện thoại.", "err");
           return;
@@ -2535,44 +2693,75 @@
         showToast("✓ Đăng ký thành công! Jellyfish sẽ liên hệ bạn sớm.", "ok");
         e.target.reset();
       }
-      document.addEventListener("keydown", (e) => {
+      document.addEventListener("keydown", function (e) {
         if (e.key === "Escape") {
           closePdModal();
           closeRegModal();
         }
       });
 
-      window.addEventListener("scroll", () =>
+      // Count-up animation
+      function animateCount(el, target, suffix) {
+        var dur = 1800,
+          t0 = null;
+        function step(ts) {
+          if (!t0) t0 = ts;
+          var p = Math.min((ts - t0) / dur, 1);
+          el.textContent =
+            Math.round((1 - Math.pow(1 - p, 3)) * target).toLocaleString("vi") +
+            suffix;
+          if (p < 1) requestAnimationFrame(step);
+        }
+        requestAnimationFrame(step);
+      }
+      var countObs = new IntersectionObserver(
+        function (entries) {
+          entries.forEach(function (e) {
+            if (e.isIntersecting) {
+              var el = e.target;
+              var target = parseInt(el.dataset.target, 10);
+              var suffix = el.dataset.suffix || "";
+              if (!isNaN(target)) animateCount(el, target, suffix);
+              countObs.unobserve(el);
+            }
+          });
+        },
+        { threshold: 0.5 },
+      );
+      document
+        .querySelectorAll(".stat-number[data-target]")
+        .forEach(function (el) {
+          countObs.observe(el);
+        });
+
+      // Fade-up for static elements
+      document.querySelectorAll(".fade-up").forEach(function (el) {
+        _fuObs.observe(el);
+      });
+
+      // Back to top
+      window.addEventListener("scroll", function () {
         document
           .getElementById("backToTop")
-          .classList.toggle("show", window.scrollY > 400),
-      );
+          .classList.toggle("show", window.scrollY > 400);
+      });
       function scrollToTop() {
         window.scrollTo({ top: 0, behavior: "smooth" });
       }
 
-      const _fuObs = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((e) => {
-            if (e.isIntersecting) {
-              e.target.classList.add("visible");
-              _fuObs.unobserve(e.target);
-            }
-          });
-        },
-        { threshold: 0, rootMargin: "0px 0px -40px 0px" },
-      );
-      document.querySelectorAll(".fade-up").forEach((el) => _fuObs.observe(el));
-
+      // Cart badge restore
       (function () {
-        const saved = JSON.parse(localStorage.getItem("jf_cart") || "[]");
-        cartQty = saved.reduce((s, x) => s + x.qty, 0);
+        var saved = JSON.parse(localStorage.getItem("jf_cart") || "[]");
+        cartQty = saved.reduce(function (s, x) {
+          return s + x.qty;
+        }, 0);
         if (cartQty > 0) {
-          const b = document.getElementById("cartCount");
+          var b = document.getElementById("cartCount");
           b.textContent = cartQty;
           b.style.display = "flex";
         }
       })();
+
       renderProducts(PRODUCTS);
       applyFilters();
     </script>
