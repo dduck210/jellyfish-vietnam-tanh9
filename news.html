@@ -1,159 +1,304 @@
 <!doctype html>
-<html lang="vi" style="scroll-behavior: smooth">
+<html lang="vi">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Tin tức - Jellyfish Vietnam</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <title>Tin tức – Jellyfish Vietnam</title>
+    <link rel="icon" href="img/logotab.png" type="image/png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
-    />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
       rel="stylesheet"
     />
+    <script src="https://cdn.tailwindcss.com"></script>
     <style>
-      :root { --green: #237a37; }
-      * {
+      *,
+      *::before,
+      *::after {
         box-sizing: border-box;
       }
+      :root {
+        --deep: #0f2e1b;
+        --accent: #059669;
+        --accent-dark: #047857;
+      }
       body {
-        font-family: "Inter", Arial, sans-serif;
-        background: #f4f5f7;
-        color: #333;
+        font-family: "Plus Jakarta Sans", system-ui, sans-serif;
+        background: #f8fafc;
+        color: #111827;
       }
-      .nav-link-item {
-        position: relative;
-        opacity: 0.82;
-        transition: opacity 0.25s;
-      }
-      .nav-link-item::after {
-        content: "";
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        width: 100%;
-        height: 3px;
-        background: #fff;
-        transform: scaleX(0);
-        transform-origin: center;
-        transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-      }
-      .nav-link-item:hover,
-      .nav-link-item.nav-active {
-        opacity: 1;
-      }
-      .nav-link-item:hover::after,
-      .nav-link-item.nav-active::after {
-        transform: scaleX(1);
-      }
-      .hamburger-btn {
-        display: none;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        gap: 5px;
-        width: 40px;
-        height: 40px;
-        background: none;
-        border: none;
-        cursor: pointer;
-        padding: 4px;
-        flex-shrink: 0;
-      }
-      .hamburger-btn span {
-        display: block;
-        width: 26px;
-        height: 3px;
-        background: #237a37;
-        border-radius: 2px;
-        transition: all 0.3s;
-      }
+
+      /* Mobile drawer */
       .mobile-menu-overlay {
-        display: none;
         position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
+        inset: 0;
         background: rgba(0, 0, 0, 0.45);
         z-index: 1040;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.3s;
+        backdrop-filter: blur(2px);
       }
       .mobile-menu-overlay.open {
-        display: block;
+        opacity: 1;
+        pointer-events: all;
       }
       .mobile-menu-drawer {
         position: fixed;
         top: 0;
-        right: -280px;
-        width: 280px;
+        right: -300px;
+        width: 300px;
         height: 100%;
         background: #fff;
         z-index: 1050;
-        transition: right 0.3s;
+        transition: right 0.35s cubic-bezier(0.4, 0, 0.2, 1);
         overflow-y: auto;
-        box-shadow: -4px 0 20px rgba(0, 0, 0, 0.15);
+        box-shadow: -8px 0 40px rgba(0, 0, 0, 0.12);
       }
       .mobile-menu-drawer.open {
         right: 0;
       }
-      .mobile-menu-header {
+
+      /* Nav link underline */
+      .nav-link {
+        position: relative;
+      }
+      .nav-link::after {
+        content: "";
+        position: absolute;
+        bottom: -4px;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background: var(--accent);
+        border-radius: 1px;
+        transition: width 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+      .nav-link:hover::after,
+      .nav-link.active::after {
+        width: 100%;
+      }
+      .nav-link.active {
+        color: #fff !important;
+      }
+
+      /* CTA button */
+      .cta-btn {
+        transition:
+          filter 0.22s,
+          transform 0.22s,
+          box-shadow 0.22s;
+      }
+      .cta-btn:hover {
+        filter: brightness(1.1);
+        transform: translateY(-2px);
+        box-shadow: 0 10px 28px rgba(5, 150, 105, 0.3);
+      }
+
+      /* Partner track */
+      @keyframes scrollPartner {
+        from {
+          transform: translateX(0);
+        }
+        to {
+          transform: translateX(-50%);
+        }
+      }
+      .partner-track {
+        display: flex;
+        width: max-content;
+        animation: scrollPartner 30s linear infinite;
+      }
+      .partner-track:hover {
+        animation-play-state: paused;
+      }
+
+      /* Fade-up */
+      .fade-up {
+        opacity: 0;
+        transform: translateY(24px);
+        transition:
+          opacity 0.65s cubic-bezier(0.4, 0, 0.2, 1),
+          transform 0.65s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+      .fade-up.visible {
+        opacity: 1;
+        transform: none;
+      }
+      .fade-up.d1 {
+        transition-delay: 0.06s;
+      }
+      .fade-up.d2 {
+        transition-delay: 0.12s;
+      }
+      .fade-up.d3 {
+        transition-delay: 0.18s;
+      }
+
+      /* Hero animation */
+      @keyframes heroFadeUp {
+        from {
+          opacity: 0;
+          transform: translateY(22px);
+        }
+        to {
+          opacity: 1;
+          transform: none;
+        }
+      }
+      .hero-anim {
+        animation: heroFadeUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) both;
+      }
+      .hero-anim.d1 {
+        animation-delay: 0.1s;
+      }
+      .hero-anim.d2 {
+        animation-delay: 0.28s;
+      }
+      .hero-anim.d3 {
+        animation-delay: 0.46s;
+      }
+
+      /* Reg modal */
+      .reg-modal-overlay {
+        position: fixed;
+        inset: 0;
+        z-index: 3000;
+        background: rgba(0, 0, 0, 0.5);
+        backdrop-filter: blur(4px);
         display: flex;
         align-items: center;
-        justify-content: space-between;
-        padding: 16px 20px;
-        background: #fff;
-        border-bottom: 1px solid #e9ecef;
+        justify-content: center;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.3s;
+        padding: 16px;
       }
-      .mobile-menu-close {
+      .reg-modal-overlay.open {
+        opacity: 1;
+        pointer-events: all;
+      }
+      .reg-modal {
+        background: #fff;
+        border-radius: 20px;
+        max-width: 440px;
+        width: 100%;
+        max-height: 90vh;
+        overflow-y: auto;
+        padding: 36px 32px;
+        position: relative;
+        transform: translateY(20px) scale(0.97);
+        transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+        box-shadow: 0 40px 80px rgba(0, 0, 0, 0.18);
+      }
+      .reg-modal-overlay.open .reg-modal {
+        transform: none;
+      }
+      .reg-close-btn {
+        position: absolute;
+        top: 16px;
+        right: 20px;
         background: none;
         border: none;
-        color: #333;
-        font-size: 28px;
-        line-height: 1;
+        font-size: 18px;
         cursor: pointer;
-        padding: 0;
+        color: #94a3b8;
+        width: 32px;
+        height: 32px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        transition: all 0.15s;
       }
-      .mobile-menu-nav a {
-        display: block;
-        padding: 14px 20px;
-        color: #333;
-        text-decoration: none;
-        font-size: 15px;
-        font-weight: 500;
-        border-bottom: 1px solid #f0f0f0;
-        transition:
-          background 0.2s,
-          color 0.2s;
+      .reg-close-btn:hover {
+        background: #f1f5f9;
+        color: #475569;
       }
-      .mobile-menu-nav a:hover,
-      .mobile-menu-nav a.nav-active {
-        background: #f0f8f1;
-        color: #237a37;
+      .form-field {
+        width: 100%;
+        border: 1.5px solid #e5e7eb;
+        border-radius: 10px;
+        padding: 10px 14px;
+        font-size: 14px;
+        outline: none;
+        font-family: inherit;
+        color: #111827;
+        transition: all 0.2s;
+        background: #fff;
       }
-      .mobile-menu-footer {
-        padding: 20px;
+      .form-field:focus {
+        border-color: var(--accent);
+        box-shadow: 0 0 0 3px rgba(5, 150, 105, 0.08);
+      }
+
+      /* Toast */
+      .jf-toast-wrap {
+        position: fixed;
+        bottom: 28px;
+        right: 24px;
+        z-index: 5000;
         display: flex;
         flex-direction: column;
-        gap: 10px;
+        gap: 8px;
+        pointer-events: none;
       }
-      @media (max-width: 767px) {
-        .hamburger-btn {
-          display: flex;
-        }
-        header nav {
-          display: none !important;
-        }
-        .desktop-search {
-          display: none !important;
-        }
-        .stats-strip-item { border-right: none; border-bottom: 1px solid rgba(255,255,255,.15); width: 50%; justify-content: center; }
-        .stats-strip-item:nth-child(odd) { border-right: 1px solid rgba(255,255,255,.15); }
-        .stats-strip-item:nth-last-child(-n+2) { border-bottom: none; }
+      .jf-toast {
+        padding: 12px 18px;
+        border-radius: 12px;
+        font-size: 14px;
+        font-weight: 600;
+        color: #fff;
+        background: #0f172a;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+        opacity: 0;
+        transform: translateY(12px) scale(0.95);
+        transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+        max-width: 300px;
+        font-family: inherit;
       }
+      .jf-toast.ok {
+        background: var(--accent);
+      }
+      .jf-toast.show {
+        opacity: 1;
+        transform: none;
+      }
+
+      /* Back to top */
+      #backToTop {
+        position: fixed;
+        bottom: 28px;
+        left: 24px;
+        width: 44px;
+        height: 44px;
+        border-radius: 50%;
+        background: var(--deep);
+        color: #fff;
+        border: none;
+        cursor: pointer;
+        z-index: 900;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        opacity: 0;
+        transform: translateY(12px);
+        transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+        box-shadow: 0 8px 24px rgba(15, 46, 27, 0.35);
+      }
+      #backToTop.show {
+        opacity: 1;
+        transform: none;
+      }
+      #backToTop:hover {
+        background: var(--accent);
+        transform: translateY(-2px);
+      }
+
       /* TICKER */
       .ticker-wrap {
-        background: #237a37;
+        background: var(--accent);
         color: #fff;
         padding: 8px 0;
         overflow: hidden;
@@ -193,38 +338,8 @@
           transform: translateX(-50%);
         }
       }
-      /* HERO */
-      .news-hero {
-        background: linear-gradient(135deg, rgba(26,94,42,0.82) 0%, rgba(35,122,55,0.78) 55%, rgba(45,147,72,0.72) 100%), url('img/images2.png') center/cover no-repeat;
-        padding: 64px 0 52px;
-        position: relative;
-        overflow: hidden;
-      }
-      .news-hero::before {
-        content: "";
-        position: absolute;
-        top: -80px;
-        right: -80px;
-        width: 340px;
-        height: 340px;
-        background: rgba(255, 255, 255, 0.06);
-        border-radius: 50%;
-        pointer-events: none;
-      }
-      /* STATS & PARTNER STRIP */
-      .stats-strip { background: var(--green); }
-      .stats-strip-item { padding: 18px 28px; display: flex; align-items: center; gap: 14px; border-right: 1px solid rgba(255,255,255,.2); }
-      .stats-strip-item:last-child { border-right: none; }
-      .stats-strip-number { font-size: 26px; font-weight: 800; color: #fff; line-height: 1; }
-      .stats-strip-label { font-size: 12px; color: rgba(255,255,255,.85); line-height: 1.4; }
-      .partner-strip { background: #fff; border-top: 1px solid #eee; border-bottom: 1px solid #eee; overflow: hidden; }
-      .partner-track { display: flex; animation: scrollPartner 30s linear infinite; width: max-content; }
-      .partner-track:hover { animation-play-state: paused; }
-      .partner-item { display: flex; align-items: center; gap: 10px; padding: 16px 36px; white-space: nowrap; font-size: 14px; font-weight: 700; color: #333; border-right: 1px solid #f0f0f0; transition: color .2s; }
-      .partner-item:hover { color: var(--green); }
-      .partner-dot { width: 7px; height: 7px; background: var(--green); border-radius: 50%; flex-shrink: 0; }
-      @keyframes scrollPartner { from { transform: translateX(0); } to { transform: translateX(-50%); } }
-      /* CATEGORY */
+
+      /* CATEGORY BAR */
       .category-bar {
         background: #fff;
         border-bottom: 1px solid #e9ecef;
@@ -243,10 +358,11 @@
         border-radius: 25px;
         cursor: pointer;
         transition: all 0.2s;
-        display: flex;
+        display: inline-flex;
         align-items: center;
         gap: 6px;
         white-space: nowrap;
+        font-family: inherit;
       }
       .category-btn .badge-count {
         background: #e9ecef;
@@ -258,17 +374,17 @@
         transition: all 0.2s;
       }
       .category-btn:hover {
-        border-color: #237a37;
-        color: #237a37;
+        border-color: var(--accent);
+        color: var(--accent);
       }
       .category-btn:hover .badge-count {
-        background: #edf7ee;
-        color: #237a37;
+        background: #ecfdf5;
+        color: var(--accent);
       }
       .category-btn.active {
-        background: #237a37;
+        background: var(--accent);
         color: #fff;
-        border-color: #237a37;
+        border-color: var(--accent);
       }
       .category-btn.active .badge-count {
         background: rgba(255, 255, 255, 0.25);
@@ -284,23 +400,26 @@
         cursor: pointer;
         outline: none;
         background: #fff;
+        font-family: inherit;
       }
       .sort-select:focus {
-        border-color: #237a37;
+        border-color: var(--accent);
       }
-      /* TAGS */
+
+      /* NEWS TAG */
       .news-tag {
         display: inline-block;
-        background: #237a37;
+        background: var(--accent);
         color: #fff;
         font-size: 11px;
         font-weight: 700;
         padding: 3px 10px;
         border-radius: 4px;
-        margin-bottom: 8px;
         text-transform: uppercase;
         letter-spacing: 0.6px;
+        margin-bottom: 8px;
       }
+
       /* FEATURED */
       .news-featured {
         border-radius: 14px;
@@ -357,6 +476,7 @@
         letter-spacing: 1px;
         z-index: 2;
       }
+
       /* SIDE CARD */
       .side-card {
         display: flex;
@@ -373,7 +493,7 @@
         border-bottom: none;
       }
       .side-card:hover {
-        background: #f0f8f1;
+        background: #f0fdf4;
         transform: translateX(3px);
       }
       .side-card img {
@@ -386,7 +506,7 @@
       .side-card-rank {
         width: 24px;
         height: 24px;
-        background: #237a37;
+        background: var(--accent);
         color: #fff;
         border-radius: 50%;
         font-size: 12px;
@@ -400,7 +520,8 @@
       .side-card-rank.hot {
         background: #dc3545;
       }
-      /* GRID */
+
+      /* NEWS CARD */
       .news-card {
         border: none;
         border-radius: 12px;
@@ -409,7 +530,6 @@
         transition:
           transform 0.25s,
           box-shadow 0.25s;
-        height: 100%;
         cursor: pointer;
         background: #fff;
       }
@@ -426,6 +546,7 @@
         height: 200px;
         object-fit: cover;
         transition: transform 0.4s;
+        display: block;
       }
       .news-card:hover img {
         transform: scale(1.06);
@@ -435,7 +556,7 @@
         top: 12px;
         left: 12px;
       }
-      .news-card .card-body {
+      .card-body {
         padding: 18px;
       }
       .news-card h5 {
@@ -443,10 +564,9 @@
         font-weight: 700;
         color: #1a1a1a;
         line-height: 1.45;
-        margin-bottom: 6px;
+        margin: 0 0 6px;
         display: -webkit-box;
         -webkit-line-clamp: 2;
-        line-clamp: 2;
         -webkit-box-orient: vertical;
         overflow: hidden;
       }
@@ -457,7 +577,6 @@
         margin-bottom: 10px;
         display: -webkit-box;
         -webkit-line-clamp: 3;
-        line-clamp: 3;
         -webkit-box-orient: vertical;
         overflow: hidden;
       }
@@ -487,12 +606,6 @@
         gap: 8px;
         margin-bottom: 10px;
       }
-      .author-avatar {
-        width: 26px;
-        height: 26px;
-        border-radius: 50%;
-        object-fit: cover;
-      }
       .author-name {
         font-size: 12px;
         font-weight: 600;
@@ -501,7 +614,7 @@
       .read-more-btn {
         font-size: 13px;
         font-weight: 700;
-        color: #237a37;
+        color: var(--accent);
         background: none;
         border: none;
         padding: 8px 0 0;
@@ -513,10 +626,12 @@
         border-top: 1px solid #f0f0f0;
         margin-top: 8px;
         transition: gap 0.2s;
+        font-family: inherit;
       }
       .read-more-btn:hover {
         gap: 8px;
       }
+
       /* PAGINATION */
       .pagination-btn {
         width: 38px;
@@ -532,24 +647,27 @@
         display: flex;
         align-items: center;
         justify-content: center;
+        font-family: inherit;
       }
       .pagination-btn:hover,
       .pagination-btn.active {
-        background: #237a37;
+        background: var(--accent);
         color: #fff;
-        border-color: #237a37;
+        border-color: var(--accent);
       }
       .pagination-btn:disabled {
         opacity: 0.35;
         cursor: default;
       }
+
       /* NEWSLETTER */
       .newsletter-section {
-        background: linear-gradient(135deg, #f0f8f1, #e8f5ea);
-        border: 1.5px solid #c3e6cb;
+        background: linear-gradient(135deg, #ecfdf5, #d1fae5);
+        border: 1.5px solid #6ee7b7;
         border-radius: 16px;
         padding: 36px;
       }
+
       /* ARTICLE MODAL */
       .article-modal-overlay {
         position: fixed;
@@ -584,7 +702,7 @@
       }
       .reading-progress-bar {
         height: 4px;
-        background: #237a37;
+        background: var(--accent);
         width: 0%;
         transition: width 0.1s;
         position: sticky;
@@ -669,10 +787,10 @@
       .article-content h4 {
         font-size: 18px;
         font-weight: 700;
-        color: #237a37;
+        color: var(--accent);
         margin: 28px 0 12px;
         padding-left: 14px;
-        border-left: 4px solid #237a37;
+        border-left: 4px solid var(--accent);
       }
       .article-content ul {
         padding-left: 20px;
@@ -695,14 +813,14 @@
         font-weight: 600;
         padding: 4px 12px;
         border-radius: 20px;
-        background: #f0f8f1;
-        color: #237a37;
-        border: 1px solid #c3e6cb;
+        background: #ecfdf5;
+        color: var(--accent);
+        border: 1px solid #6ee7b7;
         cursor: pointer;
         transition: all 0.2s;
       }
       .article-tag:hover {
-        background: #237a37;
+        background: var(--accent);
         color: #fff;
       }
       .article-share {
@@ -727,14 +845,15 @@
         cursor: pointer;
         transition: all 0.2s;
         color: #333;
+        font-family: inherit;
       }
       .share-btn:hover {
-        border-color: #237a37;
-        color: #237a37;
+        border-color: var(--accent);
+        color: var(--accent);
       }
       .related-section {
         padding: 24px 32px;
-        background: #f8f9fa;
+        background: #f8fafc;
         border-top: 1px solid #eee;
       }
       .related-section h5 {
@@ -753,7 +872,7 @@
         transition: background 0.2s;
       }
       .related-card:hover {
-        background: #edf7ee;
+        background: #ecfdf5;
       }
       .related-card img {
         width: 76px;
@@ -770,13 +889,12 @@
         color: #1a1a1a;
         display: -webkit-box;
         -webkit-line-clamp: 2;
-        line-clamp: 2;
         -webkit-box-orient: vertical;
         overflow: hidden;
       }
       .modal-cta {
         padding: 22px 32px;
-        background: linear-gradient(135deg, #237a37, #1b6530);
+        background: linear-gradient(135deg, var(--accent), var(--accent-dark));
         text-align: center;
       }
       .modal-cta p {
@@ -786,7 +904,7 @@
       }
       .modal-cta button {
         background: #fff;
-        color: #237a37;
+        color: var(--accent);
         border: none;
         border-radius: 10px;
         padding: 11px 32px;
@@ -794,130 +912,18 @@
         font-weight: 800;
         cursor: pointer;
         transition: transform 0.2s;
+        font-family: inherit;
       }
       .modal-cta button:hover {
         transform: scale(1.05);
       }
-      /* REG MODAL */
-      .reg-modal-overlay {
-        position: fixed;
-        inset: 0;
-        background: rgba(0, 0, 0, 0.5);
-        z-index: 3000;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        padding: 20px;
-        opacity: 0;
-        pointer-events: none;
-        transition: opacity 0.3s;
-      }
-      .reg-modal-overlay.open {
-        opacity: 1;
-        pointer-events: all;
-      }
-      .reg-modal {
-        background: #fff;
-        border-radius: 18px;
-        max-width: 480px;
-        width: 100%;
-        padding: 36px;
-        transform: scale(0.92);
-        transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        position: relative;
-      }
-      .reg-modal-overlay.open .reg-modal {
-        transform: scale(1);
-      }
-      .reg-close-btn {
-        position: absolute;
-        top: 14px;
-        right: 18px;
-        background: none;
-        border: none;
-        font-size: 22px;
-        color: #aaa;
-        cursor: pointer;
-      }
-      .reg-close-btn:hover {
-        color: #333;
-      }
-      .form-control:focus,
-      .form-select:focus {
-        border-color: #237a37 !important;
-        box-shadow: 0 0 0 3px rgba(35, 122, 55, 0.12) !important;
-      }
-      /* TOAST */
-      .toast-wrap {
-        position: fixed;
-        bottom: 28px;
-        right: 28px;
-        z-index: 9999;
-        display: flex;
-        flex-direction: column;
-        gap: 10px;
-        pointer-events: none;
-      }
-      .toast-item {
-        background: #1a1a1a;
-        color: #fff;
-        padding: 14px 20px;
-        border-radius: 12px;
-        font-size: 14px;
-        font-weight: 500;
-        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
-        transform: translateX(130px);
-        opacity: 0;
-        transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-        pointer-events: all;
-        min-width: 240px;
-      }
-      .toast-item.show {
-        transform: translateX(0);
-        opacity: 1;
-      }
-      .toast-item.success {
-        background: #237a37;
-      }
-      /* BACK TO TOP */
-      #back-to-top {
-        position: fixed;
-        bottom: 28px;
-        left: 28px;
-        width: 44px;
-        height: 44px;
-        background: #237a37;
-        color: #fff;
-        border: none;
-        border-radius: 50%;
-        font-size: 20px;
-        cursor: pointer;
-        box-shadow: 0 4px 16px rgba(35, 122, 55, 0.4);
-        opacity: 0;
-        transform: translateY(20px);
-        transition: all 0.3s;
-        z-index: 1000;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-      }
-      #back-to-top.show {
-        opacity: 1;
-        transform: translateY(0);
-      }
-      #back-to-top:hover {
-        background: #1b6530;
-      }
-      mark {
-        background: #fff3c4;
-        border-radius: 2px;
-        padding: 0 2px;
-      }
+
+      /* Misc */
       #no-results {
         display: none;
         text-align: center;
         padding: 60px 0;
-        color: #899197;
+        color: #94a3b8;
       }
       .section-title {
         font-size: 20px;
@@ -929,214 +935,268 @@
         align-items: center;
         gap: 8px;
       }
-      /* ANIMATIONS */
-      @keyframes heroFadeUp {
-        from { opacity: 0; transform: translateY(24px); }
-        to   { opacity: 1; transform: none; }
+      mark {
+        background: #fff3c4;
+        border-radius: 2px;
+        padding: 0 2px;
       }
-      .hero-badge { display: inline-flex; align-items: center; gap: 8px; background: rgba(255,255,255,.15); border: 1px solid rgba(255,255,255,.3); backdrop-filter: blur(8px); border-radius: 50px; padding: 6px 16px; font-size: 13px; font-weight: 600; color: #fff; margin-bottom: 16px; }
-      .hero-anim { animation: heroFadeUp 0.7s ease both; }
-      .hero-anim.d1 { animation-delay: 0.1s; }
-      .hero-anim.d2 { animation-delay: 0.25s; }
-      .hero-anim.d3 { animation-delay: 0.4s; }
-      .news-hero::after {
-        content: "";
-        position: absolute;
-        bottom: -60px;
-        left: -40px;
-        width: 260px;
-        height: 260px;
-        background: rgba(255, 255, 255, 0.04);
-        border-radius: 50%;
+
+      /* Grid layouts */
+      .news-grid-3 {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 24px;
       }
-      .fade-up {
-        opacity: 0;
-        transform: translateY(28px);
-        transition: opacity 0.6s ease, transform 0.6s ease;
+      @media (min-width: 768px) {
+        .news-grid-3 {
+          grid-template-columns: repeat(2, 1fr);
+        }
       }
-      .fade-up.visible {
-        opacity: 1;
-        transform: none;
+      @media (min-width: 1024px) {
+        .news-grid-3 {
+          grid-template-columns: repeat(3, 1fr);
+        }
       }
-      .fade-up.d1 { transition-delay: 0.1s; }
-      .fade-up.d2 { transition-delay: 0.2s; }
-      .fade-up.d3 { transition-delay: 0.3s; }
-      .fade-up.d4 { transition-delay: 0.4s; }
+      .featured-layout {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 32px;
+      }
+      @media (min-width: 1024px) {
+        .featured-layout {
+          grid-template-columns: 7fr 5fr;
+        }
+      }
+      .newsletter-layout {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 32px;
+        align-items: center;
+      }
+      @media (min-width: 768px) {
+        .newsletter-layout {
+          grid-template-columns: 1fr 1fr;
+        }
+      }
     </style>
   </head>
   <body>
-    <!-- HEADER -->
-    <header class="bg-white shadow-sm">
-      <div
-        class="d-flex align-items-center justify-content-between gap-2 px-4 py-3"
-      >
-        <a href="index.html"
-          ><img
-            src="img/logo.png"
-            alt="Jellyfish Vietnam"
-            style="height: 55px; width: auto; object-fit: contain"
-        /></a>
-        <div class="d-none d-sm-flex flex-grow-1 mx-3 desktop-search">
-          <div style="position: relative; width: 100%">
-            <input
-              type="text"
-              id="headerSearch"
-              placeholder="Tìm kiếm tin tức..."
-              class="form-control rounded-pill pe-5"
-              style="
-                background: #f4f5f7;
-                border: 1.5px solid #e9ecef;
-                font-size: 14px;
-              "
-            />
-            <svg
-              style="
-                position: absolute;
-                right: 14px;
-                top: 50%;
-                transform: translateY(-50%);
-                color: #aaa;
-              "
-              width="16"
-              height="16"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              viewBox="0 0 24 24"
-            >
-              <circle cx="11" cy="11" r="8" />
-              <line x1="21" y1="21" x2="16.65" y2="16.65" />
-            </svg>
-          </div>
-        </div>
-        <div class="d-flex align-items-center gap-2 flex-shrink-0">
-          <button
-            class="btn fw-bold text-white border-0 rounded-3 text-nowrap d-none d-md-inline-flex align-items-center px-3 py-2"
-            style="background: #237a37"
-            onclick="openRegModal()"
-          >
-            ĐĂNG KÝ TƯ VẤN
-          </button>
-          <a
-            href="tel:0961106466"
-            class="btn fw-bold text-white text-decoration-none border-0 rounded-3 text-nowrap d-none d-md-inline-flex align-items-center px-3 py-2"
-            style="background: #dc3545"
-          >
-            <img
-              src="img/Rectangle 77.png"
-              alt=""
-              style="width: 16px; margin-right: 6px"
-            />096.110.6466
-          </a>
-          <button class="hamburger-btn" id="hamburgerBtn">
-            <span></span><span></span><span></span>
-          </button>
-        </div>
-      </div>
-      <nav style="background: #237a37; overflow-x: auto; scrollbar-width: none">
-        <ul
-          class="list-unstyled m-0 d-flex align-items-stretch justify-content-center"
-          style="
-            padding: 0 16px;
-            width: max-content;
-            min-width: 100%;
-            min-height: 52px;
-          "
-        >
-          <li class="d-flex">
-            <a
-              href="index.html"
-              class="nav-link-item text-white text-decoration-none d-flex align-items-center text-nowrap px-3"
-              style="font-size: 15px"
-              >Trang chủ</a
-            >
-          </li>
-          <li class="d-flex">
-            <a
-              href="about.html"
-              class="nav-link-item text-white text-decoration-none d-flex align-items-center text-nowrap px-3"
-              style="font-size: 15px"
-              >Về Jellyfish Việt Nam</a
-            >
-          </li>
-          <li class="d-flex">
-            <a
-              href="courses.html"
-              class="nav-link-item text-white text-decoration-none d-flex align-items-center text-nowrap px-3"
-              style="font-size: 15px"
-              >Khóa học</a
-            >
-          </li>
-          <li class="d-flex">
-            <a
-              href="schedule.html"
-              class="nav-link-item text-white text-decoration-none d-flex align-items-center text-nowrap px-3"
-              style="font-size: 15px"
-              >Lịch khai giảng</a
-            >
-          </li>
-          <li class="d-flex">
-            <a
-              href="curriculum.html"
-              class="nav-link-item text-white text-decoration-none d-flex align-items-center text-nowrap px-3"
-              style="font-size: 15px"
-              >Giáo trình</a
-            >
-          </li>
-          <li class="d-flex">
-            <a
-              href="blog.html"
-              class="nav-link-item text-white text-decoration-none d-flex align-items-center text-nowrap px-3"
-              style="font-size: 15px"
-              >Kiến thức hữu ích</a
-            >
-          </li>
-          <li class="d-flex">
-            <a
-              href="news.html"
-              class="nav-link-item nav-active text-white text-decoration-none d-flex align-items-center text-nowrap px-3"
-              style="font-size: 15px"
-              >Tin tức</a
-            >
-          </li>
-        </ul>
-      </nav>
-    </header>
-
-    <!-- MOBILE MENU -->
+    <!-- MOBILE OVERLAY + DRAWER -->
     <div class="mobile-menu-overlay" id="menuOverlay"></div>
     <div class="mobile-menu-drawer" id="menuDrawer">
-      <div class="mobile-menu-header">
+      <div
+        class="flex items-center justify-between px-5 py-4"
+        style="border-bottom: 1px solid #f1f5f9"
+      >
         <a href="index.html"
-          ><img src="img/logo.png" alt="Jellyfish Vietnam" style="height: 38px"
+          ><img src="img/logo.png" alt="Jellyfish Vietnam" style="height: 36px"
         /></a>
-        <button class="mobile-menu-close" id="menuCloseBtn">&#x2715;</button>
+        <button
+          id="menuCloseBtn"
+          class="bg-transparent border-0 cursor-pointer w-9 h-9 flex items-center justify-center rounded-lg text-2xl leading-none text-gray-400 hover:bg-gray-50 transition-all"
+        >
+          &times;
+        </button>
       </div>
-      <nav class="mobile-menu-nav">
-        <a href="index.html">Trang chủ</a>
-        <a href="about.html">Về Jellyfish Việt Nam</a>
-        <a href="courses.html">Khóa học</a>
-        <a href="schedule.html">Lịch khai giảng</a>
-        <a href="curriculum.html">Giáo trình</a>
-        <a href="blog.html">Kiến thức hữu ích</a>
-        <a href="news.html" class="nav-active">Tin tức</a>
+      <nav class="px-5 py-2 flex flex-col">
+        <a
+          href="index.html"
+          class="block py-3 text-sm font-semibold text-gray-600 no-underline hover:text-[#059669] transition-colors"
+          style="border-bottom: 1px solid #f8fafc"
+          >Trang chủ</a
+        >
+        <a
+          href="about.html"
+          class="block py-3 text-sm font-semibold text-gray-600 no-underline hover:text-[#059669] transition-colors"
+          style="border-bottom: 1px solid #f8fafc"
+          >Về Jellyfish Việt Nam</a
+        >
+        <a
+          href="courses.html"
+          class="block py-3 text-sm font-semibold text-gray-600 no-underline hover:text-[#059669] transition-colors"
+          style="border-bottom: 1px solid #f8fafc"
+          >Khóa học</a
+        >
+        <a
+          href="schedule.html"
+          class="block py-3 text-sm font-semibold text-gray-600 no-underline hover:text-[#059669] transition-colors"
+          style="border-bottom: 1px solid #f8fafc"
+          >Lịch khai giảng</a
+        >
+        <a
+          href="curriculum.html"
+          class="block py-3 text-sm font-semibold text-gray-600 no-underline hover:text-[#059669] transition-colors"
+          style="border-bottom: 1px solid #f8fafc"
+          >Giáo trình</a
+        >
+        <a
+          href="blog.html"
+          class="block py-3 text-sm font-semibold text-gray-600 no-underline hover:text-[#059669] transition-colors"
+          style="border-bottom: 1px solid #f8fafc"
+          >Kiến thức hữu ích</a
+        >
+        <a
+          href="news.html"
+          class="block py-3 text-sm font-bold no-underline"
+          style="color: #059669"
+          >Tin tức</a
+        >
       </nav>
-      <div class="mobile-menu-footer">
+      <div class="px-5 pt-4 pb-6 flex flex-col gap-3">
         <button
           onclick="openRegModal()"
-          class="btn fw-bold text-white border-0 rounded-3 py-2"
-          style="background: #237a37; font-size: 15px"
+          class="w-full py-2.5 rounded-xl font-bold text-white text-sm border-0 cursor-pointer"
+          style="background: #059669"
         >
-          ĐĂNG KÝ TƯ VẤN
+          Tư vấn miễn phí
         </button>
         <a
           href="tel:0961106466"
-          class="btn fw-bold text-white border-0 rounded-3 py-2"
-          style="background: #dc3545; font-size: 15px"
+          class="block text-center font-bold text-white py-2.5 rounded-xl no-underline text-sm"
+          style="background: #0f2e1b"
           >📞 096.110.6466</a
         >
       </div>
     </div>
+
+    <!-- MOBILE TOP BAR -->
+    <div
+      class="sticky top-0 z-50 flex items-center justify-between px-4 py-3 lg:hidden"
+      style="background: #0f2e1b"
+    >
+      <button
+        id="hamburgerBtn"
+        class="flex flex-col gap-1.5 bg-transparent border-0 cursor-pointer p-1"
+      >
+        <span
+          class="block rounded"
+          style="width: 24px; height: 2px; background: #fff"
+        ></span>
+        <span
+          class="block rounded"
+          style="width: 24px; height: 2px; background: #fff"
+        ></span>
+        <span
+          class="block rounded"
+          style="width: 24px; height: 2px; background: #fff"
+        ></span>
+      </button>
+      <a href="index.html"
+        ><img src="img/logo.png" alt="Jellyfish Vietnam" style="height: 32px"
+      /></a>
+      <button
+        onclick="openRegModal()"
+        class="font-bold text-white border-0 cursor-pointer text-xs px-4 py-2 rounded-xl"
+        style="background: #059669"
+      >
+        Tư vấn
+      </button>
+    </div>
+
+    <!-- DESKTOP HEADER -->
+    <header
+      class="hidden lg:block sticky top-0 z-50"
+      style="
+        background: #0f2e1b;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+      "
+    >
+      <div
+        style="
+          max-width: 1280px;
+          height: 64px;
+          display: flex;
+          align-items: center;
+          gap: 32px;
+          padding: 0 32px;
+          margin: 0 auto;
+        "
+      >
+        <a
+          href="index.html"
+          style="
+            text-decoration: none;
+            flex-shrink: 0;
+            line-height: 0;
+            transform: translateY(6px);
+          "
+        >
+          <img
+            src="img/Logo.png"
+            alt="Jellyfish"
+            style="height: 36px; display: block"
+          />
+        </a>
+        <nav class="flex items-center gap-5 flex-1">
+          <a
+            href="index.html"
+            class="nav-link text-sm font-semibold py-1 no-underline"
+            style="color: rgba(255, 255, 255, 0.7)"
+            >Trang chủ</a
+          >
+          <a
+            href="about.html"
+            class="nav-link text-sm font-semibold py-1 no-underline"
+            style="color: rgba(255, 255, 255, 0.7)"
+            >Về Jellyfish</a
+          >
+          <a
+            href="courses.html"
+            class="nav-link text-sm font-semibold py-1 no-underline"
+            style="color: rgba(255, 255, 255, 0.7)"
+            >Khóa học</a
+          >
+          <a
+            href="schedule.html"
+            class="nav-link text-sm font-semibold py-1 no-underline"
+            style="color: rgba(255, 255, 255, 0.7)"
+            >Lịch khai giảng</a
+          >
+          <a
+            href="curriculum.html"
+            class="nav-link text-sm font-semibold py-1 no-underline"
+            style="color: rgba(255, 255, 255, 0.7)"
+            >Giáo trình</a
+          >
+          <a
+            href="blog.html"
+            class="nav-link text-sm font-semibold py-1 no-underline"
+            style="color: rgba(255, 255, 255, 0.7)"
+            >Kiến thức hữu ích</a
+          >
+          <a
+            href="news.html"
+            class="nav-link active text-sm font-bold py-1 no-underline"
+            style="color: #fff"
+            >Tin tức</a
+          >
+        </nav>
+        <div class="flex items-center gap-2 flex-shrink-0">
+          <a
+            href="tel:0961106466"
+            class="text-sm font-semibold no-underline px-4 py-2 rounded-xl hover:bg-white/10 transition-all"
+            style="color: rgba(255, 255, 255, 0.75)"
+            >📞 096.110.6466</a
+          >
+          <span
+            style="
+              width: 1px;
+              height: 20px;
+              background: rgba(255, 255, 255, 0.15);
+              margin: 0 6px;
+              display: inline-block;
+            "
+          ></span>
+          <button
+            onclick="openRegModal()"
+            class="cta-btn font-bold text-sm px-5 py-2 rounded-xl cursor-pointer border-0"
+            style="background: #fff; color: #0f2e1b"
+          >
+            Tư vấn miễn phí
+          </button>
+        </div>
+      </div>
+    </header>
 
     <!-- ARTICLE MODAL -->
     <div class="article-modal-overlay" id="articleModal">
@@ -1153,8 +1213,8 @@
           <span id="modalTag" class="news-tag"></span>
           <h2 id="modalTitle"></h2>
           <div class="article-meta-row">
-            <span class="article-meta-item">
-              <svg
+            <span class="article-meta-item"
+              ><svg
                 width="14"
                 height="14"
                 fill="none"
@@ -1163,12 +1223,11 @@
                 viewBox="0 0 24 24"
               >
                 <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
-                <circle cx="12" cy="7" r="4" />
-              </svg>
-              <span id="modalAuthor"></span>
-            </span>
-            <span class="article-meta-item">
-              <svg
+                <circle cx="12" cy="7" r="4" /></svg
+              ><span id="modalAuthor"></span
+            ></span>
+            <span class="article-meta-item"
+              ><svg
                 width="14"
                 height="14"
                 fill="none"
@@ -1179,12 +1238,11 @@
                 <rect x="3" y="4" width="18" height="18" rx="2" />
                 <line x1="16" y1="2" x2="16" y2="6" />
                 <line x1="8" y1="2" x2="8" y2="6" />
-                <line x1="3" y1="10" x2="21" y2="10" />
-              </svg>
-              <span id="modalDate"></span>
-            </span>
-            <span class="article-meta-item">
-              <svg
+                <line x1="3" y1="10" x2="21" y2="10" /></svg
+              ><span id="modalDate"></span
+            ></span>
+            <span class="article-meta-item"
+              ><svg
                 width="14"
                 height="14"
                 fill="none"
@@ -1193,12 +1251,11 @@
                 viewBox="0 0 24 24"
               >
                 <circle cx="12" cy="12" r="10" />
-                <polyline points="12 6 12 12 16 14" />
-              </svg>
-              <span id="modalReadTime"></span>
-            </span>
-            <span class="article-meta-item">
-              <svg
+                <polyline points="12 6 12 12 16 14" /></svg
+              ><span id="modalReadTime"></span
+            ></span>
+            <span class="article-meta-item"
+              ><svg
                 width="14"
                 height="14"
                 fill="none"
@@ -1207,10 +1264,9 @@
                 viewBox="0 0 24 24"
               >
                 <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
-                <circle cx="12" cy="12" r="3" />
-              </svg>
-              <span id="modalViews"></span> lượt xem
-            </span>
+                <circle cx="12" cy="12" r="3" /></svg
+              ><span id="modalViews"></span> lượt xem</span
+            >
           </div>
           <div class="article-content" id="modalContent"></div>
           <div class="article-tags" id="modalTags"></div>
@@ -1237,7 +1293,10 @@
         </div>
         <div class="related-section">
           <h5>Bài viết liên quan</h5>
-          <div id="relatedArticles" class="d-flex flex-column gap-2"></div>
+          <div
+            id="relatedArticles"
+            style="display: flex; flex-direction: column; gap: 8px"
+          ></div>
         </div>
         <div class="modal-cta">
           <p>
@@ -1258,26 +1317,16 @@
     <!-- REG MODAL -->
     <div class="reg-modal-overlay" id="regModal">
       <div class="reg-modal">
-        <button class="reg-close-btn" onclick="closeRegModal()">
-          &#x2715;
-        </button>
+        <button class="reg-close-btn" onclick="closeRegModal()">&times;</button>
         <div
-          style="
-            width: 48px;
-            height: 48px;
-            background: #edf7ee;
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 16px;
-          "
+          class="flex items-center justify-center rounded-2xl mb-5"
+          style="width: 52px; height: 52px; background: #ecfdf5"
         >
           <svg
             width="24"
             height="24"
             fill="none"
-            stroke="#237a37"
+            stroke="#059669"
             stroke-width="2.5"
             viewBox="0 0 24 24"
           >
@@ -1286,72 +1335,61 @@
             />
           </svg>
         </div>
-        <h3 style="font-size: 22px; font-weight: 800; margin-bottom: 6px">
+        <h3
+          class="font-extrabold mb-1.5"
+          style="font-size: 22px; color: #0f172a"
+        >
           Đăng ký tư vấn miễn phí
         </h3>
-        <p style="font-size: 14px; color: #899197; margin-bottom: 20px">
+        <p class="text-sm mb-6" style="color: #94a3b8; line-height: 1.6">
           Đội ngũ tư vấn sẽ liên hệ bạn trong vòng 24 giờ.
         </p>
         <form id="regForm" onsubmit="submitReg(event)">
-          <div class="mb-3">
-            <label class="form-label fw-semibold" style="font-size: 14px"
-              >Họ và tên <span style="color: #dc3545">*</span></label
+          <div class="mb-4">
+            <label
+              class="block text-sm font-semibold mb-1.5"
+              style="color: #374151"
+              >Họ và tên <span style="color: #ef4444">*</span></label
             >
             <input
               type="text"
-              class="form-control"
-              style="
-                border-radius: 8px;
-                border: 1.5px solid #dee2e6;
-                font-size: 14px;
-              "
+              class="form-field"
               placeholder="Nguyễn Văn A"
               required
             />
           </div>
-          <div class="mb-3">
-            <label class="form-label fw-semibold" style="font-size: 14px"
-              >Số điện thoại <span style="color: #dc3545">*</span></label
+          <div class="mb-4">
+            <label
+              class="block text-sm font-semibold mb-1.5"
+              style="color: #374151"
+              >Số điện thoại <span style="color: #ef4444">*</span></label
             >
             <input
               type="tel"
-              class="form-control"
-              style="
-                border-radius: 8px;
-                border: 1.5px solid #dee2e6;
-                font-size: 14px;
-              "
+              class="form-field"
               placeholder="0912 345 678"
               required
             />
           </div>
-          <div class="mb-3">
-            <label class="form-label fw-semibold" style="font-size: 14px"
+          <div class="mb-4">
+            <label
+              class="block text-sm font-semibold mb-1.5"
+              style="color: #374151"
               >Email</label
             >
             <input
               type="email"
-              class="form-control"
-              style="
-                border-radius: 8px;
-                border: 1.5px solid #dee2e6;
-                font-size: 14px;
-              "
+              class="form-field"
               placeholder="example@email.com"
             />
           </div>
-          <div class="mb-4">
-            <label class="form-label fw-semibold" style="font-size: 14px"
+          <div class="mb-6">
+            <label
+              class="block text-sm font-semibold mb-1.5"
+              style="color: #374151"
               >Khóa học quan tâm</label
             >
-            <select
-              class="form-select"
-              style="
-                border-radius: 8px;
-                border: 1.5px solid #dee2e6;
-                font-size: 14px;
-              "
-            >
+            <select class="form-field" style="cursor: pointer">
               <option value="">-- Chọn khóa học --</option>
               <option>Tiếng Nhật N5</option>
               <option>Tiếng Nhật N4</option>
@@ -1362,8 +1400,15 @@
           </div>
           <button
             type="submit"
-            class="btn w-100 fw-bold text-white py-2"
-            style="background: #237a37; border-radius: 10px; font-size: 16px"
+            class="cta-btn w-full font-bold text-white cursor-pointer border-0"
+            style="
+              padding: 13px;
+              background: #059669;
+              border-radius: 12px;
+              font-size: 16px;
+              font-family: inherit;
+              box-shadow: 0 6px 18px rgba(5, 150, 105, 0.3);
+            "
           >
             Gửi đăng ký
           </button>
@@ -1371,20 +1416,39 @@
       </div>
     </div>
 
-    <div class="toast-wrap" id="toastWrap"></div>
+    <!-- BACK TO TOP -->
     <button
-      id="back-to-top"
+      id="backToTop"
       onclick="window.scrollTo({ top: 0, behavior: 'smooth' })"
     >
-      ↑
+      <svg
+        width="20"
+        height="20"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2.5"
+        viewBox="0 0 24 24"
+      >
+        <polyline points="18 15 12 9 6 15" />
+      </svg>
     </button>
+
+    <!-- TOAST -->
+    <div class="jf-toast-wrap" id="toastWrap"></div>
 
     <main>
       <!-- TICKER -->
       <div class="ticker-wrap">
         <div
-          class="container d-flex align-items-center gap-3"
-          style="max-width: 1224px; overflow: hidden"
+          style="
+            max-width: 1224px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            overflow: hidden;
+            padding: 0 16px;
+          "
         >
           <span class="ticker-label">🔴 NÓNG</span>
           <div style="overflow: hidden; flex: 1">
@@ -1394,78 +1458,441 @@
       </div>
 
       <!-- HERO -->
-      <section class="news-hero text-white">
+      <section
+        class="text-white"
+        style="
+          background:
+            linear-gradient(
+              135deg,
+              rgba(15, 46, 27, 0.92) 0%,
+              rgba(5, 118, 84, 0.88) 55%,
+              rgba(4, 120, 87, 0.82) 100%
+            ),
+            url(&quot;img/images2.png&quot;) center/cover no-repeat;
+          padding: 64px 0 52px;
+          position: relative;
+          overflow: hidden;
+        "
+      >
         <div
-          class="container"
+          class="absolute pointer-events-none"
+          style="
+            top: -80px;
+            right: -80px;
+            width: 340px;
+            height: 340px;
+            background: rgba(255, 255, 255, 0.06);
+            border-radius: 50%;
+          "
+        ></div>
+        <div
+          class="absolute pointer-events-none"
+          style="
+            bottom: -60px;
+            left: -40px;
+            width: 260px;
+            height: 260px;
+            background: rgba(255, 255, 255, 0.04);
+            border-radius: 50%;
+          "
+        ></div>
+        <div
+          class="mx-auto px-4"
           style="max-width: 1224px; position: relative; z-index: 1"
         >
-          <nav aria-label="breadcrumb" class="hero-anim d1">
-            <ol class="breadcrumb mb-3" style="--bs-breadcrumb-divider:'›'">
-              <li class="breadcrumb-item"><a href="index.html" class="text-white text-decoration-none opacity-75">Trang chủ</a></li>
-              <li class="breadcrumb-item active text-white" aria-current="page">Tin tức</li>
-            </ol>
+          <nav class="mb-3 hero-anim d1" style="font-size: 14px; opacity: 0.75">
+            <a href="index.html" class="text-white no-underline hover:underline"
+              >Trang chủ</a
+            >
+            › <span>Tin tức</span>
           </nav>
-          <div class="hero-badge hero-anim d1">
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 20H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h10l6 6v8a2 2 0 0 1-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg>
+          <div
+            class="inline-flex items-center gap-2 mb-4 px-4 py-1.5 text-xs font-semibold rounded-full hero-anim d1"
+            style="
+              background: rgba(255, 255, 255, 0.15);
+              border: 1px solid rgba(255, 255, 255, 0.3);
+              backdrop-filter: blur(8px);
+            "
+          >
+            <svg
+              width="15"
+              height="15"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <path
+                d="M19 20H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h10l6 6v8a2 2 0 0 1-2 2z"
+              />
+              <polyline points="17 21 17 13 7 13 7 21" />
+              <polyline points="7 3 7 8 15 8" />
+            </svg>
             Tin tức &amp; Sự kiện
           </div>
           <h1
-            class="fw-bold mb-3 hero-anim d2"
-            style="font-size: clamp(26px, 4vw, 42px); line-height: 1.2;"
+            class="font-bold mb-3 hero-anim d2"
+            style="font-size: clamp(26px, 4vw, 42px); line-height: 1.2"
           >
             Tin tức Jellyfish Vietnam
           </h1>
-          <p class="hero-anim d3" style="font-size: 16px; opacity: 0.88; margin-bottom: 0; max-width: 540px;">
-            Cập nhật những tin tức mới nhất về hoạt động, sự kiện và ưu đãi của Jellyfish Vietnam.
+          <p
+            class="hero-anim d3"
+            style="
+              font-size: 16px;
+              opacity: 0.88;
+              margin-bottom: 0;
+              max-width: 540px;
+            "
+          >
+            Cập nhật những tin tức mới nhất về hoạt động, sự kiện và ưu đãi của
+            Jellyfish Vietnam.
           </p>
         </div>
       </section>
 
-      <!-- STATS -->
-      <div class="stats-strip">
-        <div class="container-fluid px-0">
-          <div class="d-flex flex-wrap justify-content-center">
-            <div class="stats-strip-item"><div><div class="stats-strip-number">500+</div><div class="stats-strip-label">Học viên mỗi tháng</div></div></div>
-            <div class="stats-strip-item"><div><div class="stats-strip-number">60+</div><div class="stats-strip-label">Lớp khai giảng mỗi tháng</div></div></div>
-            <div class="stats-strip-item"><div><div class="stats-strip-number">15+</div><div class="stats-strip-label">Năm kinh nghiệm</div></div></div>
-            <div class="stats-strip-item"><div><div class="stats-strip-number">100%</div><div class="stats-strip-label">Học lại miễn phí</div></div></div>
+      <!-- STATS STRIP -->
+      <div style="background: #059669">
+        <div
+          style="
+            max-width: 1280px;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+          "
+        >
+          <div
+            style="
+              padding: 20px 36px;
+              display: flex;
+              align-items: center;
+              gap: 14px;
+              border-right: 1px solid rgba(255, 255, 255, 0.18);
+            "
+          >
+            <div>
+              <div
+                style="
+                  font-size: 28px;
+                  font-weight: 900;
+                  color: #fff;
+                  line-height: 1;
+                "
+              >
+                200+
+              </div>
+              <div
+                style="
+                  font-size: 12px;
+                  color: rgba(255, 255, 255, 0.82);
+                  margin-top: 4px;
+                "
+              >
+                Bài tin tức đã đăng
+              </div>
+            </div>
+          </div>
+          <div
+            style="
+              padding: 20px 36px;
+              display: flex;
+              align-items: center;
+              gap: 14px;
+              border-right: 1px solid rgba(255, 255, 255, 0.18);
+            "
+          >
+            <div>
+              <div
+                style="
+                  font-size: 28px;
+                  font-weight: 900;
+                  color: #fff;
+                  line-height: 1;
+                "
+              >
+                5+
+              </div>
+              <div
+                style="
+                  font-size: 12px;
+                  color: rgba(255, 255, 255, 0.82);
+                  margin-top: 4px;
+                "
+              >
+                Cập nhật mỗi tuần
+              </div>
+            </div>
+          </div>
+          <div
+            style="
+              padding: 20px 36px;
+              display: flex;
+              align-items: center;
+              gap: 14px;
+              border-right: 1px solid rgba(255, 255, 255, 0.18);
+            "
+          >
+            <div>
+              <div
+                style="
+                  font-size: 28px;
+                  font-weight: 900;
+                  color: #fff;
+                  line-height: 1;
+                "
+              >
+                10,000+
+              </div>
+              <div
+                style="
+                  font-size: 12px;
+                  color: rgba(255, 255, 255, 0.82);
+                  margin-top: 4px;
+                "
+              >
+                Lượt xem mỗi tháng
+              </div>
+            </div>
+          </div>
+          <div
+            style="
+              padding: 20px 36px;
+              display: flex;
+              align-items: center;
+              gap: 14px;
+            "
+          >
+            <div>
+              <div
+                style="
+                  font-size: 28px;
+                  font-weight: 900;
+                  color: #fff;
+                  line-height: 1;
+                "
+              >
+                15+
+              </div>
+              <div
+                style="
+                  font-size: 12px;
+                  color: rgba(255, 255, 255, 0.82);
+                  margin-top: 4px;
+                "
+              >
+                Năm hoạt động
+              </div>
+            </div>
           </div>
         </div>
       </div>
+
       <!-- PARTNER STRIP -->
-      <div class="partner-strip py-1">
+      <section
+        class="overflow-hidden py-4 bg-white"
+        style="border-top: 1px solid #f1f5f9; border-bottom: 1px solid #f1f5f9"
+      >
         <div class="partner-track">
-          <div class="partner-item"><span class="partner-dot"></span>Đại học Kyoto</div>
-          <div class="partner-item"><span class="partner-dot"></span>Fast Retailing (UNIQLO)</div>
-          <div class="partner-item"><span class="partner-dot"></span>Tập đoàn FPT</div>
-          <div class="partner-item"><span class="partner-dot"></span>Đại học Waseda</div>
-          <div class="partner-item"><span class="partner-dot"></span>Honda Vietnam</div>
-          <div class="partner-item"><span class="partner-dot"></span>Đại học Keio</div>
-          <div class="partner-item"><span class="partner-dot"></span>Panasonic Vietnam</div>
-          <div class="partner-item"><span class="partner-dot"></span>Đại học Osaka</div>
-          <div class="partner-item"><span class="partner-dot"></span>Học viện Tochigi</div>
-          <div class="partner-item"><span class="partner-dot"></span>Đại học Ritsumeikan</div>
-          <div class="partner-item"><span class="partner-dot"></span>Đại học Kyoto</div>
-          <div class="partner-item"><span class="partner-dot"></span>Fast Retailing (UNIQLO)</div>
-          <div class="partner-item"><span class="partner-dot"></span>Tập đoàn FPT</div>
-          <div class="partner-item"><span class="partner-dot"></span>Đại học Waseda</div>
-          <div class="partner-item"><span class="partner-dot"></span>Honda Vietnam</div>
-          <div class="partner-item"><span class="partner-dot"></span>Đại học Keio</div>
-          <div class="partner-item"><span class="partner-dot"></span>Panasonic Vietnam</div>
-          <div class="partner-item"><span class="partner-dot"></span>Đại học Osaka</div>
-          <div class="partner-item"><span class="partner-dot"></span>Học viện Tochigi</div>
-          <div class="partner-item"><span class="partner-dot"></span>Đại học Ritsumeikan</div>
+          <span
+            class="flex items-center gap-3 whitespace-nowrap px-9 text-sm font-semibold"
+            style="color: #94a3b8; border-right: 1px solid #f0f0f0"
+            ><span
+              class="w-2 h-2 rounded-full flex-shrink-0"
+              style="background: #059669"
+            ></span
+            >Đại học Kyoto</span
+          >
+          <span
+            class="flex items-center gap-3 whitespace-nowrap px-9 text-sm font-semibold"
+            style="color: #94a3b8; border-right: 1px solid #f0f0f0"
+            ><span
+              class="w-2 h-2 rounded-full flex-shrink-0"
+              style="background: #059669"
+            ></span
+            >Fast Retailing (UNIQLO)</span
+          >
+          <span
+            class="flex items-center gap-3 whitespace-nowrap px-9 text-sm font-semibold"
+            style="color: #94a3b8; border-right: 1px solid #f0f0f0"
+            ><span
+              class="w-2 h-2 rounded-full flex-shrink-0"
+              style="background: #059669"
+            ></span
+            >Tập đoàn FPT</span
+          >
+          <span
+            class="flex items-center gap-3 whitespace-nowrap px-9 text-sm font-semibold"
+            style="color: #94a3b8; border-right: 1px solid #f0f0f0"
+            ><span
+              class="w-2 h-2 rounded-full flex-shrink-0"
+              style="background: #059669"
+            ></span
+            >Đại học Waseda</span
+          >
+          <span
+            class="flex items-center gap-3 whitespace-nowrap px-9 text-sm font-semibold"
+            style="color: #94a3b8; border-right: 1px solid #f0f0f0"
+            ><span
+              class="w-2 h-2 rounded-full flex-shrink-0"
+              style="background: #059669"
+            ></span
+            >Honda Vietnam</span
+          >
+          <span
+            class="flex items-center gap-3 whitespace-nowrap px-9 text-sm font-semibold"
+            style="color: #94a3b8; border-right: 1px solid #f0f0f0"
+            ><span
+              class="w-2 h-2 rounded-full flex-shrink-0"
+              style="background: #059669"
+            ></span
+            >Đại học Keio</span
+          >
+          <span
+            class="flex items-center gap-3 whitespace-nowrap px-9 text-sm font-semibold"
+            style="color: #94a3b8; border-right: 1px solid #f0f0f0"
+            ><span
+              class="w-2 h-2 rounded-full flex-shrink-0"
+              style="background: #059669"
+            ></span
+            >Panasonic Vietnam</span
+          >
+          <span
+            class="flex items-center gap-3 whitespace-nowrap px-9 text-sm font-semibold"
+            style="color: #94a3b8; border-right: 1px solid #f0f0f0"
+            ><span
+              class="w-2 h-2 rounded-full flex-shrink-0"
+              style="background: #059669"
+            ></span
+            >Đại học Osaka</span
+          >
+          <span
+            class="flex items-center gap-3 whitespace-nowrap px-9 text-sm font-semibold"
+            style="color: #94a3b8; border-right: 1px solid #f0f0f0"
+            ><span
+              class="w-2 h-2 rounded-full flex-shrink-0"
+              style="background: #059669"
+            ></span
+            >Học viện Tochigi</span
+          >
+          <span
+            class="flex items-center gap-3 whitespace-nowrap px-9 text-sm font-semibold"
+            style="color: #94a3b8; border-right: 1px solid #f0f0f0"
+            ><span
+              class="w-2 h-2 rounded-full flex-shrink-0"
+              style="background: #059669"
+            ></span
+            >Đại học Ritsumeikan</span
+          >
+          <!-- duplicate for seamless loop -->
+          <span
+            class="flex items-center gap-3 whitespace-nowrap px-9 text-sm font-semibold"
+            style="color: #94a3b8; border-right: 1px solid #f0f0f0"
+            ><span
+              class="w-2 h-2 rounded-full flex-shrink-0"
+              style="background: #059669"
+            ></span
+            >Đại học Kyoto</span
+          >
+          <span
+            class="flex items-center gap-3 whitespace-nowrap px-9 text-sm font-semibold"
+            style="color: #94a3b8; border-right: 1px solid #f0f0f0"
+            ><span
+              class="w-2 h-2 rounded-full flex-shrink-0"
+              style="background: #059669"
+            ></span
+            >Fast Retailing (UNIQLO)</span
+          >
+          <span
+            class="flex items-center gap-3 whitespace-nowrap px-9 text-sm font-semibold"
+            style="color: #94a3b8; border-right: 1px solid #f0f0f0"
+            ><span
+              class="w-2 h-2 rounded-full flex-shrink-0"
+              style="background: #059669"
+            ></span
+            >Tập đoàn FPT</span
+          >
+          <span
+            class="flex items-center gap-3 whitespace-nowrap px-9 text-sm font-semibold"
+            style="color: #94a3b8; border-right: 1px solid #f0f0f0"
+            ><span
+              class="w-2 h-2 rounded-full flex-shrink-0"
+              style="background: #059669"
+            ></span
+            >Đại học Waseda</span
+          >
+          <span
+            class="flex items-center gap-3 whitespace-nowrap px-9 text-sm font-semibold"
+            style="color: #94a3b8; border-right: 1px solid #f0f0f0"
+            ><span
+              class="w-2 h-2 rounded-full flex-shrink-0"
+              style="background: #059669"
+            ></span
+            >Honda Vietnam</span
+          >
+          <span
+            class="flex items-center gap-3 whitespace-nowrap px-9 text-sm font-semibold"
+            style="color: #94a3b8; border-right: 1px solid #f0f0f0"
+            ><span
+              class="w-2 h-2 rounded-full flex-shrink-0"
+              style="background: #059669"
+            ></span
+            >Đại học Keio</span
+          >
+          <span
+            class="flex items-center gap-3 whitespace-nowrap px-9 text-sm font-semibold"
+            style="color: #94a3b8; border-right: 1px solid #f0f0f0"
+            ><span
+              class="w-2 h-2 rounded-full flex-shrink-0"
+              style="background: #059669"
+            ></span
+            >Panasonic Vietnam</span
+          >
+          <span
+            class="flex items-center gap-3 whitespace-nowrap px-9 text-sm font-semibold"
+            style="color: #94a3b8; border-right: 1px solid #f0f0f0"
+            ><span
+              class="w-2 h-2 rounded-full flex-shrink-0"
+              style="background: #059669"
+            ></span
+            >Đại học Osaka</span
+          >
+          <span
+            class="flex items-center gap-3 whitespace-nowrap px-9 text-sm font-semibold"
+            style="color: #94a3b8; border-right: 1px solid #f0f0f0"
+            ><span
+              class="w-2 h-2 rounded-full flex-shrink-0"
+              style="background: #059669"
+            ></span
+            >Học viện Tochigi</span
+          >
+          <span
+            class="flex items-center gap-3 whitespace-nowrap px-9 text-sm font-semibold"
+            style="color: #94a3b8"
+            ><span
+              class="w-2 h-2 rounded-full flex-shrink-0"
+              style="background: #059669"
+            ></span
+            >Đại học Ritsumeikan</span
+          >
         </div>
-      </div>
+      </section>
 
       <!-- CATEGORY BAR -->
       <div class="category-bar">
         <div
-          class="container d-flex align-items-center gap-3 flex-wrap"
-          style="max-width: 1224px"
+          style="
+            max-width: 1224px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+            padding: 0 16px;
+          "
         >
           <div
-            class="d-flex flex-wrap gap-2 flex-grow-1"
+            style="display: flex; flex-wrap: wrap; gap: 8px; flex: 1"
             id="categoryBtns"
           ></div>
           <select class="sort-select" id="sortSelect">
@@ -1477,11 +1904,11 @@
       </div>
 
       <!-- FEATURED + TOP READ -->
-      <section class="py-5 bg-white">
-        <div class="container" style="max-width: 1224px">
-          <div class="row g-4">
-            <div class="col-12 col-lg-7">
-              <div class="section-title mb-4 fade-up">🔥 Tin nổi bật</div>
+      <section class="py-10 bg-white">
+        <div class="mx-auto px-4" style="max-width: 1224px">
+          <div class="featured-layout">
+            <div>
+              <div class="section-title mb-5 fade-up">🔥 Tin nổi bật</div>
               <div class="news-featured" onclick="openArticle(0)">
                 <div class="hot-badge">HOT</div>
                 <img
@@ -1497,7 +1924,14 @@
                   ></span>
                   <h3 id="featuredTitle"></h3>
                   <p id="featuredSummary"></p>
-                  <div class="d-flex align-items-center gap-3 mt-3">
+                  <div
+                    style="
+                      display: flex;
+                      align-items: center;
+                      gap: 12px;
+                      margin-top: 12px;
+                    "
+                  >
                     <span
                       style="font-size: 12px; opacity: 0.8"
                       id="featuredMeta"
@@ -1514,10 +1948,11 @@
                 </div>
               </div>
             </div>
-            <div class="col-12 col-lg-5">
-              <div class="section-title mb-4 fade-up d1">📈 Đọc nhiều nhất</div>
+            <div>
+              <div class="section-title mb-5 fade-up d1">📈 Đọc nhiều nhất</div>
               <div
-                class="bg-white rounded-3 border overflow-hidden"
+                class="bg-white rounded-2xl overflow-hidden"
+                style="border: 1px solid #f0f0f0"
                 id="topReadList"
               ></div>
             </div>
@@ -1526,21 +1961,26 @@
       </section>
 
       <!-- NEWS GRID -->
-      <section class="py-5">
-        <div class="container" style="max-width: 1224px">
+      <section class="py-10" style="background: #f8fafc">
+        <div class="mx-auto px-4" style="max-width: 1224px">
           <div
-            class="d-flex align-items-center justify-content-between mb-4 flex-wrap gap-2 fade-up"
+            style="
+              display: flex;
+              align-items: center;
+              justify-content: space-between;
+              margin-bottom: 24px;
+              flex-wrap: wrap;
+              gap: 8px;
+            "
+            class="fade-up"
           >
             <div class="section-title">📰 Tất cả tin tức</div>
             <span
               id="result-count"
-              style="font-size: 14px; color: #899197"
+              style="font-size: 14px; color: #94a3b8"
             ></span>
           </div>
-          <div
-            class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4"
-            id="news-grid"
-          ></div>
+          <div class="news-grid-3" id="news-grid"></div>
           <div id="no-results">
             <svg
               width="56"
@@ -1562,59 +2002,65 @@
             </p>
           </div>
           <div
-            class="d-flex justify-content-center align-items-center gap-2 mt-5 flex-wrap"
+            style="
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              gap: 8px;
+              margin-top: 40px;
+              flex-wrap: wrap;
+            "
             id="pagination"
           ></div>
         </div>
       </section>
 
       <!-- NEWSLETTER -->
-      <section class="py-5 bg-white">
-        <div class="container" style="max-width: 1224px">
+      <section class="py-10 bg-white">
+        <div class="mx-auto px-4" style="max-width: 1224px">
           <div class="newsletter-section fade-up">
-            <div class="row align-items-center g-4">
-              <div class="col-12 col-md-6">
+            <div class="newsletter-layout">
+              <div>
                 <div style="font-size: 28px; margin-bottom: 8px">📬</div>
-                <h3 class="fw-bold mb-2" style="font-size: 24px">
+                <h3
+                  class="font-bold mb-2"
+                  style="font-size: 24px; color: #0f172a"
+                >
                   Nhận tin tức mới nhất
                 </h3>
-                <p style="color: #555; font-size: 15px; margin-bottom: 0">
+                <p style="color: #555; font-size: 15px; margin: 0">
                   Đăng ký nhận bản tin hàng tuần — không spam, chỉ tin tức chất
                   lượng về tiếng Nhật và Jellyfish Vietnam.
                 </p>
               </div>
-              <div class="col-12 col-md-6">
+              <div>
                 <form
                   onsubmit="submitNewsletter(event)"
-                  class="d-flex gap-2 flex-wrap"
+                  style="display: flex; gap: 8px; flex-wrap: wrap"
                 >
                   <input
                     type="email"
                     placeholder="Nhập địa chỉ email của bạn..."
-                    class="form-control rounded-pill"
-                    style="
-                      flex: 1;
-                      min-width: 200px;
-                      border: 1.5px solid #c3e6cb;
-                    "
+                    class="form-field"
+                    style="flex: 1; min-width: 200px; border-radius: 50px"
                     required
                   />
                   <button
                     type="submit"
-                    class="btn fw-bold text-white rounded-pill px-4"
-                    style="background: #237a37; white-space: nowrap"
+                    class="cta-btn font-bold text-white border-0 cursor-pointer"
+                    style="
+                      background: #059669;
+                      border-radius: 50px;
+                      font-family: inherit;
+                      font-size: 15px;
+                      white-space: nowrap;
+                      padding: 10px 24px;
+                    "
                   >
                     Đăng ký
                   </button>
                 </form>
-                <p
-                  style="
-                    font-size: 12px;
-                    color: #899197;
-                    margin-top: 8px;
-                    margin-bottom: 0;
-                  "
-                >
+                <p style="font-size: 12px; color: #94a3b8; margin-top: 8px">
                   ✅ Hơn 3,200 người đã đăng ký · Hủy đăng ký bất cứ lúc nào
                 </p>
               </div>
@@ -1625,26 +2071,30 @@
 
       <!-- CTA -->
       <section
-        class="py-5 text-center"
-        style="background: linear-gradient(135deg, #237a37, #1b6530)"
+        class="py-14 text-center"
+        style="background: linear-gradient(135deg, #0f2e1b, #047857)"
       >
-        <div class="container" style="max-width: 640px">
-          <h2 class="fw-bold text-white mb-2 fade-up" style="font-size: 30px">
+        <div class="mx-auto px-4" style="max-width: 640px">
+          <h2 class="font-bold text-white mb-3 fade-up" style="font-size: 30px">
             Sẵn sàng bắt đầu hành trình tiếng Nhật?
           </h2>
-          <p class="text-white mb-4 fade-up d1" style="opacity: 0.85; font-size: 16px">
+          <p
+            class="text-white mb-8 fade-up d1"
+            style="opacity: 0.85; font-size: 16px"
+          >
             Đội ngũ tư vấn Jellyfish Vietnam luôn sẵn sàng hỗ trợ bạn chọn lộ
             trình phù hợp nhất.
           </p>
           <button
             onclick="openRegModal()"
-            class="btn fw-bold px-5 py-3 fade-up d2"
+            class="cta-btn fade-up d2 font-extrabold cursor-pointer border-0"
             style="
               background: #fff;
-              color: #237a37;
+              color: #059669;
               border-radius: 50px;
               font-size: 18px;
-              font-weight: 800;
+              padding: 16px 44px;
+              font-family: inherit;
               box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
             "
           >
@@ -1655,87 +2105,76 @@
     </main>
 
     <!-- FOOTER -->
-    <footer class="py-5" style="background: #110c22">
-      <div class="container" style="max-width: 1224px">
-        <div
-          class="d-flex justify-content-between align-items-start flex-wrap gap-3 mb-3"
-        >
+    <footer class="py-14 px-4 md:px-6" style="background: #0f2e1b">
+      <div class="mx-auto" style="max-width: 1200px">
+        <div class="flex justify-between items-start flex-wrap gap-6 mb-6">
           <div>
-            <img
-              src="img/logo-jf.svg"
-              alt="Jellyfish Vietnam"
-              style="height: 56px; width: 172px; object-fit: contain"
-            />
-            <p
-              class="mt-2 mb-0 text-white"
-              style="font-size: 16px; font-weight: 800"
-            >
+            <a href="index.html"
+              ><img
+                src="img/logo-jf.svg"
+                alt="Jellyfish Vietnam"
+                style="height: 52px; width: 168px; object-fit: contain"
+            /></a>
+            <p class="mt-2 mb-0 text-white font-extrabold text-sm">
               Expand your horizons
             </p>
           </div>
           <nav>
-            <ul class="list-unstyled d-flex flex-wrap gap-3 mb-0">
+            <ul class="list-none p-0 m-0 flex flex-wrap gap-5">
               <li>
                 <a
                   href="index.html"
-                  class="text-white text-decoration-none fw-semibold"
-                  style="font-size: 15px"
+                  class="text-white no-underline font-semibold text-sm hover:text-emerald-400 transition-colors"
                   >Trang chủ</a
                 >
               </li>
               <li>
                 <a
                   href="about.html"
-                  class="text-white text-decoration-none fw-semibold"
-                  style="font-size: 15px"
+                  class="text-white no-underline font-semibold text-sm hover:text-emerald-400 transition-colors"
                   >Về Jellyfish</a
                 >
               </li>
               <li>
                 <a
                   href="courses.html"
-                  class="text-white text-decoration-none fw-semibold"
-                  style="font-size: 15px"
+                  class="text-white no-underline font-semibold text-sm hover:text-emerald-400 transition-colors"
                   >Khóa học</a
                 >
               </li>
               <li>
                 <a
                   href="curriculum.html"
-                  class="text-white text-decoration-none fw-semibold"
-                  style="font-size: 15px"
+                  class="text-white no-underline font-semibold text-sm hover:text-emerald-400 transition-colors"
                   >Giáo trình</a
                 >
               </li>
               <li>
                 <a
                   href="blog.html"
-                  class="text-white text-decoration-none fw-semibold"
-                  style="font-size: 15px"
-                  >Kiến thức</a
+                  class="text-white no-underline font-semibold text-sm hover:text-emerald-400 transition-colors"
+                  >Kiến thức hữu ích</a
                 >
               </li>
               <li>
                 <a
                   href="news.html"
-                  class="text-white text-decoration-none fw-semibold"
-                  style="font-size: 15px"
+                  class="text-white no-underline font-semibold text-sm hover:text-emerald-400 transition-colors"
                   >Tin tức</a
                 >
               </li>
             </ul>
           </nav>
         </div>
-        <hr style="border-color: #2e293d" />
-        <div class="row g-4 py-2">
-          <div class="col-12 col-md-4">
-            <h5 class="fw-semibold mb-3 text-white" style="font-size: 15px">
+        <hr style="border-color: rgba(255, 255, 255, 0.12)" />
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 py-8">
+          <div>
+            <h5
+              class="font-bold mb-4 text-white text-xs tracking-widest uppercase"
+            >
               JELLYFISH JAPAN
             </h5>
-            <p
-              class="d-flex align-items-start gap-3 mb-2"
-              style="color: #b3b1b8; font-size: 14px; line-height: 22px"
-            >
+            <div class="flex items-start gap-3 mb-3">
               <img
                 src="img/diachiicon.png"
                 alt=""
@@ -1744,14 +2183,16 @@
                   height: 18px;
                   flex-shrink: 0;
                   margin-top: 2px;
+                  object-fit: contain;
                 "
-              />4F Westhill Building, Nishigotanda 2-24-4, Shinagawa, Tokyo,
-              Japan
-            </p>
-            <p
-              class="d-flex align-items-start gap-3 mb-2"
-              style="color: #b3b1b8; font-size: 14px; line-height: 22px"
-            >
+              /><span
+                class="text-sm leading-relaxed"
+                style="color: rgba(255, 255, 255, 0.6)"
+                >4F Westhill Building, Nishigotanda 2-24-4, Shinagawa, Tokyo,
+                Japan</span
+              >
+            </div>
+            <div class="flex items-start gap-3 mb-3">
               <img
                 src="img/mailicon.png"
                 alt=""
@@ -1760,13 +2201,13 @@
                   height: 18px;
                   flex-shrink: 0;
                   margin-top: 2px;
+                  object-fit: contain;
                 "
-              />job_info@jellyfish-g.co.jp
-            </p>
-            <p
-              class="d-flex align-items-start gap-3 mb-0"
-              style="color: #b3b1b8; font-size: 14px; line-height: 22px"
-            >
+              /><span class="text-sm" style="color: rgba(255, 255, 255, 0.6)"
+                >job_info@jellyfish-g.co.jp</span
+              >
+            </div>
+            <div class="flex items-start gap-3">
               <img
                 src="img/callicon.png"
                 alt=""
@@ -1775,18 +2216,20 @@
                   height: 18px;
                   flex-shrink: 0;
                   margin-top: 2px;
+                  object-fit: contain;
                 "
-              />03-5437-0135
-            </p>
+              /><span class="text-sm" style="color: rgba(255, 255, 255, 0.6)"
+                >03-5437-0135</span
+              >
+            </div>
           </div>
-          <div class="col-12 col-md-4">
-            <h5 class="fw-semibold mb-3 text-white" style="font-size: 15px">
+          <div>
+            <h5
+              class="font-bold mb-4 text-white text-xs tracking-widest uppercase"
+            >
               JELLYFISH VIỆT NAM
             </h5>
-            <p
-              class="d-flex align-items-start gap-3 mb-2"
-              style="color: #b3b1b8; font-size: 14px; line-height: 22px"
-            >
+            <div class="flex items-start gap-3 mb-3">
               <img
                 src="img/diachiicon.png"
                 alt=""
@@ -1795,13 +2238,15 @@
                   height: 18px;
                   flex-shrink: 0;
                   margin-top: 2px;
+                  object-fit: contain;
                 "
-              />Tầng 13, CMC Tower, 11 Duy Tân, Q. Cầu Giấy, TP. Hà Nội
-            </p>
-            <p
-              class="d-flex align-items-start gap-3 mb-2"
-              style="color: #b3b1b8; font-size: 14px; line-height: 22px"
-            >
+              /><span
+                class="text-sm leading-relaxed"
+                style="color: rgba(255, 255, 255, 0.6)"
+                >Tầng 13, CMC Tower, 11 Duy Tân, Q. Cầu Giấy, TP. Hà Nội</span
+              >
+            </div>
+            <div class="flex items-start gap-3 mb-3">
               <img
                 src="img/mailicon.png"
                 alt=""
@@ -1810,13 +2255,13 @@
                   height: 18px;
                   flex-shrink: 0;
                   margin-top: 2px;
+                  object-fit: contain;
                 "
-              />admin@jellyfish-vn.com
-            </p>
-            <p
-              class="d-flex align-items-start gap-3 mb-0"
-              style="color: #b3b1b8; font-size: 14px; line-height: 22px"
-            >
+              /><span class="text-sm" style="color: rgba(255, 255, 255, 0.6)"
+                >admin@jellyfish-vn.com</span
+              >
+            </div>
+            <div class="flex items-start gap-3">
               <img
                 src="img/callicon.png"
                 alt=""
@@ -1825,18 +2270,20 @@
                   height: 18px;
                   flex-shrink: 0;
                   margin-top: 2px;
+                  object-fit: contain;
                 "
-              />0243.7955.846
-            </p>
+              /><span class="text-sm" style="color: rgba(255, 255, 255, 0.6)"
+                >0243.7955.846</span
+              >
+            </div>
           </div>
-          <div class="col-12 col-md-4">
-            <h5 class="fw-semibold mb-3 text-white" style="font-size: 15px">
+          <div>
+            <h5
+              class="font-bold mb-4 text-white text-xs tracking-widest uppercase"
+            >
               CHI NHÁNH HẢI PHÒNG
             </h5>
-            <p
-              class="d-flex align-items-start gap-3 mb-2"
-              style="color: #b3b1b8; font-size: 14px; line-height: 22px"
-            >
+            <div class="flex items-start gap-3 mb-3">
               <img
                 src="img/diachiicon.png"
                 alt=""
@@ -1845,13 +2292,16 @@
                   height: 18px;
                   flex-shrink: 0;
                   margin-top: 2px;
+                  object-fit: contain;
                 "
-              />Tầng 3, tòa nhà Sholega, 275 Lạch Tray, Ngô Quyền, TP. Hải Phòng
-            </p>
-            <p
-              class="d-flex align-items-start gap-3 mb-0"
-              style="color: #b3b1b8; font-size: 14px; line-height: 22px"
-            >
+              /><span
+                class="text-sm leading-relaxed"
+                style="color: rgba(255, 255, 255, 0.6)"
+                >Tầng 3, tòa nhà Sholega, 275 Lạch Tray, Ngô Quyền, TP. Hải
+                Phòng</span
+              >
+            </div>
+            <div class="flex items-start gap-3">
               <img
                 src="img/callicon.png"
                 alt=""
@@ -1860,43 +2310,43 @@
                   height: 18px;
                   flex-shrink: 0;
                   margin-top: 2px;
+                  object-fit: contain;
                 "
-              />0969.895.759
-            </p>
+              /><span class="text-sm" style="color: rgba(255, 255, 255, 0.6)"
+                >0969.895.759</span
+              >
+            </div>
           </div>
         </div>
-        <hr style="border-color: #2e293d" />
-        <div
-          class="d-flex justify-content-between align-items-center flex-wrap gap-3"
-        >
-          <p class="mb-0" style="color: #b3b1b8; font-size: 14px">
+        <hr style="border-color: rgba(255, 255, 255, 0.12)" />
+        <div class="flex justify-between items-center flex-wrap gap-4 pt-4">
+          <p class="mb-0 text-sm" style="color: rgba(255, 255, 255, 0.45)">
             © 2026 Jellyfish Vietnam. All rights reserved.
           </p>
-          <div class="d-flex gap-3">
-            <a href="#"
+          <div class="flex gap-4 items-center">
+            <a href="#" target="_blank" rel="noopener"
               ><img
                 src="img/yticon.png"
                 alt="YouTube"
-                style="width: 24px; height: 24px; object-fit: contain"
+                style="width: 22px; height: 22px; object-fit: contain"
             /></a>
-            <a href="#"
+            <a href="#" target="_blank" rel="noopener"
               ><img
                 src="img/igicons.png"
                 alt="Instagram"
-                style="width: 24px; height: 24px; object-fit: contain"
+                style="width: 22px; height: 22px; object-fit: contain"
             /></a>
-            <a href="#"
+            <a href="#" target="_blank" rel="noopener"
               ><img
                 src="img/fbicons.png"
                 alt="Facebook"
-                style="width: 24px; height: 24px; object-fit: contain"
+                style="width: 22px; height: 22px; object-fit: contain"
             /></a>
           </div>
         </div>
       </div>
     </footer>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
     <script>
       const ARTICLES = [
         {
@@ -1913,7 +2363,7 @@
           tags: ["Chi nhánh mới", "TP.HCM", "Mở rộng"],
           summary:
             "Đánh dấu bước phát triển lớn, Jellyfish Vietnam chính thức mở rộng hoạt động tại TP.HCM với cơ sở vật chất hiện đại và đội ngũ giáo viên chất lượng cao.",
-          content: `<p>Ngày 05/06/2026, Jellyfish Vietnam chính thức khai trương chi nhánh tại TP. Hồ Chí Minh, tầng 8, tòa nhà Vietcombank Tower, đường Công trường Mê Linh, Quận 1. Đây là bước tiến chiến lược quan trọng trong lộ trình mở rộng quy mô hoạt động toàn quốc.</p><h4>Cơ sở vật chất hiện đại</h4><p>Chi nhánh được đầu tư với tổng diện tích hơn 800m², gồm 12 phòng học trang bị màn hình tương tác, hệ thống âm thanh chuẩn Nhật Bản, phòng luyện nghe chuyên biệt và thư viện hơn 2.000 đầu sách tiếng Nhật.</p><h4>Đội ngũ giáo viên chất lượng cao</h4><p>Chi nhánh quy tụ 15 giáo viên, trong đó có 6 giáo viên bản ngữ đến từ các trường đại học hàng đầu tại Tokyo, Osaka và Kyoto.</p><ul><li>Lớp học offline tại chi nhánh: sáng – chiều – tối</li><li>Lớp học online kết hợp: linh hoạt theo lịch học viên</li><li>Tư vấn lộ trình học 1-1 hoàn toàn miễn phí</li><li>Ưu đãi khai trương: giảm 20% học phí cho 100 học viên đầu tiên</li></ul>`,
+          content: `<p>Ngày 05/06/2026, Jellyfish Vietnam chính thức khai trương chi nhánh tại TP. Hồ Chí Minh, tầng 8, tòa nhà Vietcombank Tower, đường Công trường Mê Linh, Quận 1.</p><h4>Cơ sở vật chất hiện đại</h4><p>Chi nhánh được đầu tư với tổng diện tích hơn 800m², gồm 12 phòng học trang bị màn hình tương tác, hệ thống âm thanh chuẩn Nhật Bản, phòng luyện nghe chuyên biệt và thư viện hơn 2.000 đầu sách tiếng Nhật.</p><h4>Đội ngũ giáo viên chất lượng cao</h4><p>Chi nhánh quy tụ 15 giáo viên, trong đó có 6 giáo viên bản ngữ đến từ các trường đại học hàng đầu tại Tokyo, Osaka và Kyoto.</p><ul><li>Lớp học offline tại chi nhánh: sáng – chiều – tối</li><li>Lớp học online kết hợp: linh hoạt theo lịch học viên</li><li>Tư vấn lộ trình học 1-1 hoàn toàn miễn phí</li><li>Ưu đãi khai trương: giảm 20% học phí cho 100 học viên đầu tiên</li></ul>`,
         },
         {
           id: 1,
@@ -1942,7 +2392,7 @@
           tags: ["N3", "Khai giảng", "Tháng 7"],
           summary:
             "Lớp tiếng Nhật N3 tháng 7/2026 chính thức mở đăng ký với nhiều ưu đãi hấp dẫn. Số lượng chỉ 20 học viên/lớp, đăng ký sớm để giữ chỗ.",
-          content: `<p>Jellyfish Vietnam thông báo khai giảng lớp Tiếng Nhật N3 vào ngày <strong>07/07/2026</strong>.</p><h4>Thông tin khóa học</h4><ul><li>Khai giảng: 07/07/2026</li><li>Thời lượng: 6 tháng (180 giờ học)</li><li>Lịch học: Thứ 2–4–6 (19:00–21:00) hoặc Thứ 7–CN (8:00–12:00)</li><li>Học phí: 5.800.000 đồng (ưu đãi sớm: 4.900.000 đồng)</li><li>Sĩ số: Tối đa 20 học viên/lớp</li></ul><h4>Ưu đãi đăng ký sớm</h4><p>Đăng ký trước ngày 20/06/2026 sẽ được giảm ngay <strong>900.000 đồng</strong>, tặng kèm bộ tài liệu ôn thi N3 chính hãng và 3 buổi luyện đề miễn phí với giáo viên bản ngữ.</p>`,
+          content: `<p>Jellyfish Vietnam thông báo khai giảng lớp Tiếng Nhật N3 vào ngày <strong>07/07/2026</strong>.</p><h4>Thông tin khóa học</h4><ul><li>Khai giảng: 07/07/2026</li><li>Thời lượng: 6 tháng (180 giờ học)</li><li>Lịch học: Thứ 2–4–6 (19:00–21:00) hoặc Thứ 7–CN (8:00–12:00)</li><li>Học phí: 5.800.000 đồng (ưu đãi sớm: 4.900.000 đồng)</li><li>Sĩ số: Tối đa 20 học viên/lớp</li></ul><h4>Ưu đãi đăng ký sớm</h4><p>Đăng ký trước ngày 20/06/2026 sẽ được giảm ngay <strong>900.000 đồng</strong>, tặng kèm bộ tài liệu ôn thi N3 chính hãng và 3 buổi luyện đề miễn phí.</p>`,
         },
         {
           id: 3,
@@ -2000,7 +2450,7 @@
           tags: ["N2", "Khai giảng", "Ưu đãi"],
           summary:
             "Lớp học N2 chuyên sâu sắp khai giảng với giáo viên bản ngữ và giáo trình mới nhất. Đăng ký sớm để nhận ưu đãi đặc biệt.",
-          content: `<p>Jellyfish Vietnam thông báo khai giảng lớp Tiếng Nhật N2 vào ngày <strong>15/07/2026</strong>.</p><h4>Điểm khác biệt của khóa N2 Jellyfish</h4><ul><li>100% giáo viên bản ngữ, tốt nghiệp sư phạm tại Nhật Bản</li><li>Giáo trình độc quyền "Jellyfish N2 Master"</li><li>10 buổi luyện đề JLPT thực chiến</li><li>Nhóm hỗ trợ 24/7 trên Zalo/Line</li></ul><p><strong>Học phí ưu đãi:</strong> 7.200.000 đồng (giá gốc 8.500.000 đồng). Áp dụng cho 30 học viên đầu tiên trước ngày 30/06/2026.</p>`,
+          content: `<p>Jellyfish Vietnam thông báo khai giảng lớp Tiếng Nhật N2 vào ngày <strong>15/07/2026</strong>.</p><h4>Điểm khác biệt của khóa N2 Jellyfish</h4><ul><li>100% giáo viên bản ngữ, tốt nghiệp sư phạm tại Nhật Bản</li><li>Giáo trình độc quyền "Jellyfish N2 Master"</li><li>10 buổi luyện đề JLPT thực chiến</li><li>Nhóm hỗ trợ 24/7 trên Zalo/Line</li></ul><p><strong>Học phí ưu đãi:</strong> 7.200.000 đồng. Áp dụng cho 30 học viên đầu tiên trước ngày 30/06/2026.</p>`,
         },
         {
           id: 7,
@@ -2045,7 +2495,7 @@
           tags: ["Hội thảo", "Việc làm", "Nhật Bản"],
           summary:
             "Buổi hội thảo chia sẻ về thị trường lao động Nhật Bản, yêu cầu tuyển dụng và các kỹ năng cần có để làm việc thành công tại xứ sở hoa anh đào.",
-          content: `<p>Ngày 25/05/2026, Jellyfish Vietnam phối hợp cùng JETRO tổ chức hội thảo "Cơ hội việc làm tại Nhật Bản 2026" tại khách sạn Melia Hà Nội. Sự kiện thu hút hơn 300 bạn trẻ tham dự.</p><h4>Nội dung hội thảo</h4><ul><li>Tổng quan thị trường lao động Nhật Bản 2026</li><li>Yêu cầu tuyển dụng thực tế từ các công ty Nhật Bản hàng đầu</li><li>Kinh nghiệm từ người Việt đang làm việc thành công tại Nhật</li><li>Các chương trình visa và quy trình xin việc tại Nhật Bản</li></ul><p>Điểm nhấn: phiên "Job Fair" mini với 8 doanh nghiệp Nhật Bản phỏng vấn trực tiếp. Kết quả, 12 học viên Jellyfish Vietnam đã nhận lời mời thử việc ngay tại sự kiện.</p>`,
+          content: `<p>Ngày 25/05/2026, Jellyfish Vietnam phối hợp cùng JETRO tổ chức hội thảo tại khách sạn Melia Hà Nội. Sự kiện thu hút hơn 300 bạn trẻ tham dự.</p><h4>Nội dung hội thảo</h4><ul><li>Tổng quan thị trường lao động Nhật Bản 2026</li><li>Yêu cầu tuyển dụng thực tế từ các công ty Nhật Bản hàng đầu</li><li>Kinh nghiệm từ người Việt đang làm việc thành công tại Nhật</li><li>Các chương trình visa và quy trình xin việc tại Nhật Bản</li></ul><p>Kết quả: 12 học viên Jellyfish Vietnam đã nhận lời mời thử việc ngay tại sự kiện.</p>`,
         },
         {
           id: 10,
@@ -2059,7 +2509,7 @@
           tags: ["Lịch nghỉ", "Quốc khánh", "Học bù"],
           summary:
             "Jellyfish Vietnam thông báo lịch nghỉ lễ Quốc khánh 2/9/2026 và kế hoạch học bù cho toàn bộ học viên tại các cơ sở.",
-          content: `<p>Thực hiện quy định Nhà nước về nghỉ lễ Quốc khánh 2/9, Jellyfish Vietnam xin thông báo lịch nghỉ và học bù cho tất cả học viên tại Hà Nội, TP.HCM và Hải Phòng.</p><h4>Lịch nghỉ lễ</h4><ul><li>Nghỉ lễ: Thứ 3, ngày 02/09/2026</li><li>Các lớp ngày Thứ 3 sẽ được dời sang cuối tuần</li></ul><h4>Lịch học bù</h4><ul><li>Thứ 7, 05/09/2026: 8:00–10:00 (lớp sáng Thứ 3)</li><li>Chủ nhật, 06/09/2026: 14:00–16:00 (lớp chiều Thứ 3)</li><li>Thứ 7, 05/09/2026: 19:30–21:30 (lớp tối Thứ 3)</li></ul><p>Mọi thắc mắc liên hệ hotline: <strong>096.110.6466</strong>.</p>`,
+          content: `<p>Thực hiện quy định Nhà nước về nghỉ lễ Quốc khánh 2/9, Jellyfish Vietnam xin thông báo lịch nghỉ và học bù cho tất cả học viên.</p><h4>Lịch nghỉ lễ</h4><ul><li>Nghỉ lễ: Thứ 3, ngày 02/09/2026</li><li>Các lớp ngày Thứ 3 sẽ được dời sang cuối tuần</li></ul><h4>Lịch học bù</h4><ul><li>Thứ 7, 05/09/2026: 8:00–10:00 (lớp sáng Thứ 3)</li><li>Chủ nhật, 06/09/2026: 14:00–16:00 (lớp chiều Thứ 3)</li><li>Thứ 7, 05/09/2026: 19:30–21:30 (lớp tối Thứ 3)</li></ul><p>Mọi thắc mắc liên hệ hotline: <strong>096.110.6466</strong>.</p>`,
         },
         {
           id: 11,
@@ -2175,10 +2625,10 @@
         <div class="side-card" onclick="openArticle(${a.id})">
           <div class="side-card-rank ${i === 0 ? "hot" : ""}">${i + 1}</div>
           <img src="${a.img}" alt="" />
-          <div style="flex:1;min-width:0;">
-            <span class="news-tag" style="font-size:10px;">${a.cat}</span>
-            <h6 class="fw-bold mb-1" style="font-size:14px;line-height:1.4;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;">${a.title}</h6>
-            <span style="font-size:12px;color:#adb5bd;">👁 ${fv(getViews(a.id))} · ${a.readTime}</span>
+          <div style="flex:1;min-width:0">
+            <span class="news-tag" style="font-size:10px">${a.cat}</span>
+            <div style="font-size:14px;font-weight:700;line-height:1.4;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;margin-bottom:4px">${a.title}</div>
+            <span style="font-size:12px;color:#adb5bd">👁 ${fv(getViews(a.id))} · ${a.readTime}</span>
           </div>
         </div>`,
           )
@@ -2234,28 +2684,26 @@
         grid.innerHTML = page
           .map(
             (a) => `
-        <div class="col" onclick="openArticle(${a.id})">
-          <div class="card news-card">
-            <div class="card-img-wrap">
-              <img src="${a.img}" alt="" loading="lazy" />
-              <div class="img-overlay-tag"><span class="news-tag">${a.cat}</span></div>
+        <div class="news-card" onclick="openArticle(${a.id})">
+          <div class="card-img-wrap">
+            <img src="${a.img}" alt="" loading="lazy" />
+            <div class="img-overlay-tag"><span class="news-tag">${a.cat}</span></div>
+          </div>
+          <div class="card-body">
+            <div class="author-row">
+              <svg width="14" height="14" fill="none" stroke="#555" stroke-width="2" viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+              <span class="author-name">${a.author}</span>
             </div>
-            <div class="card-body">
-              <div class="author-row">
-                <svg width="14" height="14" fill="none" stroke="#555" stroke-width="2" viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-                <span class="author-name">${a.author}</span>
-              </div>
-              <h5>${q ? hl(a.title, q) : a.title}</h5>
-              <p>${q ? hl(a.summary, q) : a.summary}</p>
-              <div class="news-meta">
-                <span class="news-date">
-                  <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-                  ${a.date}
-                </span>
-                <span class="news-stats"><span>👁 ${fv(getViews(a.id))}</span><span>⏱ ${a.readTime}</span></span>
-              </div>
-              <button class="read-more-btn">Đọc thêm <span>→</span></button>
+            <h5>${q ? hl(a.title, q) : a.title}</h5>
+            <p>${q ? hl(a.summary, q) : a.summary}</p>
+            <div class="news-meta">
+              <span class="news-date">
+                <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                ${a.date}
+              </span>
+              <span class="news-stats"><span>👁 ${fv(getViews(a.id))}</span><span>⏱ ${a.readTime}</span></span>
             </div>
+            <button class="read-more-btn">Đọc thêm <span>→</span></button>
           </div>
         </div>`,
           )
@@ -2294,18 +2742,6 @@
           renderGrid();
         });
 
-      let st;
-      document
-        .getElementById("headerSearch")
-        .addEventListener("input", function () {
-          clearTimeout(st);
-          st = setTimeout(() => {
-            curSearch = this.value.trim();
-            curPage = 1;
-            renderGrid();
-          }, 280);
-        });
-
       function openArticle(id) {
         const a = ARTICLES.find((x) => x.id === id);
         if (!a) return;
@@ -2330,7 +2766,7 @@
             (r) => `
         <div class="related-card" onclick="openArticle(${r.id})">
           <img src="${r.img}" alt="" />
-          <div><h6>${r.title}</h6><span style="font-size:12px;color:#adb5bd;">${r.cat} · ${r.date}</span></div>
+          <div><h6>${r.title}</h6><span style="font-size:12px;color:#adb5bd">${r.cat} · ${r.date}</span></div>
         </div>`,
           )
           .join("");
@@ -2369,9 +2805,9 @@
         document.getElementById("regModal").classList.remove("open");
         document.body.style.overflow = "";
       }
-      const _rm = document.getElementById("regModal");
-      if (_rm)
-        _rm.addEventListener("click", function (e) {
+      document
+        .getElementById("regModal")
+        .addEventListener("click", function (e) {
           if (e.target === this) closeRegModal();
         });
 
@@ -2379,7 +2815,7 @@
         e.preventDefault();
         closeRegModal();
         showToast(
-          "success",
+          "ok",
           "✅ Đăng ký thành công! Chúng tôi sẽ liên hệ bạn trong 24 giờ.",
         );
         e.target.reset();
@@ -2387,13 +2823,13 @@
       function submitNewsletter(e) {
         e.preventDefault();
         e.target.querySelector("input").value = "";
-        showToast("success", "📬 Đăng ký nhận bản tin thành công!");
+        showToast("ok", "📬 Đăng ký nhận bản tin thành công!");
       }
 
       function showToast(type, msg) {
         const w = document.getElementById("toastWrap");
         const el = document.createElement("div");
-        el.className = `toast-item ${type}`;
+        el.className = `jf-toast ${type}`;
         el.textContent = msg;
         w.appendChild(el);
         requestAnimationFrame(() =>
@@ -2432,7 +2868,7 @@
 
       window.addEventListener("scroll", () =>
         document
-          .getElementById("back-to-top")
+          .getElementById("backToTop")
           .classList.toggle("show", window.scrollY > 400),
       );
       document.addEventListener("keydown", (e) => {
@@ -2442,15 +2878,18 @@
         }
       });
 
-      const _fuObserver = new IntersectionObserver((entries) => {
-        entries.forEach(e => {
-          if (e.isIntersecting) {
-            e.target.classList.add('visible');
-            _fuObserver.unobserve(e.target);
-          }
-        });
-      }, { threshold: 0, rootMargin: '0px 0px -40px 0px' });
-      document.querySelectorAll('.fade-up').forEach(el => _fuObserver.observe(el));
+      const _fuObs = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((e) => {
+            if (e.isIntersecting) {
+              e.target.classList.add("visible");
+              _fuObs.unobserve(e.target);
+            }
+          });
+        },
+        { threshold: 0, rootMargin: "0px 0px -40px 0px" },
+      );
+      document.querySelectorAll(".fade-up").forEach((el) => _fuObs.observe(el));
 
       initTicker();
       initCats();
